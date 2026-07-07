@@ -122,12 +122,12 @@ const RevenueCalculator = () => {
             <div>
               <div className="flex justify-between items-end mb-4">
                 <label className="font-mono text-xs uppercase tracking-widest text-white/70">Close Rate</label>
-                <span className="font-mono text-xl text-[#00bfff]">{closeRate}%</span>
+                <span className="font-mono text-xl text-[#00ff99]">{closeRate}%</span>
               </div>
               <input
                 type="range" min="1" max="100" step="1"
                 value={closeRate} onChange={(e) => setCloseRate(Number(e.target.value))}
-                className="w-full h-1 bg-[#00bfff]/30 appearance-none outline-none hover:bg-[#00bfff]/60 transition-colors cursor-crosshair"
+                className="w-full h-1 bg-[#00ff99]/30 appearance-none outline-none hover:bg-[#00ff99]/60 transition-colors cursor-crosshair"
               />
             </div>
           </div>
@@ -152,8 +152,8 @@ const RevenueCalculator = () => {
               <span className="text-5xl md:text-6xl font-mono text-white/90">{formatMoney(monthlyLost)}</span>
             </div>
             <div className="flex flex-col pt-4">
-              <span className="font-mono text-[10px] tracking-widest uppercase text-[#00bfff]/70 mb-4">Per Year (Projected)</span>
-              <span className="text-6xl md:text-7xl xl:text-8xl font-black font-[family-name:var(--font-orbitron)] leading-none text-[#00bfff] drop-shadow-[0_0_30px_rgba(0,255,153,0.3)] break-words">
+              <span className="font-mono text-[10px] tracking-widest uppercase text-[#00ff99]/70 mb-4">Per Year (Projected)</span>
+              <span className="text-6xl md:text-7xl xl:text-8xl font-black font-[family-name:var(--font-orbitron)] leading-none text-[#00ff99] drop-shadow-[0_0_30px_rgba(0,255,153,0.3)] break-words">
                 {formatMoney(yearlyLost)}
               </span>
             </div>
