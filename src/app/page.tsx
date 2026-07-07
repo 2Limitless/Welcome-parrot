@@ -182,13 +182,13 @@ const Manifesto = () => {
         <span className="text-[10px] text-[#00ff99] font-mono tracking-[0.2em] uppercase mb-12 block">[ THE REALITY ]</span>
         <motion.h2
           initial={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }} whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }} transition={{ duration: 1, ease: "easeOut" }} viewport={{ once: true, margin: "-100px" }}
-          className="text-5xl md:text-7xl lg:text-[6vw] font-black font-[family-name:var(--font-orbitron)] uppercase tracking-tighter leading-[0.9] text-white/10 transition-colors duration-500 group-hover:text-white"
+          className="text-4xl sm:text-5xl md:text-7xl lg:text-[6vw] font-black font-[family-name:var(--font-orbitron)] uppercase tracking-tighter leading-[0.9] text-white md:text-white/10 transition-colors duration-500 md:group-hover:text-white"
         >
-          EVERY MISSED CALL <br /> IS <span className="text-white/10 group-hover:text-[#ff0055] transition-colors duration-700">BLEEDING</span> REVENUE.
+          EVERY MISSED CALL <br className="hidden md:block" /> IS <span className="text-[#ff0055] md:text-white/10 md:group-hover:text-[#ff0055] transition-colors duration-700">BLEEDING</span> REVENUE.
         </motion.h2>
         <motion.p
           initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1, delay: 0.3 }} viewport={{ once: true }}
-          className="font-mono text-sm md:text-base text-white/40 mt-12 max-w-2xl text-center leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-100"
+          className="font-mono text-sm md:text-base text-white/60 md:text-white/40 mt-8 md:mt-12 max-w-2xl text-center leading-relaxed opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-700 delay-100"
         >
           Stop ignoring the math. You are literally paying marketing agencies to generate leads, only to let them die in voicemail.
         </motion.p>
