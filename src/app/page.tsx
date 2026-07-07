@@ -444,7 +444,7 @@ export default function Home() {
           {/* Baby Parrot */}
           <motion.div
             initial={{ opacity: 0, scale: 1.1, y: 50 }} whileInView={{ opacity: 1, scale: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut" }} viewport={{ once: true, margin: "-100px" }}
-            className="w-full border-b lg:border-b-0 lg:border-r border-white/20 p-8 lg:p-12 flex flex-col justify-between hover:bg-white hover:text-black transition-colors duration-300 group"
+            className="w-full border-b lg:border-b-0 lg:border-r border-white/20 p-8 lg:p-12 flex flex-col justify-between hover:border-white hover:shadow-[0_0_30px_rgba(255,255,255,0.15)] transition-all duration-300 group"
           >
             <div>
               <span className="text-[10px] text-current/50 font-mono tracking-widest uppercase block mb-4">[ Tier 01 - Missed-Call Auto-Catch ]</span>
@@ -454,10 +454,10 @@ export default function Home() {
                 For less than $5 a day, you stop losing high-ticket jobs to voicemail. The instant a call drops, the system texts them back—delivering pre-approved, high-converting responses to lock in the lead before they dial a competitor.
               </p>
               <ul className="space-y-3 mb-12">
-                <li className="font-mono text-[10px] text-current font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00bfff] group-hover:text-black shrink-0" /> Instant Missed-Call SMS</li>
-                <li className="font-mono text-[10px] text-current font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00bfff] group-hover:text-black shrink-0" /> Customizable Text Template</li>
-                <li className="font-mono text-[10px] text-current font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00bfff] group-hover:text-black shrink-0" /> All AI Texting Protocols</li>
-                <li className="font-mono text-[10px] text-current font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00bfff] group-hover:text-black shrink-0" /> Dashboard Call Logging</li>
+                <li className="font-mono text-[10px] text-current font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00bfff] group-hover:text-white shrink-0 transition-colors" /> Instant Missed-Call SMS</li>
+                <li className="font-mono text-[10px] text-current font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00bfff] group-hover:text-white shrink-0 transition-colors" /> Customizable Text Template</li>
+                <li className="font-mono text-[10px] text-current font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00bfff] group-hover:text-white shrink-0 transition-colors" /> All AI Texting Protocols</li>
+                <li className="font-mono text-[10px] text-current font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00bfff] group-hover:text-white shrink-0 transition-colors" /> Dashboard Call Logging</li>
               </ul>
             </div>
             <Link href="https://calendar.app.google/DW6EyNY2BRDA1h1PA" target="_blank" className="w-full border border-current px-6 py-4 text-[10px] font-mono font-bold uppercase tracking-widest bg-transparent text-current group-hover:bg-black group-hover:text-white transition-colors block text-center">
@@ -468,7 +468,7 @@ export default function Home() {
           {/* Teen Parrot - High Contrast */}
           <motion.div
             initial={{ opacity: 0, scale: 1.1, y: 50 }} whileInView={{ opacity: 1, scale: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }} viewport={{ once: true, margin: "-100px" }}
-            className="w-full border-b lg:border-b-0 lg:border-r border-[#00bfff] bg-[#00bfff] text-[#050505] p-8 lg:p-12 flex flex-col justify-between group hover:bg-white hover:border-white transition-colors duration-300"
+            className="w-full border-b lg:border-b-0 lg:border-r border-[#00bfff] bg-[#00bfff] text-[#050505] p-8 lg:p-12 flex flex-col justify-between group hover:shadow-[0_0_50px_rgba(0,191,255,0.6)] transition-all duration-300 z-10 relative"
           >
             <div>
               <span className="text-[10px] text-current/70 font-mono tracking-widest uppercase block mb-4">[ Tier 02 - AI Lead Qualifier ]</span>
@@ -493,7 +493,7 @@ export default function Home() {
           {/* Adult Parrot */}
           <motion.div
             initial={{ opacity: 0, scale: 1.1, y: 50 }} whileInView={{ opacity: 1, scale: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }} viewport={{ once: true, margin: "-100px" }}
-            className="w-full bg-[#0a0a0a] text-white p-8 lg:p-12 flex flex-col justify-between border-t lg:border-t-0 border-[#00ff99]/20 hover:border-[#00ff99] transition-colors duration-300 group shadow-[inset_0_0_50px_rgba(0,255,153,0.02)] hover:shadow-[inset_0_0_50px_rgba(0,255,153,0.05)]"
+            className="w-full bg-[#0a0a0a] text-white p-8 lg:p-12 flex flex-col justify-between border-t lg:border-t-0 border-[#00ff99]/20 hover:border-[#00ff99] transition-all duration-300 group shadow-[inset_0_0_50px_rgba(0,255,153,0.02)] hover:shadow-[0_0_60px_rgba(0,255,153,0.3),inset_0_0_50px_rgba(0,255,153,0.05)]"
           >
             <div>
               <span className="text-[10px] text-[#00ff99] font-mono tracking-widest uppercase block mb-4">[ VIP Protocol - 24/7 Voice ]</span>
