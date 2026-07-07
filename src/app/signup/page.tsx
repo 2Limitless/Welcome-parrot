@@ -25,7 +25,7 @@ const tierData = {
     name: "Premium",
     price: "$897/mo",
     description: "24/7 AI Voice Receptionist that answers every call instantly.",
-    features: ["All AI Texting Protocols", "24/7 AI Voice Receptionist", "Hyper-Realistic Voice Engine", "Advanced Objection Handling", "Smart Live Call Routing"],
+    features: ["Missed-Call Auto-Catch", "2-Way AI Text Conversations", "Scope-of-Work Extraction", "Custom Knowledge Base Sync", "Direct Calendar Integration", "24/7 AI Voice Receptionist", "Hyper-Realistic Voice Engine", "Advanced Objection Handling", "Smart Live Call Routing"],
     stripeLink: "https://buy.stripe.com/test_bJe14nbjJaWPd5u4jUcjS02"
   }
 };
