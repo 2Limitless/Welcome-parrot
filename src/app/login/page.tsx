@@ -18,12 +18,17 @@ function LoginForm() {
   const [isEmailFocused, setIsEmailFocused] = useState(false);
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
 
-  // Eye tracking logic
-  const maxLookX = 5; // Reduced max radius so pupils stay inside the eyes perfectly
-  const maxChars = 32;
-  const calculatedX = (Math.min(email.length, maxChars) / maxChars) * (maxLookX * 2) - maxLookX;
+  // Improved Eye Tracking Math
+  const maxLookX = 8;
+  const maxLookY = 4;
+  // Assume a standard email input shows ~35 characters before scrolling.
+  // We map the string length to a progress percentage (0.0 to 1.0),
+  // then map that percentage to the range [-maxLookX, maxLookX].
+  const typingProgress = Math.min(email.length / 35, 1);
+  const calculatedX = -maxLookX + (typingProgress * (maxLookX * 2));
+  
   const lookX = isEmailFocused ? calculatedX : 0;
-  const lookY = isEmailFocused ? 3 : 0;
+  const lookY = isEmailFocused ? maxLookY : 0;
 
   const supabase = createClient();
 
@@ -92,49 +97,54 @@ function LoginForm() {
               <h2 className="text-3xl font-black uppercase tracking-widest text-white">Initialize</h2>
             </div>
             
-            {/* Peekaboo Parrot */}
-            <div className="relative w-32 h-32 -mb-8 z-20 mx-auto">
-              <svg viewBox="0 0 100 100" className="w-full h-full overflow-visible">
-                {/* Body/Head outline */}
-                <path d="M 20 100 C 15 30, 85 30, 80 100 Z" className="stroke-[#00bfff] stroke-[3px] fill-[#050505]" />
+            {/* Full-Color Cute Peekaboo Parrot */}
+            <div className="relative w-40 h-40 -mb-6 z-20 mx-auto">
+              <svg viewBox="0 0 200 200" className="w-full h-full overflow-visible drop-shadow-[0_10px_20px_rgba(0,191,255,0.15)]">
                 
-                {/* Feathers on top of head */}
-                <path d="M 40 25 Q 35 5, 45 15 Q 50 0, 55 15 Q 65 5, 60 25" className="stroke-[#00bfff] stroke-[3px] fill-transparent" strokeLinecap="round" strokeLinejoin="round" />
+                {/* Feet */}
+                <path d="M 80 170 Q 75 190, 65 190" fill="none" stroke="#f97316" strokeWidth="8" strokeLinecap="round" />
+                <path d="M 120 170 Q 125 190, 135 190" fill="none" stroke="#f97316" strokeWidth="8" strokeLinecap="round" />
+
+                {/* Body (Fat oval) */}
+                <rect x="50" y="50" width="100" height="130" rx="50" fill="#10b981" />
+                
+                {/* Belly */}
+                <rect x="65" y="90" width="70" height="80" rx="35" fill="#fde047" />
+
+                {/* Cheeks */}
+                <circle cx="60" cy="95" r="10" fill="#fca5a5" opacity="0.8" />
+                <circle cx="140" cy="95" r="10" fill="#fca5a5" opacity="0.8" />
 
                 {/* Eyes Group */}
                 <g>
                   {/* Sclera (White part) */}
-                  <circle cx="32" cy="40" r="12" fill="white" />
-                  <circle cx="68" cy="40" r="12" fill="white" />
+                  <circle cx="75" cy="75" r="18" fill="white" />
+                  <circle cx="125" cy="75" r="18" fill="white" />
                   
                   {/* Pupils tracking input */}
-                  <circle cx={32 + lookX} cy={40 + lookY} r="5" fill="black" className="transition-all duration-75" />
-                  <circle cx={68 + lookX} cy={40 + lookY} r="5" fill="black" className="transition-all duration-75" />
+                  <circle cx={75 + lookX} cy={75 + lookY} r="8" fill="#0f172a" className="transition-all duration-100 ease-out" />
+                  <circle cx={125 + lookX} cy={75 + lookY} r="8" fill="#0f172a" className="transition-all duration-100 ease-out" />
+                  
+                  {/* Pupil Highlights (Catchlights for cuteness) */}
+                  <circle cx={72 + lookX} cy={72 + lookY} r="2.5" fill="white" className="transition-all duration-100 ease-out" />
+                  <circle cx={122 + lookX} cy={72 + lookY} r="2.5" fill="white" className="transition-all duration-100 ease-out" />
                 </g>
 
-                {/* Parrot Beak (renders over eyes slightly) */}
-                <g>
-                  {/* Top Beak */}
-                  <path d="M 38 48 Q 50 38, 62 48 C 65 65, 55 75, 50 75 C 45 75, 35 65, 38 48 Z" className="stroke-[#00bfff] stroke-[3px] fill-[#050505]" />
-                  {/* Beak dividing line */}
-                  <path d="M 42 55 Q 50 65, 58 55" className="stroke-[#00bfff] stroke-[2px] fill-transparent" strokeLinecap="round" />
-                </g>
+                {/* Beak */}
+                <path d="M 85 85 Q 100 105, 115 85 Q 100 78, 85 85 Z" fill="#f97316" />
 
-                {/* Left Wing (Covers left eye on password focus) */}
-                <g style={{ transform: isPasswordFocused ? 'translate(18px, -28px) rotate(35deg)' : 'translate(0px, 0px) rotate(0deg)', transformOrigin: '20px 80px' }} className="transition-all duration-500 ease-[cubic-bezier(0.68,-0.55,0.26,1.55)]">
-                  {/* Wing Outline */}
-                  <path d="M 15 85 C -5 85, -5 45, 15 45 C 35 45, 35 85, 15 85 Z" className="stroke-[#00bfff] stroke-[3px] fill-[#050505]" />
-                  {/* Feather Details */}
-                  <path d="M 8 55 L 8 75 M 15 50 L 15 78 M 22 55 L 22 75" className="stroke-[#00bfff] stroke-[2px] fill-transparent" strokeLinecap="round" />
+                {/* Left Wing */}
+                <g style={{ transform: isPasswordFocused ? 'translate(30px, -50px) rotate(45deg)' : 'translate(0px, 0px) rotate(0deg)', transformOrigin: '40px 130px' }} className="transition-all duration-500 ease-[cubic-bezier(0.68,-0.55,0.26,1.55)]">
+                  {/* Wing shape */}
+                  <path d="M 50 110 C 20 110, 20 170, 50 170 C 40 150, 40 130, 50 110 Z" fill="#059669" />
                 </g>
                 
-                {/* Right Wing (Covers right eye on password focus) */}
-                <g style={{ transform: isPasswordFocused ? 'translate(-18px, -28px) rotate(-35deg)' : 'translate(0px, 0px) rotate(0deg)', transformOrigin: '80px 80px' }} className="transition-all duration-500 ease-[cubic-bezier(0.68,-0.55,0.26,1.55)]">
-                  {/* Wing Outline */}
-                  <path d="M 85 85 C 105 85, 105 45, 85 45 C 65 45, 65 85, 85 85 Z" className="stroke-[#00bfff] stroke-[3px] fill-[#050505]" />
-                  {/* Feather Details */}
-                  <path d="M 92 55 L 92 75 M 85 50 L 85 78 M 78 55 L 78 75" className="stroke-[#00bfff] stroke-[2px] fill-transparent" strokeLinecap="round" />
+                {/* Right Wing */}
+                <g style={{ transform: isPasswordFocused ? 'translate(-30px, -50px) rotate(-45deg)' : 'translate(0px, 0px) rotate(0deg)', transformOrigin: '160px 130px' }} className="transition-all duration-500 ease-[cubic-bezier(0.68,-0.55,0.26,1.55)]">
+                  {/* Wing shape */}
+                  <path d="M 150 110 C 180 110, 180 170, 150 170 C 160 150, 160 130, 150 110 Z" fill="#059669" />
                 </g>
+
               </svg>
             </div>
           </div>
