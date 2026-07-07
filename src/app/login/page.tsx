@@ -97,52 +97,76 @@ function LoginForm() {
               <h2 className="text-3xl font-black uppercase tracking-widest text-white">Initialize</h2>
             </div>
             
-            {/* Full-Color Cute Peekaboo Parrot */}
+            {/* Cool Cyberpunk/High-Depth Parrot */}
             <div className="relative w-40 h-40 -mb-6 z-20 mx-auto">
-              <svg viewBox="0 0 200 200" className="w-full h-full overflow-visible drop-shadow-[0_10px_20px_rgba(0,191,255,0.15)]">
+              <svg viewBox="0 0 200 200" className="w-full h-full overflow-visible">
+                <defs>
+                  {/* Heavy metallic gradients for depth */}
+                  <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#1e293b" />
+                    <stop offset="100%" stopColor="#000000" />
+                  </linearGradient>
+                  <linearGradient id="wingGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stopColor="#334155" />
+                    <stop offset="100%" stopColor="#0f172a" />
+                  </linearGradient>
+                  <linearGradient id="beakGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stopColor="#94a3b8" />
+                    <stop offset="100%" stopColor="#1e293b" />
+                  </linearGradient>
+                  <radialGradient id="eyeGlow" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stopColor="#00bfff" stopOpacity="0.8" />
+                    <stop offset="100%" stopColor="#00bfff" stopOpacity="0" />
+                  </radialGradient>
+                  <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feDropShadow dx="0" dy="8" stdDeviation="6" floodColor="#000000" floodOpacity="0.9"/>
+                  </filter>
+                </defs>
+
+                {/* Cyber-Claws (Feet) */}
+                <path d="M 75 160 L 65 190 M 75 160 L 75 190 M 75 160 L 85 190" fill="none" stroke="#475569" strokeWidth="4" strokeLinecap="round" />
+                <path d="M 125 160 L 115 190 M 125 160 L 125 190 M 125 160 L 135 190" fill="none" stroke="#475569" strokeWidth="4" strokeLinecap="round" />
+
+                {/* Main Body - Sharper, sleeker stealth angles */}
+                <path d="M 60 50 C 60 20, 140 20, 140 50 L 150 120 C 150 160, 130 180, 100 180 C 70 180, 50 160, 50 120 Z" fill="url(#bodyGrad)" filter="url(#shadow)" stroke="#334155" strokeWidth="1" />
                 
-                {/* Feet */}
-                <path d="M 80 170 Q 75 190, 65 190" fill="none" stroke="#f97316" strokeWidth="8" strokeLinecap="round" />
-                <path d="M 120 170 Q 125 190, 135 190" fill="none" stroke="#f97316" strokeWidth="8" strokeLinecap="round" />
+                {/* Tech/Armor plates on belly */}
+                <path d="M 75 90 L 125 90 L 115 150 L 85 150 Z" fill="#0f172a" stroke="#334155" strokeWidth="2" />
+                <path d="M 80 100 L 120 100 M 82 115 L 118 115 M 84 130 L 116 130" stroke="#00bfff" strokeWidth="1" strokeOpacity="0.3" />
 
-                {/* Body (Fat oval) */}
-                <rect x="50" y="50" width="100" height="130" rx="50" fill="#10b981" />
-                
-                {/* Belly */}
-                <rect x="65" y="90" width="70" height="80" rx="35" fill="#fde047" />
-
-                {/* Cheeks */}
-                <circle cx="60" cy="95" r="10" fill="#fca5a5" opacity="0.8" />
-                <circle cx="140" cy="95" r="10" fill="#fca5a5" opacity="0.8" />
-
-                {/* Eyes Group */}
+                {/* Eyes - Deep sockets with glowing camera lenses */}
                 <g>
-                  {/* Sclera (White part) */}
-                  <circle cx="75" cy="75" r="18" fill="white" />
-                  <circle cx="125" cy="75" r="18" fill="white" />
+                  {/* Eye sockets */}
+                  <circle cx="75" cy="75" r="16" fill="#020617" stroke="#334155" strokeWidth="2" filter="url(#shadow)" />
+                  <circle cx="125" cy="75" r="16" fill="#020617" stroke="#334155" strokeWidth="2" filter="url(#shadow)" />
                   
-                  {/* Pupils tracking input */}
-                  <circle cx={75 + lookX} cy={75 + lookY} r="8" fill="#0f172a" className="transition-all duration-100 ease-out" />
-                  <circle cx={125 + lookX} cy={75 + lookY} r="8" fill="#0f172a" className="transition-all duration-100 ease-out" />
+                  {/* Glowing Pupils tracking input */}
+                  <circle cx={75 + lookX} cy={75 + lookY} r="6" fill="#00bfff" className="transition-all duration-100 ease-out" />
+                  <circle cx={125 + lookX} cy={75 + lookY} r="6" fill="#00bfff" className="transition-all duration-100 ease-out" />
                   
-                  {/* Pupil Highlights (Catchlights for cuteness) */}
-                  <circle cx={72 + lookX} cy={72 + lookY} r="2.5" fill="white" className="transition-all duration-100 ease-out" />
-                  <circle cx={122 + lookX} cy={72 + lookY} r="2.5" fill="white" className="transition-all duration-100 ease-out" />
+                  {/* Neon Glow overlay */}
+                  <circle cx={75 + lookX} cy={75 + lookY} r="12" fill="url(#eyeGlow)" className="transition-all duration-100 ease-out pointer-events-none" />
+                  <circle cx={125 + lookX} cy={75 + lookY} r="12" fill="url(#eyeGlow)" className="transition-all duration-100 ease-out pointer-events-none" />
+                  
+                  {/* Inner Lens reflection */}
+                  <circle cx={73 + lookX} cy={73 + lookY} r="2" fill="white" opacity="0.8" className="transition-all duration-100 ease-out pointer-events-none" />
+                  <circle cx={123 + lookX} cy={73 + lookY} r="2" fill="white" opacity="0.8" className="transition-all duration-100 ease-out pointer-events-none" />
                 </g>
 
-                {/* Beak */}
-                <path d="M 85 85 Q 100 105, 115 85 Q 100 78, 85 85 Z" fill="#f97316" />
+                {/* Sharp Hooked Beak (Metallic) */}
+                <path d="M 85 85 L 115 85 L 100 120 Z" fill="url(#beakGrad)" filter="url(#shadow)" stroke="#475569" strokeWidth="1" />
+                <path d="M 100 85 L 100 115" stroke="#1e293b" strokeWidth="2" />
 
-                {/* Left Wing */}
-                <g style={{ transform: isPasswordFocused ? 'translate(30px, -50px) rotate(45deg)' : 'translate(0px, 0px) rotate(0deg)', transformOrigin: '40px 130px' }} className="transition-all duration-500 ease-[cubic-bezier(0.68,-0.55,0.26,1.55)]">
-                  {/* Wing shape */}
-                  <path d="M 50 110 C 20 110, 20 170, 50 170 C 40 150, 40 130, 50 110 Z" fill="#059669" />
+                {/* Left Wing (Armored Geometry) */}
+                <g style={{ transform: isPasswordFocused ? 'translate(25px, -55px) rotate(45deg)' : 'translate(0px, 0px) rotate(0deg)', transformOrigin: '40px 130px' }} className="transition-all duration-500 ease-[cubic-bezier(0.68,-0.55,0.26,1.55)]">
+                  <path d="M 60 90 Q 10 120, 20 180 Q 50 160, 65 110 Z" fill="url(#wingGrad)" stroke="#475569" strokeWidth="1" filter="url(#shadow)" />
+                  <path d="M 45 110 L 25 150 M 55 125 L 35 165" stroke="#1e293b" strokeWidth="2" />
                 </g>
                 
-                {/* Right Wing */}
-                <g style={{ transform: isPasswordFocused ? 'translate(-30px, -50px) rotate(-45deg)' : 'translate(0px, 0px) rotate(0deg)', transformOrigin: '160px 130px' }} className="transition-all duration-500 ease-[cubic-bezier(0.68,-0.55,0.26,1.55)]">
-                  {/* Wing shape */}
-                  <path d="M 150 110 C 180 110, 180 170, 150 170 C 160 150, 160 130, 150 110 Z" fill="#059669" />
+                {/* Right Wing (Armored Geometry) */}
+                <g style={{ transform: isPasswordFocused ? 'translate(-25px, -55px) rotate(-45deg)' : 'translate(0px, 0px) rotate(0deg)', transformOrigin: '160px 130px' }} className="transition-all duration-500 ease-[cubic-bezier(0.68,-0.55,0.26,1.55)]">
+                  <path d="M 140 90 Q 190 120, 180 180 Q 150 160, 135 110 Z" fill="url(#wingGrad)" stroke="#475569" strokeWidth="1" filter="url(#shadow)" />
+                  <path d="M 155 110 L 175 150 M 145 125 L 165 165" stroke="#1e293b" strokeWidth="2" />
                 </g>
 
               </svg>
