@@ -122,12 +122,12 @@ const RevenueCalculator = () => {
             <div>
               <div className="flex justify-between items-end mb-4">
                 <label className="font-mono text-xs uppercase tracking-widest text-white/70">Close Rate</label>
-                <span className="font-mono text-xl text-[#00ff99]">{closeRate}%</span>
+                <span className="font-mono text-xl text-[#00bfff]">{closeRate}%</span>
               </div>
               <input
                 type="range" min="1" max="100" step="1"
                 value={closeRate} onChange={(e) => setCloseRate(Number(e.target.value))}
-                className="w-full h-1 bg-[#00ff99]/30 appearance-none outline-none hover:bg-[#00ff99]/60 transition-colors cursor-crosshair"
+                className="w-full h-1 bg-[#00bfff]/30 appearance-none outline-none hover:bg-[#00bfff]/60 transition-colors cursor-crosshair"
               />
             </div>
           </div>
@@ -152,8 +152,8 @@ const RevenueCalculator = () => {
               <span className="text-5xl md:text-6xl font-mono text-white/90">{formatMoney(monthlyLost)}</span>
             </div>
             <div className="flex flex-col pt-4">
-              <span className="font-mono text-[10px] tracking-widest uppercase text-[#00ff99]/70 mb-4">Per Year (Projected)</span>
-              <span className="text-6xl md:text-7xl xl:text-8xl font-black font-[family-name:var(--font-orbitron)] leading-none text-[#00ff99] drop-shadow-[0_0_30px_rgba(0,255,153,0.3)] break-words">
+              <span className="font-mono text-[10px] tracking-widest uppercase text-[#00bfff]/70 mb-4">Per Year (Projected)</span>
+              <span className="text-6xl md:text-7xl xl:text-8xl font-black font-[family-name:var(--font-orbitron)] leading-none text-[#00bfff] drop-shadow-[0_0_30px_rgba(0,255,153,0.3)] break-words">
                 {formatMoney(yearlyLost)}
               </span>
             </div>
@@ -179,7 +179,7 @@ const Manifesto = () => {
   return (
     <section className="relative z-20 w-screen bg-[#050505] py-24 md:py-32 flex flex-col items-center justify-center border-t border-white/20 group cursor-crosshair">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 text-center flex flex-col items-center">
-        <span className="text-[10px] text-[#00ff99] font-mono tracking-[0.2em] uppercase mb-12 block">[ THE REALITY ]</span>
+        <span className="text-[10px] text-[#00bfff] font-mono tracking-[0.2em] uppercase mb-12 block">[ THE REALITY ]</span>
         <motion.h2
           initial={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }} whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }} transition={{ duration: 1, ease: "easeOut" }} viewport={{ once: true, margin: "-100px" }}
           className="text-5xl md:text-7xl lg:text-[6vw] font-black font-[family-name:var(--font-orbitron)] uppercase tracking-tighter leading-[0.9] text-white/10 transition-colors duration-500 group-hover:text-white"
@@ -237,7 +237,7 @@ const IntegrationMarquee = () => {
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#050505] text-[#f0f0f0] selection:bg-[#00ff99] selection:text-[#050505] font-sans overflow-x-hidden relative">
+    <main className="min-h-screen bg-[#050505] text-[#f0f0f0] selection:bg-[#00bfff] selection:text-[#050505] font-sans overflow-x-hidden relative">
       <NoiseOverlay />
 
       {/* Persistent Framing Borders */}
@@ -247,7 +247,7 @@ export default function Home() {
       <nav className="absolute top-0 left-0 w-full z-[100] px-6 lg:px-16 py-4 flex items-center justify-between pointer-events-auto">
         <div className="flex items-center gap-4 cursor-pointer group relative">
           {/* Logo Glow Effect */}
-          <div className="absolute inset-0 bg-[#00ff99] opacity-0 group-hover:opacity-10 blur-2xl transition-opacity duration-700 rounded-full" />
+          <div className="absolute inset-0 bg-[#00bfff] opacity-0 group-hover:opacity-10 blur-2xl transition-opacity duration-700 rounded-full" />
           
           {/* Mobile Logo (Icon only) - Massive size with negative margin to counteract built-in image padding */}
           <img src="/logo.png" alt="Welcome Parrot Logo" className="h-[120px] w-auto -my-8 md:hidden relative z-10 group-hover:scale-105 transition-transform duration-500 drop-shadow-[0_0_15px_rgba(255,255,255,0.05)]" />
@@ -256,10 +256,10 @@ export default function Home() {
           <img src="/logo-full.png" alt="Welcome Parrot" className="h-[180px] w-auto -my-16 hidden md:block relative z-10 group-hover:scale-105 transition-transform duration-500 drop-shadow-[0_0_15px_rgba(255,255,255,0.05)]" />
         </div>
         <div className="flex items-center gap-6">
-          <Link href="/login" className="text-[10px] font-mono font-bold uppercase tracking-widest text-white/70 hover:text-[#00ff99] transition-colors hidden md:block">
+          <Link href="/login" className="text-[10px] font-mono font-bold uppercase tracking-widest text-white/70 hover:text-[#00bfff] transition-colors hidden md:block">
             Client Login
           </Link>
-          <Link href="#pricing" className="text-[10px] font-mono font-bold uppercase tracking-widest border border-[#00ff99] text-[#00ff99] px-6 py-3 hover:bg-[#00ff99] hover:text-black transition-colors shadow-[0_0_15px_rgba(0,255,153,0.2)] hover:shadow-[0_0_25px_rgba(0,255,153,0.4)] block text-center">
+          <Link href="#pricing" className="text-[10px] font-mono font-bold uppercase tracking-widest border border-[#00bfff] text-[#00bfff] px-6 py-3 hover:bg-[#00bfff] hover:text-black transition-colors shadow-[0_0_15px_rgba(0,255,153,0.2)] hover:shadow-[0_0_25px_rgba(0,255,153,0.4)] block text-center">
             Get Started
           </Link>
         </div>
@@ -294,21 +294,21 @@ export default function Home() {
             className="flex flex-col items-start w-full"
           >
             <motion.div variants={slideUp} className="flex items-center gap-4 mb-2">
-              <span className="text-[10px] md:text-xs font-mono tracking-[0.3em] uppercase text-[#00ff99] border border-[#00ff99] px-4 py-2 bg-[#00ff99]/10">Intelligent</span>
+              <span className="text-[10px] md:text-xs font-mono tracking-[0.3em] uppercase text-[#00bfff] border border-[#00bfff] px-4 py-2 bg-[#00bfff]/10">Intelligent</span>
               <span className="text-[10px] md:text-xs font-mono tracking-[0.2em] uppercase text-white/50">[ Welcome Parrot ]</span>
             </motion.div>
 
             <HeroTitle
               text="AUTOMATED"
               className="text-[11vw] font-black font-[family-name:var(--font-orbitron)] uppercase leading-[0.8] tracking-normal pointer-events-auto"
-              strokeColor="#00ff99"
+              strokeColor="#00bfff"
               defaultColor="#ffffff"
             />
             <HeroTitle
               text="LEAD GEN"
               className="text-[11vw] font-black font-[family-name:var(--font-orbitron)] uppercase leading-[0.8] tracking-normal pointer-events-auto"
               strokeColor="#ffffff"
-              defaultColor="#00ff99"
+              defaultColor="#00bfff"
             />
 
             <div className="flex flex-col md:flex-row items-start md:items-end justify-between w-full mt-12 gap-8 border-t border-white/20 pt-8">
@@ -317,7 +317,7 @@ export default function Home() {
               </motion.p>
 
               <motion.div variants={slideUp} className="pointer-events-auto shrink-0 w-full md:w-auto">
-                <Link href="#pricing" className="w-full md:w-auto group relative px-12 py-6 bg-white text-[#050505] font-black uppercase tracking-widest text-xs transition-transform duration-500 hover:-translate-y-2 hover:shadow-[0_10px_0_#00ff99] border border-white block text-center">
+                <Link href="#pricing" className="w-full md:w-auto group relative px-12 py-6 bg-white text-[#050505] font-black uppercase tracking-widest text-xs transition-transform duration-500 hover:-translate-y-2 hover:shadow-[0_10px_0_#00bfff] border border-white block text-center">
                   <span className="relative z-10 flex items-center justify-center gap-4">
                     Get Started <ArrowDownRight className="w-4 h-4" />
                   </span>
@@ -343,7 +343,7 @@ export default function Home() {
           <h2 className="text-5xl md:text-7xl font-black font-[family-name:var(--font-orbitron)] uppercase tracking-tighter leading-none text-white">
             Architecture.
           </h2>
-          <span className="text-[10px] text-[#00ff99] font-mono tracking-[0.2em] uppercase hidden md:block">[ Core Features ]</span>
+          <span className="text-[10px] text-[#00bfff] font-mono tracking-[0.2em] uppercase hidden md:block">[ Core Features ]</span>
         </motion.div>
 
         <div className="w-full flex flex-col border-t border-white/20">
@@ -442,8 +442,8 @@ export default function Home() {
                 For less than $5 a day, you stop losing high-ticket jobs to voicemail. The instant a call drops, the system texts them back—delivering pre-approved, high-converting responses to lock in the lead before they dial a competitor.
               </p>
               <ul className="space-y-3 mb-12">
-                <li className="font-mono text-[10px] text-current font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00ff99] group-hover:text-black" /> Instant SMS</li>
-                <li className="font-mono text-[10px] text-current font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00ff99] group-hover:text-black" /> Auto Follow-up</li>
+                <li className="font-mono text-[10px] text-current font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00bfff] group-hover:text-black" /> Instant SMS</li>
+                <li className="font-mono text-[10px] text-current font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00bfff] group-hover:text-black" /> Auto Follow-up</li>
               </ul>
             </div>
             <Link href="/signup?tier=baby" className="w-full border border-current px-6 py-4 text-[10px] font-mono font-bold uppercase tracking-widest bg-transparent text-current group-hover:bg-black group-hover:text-white transition-colors block text-center">
@@ -454,7 +454,7 @@ export default function Home() {
           {/* Teen Parrot - High Contrast */}
           <motion.div
             initial={{ opacity: 0, scale: 1.1, y: 50 }} whileInView={{ opacity: 1, scale: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }} viewport={{ once: true, margin: "-100px" }}
-            className="w-full border-b lg:border-b-0 lg:border-r border-[#00ff99] bg-[#00ff99] text-[#050505] p-8 lg:p-12 flex flex-col justify-between group hover:bg-white hover:border-white transition-colors duration-300"
+            className="w-full border-b lg:border-b-0 lg:border-r border-[#00bfff] bg-[#00bfff] text-[#050505] p-8 lg:p-12 flex flex-col justify-between group hover:bg-white hover:border-white transition-colors duration-300"
           >
             <div>
               <span className="text-[10px] text-current/70 font-mono tracking-widest uppercase block mb-4">[ Tier 02 - AI Lead Qualifier ]</span>
@@ -468,7 +468,7 @@ export default function Home() {
                 <li className="font-mono text-[10px] text-[#050505] font-black uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#050505]" /> Direct Calendar Integration</li>
               </ul>
             </div>
-            <Link href="/signup?tier=teen" className="w-full border border-[#050505] bg-[#050505] text-[#00ff99] px-6 py-4 text-[10px] font-mono font-bold uppercase tracking-widest hover:bg-[#050505] hover:text-white transition-colors block text-center">
+            <Link href="/signup?tier=teen" className="w-full border border-[#050505] bg-[#050505] text-[#00bfff] px-6 py-4 text-[10px] font-mono font-bold uppercase tracking-widest hover:bg-[#050505] hover:text-white transition-colors block text-center">
               Get Started
             </Link>
           </motion.div>
@@ -486,8 +486,8 @@ export default function Home() {
                 A hyper-realistic voice agent answers every call instantly. It executes your exact sales frameworks to handle typical conversations and book appointments. If a call requires a human touch, it seamlessly transfers them directly to your phone.
               </p>
               <ul className="space-y-3 mb-12">
-                <li className="font-mono text-[10px] text-current font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00ff99] group-hover:text-black" /> Full Voice Emulation</li>
-                <li className="font-mono text-[10px] text-current font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00ff99] group-hover:text-black" /> Smart Transfer</li>
+                <li className="font-mono text-[10px] text-current font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00bfff] group-hover:text-black" /> Full Voice Emulation</li>
+                <li className="font-mono text-[10px] text-current font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00bfff] group-hover:text-black" /> Smart Transfer</li>
               </ul>
             </div>
             <Link href="/signup?tier=adult" className="w-full border border-current px-6 py-4 text-[10px] font-mono font-bold uppercase tracking-widest bg-transparent text-current group-hover:bg-black group-hover:text-white transition-colors block text-center">

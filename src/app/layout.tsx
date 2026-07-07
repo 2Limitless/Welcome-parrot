@@ -42,8 +42,8 @@ export default function RootLayout({
             <span className="font-mono text-[10px] text-white/50 uppercase tracking-widest">© 2026 Welcome Parrot. All rights reserved.</span>
           </div>
           <div className="flex items-center gap-8">
-            <Link href="/privacy" className="font-mono text-[10px] text-white/50 uppercase tracking-widest hover:text-[#00ff99] transition-colors">Privacy Policy</Link>
-            <Link href="/terms" className="font-mono text-[10px] text-white/50 uppercase tracking-widest hover:text-[#00ff99] transition-colors">Terms of Service</Link>
+            <Link href="/privacy" className="font-mono text-[10px] text-white/50 uppercase tracking-widest hover:text-[#00bfff] transition-colors">Privacy Policy</Link>
+            <Link href="/terms" className="font-mono text-[10px] text-white/50 uppercase tracking-widest hover:text-[#00bfff] transition-colors">Terms of Service</Link>
           </div>
         </footer>
       </body>

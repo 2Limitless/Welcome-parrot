@@ -79,7 +79,7 @@ function SignupForm() {
   };
 
   return (
-    <div className="min-h-screen bg-[#050505] text-[#f0f0f0] font-sans selection:bg-[#00ff99] selection:text-[#050505] flex flex-col md:flex-row overflow-x-hidden relative z-10">
+    <div className="min-h-screen bg-[#050505] text-[#f0f0f0] font-sans selection:bg-[#00bfff] selection:text-[#050505] flex flex-col md:flex-row overflow-x-hidden relative z-10">
       
       {/* Left Column - Plan Summary */}
       <div className="w-full md:w-5/12 bg-[#0a0a0a] border-b md:border-b-0 md:border-r border-white/10 p-8 md:p-16 flex flex-col justify-between">
@@ -88,7 +88,7 @@ function SignupForm() {
             <ArrowLeft className="w-4 h-4" /> Return Home
           </Link>
           
-          <span className="text-[10px] text-[#00ff99] font-mono tracking-[0.2em] uppercase mb-4 block">[ Selected Protocol ]</span>
+          <span className="text-[10px] text-[#00bfff] font-mono tracking-[0.2em] uppercase mb-4 block">[ Selected Protocol ]</span>
           <h1 className="text-4xl md:text-5xl font-black tracking-tighter uppercase leading-none font-[family-name:var(--font-orbitron)] text-white mb-6">
             {selectedTier.name}
           </h1>
@@ -100,7 +100,7 @@ function SignupForm() {
           <ul className="space-y-4">
             {selectedTier.features.map((feature, idx) => (
               <li key={idx} className="font-mono text-[10px] text-white font-bold uppercase tracking-widest flex items-center gap-3">
-                <TerminalSquare className="w-3 h-3 text-[#00ff99]" /> {feature}
+                <TerminalSquare className="w-3 h-3 text-[#00bfff]" /> {feature}
               </li>
             ))}
           </ul>
@@ -116,7 +116,7 @@ function SignupForm() {
       {/* Right Column - Signup Form */}
       <div className="w-full md:w-7/12 p-8 md:p-16 flex flex-col justify-center relative">
         {/* Subtle glow effect behind form */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-[#00ff99]/5 blur-[120px] rounded-full pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-[#00bfff]/5 blur-[120px] rounded-full pointer-events-none" />
 
         <div className="max-w-md mx-auto w-full relative z-10">
           <div className="mb-12">
@@ -134,37 +134,37 @@ function SignupForm() {
             <div className="grid grid-cols-2 gap-6">
               <div className="space-y-2">
                 <label className="text-[10px] font-mono uppercase tracking-widest text-white/60">First Name</label>
-                <input required type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} className="w-full bg-black/50 border border-white/10 px-4 py-3 text-sm font-mono text-white placeholder-white/20 focus:outline-none focus:border-[#00ff99] transition-colors" placeholder="JOHN" />
+                <input required type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} className="w-full bg-black/50 border border-white/10 px-4 py-3 text-sm font-mono text-white placeholder-white/20 focus:outline-none focus:border-[#00bfff] transition-colors" placeholder="JOHN" />
               </div>
               <div className="space-y-2">
                 <label className="text-[10px] font-mono uppercase tracking-widest text-white/60">Last Name</label>
-                <input required type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} className="w-full bg-black/50 border border-white/10 px-4 py-3 text-sm font-mono text-white placeholder-white/20 focus:outline-none focus:border-[#00ff99] transition-colors" placeholder="DOE" />
+                <input required type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} className="w-full bg-black/50 border border-white/10 px-4 py-3 text-sm font-mono text-white placeholder-white/20 focus:outline-none focus:border-[#00bfff] transition-colors" placeholder="DOE" />
               </div>
             </div>
 
             <div className="space-y-2">
               <label className="text-[10px] font-mono uppercase tracking-widest text-white/60">Company Name</label>
-              <input required type="text" value={companyName} onChange={(e) => setCompanyName(e.target.value)} className="w-full bg-black/50 border border-white/10 px-4 py-3 text-sm font-mono text-white placeholder-white/20 focus:outline-none focus:border-[#00ff99] transition-colors" placeholder="ACME CORP" />
+              <input required type="text" value={companyName} onChange={(e) => setCompanyName(e.target.value)} className="w-full bg-black/50 border border-white/10 px-4 py-3 text-sm font-mono text-white placeholder-white/20 focus:outline-none focus:border-[#00bfff] transition-colors" placeholder="ACME CORP" />
             </div>
 
             <div className="space-y-2">
               <label className="text-[10px] font-mono uppercase tracking-widest text-white/60">Email Address</label>
-              <input required type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full bg-black/50 border border-white/10 px-4 py-3 text-sm font-mono text-white placeholder-white/20 focus:outline-none focus:border-[#00ff99] transition-colors" placeholder="JOHN@ACME.COM" />
+              <input required type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full bg-black/50 border border-white/10 px-4 py-3 text-sm font-mono text-white placeholder-white/20 focus:outline-none focus:border-[#00bfff] transition-colors" placeholder="JOHN@ACME.COM" />
             </div>
 
             <div className="space-y-2">
               <label className="text-[10px] font-mono uppercase tracking-widest text-white/60">Secure Password</label>
-              <input required type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="w-full bg-black/50 border border-white/10 px-4 py-3 text-sm font-mono text-white placeholder-white/20 focus:outline-none focus:border-[#00ff99] transition-colors" placeholder="••••••••" />
+              <input required type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="w-full bg-black/50 border border-white/10 px-4 py-3 text-sm font-mono text-white placeholder-white/20 focus:outline-none focus:border-[#00bfff] transition-colors" placeholder="••••••••" />
             </div>
 
-            <button type="submit" disabled={isLoading} className="w-full mt-8 border border-[#00ff99] bg-[#00ff99]/10 text-[#00ff99] px-6 py-4 text-[10px] font-mono font-bold uppercase tracking-widest hover:bg-[#00ff99] hover:text-black transition-colors shadow-[0_0_15px_rgba(0,255,153,0.1)] hover:shadow-[0_0_25px_rgba(0,255,153,0.3)] disabled:opacity-50 disabled:cursor-not-allowed">
+            <button type="submit" disabled={isLoading} className="w-full mt-8 border border-[#00bfff] bg-[#00bfff]/10 text-[#00bfff] px-6 py-4 text-[10px] font-mono font-bold uppercase tracking-widest hover:bg-[#00bfff] hover:text-black transition-colors shadow-[0_0_15px_rgba(0,255,153,0.1)] hover:shadow-[0_0_25px_rgba(0,255,153,0.3)] disabled:opacity-50 disabled:cursor-not-allowed">
               {isLoading ? "Initializing..." : "Continue to Payment"}
             </button>
           </form>
           
           <div className="mt-8 text-center">
             <p className="text-[10px] font-mono text-white/50 uppercase tracking-widest">
-              Already initialized? <Link href="/login" className="text-[#00ff99] hover:underline">Client Login</Link>
+              Already initialized? <Link href="/login" className="text-[#00bfff] hover:underline">Client Login</Link>
             </p>
           </div>
         </div>
@@ -186,7 +186,7 @@ export default function SignupPage() {
       </div>
       <div className="pointer-events-none fixed inset-4 border border-white/10 z-[90] mix-blend-difference hidden md:block" />
       
-      <Suspense fallback={<div className="min-h-screen bg-[#050505] flex items-center justify-center font-mono text-[#00ff99] text-xs tracking-widest uppercase">Initializing...</div>}>
+      <Suspense fallback={<div className="min-h-screen bg-[#050505] flex items-center justify-center font-mono text-[#00bfff] text-xs tracking-widest uppercase">Initializing...</div>}>
         <SignupForm />
       </Suspense>
     </>

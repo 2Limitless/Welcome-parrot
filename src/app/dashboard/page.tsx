@@ -11,7 +11,7 @@ export default function DashboardOverview() {
       value: "24",
       trend: "+12% this week",
       icon: PhoneMissed,
-      color: "text-[#00ff99]"
+      color: "text-[#00bfff]"
     },
     {
       title: "Revenue Saved",
@@ -30,11 +30,11 @@ export default function DashboardOverview() {
   ];
 
   const recentActivity = [
-    { id: 1, phone: "+1 (555) 019-2384", outcome: "QUALIFIED", time: "10 mins ago", color: "text-[#00ff99]", bg: "bg-[#00ff99]/10 border-[#00ff99]/30" },
-    { id: 2, phone: "+1 (555) 837-9122", outcome: "BOOKED", time: "45 mins ago", color: "text-[#00ff99]", bg: "bg-[#00ff99]/10 border-[#00ff99]/30" },
+    { id: 1, phone: "+1 (555) 019-2384", outcome: "QUALIFIED", time: "10 mins ago", color: "text-[#00bfff]", bg: "bg-[#00bfff]/10 border-[#00bfff]/30" },
+    { id: 2, phone: "+1 (555) 837-9122", outcome: "BOOKED", time: "45 mins ago", color: "text-[#00bfff]", bg: "bg-[#00bfff]/10 border-[#00bfff]/30" },
     { id: 3, phone: "+1 (555) 234-9011", outcome: "NEEDS HUMAN", time: "2 hours ago", color: "text-yellow-500", bg: "bg-yellow-500/10 border-yellow-500/30" },
     { id: 4, phone: "+1 (555) 773-4122", outcome: "SPAM", time: "5 hours ago", color: "text-red-500", bg: "bg-red-500/10 border-red-500/30" },
-    { id: 5, phone: "+1 (555) 991-0023", outcome: "QUALIFIED", time: "Yesterday", color: "text-[#00ff99]", bg: "bg-[#00ff99]/10 border-[#00ff99]/30" },
+    { id: 5, phone: "+1 (555) 991-0023", outcome: "QUALIFIED", time: "Yesterday", color: "text-[#00bfff]", bg: "bg-[#00bfff]/10 border-[#00bfff]/30" },
   ];
 
   return (
@@ -59,7 +59,7 @@ export default function DashboardOverview() {
             <div>
               <div className={`text-4xl font-mono font-bold ${stat.color} mb-2`}>{stat.value}</div>
               <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-white/40">
-                <ArrowUpRight className="w-3 h-3 text-[#00ff99]" />
+                <ArrowUpRight className="w-3 h-3 text-[#00bfff]" />
                 {stat.trend}
               </div>
             </div>
