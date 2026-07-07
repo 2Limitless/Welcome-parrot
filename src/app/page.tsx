@@ -248,10 +248,10 @@ export default function Home() {
         <div className="flex items-center gap-4 cursor-pointer group relative">
           {/* Logo Glow Effect */}
           <div className="absolute inset-0 bg-[#00bfff] opacity-0 group-hover:opacity-10 blur-2xl transition-opacity duration-700 rounded-full" />
-          
+
           {/* Mobile Logo (Icon only) - Massive size with negative margin to counteract built-in image padding */}
           <img src="/logo.png" alt="Welcome Parrot Logo" className="h-[120px] w-auto -my-8 md:hidden relative z-10 group-hover:scale-105 transition-transform duration-500 drop-shadow-[0_0_15px_rgba(255,255,255,0.05)]" />
-          
+
           {/* Desktop Logo (Icon + Text) - Massive size with negative margin to counteract built-in image padding */}
           <img src="/logo-full.png" alt="Welcome Parrot" className="h-[180px] w-auto -my-16 hidden md:block relative z-10 group-hover:scale-105 transition-transform duration-500 drop-shadow-[0_0_15px_rgba(255,255,255,0.05)]" />
         </div>
@@ -435,14 +435,14 @@ export default function Home() {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 w-full border border-white/20">
 
-          {/* Foundation */}
+          {/* Baby Parrot */}
           <motion.div
             initial={{ opacity: 0, scale: 1.1, y: 50 }} whileInView={{ opacity: 1, scale: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut" }} viewport={{ once: true, margin: "-100px" }}
             className="w-full border-b lg:border-b-0 lg:border-r border-white/20 p-8 lg:p-12 flex flex-col justify-between hover:bg-white hover:text-black transition-colors duration-300 group"
           >
             <div>
               <span className="text-[10px] text-current/50 font-mono tracking-widest uppercase block mb-4">[ Tier 01 - Missed-Call Auto-Catch ]</span>
-              <h3 className="text-3xl lg:text-4xl font-black uppercase tracking-tighter mb-4 font-[family-name:var(--font-orbitron)]">Foundation</h3>
+              <h3 className="text-3xl lg:text-4xl font-black uppercase tracking-tighter mb-4 font-[family-name:var(--font-orbitron)]">Baby Parrot</h3>
               <div className="text-4xl font-mono font-bold mb-6">$149<span className="text-sm opacity-50">/mo</span></div>
               <p className="font-mono text-xs text-current/70 leading-relaxed mb-8">
                 For less than $5 a day, you stop losing high-ticket jobs to voicemail. The instant a call drops, the system texts them back—delivering pre-approved, high-converting responses to lock in the lead before they dial a competitor.
@@ -457,14 +457,14 @@ export default function Home() {
             </Link>
           </motion.div>
 
-          {/* Automation - High Contrast */}
+          {/* Teen Parrot - High Contrast */}
           <motion.div
             initial={{ opacity: 0, scale: 1.1, y: 50 }} whileInView={{ opacity: 1, scale: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }} viewport={{ once: true, margin: "-100px" }}
             className="w-full border-b lg:border-b-0 lg:border-r border-[#00bfff] bg-[#00bfff] text-[#050505] p-8 lg:p-12 flex flex-col justify-between group hover:bg-white hover:border-white transition-colors duration-300"
           >
             <div>
               <span className="text-[10px] text-current/70 font-mono tracking-widest uppercase block mb-4">[ Tier 02 - AI Lead Qualifier ]</span>
-              <h3 className="text-3xl lg:text-4xl font-black uppercase tracking-tighter mb-4 font-[family-name:var(--font-orbitron)]">Automation</h3>
+              <h3 className="text-3xl lg:text-4xl font-black uppercase tracking-tighter mb-4 font-[family-name:var(--font-orbitron)]">Teen Parrot</h3>
               <div className="text-4xl font-mono font-bold text-[#050505] mb-6">$297<span className="text-sm opacity-70">/mo</span></div>
               <p className="font-mono text-xs text-[#050505]/80 leading-relaxed mb-8 font-bold">
                 By the time you finish your current job, you have a fully qualified lead sitting on your phone. The AI acts as a digital SDR, answering initial questions and extracting the full scope of work using strict guardrails based on your actual company data.
@@ -479,14 +479,14 @@ export default function Home() {
             </Link>
           </motion.div>
 
-          {/* Autonomous */}
+          {/* Adult Parrot */}
           <motion.div
             initial={{ opacity: 0, scale: 1.1, y: 50 }} whileInView={{ opacity: 1, scale: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }} viewport={{ once: true, margin: "-100px" }}
             className="w-full p-8 lg:p-12 flex flex-col justify-between hover:bg-white hover:text-black transition-colors duration-300 group"
           >
             <div>
               <span className="text-[10px] text-current/50 font-mono tracking-widest uppercase block mb-4">[ Tier 03 - 24/7 AI Voice Receptionist ]</span>
-              <h3 className="text-3xl lg:text-4xl font-black uppercase tracking-tighter mb-4 font-[family-name:var(--font-orbitron)]">Autonomous</h3>
+              <h3 className="text-3xl lg:text-4xl font-black uppercase tracking-tighter mb-4 font-[family-name:var(--font-orbitron)]">Adult Parrot</h3>
               <div className="text-4xl font-mono font-bold mb-6">$897<span className="text-sm opacity-50">/mo</span></div>
               <p className="font-mono text-xs text-current/70 leading-relaxed mb-8">
                 A hyper-realistic voice agent answers every call instantly. It executes your exact sales frameworks to handle typical conversations and book appointments. If a call requires a human touch, it seamlessly transfers them directly to your phone.
