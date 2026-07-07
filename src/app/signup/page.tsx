@@ -11,21 +11,21 @@ const tierData = {
     name: "Basic",
     price: "$149/mo",
     description: "Missed-Call Auto-Catch to stop losing high-ticket jobs to voicemail.",
-    features: ["Instant SMS Responder", "Smart Follow-up Sequences", "CRM Lead Syncing", "Custom Text Templates"],
+    features: ["Instant Missed-Call SMS", "Customizable Text Template", "Auto-Booking Link Delivery", "Dashboard Call Logging"],
     stripeLink: "https://buy.stripe.com/test_aFa4gz0F57KD4YYaIicjS00"
   },
   teen: {
     name: "Standard",
     price: "$297/mo",
     description: "AI Lead Qualifier that acts as a digital SDR to extract scope of work.",
-    features: ["Everything in Basic", "Autonomous 2-Way AI Texting", "Direct Calendar Booking", "Live Scope-of-Work Extraction", "Auto-Qualification Filtering"],
+    features: ["Real-time Dialog", "Direct Calendar Integration"],
     stripeLink: "https://buy.stripe.com/test_dRm14n9bBgh9ghG17IcjS01"
   },
   adult: {
     name: "Premium",
     price: "$897/mo",
     description: "24/7 AI Voice Receptionist that answers every call instantly.",
-    features: ["Everything in Standard", "24/7 AI Voice Receptionist", "Hyper-Realistic Voice Engine", "Advanced Objection Handling", "Smart Live Call Routing"],
+    features: ["Full Voice Emulation", "Smart Transfer"],
     stripeLink: "https://buy.stripe.com/test_bJe14nbjJaWPd5u4jUcjS02"
   }
 };
