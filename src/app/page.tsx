@@ -89,7 +89,13 @@ const RevenueCalculator = () => {
           initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, ease: "easeOut" }} viewport={{ once: true, margin: "-100px" }}
           className="p-6 md:p-12 lg:p-24 border-b lg:border-b-0 lg:border-r border-white/20 flex flex-col justify-center"
         >
-          <span className="text-[10px] text-white/50 font-mono tracking-[0.2em] uppercase mb-12 block">[ Cost of Inaction ]</span>
+          <span className="text-[10px] text-white/50 font-mono tracking-[0.2em] uppercase mb-4 block">[ Cost of Inaction ]</span>
+          <h2 className="text-4xl md:text-5xl font-black font-[family-name:var(--font-orbitron)] uppercase tracking-tighter mb-4 text-white">
+            Lost Revenue<br />Calculator
+          </h2>
+          <p className="font-mono text-xs text-white/60 mb-12 max-w-md leading-relaxed">
+            Plug in your numbers below to see exactly how much money your business is bleeding by sending leads to voicemail.
+          </p>
 
           <div className="space-y-12 max-w-xl w-full">
             {/* Input 1 */}
