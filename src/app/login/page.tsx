@@ -10,28 +10,28 @@ function LoginForm() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const message = searchParams.get("message");
-  
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [isPasswordFocused, setIsPasswordFocused] = useState(false);
   const [isEmailFocused, setIsEmailFocused] = useState(false);
+  const [isPasswordFocused, setIsPasswordFocused] = useState(false);
 
   // Eye tracking logic
-  const maxLookX = 6;
+  const maxLookX = 5; // Reduced max radius so pupils stay inside the eyes perfectly
   const maxChars = 32;
   const calculatedX = (Math.min(email.length, maxChars) / maxChars) * (maxLookX * 2) - maxLookX;
   const lookX = isEmailFocused ? calculatedX : 0;
-  const lookY = isEmailFocused ? 4 : 0;
-  
+  const lookY = isEmailFocused ? 3 : 0;
+
   const supabase = createClient();
-  
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     setError(null);
-    
+
     const { error: signInError } = await supabase.auth.signInWithPassword({
       email,
       password,
@@ -49,18 +49,18 @@ function LoginForm() {
 
   return (
     <div className="min-h-screen bg-[#050505] text-[#f0f0f0] font-sans selection:bg-[#00bfff] selection:text-[#050505] flex flex-col md:flex-row overflow-x-hidden relative z-10">
-      
+
       {/* Left Column - Aesthetic Visuals */}
       <div className="w-full md:w-5/12 bg-[#0a0a0a] border-b md:border-b-0 md:border-r border-white/10 p-8 md:p-16 flex flex-col justify-between relative overflow-hidden">
         {/* Decorative Grid */}
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay pointer-events-none" />
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none" />
-        
+
         <div className="relative z-10">
           <Link href="/" className="inline-flex items-center gap-2 text-white/50 hover:text-white transition-colors font-mono text-[10px] uppercase tracking-widest mb-16">
             <ArrowLeft className="w-4 h-4" /> Return Home
           </Link>
-          
+
           <span className="text-[10px] text-[#00bfff] font-mono tracking-[0.2em] uppercase mb-4 block">[ Secure Access ]</span>
           <h1 className="text-4xl md:text-5xl font-black tracking-tighter uppercase leading-none font-[family-name:var(--font-orbitron)] text-white mb-6">
             Client<br />Portal
@@ -69,14 +69,14 @@ function LoginForm() {
             Authenticate to manage your AI receptionist, view missed-call analytics, and adjust your active protocols.
           </p>
         </div>
-        
+
         <div className="relative z-10 mt-16 pt-8 border-t border-white/10">
-           <div className="flex items-center gap-4 text-white/40">
-             <KeySquare className="w-8 h-8" />
-             <p className="text-[10px] font-mono uppercase tracking-widest leading-relaxed">
-               End-to-End Encrypted.<br/> SOC2 Compliant Infrastructure.
-             </p>
-           </div>
+          <div className="flex items-center gap-4 text-white/40">
+            <KeySquare className="w-8 h-8" />
+            <p className="text-[10px] font-mono uppercase tracking-widest leading-relaxed">
+              End-to-End Encrypted.<br /> SOC2 Compliant Infrastructure.
+            </p>
+          </div>
         </div>
       </div>
 
@@ -92,64 +92,55 @@ function LoginForm() {
               <h2 className="text-3xl font-black uppercase tracking-widest text-white">Initialize</h2>
             </div>
             
-            {/* Interactive SVG Monster */}
-            <div className="relative w-24 h-24 -mb-4 z-20">
-              <style>{`
-                @keyframes blink {
-                  0%, 96%, 98% { transform: scaleY(1); }
-                  97% { transform: scaleY(0.1); }
-                }
-                .monster-eye { transform-origin: 50% 50px; animation: blink 5s infinite; }
-                @keyframes float {
-                  0%, 100% { transform: translateY(0); }
-                  50% { transform: translateY(-3px); }
-                }
-                .monster-float { animation: float 4s ease-in-out infinite; transform-origin: bottom; }
-              `}</style>
-              <svg viewBox="0 0 100 100" className="w-full h-full monster-float overflow-visible">
-                {/* Body */}
-                <path d="M 20 100 C 20 30, 80 30, 80 100 Z" className="stroke-[#00bfff] stroke-2 fill-[#050505]" />
+            {/* Peekaboo Parrot */}
+            <div className="relative w-32 h-32 -mb-8 z-20 mx-auto">
+              <svg viewBox="0 0 100 100" className="w-full h-full overflow-visible">
+                {/* Body/Head outline */}
+                <path d="M 20 100 C 15 30, 85 30, 80 100 Z" className="stroke-[#00bfff] stroke-[3px] fill-[#050505]" />
                 
-                {/* Antennae */}
-                <path d="M 35 35 Q 25 15, 15 20" className="stroke-[#00bfff] stroke-2 fill-transparent" strokeLinecap="round" />
-                <circle cx="15" cy="20" r="3" fill="#00bfff" className={isEmailFocused ? "animate-ping" : ""} />
-                
-                <path d="M 65 35 Q 75 15, 85 20" className="stroke-[#00bfff] stroke-2 fill-transparent" strokeLinecap="round" />
-                <circle cx="85" cy="20" r="3" fill="#00bfff" className={isPasswordFocused ? "animate-pulse" : ""} />
+                {/* Feathers on top of head */}
+                <path d="M 40 25 Q 35 5, 45 15 Q 50 0, 55 15 Q 65 5, 60 25" className="stroke-[#00bfff] stroke-[3px] fill-transparent" strokeLinecap="round" strokeLinejoin="round" />
 
-                {/* Eyes Group (Blinking) */}
-                <g className={isPasswordFocused ? "" : "monster-eye"}>
-                  {/* Eyes (White part) */}
-                  <circle cx="35" cy="50" r="10" fill="white" />
-                  <circle cx="65" cy="50" r="10" fill="white" />
+                {/* Eyes Group */}
+                <g>
+                  {/* Sclera (White part) */}
+                  <circle cx="32" cy="40" r="12" fill="white" />
+                  <circle cx="68" cy="40" r="12" fill="white" />
                   
-                  {/* Pupils (Black part) */}
-                  <circle cx={35 + lookX} cy={50 + lookY} r="4" fill="black" className="transition-all duration-75" />
-                  <circle cx={65 + lookX} cy={50 + lookY} r="4" fill="black" className="transition-all duration-75" />
+                  {/* Pupils tracking input */}
+                  <circle cx={32 + lookX} cy={40 + lookY} r="5" fill="black" className="transition-all duration-75" />
+                  <circle cx={68 + lookX} cy={40 + lookY} r="5" fill="black" className="transition-all duration-75" />
                 </g>
 
-                {/* Arms */}
-                <g style={{ transform: isPasswordFocused ? 'translateY(-22px) rotate(15deg)' : 'translateY(10px)', transformOrigin: 'center bottom' }} className="transition-transform duration-300">
-                  <path d="M 10 80 Q 25 60, 35 50" className="stroke-[#00bfff] stroke-[3px] fill-transparent" strokeLinecap="round" />
-                </g>
-                <g style={{ transform: isPasswordFocused ? 'translateY(-22px) rotate(-15deg)' : 'translateY(10px)', transformOrigin: 'center bottom' }} className="transition-transform duration-300">
-                  <path d="M 90 80 Q 75 60, 65 50" className="stroke-[#00bfff] stroke-[3px] fill-transparent" strokeLinecap="round" />
+                {/* Parrot Beak (renders over eyes slightly) */}
+                <g>
+                  {/* Top Beak */}
+                  <path d="M 38 48 Q 50 38, 62 48 C 65 65, 55 75, 50 75 C 45 75, 35 65, 38 48 Z" className="stroke-[#00bfff] stroke-[3px] fill-[#050505]" />
+                  {/* Beak dividing line */}
+                  <path d="M 42 55 Q 50 65, 58 55" className="stroke-[#00bfff] stroke-[2px] fill-transparent" strokeLinecap="round" />
                 </g>
 
-                {/* Hands covering eyes */}
-                {isPasswordFocused && (
-                  <g className="animate-in fade-in duration-300">
-                    <circle cx="35" cy="50" r="12" fill="#050505" className="stroke-[#00bfff] stroke-2" />
-                    <circle cx="65" cy="50" r="12" fill="#050505" className="stroke-[#00bfff] stroke-2" />
-                    <path d="M 27 50 L 43 50 M 57 50 L 73 50" className="stroke-[#00bfff] stroke-2" />
-                  </g>
-                )}
+                {/* Left Wing (Covers left eye on password focus) */}
+                <g style={{ transform: isPasswordFocused ? 'translate(18px, -28px) rotate(35deg)' : 'translate(0px, 0px) rotate(0deg)', transformOrigin: '20px 80px' }} className="transition-all duration-500 ease-[cubic-bezier(0.68,-0.55,0.26,1.55)]">
+                  {/* Wing Outline */}
+                  <path d="M 15 85 C -5 85, -5 45, 15 45 C 35 45, 35 85, 15 85 Z" className="stroke-[#00bfff] stroke-[3px] fill-[#050505]" />
+                  {/* Feather Details */}
+                  <path d="M 8 55 L 8 75 M 15 50 L 15 78 M 22 55 L 22 75" className="stroke-[#00bfff] stroke-[2px] fill-transparent" strokeLinecap="round" />
+                </g>
+                
+                {/* Right Wing (Covers right eye on password focus) */}
+                <g style={{ transform: isPasswordFocused ? 'translate(-18px, -28px) rotate(-35deg)' : 'translate(0px, 0px) rotate(0deg)', transformOrigin: '80px 80px' }} className="transition-all duration-500 ease-[cubic-bezier(0.68,-0.55,0.26,1.55)]">
+                  {/* Wing Outline */}
+                  <path d="M 85 85 C 105 85, 105 45, 85 45 C 65 45, 65 85, 85 85 Z" className="stroke-[#00bfff] stroke-[3px] fill-[#050505]" />
+                  {/* Feather Details */}
+                  <path d="M 92 55 L 92 75 M 85 50 L 85 78 M 78 55 L 78 75" className="stroke-[#00bfff] stroke-[2px] fill-transparent" strokeLinecap="round" />
+                </g>
               </svg>
             </div>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
-            
+
             {message && (
               <div className="bg-[#00bfff]/10 border border-[#00bfff]/50 text-[#00bfff] p-4 text-xs font-mono uppercase tracking-widest">
                 [Notice] {message}
@@ -161,7 +152,7 @@ function LoginForm() {
                 [Error] {error}
               </div>
             )}
-            
+
             <div className="space-y-2">
               <label className="text-[10px] font-mono uppercase tracking-widest text-white/60">Email Address</label>
               <input 
@@ -199,7 +190,7 @@ function LoginForm() {
               {isLoading ? "Authenticating..." : "Access System"}
             </button>
           </form>
-          
+
           <div className="mt-8 text-center">
             <p className="text-[10px] font-mono text-white/50 uppercase tracking-widest">
               Need authorization? <Link href="/#pricing" className="text-[#00bfff] hover:underline">Deploy Now</Link>
@@ -223,7 +214,7 @@ export default function LoginPage() {
         </svg>
       </div>
       <div className="pointer-events-none fixed inset-4 border border-white/10 z-[90] mix-blend-difference hidden md:block" />
-      
+
       <Suspense fallback={<div className="min-h-screen bg-[#050505] flex items-center justify-center font-mono text-[#00bfff] text-xs tracking-widest uppercase">Initializing Portal...</div>}>
         <LoginForm />
       </Suspense>
