@@ -19,9 +19,10 @@ function LoginForm() {
   const [isEmailFocused, setIsEmailFocused] = useState(false);
 
   // Eye tracking logic
-  const maxLookRight = 8;
-  const mappedX = Math.min(Math.max((email.length - 10) * 0.8, -maxLookRight), maxLookRight);
-  const lookX = isEmailFocused ? mappedX : 0;
+  const maxLookX = 6;
+  const maxChars = 32;
+  const calculatedX = (Math.min(email.length, maxChars) / maxChars) * (maxLookX * 2) - maxLookX;
+  const lookX = isEmailFocused ? calculatedX : 0;
   const lookY = isEmailFocused ? 4 : 0;
   
   const supabase = createClient();
@@ -92,18 +93,40 @@ function LoginForm() {
             </div>
             
             {/* Interactive SVG Monster */}
-            <div className="relative w-24 h-24 -mb-4">
-              <svg viewBox="0 0 100 100" className="w-full h-full">
+            <div className="relative w-24 h-24 -mb-4 z-20">
+              <style>{`
+                @keyframes blink {
+                  0%, 96%, 98% { transform: scaleY(1); }
+                  97% { transform: scaleY(0.1); }
+                }
+                .monster-eye { transform-origin: 50% 50px; animation: blink 5s infinite; }
+                @keyframes float {
+                  0%, 100% { transform: translateY(0); }
+                  50% { transform: translateY(-3px); }
+                }
+                .monster-float { animation: float 4s ease-in-out infinite; transform-origin: bottom; }
+              `}</style>
+              <svg viewBox="0 0 100 100" className="w-full h-full monster-float overflow-visible">
                 {/* Body */}
                 <path d="M 20 100 C 20 30, 80 30, 80 100 Z" className="stroke-[#00bfff] stroke-2 fill-[#050505]" />
                 
-                {/* Eyes (White part) */}
-                <circle cx="35" cy="50" r="10" fill="white" />
-                <circle cx="65" cy="50" r="10" fill="white" />
+                {/* Antennae */}
+                <path d="M 35 35 Q 25 15, 15 20" className="stroke-[#00bfff] stroke-2 fill-transparent" strokeLinecap="round" />
+                <circle cx="15" cy="20" r="3" fill="#00bfff" className={isEmailFocused ? "animate-ping" : ""} />
                 
-                {/* Pupils (Black part) */}
-                <circle cx={35 + (isPasswordFocused ? 0 : lookX)} cy={50 + (isPasswordFocused ? 0 : lookY)} r="4" fill="black" className="transition-all duration-75" />
-                <circle cx={65 + (isPasswordFocused ? 0 : lookX)} cy={50 + (isPasswordFocused ? 0 : lookY)} r="4" fill="black" className="transition-all duration-75" />
+                <path d="M 65 35 Q 75 15, 85 20" className="stroke-[#00bfff] stroke-2 fill-transparent" strokeLinecap="round" />
+                <circle cx="85" cy="20" r="3" fill="#00bfff" className={isPasswordFocused ? "animate-pulse" : ""} />
+
+                {/* Eyes Group (Blinking) */}
+                <g className={isPasswordFocused ? "" : "monster-eye"}>
+                  {/* Eyes (White part) */}
+                  <circle cx="35" cy="50" r="10" fill="white" />
+                  <circle cx="65" cy="50" r="10" fill="white" />
+                  
+                  {/* Pupils (Black part) */}
+                  <circle cx={35 + lookX} cy={50 + lookY} r="4" fill="black" className="transition-all duration-75" />
+                  <circle cx={65 + lookX} cy={50 + lookY} r="4" fill="black" className="transition-all duration-75" />
+                </g>
 
                 {/* Arms */}
                 <g style={{ transform: isPasswordFocused ? 'translateY(-22px) rotate(15deg)' : 'translateY(10px)', transformOrigin: 'center bottom' }} className="transition-transform duration-300">
