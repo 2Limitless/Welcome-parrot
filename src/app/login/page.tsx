@@ -10,33 +10,20 @@ function LoginForm() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const message = searchParams.get("message");
-
+  
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [isEmailFocused, setIsEmailFocused] = useState(false);
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
-
-  // Improved Eye Tracking Math
-  const maxLookX = 8;
-  const maxLookY = 4;
-  // Assume a standard email input shows ~35 characters before scrolling.
-  // We map the string length to a progress percentage (0.0 to 1.0),
-  // then map that percentage to the range [-maxLookX, maxLookX].
-  const typingProgress = Math.min(email.length / 35, 1);
-  const calculatedX = -maxLookX + (typingProgress * (maxLookX * 2));
   
-  const lookX = isEmailFocused ? calculatedX : 0;
-  const lookY = isEmailFocused ? maxLookY : 0;
-
   const supabase = createClient();
-
+  
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     setError(null);
-
+    
     const { error: signInError } = await supabase.auth.signInWithPassword({
       email,
       password,
@@ -54,18 +41,18 @@ function LoginForm() {
 
   return (
     <div className="min-h-screen bg-[#050505] text-[#f0f0f0] font-sans selection:bg-[#00bfff] selection:text-[#050505] flex flex-col md:flex-row overflow-x-hidden relative z-10">
-
+      
       {/* Left Column - Aesthetic Visuals */}
       <div className="w-full md:w-5/12 bg-[#0a0a0a] border-b md:border-b-0 md:border-r border-white/10 p-8 md:p-16 flex flex-col justify-between relative overflow-hidden">
         {/* Decorative Grid */}
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay pointer-events-none" />
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none" />
-
+        
         <div className="relative z-10">
           <Link href="/" className="inline-flex items-center gap-2 text-white/50 hover:text-white transition-colors font-mono text-[10px] uppercase tracking-widest mb-16">
             <ArrowLeft className="w-4 h-4" /> Return Home
           </Link>
-
+          
           <span className="text-[10px] text-[#00bfff] font-mono tracking-[0.2em] uppercase mb-4 block">[ Secure Access ]</span>
           <h1 className="text-4xl md:text-5xl font-black tracking-wide uppercase leading-tight font-[family-name:var(--font-orbitron)] text-white mb-6">
             Client<br />Portal
@@ -74,14 +61,14 @@ function LoginForm() {
             Authenticate to manage your AI receptionist, view missed-call analytics, and adjust your active protocols.
           </p>
         </div>
-
+        
         <div className="relative z-10 mt-16 pt-8 border-t border-white/10">
-          <div className="flex items-center gap-4 text-white/40">
-            <KeySquare className="w-8 h-8" />
-            <p className="text-[10px] font-mono uppercase tracking-widest leading-relaxed">
-              End-to-End Encrypted.<br /> SOC2 Compliant Infrastructure.
-            </p>
-          </div>
+           <div className="flex items-center gap-4 text-white/40">
+             <KeySquare className="w-8 h-8" />
+             <p className="text-[10px] font-mono uppercase tracking-widest leading-relaxed">
+               End-to-End Encrypted.<br/> SOC2 Compliant Infrastructure.
+             </p>
+           </div>
         </div>
       </div>
 
@@ -96,83 +83,13 @@ function LoginForm() {
               <span className="text-[10px] text-white/50 font-mono tracking-[0.2em] uppercase mb-4 block">[ System Login ]</span>
               <h2 className="text-3xl font-black uppercase tracking-widest text-white">Initialize</h2>
             </div>
-            
-            {/* Cool High-Depth Parrot (Not Creepy) */}
-            <div className="relative w-40 h-40 -mb-6 z-20 mx-auto">
-              <svg viewBox="0 0 200 200" className="w-full h-full overflow-visible">
-                <defs>
-                  {/* Sleek modern gradients for 3D depth */}
-                  <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#0ea5e9" /> {/* Sky blue */}
-                    <stop offset="100%" stopColor="#0369a1" /> {/* Deep sky blue */}
-                  </linearGradient>
-                  <linearGradient id="wingGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stopColor="#38bdf8" />
-                    <stop offset="100%" stopColor="#0284c7" />
-                  </linearGradient>
-                  <linearGradient id="beakGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stopColor="#fbbf24" /> {/* Amber */}
-                    <stop offset="100%" stopColor="#d97706" />
-                  </linearGradient>
-                  <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-                    <feDropShadow dx="0" dy="8" stdDeviation="6" floodColor="#000000" floodOpacity="0.4"/>
-                  </filter>
-                </defs>
-
-                {/* Feet */}
-                <path d="M 75 160 L 65 190 M 75 160 L 75 190 M 75 160 L 85 190" fill="none" stroke="#d97706" strokeWidth="6" strokeLinecap="round" />
-                <path d="M 125 160 L 115 190 M 125 160 L 125 190 M 125 160 L 135 190" fill="none" stroke="#d97706" strokeWidth="6" strokeLinecap="round" />
-
-                {/* Main Body - Smooth realistic curves */}
-                <path d="M 60 50 C 60 20, 140 20, 140 50 L 150 120 C 150 160, 130 180, 100 180 C 70 180, 50 160, 50 120 Z" fill="url(#bodyGrad)" filter="url(#shadow)" />
-                
-                {/* Belly - Light cool blue for contrast */}
-                <path d="M 75 90 L 125 90 C 135 150, 115 170, 100 170 C 85 170, 65 150, 75 90 Z" fill="#e0f2fe" opacity="0.9" />
-
-                {/* Feather Tuft on head for character */}
-                <path d="M 80 25 C 85 5, 95 0, 100 15 C 105 0, 115 5, 120 25" fill="none" stroke="#0ea5e9" strokeWidth="4" strokeLinecap="round" />
-
-                {/* Eyes - Expressive, white scleras but with 3D shadow */}
-                <g>
-                  {/* Sclera */}
-                  <circle cx="75" cy="75" r="18" fill="white" filter="url(#shadow)" />
-                  <circle cx="125" cy="75" r="18" fill="white" filter="url(#shadow)" />
-                  
-                  {/* Subtle eyelid lines for a cool/confident look */}
-                  <circle cx="75" cy="75" r="18" fill="none" stroke="#0369a1" strokeWidth="2" />
-                  <circle cx="125" cy="75" r="18" fill="none" stroke="#0369a1" strokeWidth="2" />
-
-                  {/* Pupils tracking input */}
-                  <circle cx={75 + lookX} cy={75 + lookY} r="8" fill="#0f172a" className="transition-all duration-100 ease-out" />
-                  <circle cx={125 + lookX} cy={75 + lookY} r="8" fill="#0f172a" className="transition-all duration-100 ease-out" />
-                  
-                  {/* Catchlights (Eye shine) */}
-                  <circle cx={72 + lookX} cy={72 + lookY} r="2.5" fill="white" className="transition-all duration-100 ease-out" />
-                  <circle cx={122 + lookX} cy={72 + lookY} r="2.5" fill="white" className="transition-all duration-100 ease-out" />
-                </g>
-
-                {/* Curved Macaw Beak */}
-                <path d="M 85 85 Q 100 80, 115 85 Q 115 100, 100 120 Q 85 100, 85 85 Z" fill="url(#beakGrad)" filter="url(#shadow)" />
-                <path d="M 88 95 Q 100 90, 112 95" stroke="#b45309" strokeWidth="2" fill="none" />
-
-                {/* Left Wing (Feathered geometry) */}
-                <g style={{ transform: isPasswordFocused ? 'translate(25px, -55px) rotate(45deg)' : 'translate(0px, 0px) rotate(0deg)', transformOrigin: '40px 130px' }} className="transition-all duration-500 ease-[cubic-bezier(0.68,-0.55,0.26,1.55)]">
-                  <path d="M 55 100 Q 20 100, 30 180 Q 50 180, 65 130 Z" fill="url(#wingGrad)" filter="url(#shadow)" />
-                  <path d="M 45 120 L 35 160 M 52 130 L 42 170" stroke="#0284c7" strokeWidth="2" strokeLinecap="round" />
-                </g>
-                
-                {/* Right Wing (Feathered geometry) */}
-                <g style={{ transform: isPasswordFocused ? 'translate(-25px, -55px) rotate(-45deg)' : 'translate(0px, 0px) rotate(0deg)', transformOrigin: '160px 130px' }} className="transition-all duration-500 ease-[cubic-bezier(0.68,-0.55,0.26,1.55)]">
-                  <path d="M 145 100 Q 180 100, 170 180 Q 150 180, 135 130 Z" fill="url(#wingGrad)" filter="url(#shadow)" />
-                  <path d="M 155 120 L 165 160 M 148 130 L 158 170" stroke="#0284c7" strokeWidth="2" strokeLinecap="round" />
-                </g>
-
-              </svg>
+            <div className="font-mono text-2xl text-[#00bfff] whitespace-pre transition-all duration-300">
+              {isPasswordFocused ? "(/_\\)" : "(o_o)"}
             </div>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
-
+            
             {message && (
               <div className="bg-[#00bfff]/10 border border-[#00bfff]/50 text-[#00bfff] p-4 text-xs font-mono uppercase tracking-widest">
                 [Notice] {message}
@@ -184,19 +101,10 @@ function LoginForm() {
                 [Error] {error}
               </div>
             )}
-
+            
             <div className="space-y-2">
               <label className="text-[10px] font-mono uppercase tracking-widest text-white/60">Email Address</label>
-              <input 
-                required 
-                type="email" 
-                value={email} 
-                onChange={(e) => setEmail(e.target.value)} 
-                onFocus={() => setIsEmailFocused(true)}
-                onBlur={() => setIsEmailFocused(false)}
-                className="w-full bg-black/50 border border-white/10 px-4 py-3 text-sm font-mono text-white placeholder-white/20 focus:outline-none focus:border-[#00bfff] transition-colors" 
-                placeholder="COMMANDER@ACME.COM" 
-              />
+              <input required type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full bg-black/50 border border-white/10 px-4 py-3 text-sm font-mono text-white placeholder-white/20 focus:outline-none focus:border-[#00bfff] transition-colors" placeholder="COMMANDER@ACME.COM" />
             </div>
 
             <div className="space-y-2">
@@ -222,7 +130,7 @@ function LoginForm() {
               {isLoading ? "Authenticating..." : "Access System"}
             </button>
           </form>
-
+          
           <div className="mt-8 text-center">
             <p className="text-[10px] font-mono text-white/50 uppercase tracking-widest">
               Need authorization? <Link href="/#pricing" className="text-[#00bfff] hover:underline">Deploy Now</Link>
@@ -246,7 +154,7 @@ export default function LoginPage() {
         </svg>
       </div>
       <div className="pointer-events-none fixed inset-4 border border-white/10 z-[90] mix-blend-difference hidden md:block" />
-
+      
       <Suspense fallback={<div className="min-h-screen bg-[#050505] flex items-center justify-center font-mono text-[#00bfff] text-xs tracking-widest uppercase">Initializing Portal...</div>}>
         <LoginForm />
       </Suspense>
