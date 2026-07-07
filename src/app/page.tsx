@@ -468,7 +468,7 @@ export default function Home() {
           {/* Teen Parrot - High Contrast */}
           <motion.div
             initial={{ opacity: 0, scale: 1.1, y: 50 }} whileInView={{ opacity: 1, scale: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }} viewport={{ once: true, margin: "-100px" }}
-            className="w-full border-b lg:border-b-0 lg:border-r border-[#00bfff] bg-[#00bfff] text-[#050505] p-8 lg:p-12 flex flex-col justify-between group hover:shadow-[0_0_50px_rgba(0,191,255,0.6)] transition-all duration-300 z-10 relative"
+            className="w-full border-b lg:border-b-0 lg:border-r border-[#0ea5e9] bg-[#0ea5e9] text-[#050505] p-8 lg:p-12 flex flex-col justify-between group hover:shadow-[0_0_50px_rgba(14,165,233,0.6)] transition-all duration-300 z-10 relative"
           >
             <div>
               <span className="text-[10px] text-current/70 font-mono tracking-widest uppercase block mb-4">[ Tier 02 - AI Lead Qualifier ]</span>
@@ -485,7 +485,7 @@ export default function Home() {
                 <li className="font-mono text-[10px] text-[#050505] font-black uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#050505] shrink-0" /> Direct Calendar Integration</li>
               </ul>
             </div>
-            <Link href="https://calendar.app.google/DW6EyNY2BRDA1h1PA" target="_blank" className="w-full border border-[#050505] bg-[#050505] text-[#00bfff] px-6 py-4 text-[10px] font-mono font-bold uppercase tracking-widest hover:bg-[#050505] hover:text-white transition-colors block text-center">
+            <Link href="https://calendar.app.google/DW6EyNY2BRDA1h1PA" target="_blank" className="w-full border border-[#050505] bg-[#050505] text-[#0ea5e9] px-6 py-4 text-[10px] font-mono font-bold uppercase tracking-widest hover:bg-[#050505] hover:text-white transition-colors block text-center">
               Book My Custom Setup
             </Link>
           </motion.div>
