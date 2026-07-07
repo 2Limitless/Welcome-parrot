@@ -450,7 +450,7 @@ export default function Home() {
               <ul className="space-y-3 mb-12">
                 <li className="font-mono text-[10px] text-current font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00bfff] group-hover:text-black shrink-0" /> Instant Missed-Call SMS</li>
                 <li className="font-mono text-[10px] text-current font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00bfff] group-hover:text-black shrink-0" /> Customizable Text Template</li>
-                <li className="font-mono text-[10px] text-current font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00bfff] group-hover:text-black shrink-0" /> Auto-Booking Link Delivery</li>
+                <li className="font-mono text-[10px] text-current font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00bfff] group-hover:text-black shrink-0" /> All AI Texting Protocols</li>
                 <li className="font-mono text-[10px] text-current font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00bfff] group-hover:text-black shrink-0" /> Dashboard Call Logging</li>
               </ul>
             </div>
@@ -497,8 +497,11 @@ export default function Home() {
                 A hyper-realistic voice agent answers every call instantly. It executes your exact sales frameworks to handle typical conversations and book appointments. If a call requires a human touch, it seamlessly transfers them directly to your phone.
               </p>
               <ul className="space-y-3 mb-12">
-                <li className="font-mono text-[10px] text-current font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00bfff] group-hover:text-black" /> Full Voice Emulation</li>
-                <li className="font-mono text-[10px] text-current font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00bfff] group-hover:text-black" /> Smart Transfer</li>
+                <li className="font-mono text-[10px] text-current font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00bfff] group-hover:text-black shrink-0" /> All AI Texting Protocols</li>
+                <li className="font-mono text-[10px] text-current font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00bfff] group-hover:text-black shrink-0" /> 24/7 AI Voice Receptionist</li>
+                <li className="font-mono text-[10px] text-current font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00bfff] group-hover:text-black shrink-0" /> Hyper-Realistic Voice Engine</li>
+                <li className="font-mono text-[10px] text-current font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00bfff] group-hover:text-black shrink-0" /> Advanced Objection Handling</li>
+                <li className="font-mono text-[10px] text-current font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00bfff] group-hover:text-black shrink-0" /> Smart Live Call Routing</li>
               </ul>
             </div>
             <Link href="https://calendar.app.google/DW6EyNY2BRDA1h1PA" target="_blank" className="w-full border border-current px-6 py-4 text-[10px] font-mono font-bold uppercase tracking-widest bg-transparent text-current group-hover:bg-black group-hover:text-white transition-colors block text-center">
