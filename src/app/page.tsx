@@ -442,7 +442,7 @@ export default function Home() {
           >
             <div>
               <span className="text-[10px] text-current/50 font-mono tracking-widest uppercase block mb-4">[ Tier 01 - Missed-Call Auto-Catch ]</span>
-              <h3 className="text-3xl lg:text-4xl font-black uppercase tracking-tighter mb-4 font-[family-name:var(--font-orbitron)]">Baby Parrot</h3>
+              <h3 className="text-3xl lg:text-4xl font-black uppercase tracking-tighter mb-4 font-[family-name:var(--font-orbitron)]">Basic</h3>
               <div className="text-4xl font-mono font-bold mb-6">$149<span className="text-sm opacity-50">/mo</span></div>
               <p className="font-mono text-xs text-current/70 leading-relaxed mb-8">
                 For less than $5 a day, you stop losing high-ticket jobs to voicemail. The instant a call drops, the system texts them back—delivering pre-approved, high-converting responses to lock in the lead before they dial a competitor.
@@ -464,7 +464,7 @@ export default function Home() {
           >
             <div>
               <span className="text-[10px] text-current/70 font-mono tracking-widest uppercase block mb-4">[ Tier 02 - AI Lead Qualifier ]</span>
-              <h3 className="text-3xl lg:text-4xl font-black uppercase tracking-tighter mb-4 font-[family-name:var(--font-orbitron)]">Teen Parrot</h3>
+              <h3 className="text-3xl lg:text-4xl font-black uppercase tracking-tighter mb-4 font-[family-name:var(--font-orbitron)]">Standard</h3>
               <div className="text-4xl font-mono font-bold text-[#050505] mb-6">$297<span className="text-sm opacity-70">/mo</span></div>
               <p className="font-mono text-xs text-[#050505]/80 leading-relaxed mb-8 font-bold">
                 By the time you finish your current job, you have a fully qualified lead sitting on your phone. The AI acts as a digital SDR, answering initial questions and extracting the full scope of work using strict guardrails based on your actual company data.
@@ -486,7 +486,7 @@ export default function Home() {
           >
             <div>
               <span className="text-[10px] text-current/50 font-mono tracking-widest uppercase block mb-4">[ Tier 03 - 24/7 AI Voice Receptionist ]</span>
-              <h3 className="text-3xl lg:text-4xl font-black uppercase tracking-tighter mb-4 font-[family-name:var(--font-orbitron)]">Adult Parrot</h3>
+              <h3 className="text-3xl lg:text-4xl font-black uppercase tracking-tighter mb-4 font-[family-name:var(--font-orbitron)]">Premium</h3>
               <div className="text-4xl font-mono font-bold mb-6">$897<span className="text-sm opacity-50">/mo</span></div>
               <p className="font-mono text-xs text-current/70 leading-relaxed mb-8">
                 A hyper-realistic voice agent answers every call instantly. It executes your exact sales frameworks to handle typical conversations and book appointments. If a call requires a human touch, it seamlessly transfers them directly to your phone.
