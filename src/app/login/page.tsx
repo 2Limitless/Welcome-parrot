@@ -16,6 +16,13 @@ function LoginForm() {
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
+  const [isEmailFocused, setIsEmailFocused] = useState(false);
+
+  // Eye tracking logic
+  const maxLookRight = 8;
+  const mappedX = Math.min(Math.max((email.length - 10) * 0.8, -maxLookRight), maxLookRight);
+  const lookX = isEmailFocused ? mappedX : 0;
+  const lookY = isEmailFocused ? 4 : 0;
   
   const supabase = createClient();
   
@@ -83,8 +90,38 @@ function LoginForm() {
               <span className="text-[10px] text-white/50 font-mono tracking-[0.2em] uppercase mb-4 block">[ System Login ]</span>
               <h2 className="text-3xl font-black uppercase tracking-widest text-white">Initialize</h2>
             </div>
-            <div className="font-mono text-2xl text-[#00bfff] whitespace-pre transition-all duration-300">
-              {isPasswordFocused ? "(/_\\)" : "(o_o)"}
+            
+            {/* Interactive SVG Monster */}
+            <div className="relative w-24 h-24 -mb-4">
+              <svg viewBox="0 0 100 100" className="w-full h-full">
+                {/* Body */}
+                <path d="M 20 100 C 20 30, 80 30, 80 100 Z" className="stroke-[#00bfff] stroke-2 fill-[#050505]" />
+                
+                {/* Eyes (White part) */}
+                <circle cx="35" cy="50" r="10" fill="white" />
+                <circle cx="65" cy="50" r="10" fill="white" />
+                
+                {/* Pupils (Black part) */}
+                <circle cx={35 + (isPasswordFocused ? 0 : lookX)} cy={50 + (isPasswordFocused ? 0 : lookY)} r="4" fill="black" className="transition-all duration-75" />
+                <circle cx={65 + (isPasswordFocused ? 0 : lookX)} cy={50 + (isPasswordFocused ? 0 : lookY)} r="4" fill="black" className="transition-all duration-75" />
+
+                {/* Arms */}
+                <g style={{ transform: isPasswordFocused ? 'translateY(-22px) rotate(15deg)' : 'translateY(10px)', transformOrigin: 'center bottom' }} className="transition-transform duration-300">
+                  <path d="M 10 80 Q 25 60, 35 50" className="stroke-[#00bfff] stroke-[3px] fill-transparent" strokeLinecap="round" />
+                </g>
+                <g style={{ transform: isPasswordFocused ? 'translateY(-22px) rotate(-15deg)' : 'translateY(10px)', transformOrigin: 'center bottom' }} className="transition-transform duration-300">
+                  <path d="M 90 80 Q 75 60, 65 50" className="stroke-[#00bfff] stroke-[3px] fill-transparent" strokeLinecap="round" />
+                </g>
+
+                {/* Hands covering eyes */}
+                {isPasswordFocused && (
+                  <g className="animate-in fade-in duration-300">
+                    <circle cx="35" cy="50" r="12" fill="#050505" className="stroke-[#00bfff] stroke-2" />
+                    <circle cx="65" cy="50" r="12" fill="#050505" className="stroke-[#00bfff] stroke-2" />
+                    <path d="M 27 50 L 43 50 M 57 50 L 73 50" className="stroke-[#00bfff] stroke-2" />
+                  </g>
+                )}
+              </svg>
             </div>
           </div>
 
@@ -104,7 +141,16 @@ function LoginForm() {
             
             <div className="space-y-2">
               <label className="text-[10px] font-mono uppercase tracking-widest text-white/60">Email Address</label>
-              <input required type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full bg-black/50 border border-white/10 px-4 py-3 text-sm font-mono text-white placeholder-white/20 focus:outline-none focus:border-[#00bfff] transition-colors" placeholder="COMMANDER@ACME.COM" />
+              <input 
+                required 
+                type="email" 
+                value={email} 
+                onChange={(e) => setEmail(e.target.value)} 
+                onFocus={() => setIsEmailFocused(true)}
+                onBlur={() => setIsEmailFocused(false)}
+                className="w-full bg-black/50 border border-white/10 px-4 py-3 text-sm font-mono text-white placeholder-white/20 focus:outline-none focus:border-[#00bfff] transition-colors" 
+                placeholder="COMMANDER@ACME.COM" 
+              />
             </div>
 
             <div className="space-y-2">
