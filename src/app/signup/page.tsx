@@ -11,19 +11,22 @@ const tierData = {
     name: "Baby Parrot",
     price: "$149/mo",
     description: "Missed-Call Auto-Catch to stop losing high-ticket jobs to voicemail.",
-    features: ["Instant SMS", "Auto Follow-up"]
+    features: ["Instant SMS", "Auto Follow-up"],
+    stripeLink: "https://buy.stripe.com/test_aFa4gz0F57KD4YYaIicjS00"
   },
   teen: {
     name: "Teen Parrot",
     price: "$297/mo",
     description: "AI Lead Qualifier that acts as a digital SDR to extract scope of work.",
-    features: ["Real-time Dialog", "Direct Calendar Integration"]
+    features: ["Real-time Dialog", "Direct Calendar Integration"],
+    stripeLink: "https://buy.stripe.com/test_dRm14n9bBgh9ghG17IcjS01"
   },
   adult: {
     name: "Adult Parrot",
     price: "$897/mo",
     description: "24/7 AI Voice Receptionist that answers every call instantly.",
-    features: ["Full Voice Emulation", "Smart Transfer"]
+    features: ["Full Voice Emulation", "Smart Transfer"],
+    stripeLink: "https://buy.stripe.com/test_bJe14nbjJaWPd5u4jUcjS02"
   }
 };
 
@@ -71,8 +74,8 @@ function SignupForm() {
       return;
     }
 
-    // Success! Redirecting to login with a message for now
-    router.push("/login?message=Check your email to confirm your account");
+    // Success! Redirect to Stripe Payment Link
+    window.location.href = `${selectedTier.stripeLink}?prefilled_email=${encodeURIComponent(email)}`;
   };
 
   return (

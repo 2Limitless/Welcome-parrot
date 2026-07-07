@@ -71,7 +71,7 @@ const HeroTitle = ({ text, className, strokeColor, defaultColor }: { text: strin
 const RevenueCalculator = () => {
   const [jobRevenue, setJobRevenue] = React.useState<number>(5000);
   const [missedCalls, setMissedCalls] = React.useState<number>(10);
-  const [closeRate, setCloseRate] = React.useState<number>(20);
+  const [closeRate, setCloseRate] = React.useState<number>(50);
 
   const weeklyLost = jobRevenue * missedCalls * (closeRate / 100);
   const monthlyLost = weeklyLost * 4.33;
