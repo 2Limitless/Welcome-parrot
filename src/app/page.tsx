@@ -179,7 +179,7 @@ const Manifesto = () => {
   return (
     <section className="relative z-20 w-screen bg-[#050505] py-24 md:py-32 flex flex-col items-center justify-center border-t border-white/20 group cursor-crosshair">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 text-center flex flex-col items-center">
-        <span className="text-[10px] text-[#00bfff] font-mono tracking-[0.2em] uppercase mb-12 block">[ THE REALITY ]</span>
+        <span className="text-[10px] text-[#00ff99] font-mono tracking-[0.2em] uppercase mb-12 block">[ THE REALITY ]</span>
         <motion.h2
           initial={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }} whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }} transition={{ duration: 1, ease: "easeOut" }} viewport={{ once: true, margin: "-100px" }}
           className="text-5xl md:text-7xl lg:text-[6vw] font-black font-[family-name:var(--font-orbitron)] uppercase tracking-tighter leading-[0.9] text-white/10 transition-colors duration-500 group-hover:text-white"
@@ -343,7 +343,7 @@ export default function Home() {
           <h2 className="text-5xl md:text-7xl font-black font-[family-name:var(--font-orbitron)] uppercase tracking-tighter leading-none text-white">
             Architecture.
           </h2>
-          <span className="text-[10px] text-[#00bfff] font-mono tracking-[0.2em] uppercase hidden md:block">[ Core Features ]</span>
+          <span className="text-[10px] text-[#00ff99] font-mono tracking-[0.2em] uppercase hidden md:block">[ Core Features ]</span>
         </motion.div>
 
         <div className="w-full flex flex-col border-t border-white/20">
