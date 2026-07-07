@@ -153,7 +153,7 @@ const RevenueCalculator = () => {
             </div>
             <div className="flex flex-col pt-4">
               <span className="font-mono text-[10px] tracking-widest uppercase text-[#00ff99]/70 mb-4">Per Year (Projected)</span>
-              <span className="text-6xl md:text-7xl xl:text-8xl font-black font-[family-name:var(--font-orbitron)] leading-none text-[#00ff99] drop-shadow-[0_0_30px_rgba(0,255,153,0.3)] break-words">
+              <span className="text-4xl sm:text-5xl md:text-6xl xl:text-8xl font-black font-[family-name:var(--font-orbitron)] leading-none text-[#00ff99] drop-shadow-[0_0_30px_rgba(0,255,153,0.3)] whitespace-nowrap overflow-hidden text-ellipsis">
                 {formatMoney(yearlyLost)}
               </span>
             </div>
