@@ -452,7 +452,7 @@ export default function Home() {
                 <li className="font-mono text-[10px] text-current font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00bfff] group-hover:text-black" /> Auto Follow-up</li>
               </ul>
             </div>
-            <Link href="https://calendly.com/aarone0110" target="_blank" className="w-full border border-current px-6 py-4 text-[10px] font-mono font-bold uppercase tracking-widest bg-transparent text-current group-hover:bg-black group-hover:text-white transition-colors block text-center">
+            <Link href="https://calendar.app.google/DW6EyNY2BRDA1h1PA" target="_blank" className="w-full border border-current px-6 py-4 text-[10px] font-mono font-bold uppercase tracking-widest bg-transparent text-current group-hover:bg-black group-hover:text-white transition-colors block text-center">
               Claim This Tier
             </Link>
           </motion.div>
@@ -474,7 +474,7 @@ export default function Home() {
                 <li className="font-mono text-[10px] text-[#050505] font-black uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#050505]" /> Direct Calendar Integration</li>
               </ul>
             </div>
-            <Link href="https://calendly.com/aarone0110" target="_blank" className="w-full border border-[#050505] bg-[#050505] text-[#00bfff] px-6 py-4 text-[10px] font-mono font-bold uppercase tracking-widest hover:bg-[#050505] hover:text-white transition-colors block text-center">
+            <Link href="https://calendar.app.google/DW6EyNY2BRDA1h1PA" target="_blank" className="w-full border border-[#050505] bg-[#050505] text-[#00bfff] px-6 py-4 text-[10px] font-mono font-bold uppercase tracking-widest hover:bg-[#050505] hover:text-white transition-colors block text-center">
               Book My Custom Setup
             </Link>
           </motion.div>
@@ -496,7 +496,7 @@ export default function Home() {
                 <li className="font-mono text-[10px] text-current font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00bfff] group-hover:text-black" /> Smart Transfer</li>
               </ul>
             </div>
-            <Link href="https://calendly.com/aarone0110" target="_blank" className="w-full border border-current px-6 py-4 text-[10px] font-mono font-bold uppercase tracking-widest bg-transparent text-current group-hover:bg-black group-hover:text-white transition-colors block text-center">
+            <Link href="https://calendar.app.google/DW6EyNY2BRDA1h1PA" target="_blank" className="w-full border border-current px-6 py-4 text-[10px] font-mono font-bold uppercase tracking-widest bg-transparent text-current group-hover:bg-black group-hover:text-white transition-colors block text-center">
               Talk to the Founders
             </Link>
           </motion.div>
