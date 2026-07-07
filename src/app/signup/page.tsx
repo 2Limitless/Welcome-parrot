@@ -18,7 +18,7 @@ const tierData = {
     name: "Standard",
     price: "$297/mo",
     description: "AI Lead Qualifier that acts as a digital SDR to extract scope of work.",
-    features: ["Real-time Dialog", "Direct Calendar Integration"],
+    features: ["Everything in Basic", "2-Way AI Text Conversations", "Scope-of-Work Extraction", "Custom Knowledge Base Sync", "Direct Calendar Integration"],
     stripeLink: "https://buy.stripe.com/test_dRm14n9bBgh9ghG17IcjS01"
   },
   adult: {
