@@ -421,9 +421,15 @@ export default function Home() {
         >
           <div>
             <span className="text-[10px] text-white/50 font-mono tracking-[0.2em] uppercase mb-4 block">[ Pricing Plans ]</span>
-            <h2 className="text-5xl md:text-7xl font-black tracking-tighter uppercase leading-none font-[family-name:var(--font-orbitron)] text-white">
+            <h2 className="text-5xl md:text-7xl font-black tracking-tighter uppercase leading-none font-[family-name:var(--font-orbitron)] text-white mb-6">
               Pricing.
             </h2>
+            <div className="max-w-2xl border-l-2 border-[#00bfff] pl-6 py-2">
+              <h4 className="text-[#00bfff] font-mono font-bold uppercase tracking-widest text-xs mb-2">The 14-Day ROI Guarantee</h4>
+              <p className="font-mono text-xs text-white/70 leading-relaxed">
+                We build it, we connect it, and we let it run. If Welcome Parrot doesn't catch enough missed revenue to pay for itself in the first 14 days, you don't pay a dime.
+              </p>
+            </div>
           </div>
         </motion.div>
 
@@ -446,8 +452,8 @@ export default function Home() {
                 <li className="font-mono text-[10px] text-current font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00bfff] group-hover:text-black" /> Auto Follow-up</li>
               </ul>
             </div>
-            <Link href="/signup?tier=baby" className="w-full border border-current px-6 py-4 text-[10px] font-mono font-bold uppercase tracking-widest bg-transparent text-current group-hover:bg-black group-hover:text-white transition-colors block text-center">
-              Get Started
+            <Link href="https://calendly.com/aarone0110" target="_blank" className="w-full border border-current px-6 py-4 text-[10px] font-mono font-bold uppercase tracking-widest bg-transparent text-current group-hover:bg-black group-hover:text-white transition-colors block text-center">
+              Claim This Tier
             </Link>
           </motion.div>
 
@@ -468,8 +474,8 @@ export default function Home() {
                 <li className="font-mono text-[10px] text-[#050505] font-black uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#050505]" /> Direct Calendar Integration</li>
               </ul>
             </div>
-            <Link href="/signup?tier=teen" className="w-full border border-[#050505] bg-[#050505] text-[#00bfff] px-6 py-4 text-[10px] font-mono font-bold uppercase tracking-widest hover:bg-[#050505] hover:text-white transition-colors block text-center">
-              Get Started
+            <Link href="https://calendly.com/aarone0110" target="_blank" className="w-full border border-[#050505] bg-[#050505] text-[#00bfff] px-6 py-4 text-[10px] font-mono font-bold uppercase tracking-widest hover:bg-[#050505] hover:text-white transition-colors block text-center">
+              Book My Custom Setup
             </Link>
           </motion.div>
 
@@ -490,8 +496,8 @@ export default function Home() {
                 <li className="font-mono text-[10px] text-current font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00bfff] group-hover:text-black" /> Smart Transfer</li>
               </ul>
             </div>
-            <Link href="/signup?tier=adult" className="w-full border border-current px-6 py-4 text-[10px] font-mono font-bold uppercase tracking-widest bg-transparent text-current group-hover:bg-black group-hover:text-white transition-colors block text-center">
-              Get Started
+            <Link href="https://calendly.com/aarone0110" target="_blank" className="w-full border border-current px-6 py-4 text-[10px] font-mono font-bold uppercase tracking-widest bg-transparent text-current group-hover:bg-black group-hover:text-white transition-colors block text-center">
+              Talk to the Founders
             </Link>
           </motion.div>
 
