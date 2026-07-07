@@ -15,6 +15,7 @@ function LoginForm() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [isPasswordFocused, setIsPasswordFocused] = useState(false);
   
   const supabase = createClient();
   
@@ -77,9 +78,14 @@ function LoginForm() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-[#00bfff]/5 blur-[120px] rounded-full pointer-events-none" />
 
         <div className="max-w-md mx-auto w-full relative z-10">
-          <div className="mb-12">
-            <span className="text-[10px] text-white/50 font-mono tracking-[0.2em] uppercase mb-4 block">[ System Login ]</span>
-            <h2 className="text-3xl font-black uppercase tracking-widest text-white">Initialize</h2>
+          <div className="mb-12 flex justify-between items-end">
+            <div>
+              <span className="text-[10px] text-white/50 font-mono tracking-[0.2em] uppercase mb-4 block">[ System Login ]</span>
+              <h2 className="text-3xl font-black uppercase tracking-widest text-white">Initialize</h2>
+            </div>
+            <div className="font-mono text-2xl text-[#00bfff] whitespace-pre transition-all duration-300">
+              {isPasswordFocused ? "(/_\\)" : "(o_o)"}
+            </div>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
@@ -108,7 +114,16 @@ function LoginForm() {
                   Reset Protocol?
                 </Link>
               </div>
-              <input required type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="w-full bg-black/50 border border-white/10 px-4 py-3 text-sm font-mono text-white placeholder-white/20 focus:outline-none focus:border-[#00bfff] transition-colors" placeholder="••••••••" />
+              <input 
+                required 
+                type="password" 
+                value={password} 
+                onChange={(e) => setPassword(e.target.value)} 
+                onFocus={() => setIsPasswordFocused(true)}
+                onBlur={() => setIsPasswordFocused(false)}
+                className="w-full bg-black/50 border border-white/10 px-4 py-3 text-sm font-mono text-white placeholder-white/20 focus:outline-none focus:border-[#00bfff] transition-colors" 
+                placeholder="••••••••" 
+              />
             </div>
 
             <button type="submit" disabled={isLoading} className="w-full mt-8 border border-[#00bfff] bg-[#00bfff]/10 text-[#00bfff] px-6 py-4 text-[10px] font-mono font-bold uppercase tracking-widest hover:bg-[#00bfff] hover:text-black transition-colors shadow-[0_0_15px_rgba(0,255,153,0.1)] hover:shadow-[0_0_25px_rgba(0,255,153,0.3)] disabled:opacity-50 disabled:cursor-not-allowed">
