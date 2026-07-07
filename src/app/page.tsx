@@ -493,28 +493,28 @@ export default function Home() {
           {/* Adult Parrot */}
           <motion.div
             initial={{ opacity: 0, scale: 1.1, y: 50 }} whileInView={{ opacity: 1, scale: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }} viewport={{ once: true, margin: "-100px" }}
-            className="w-full p-8 lg:p-12 flex flex-col justify-between hover:bg-white hover:text-black transition-colors duration-300 group"
+            className="w-full bg-[#0a0a0a] text-white p-8 lg:p-12 flex flex-col justify-between border-t lg:border-t-0 border-[#00ff99]/20 hover:border-[#00ff99] transition-colors duration-300 group shadow-[inset_0_0_50px_rgba(0,255,153,0.02)] hover:shadow-[inset_0_0_50px_rgba(0,255,153,0.05)]"
           >
             <div>
-              <span className="text-[10px] text-current/50 font-mono tracking-widest uppercase block mb-4">[ Tier 03 - 24/7 AI Voice Receptionist ]</span>
-              <h3 className="text-3xl lg:text-4xl font-black uppercase tracking-tighter mb-4 font-[family-name:var(--font-orbitron)]">Premium</h3>
-              <div className="text-4xl font-mono font-bold mb-6">$897<span className="text-sm opacity-50">/mo</span></div>
-              <p className="font-mono text-xs text-current/70 leading-relaxed mb-8">
+              <span className="text-[10px] text-[#00ff99] font-mono tracking-widest uppercase block mb-4">[ VIP Protocol - 24/7 Voice ]</span>
+              <h3 className="text-3xl lg:text-4xl font-black uppercase tracking-tighter mb-4 font-[family-name:var(--font-orbitron)] text-white">Premium</h3>
+              <div className="text-4xl font-mono font-bold mb-6 text-white">$897<span className="text-sm text-white/50">/mo</span></div>
+              <p className="font-mono text-xs text-white/70 leading-relaxed mb-8">
                 A hyper-realistic voice agent answers every call instantly. It executes your exact sales frameworks to handle typical conversations and book appointments. If a call requires a human touch, it seamlessly transfers them directly to your phone.
               </p>
               <ul className="space-y-3 mb-12">
-                <li className="font-mono text-[10px] text-current font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00bfff] group-hover:text-black shrink-0" /> Missed-Call Auto-Catch</li>
-                <li className="font-mono text-[10px] text-current font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00bfff] group-hover:text-black shrink-0" /> 2-Way AI Text Conversations</li>
-                <li className="font-mono text-[10px] text-current font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00bfff] group-hover:text-black shrink-0" /> Scope-of-Work Extraction</li>
-                <li className="font-mono text-[10px] text-current font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00bfff] group-hover:text-black shrink-0" /> Custom Knowledge Base Sync</li>
-                <li className="font-mono text-[10px] text-current font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00bfff] group-hover:text-black shrink-0" /> Direct Calendar Integration</li>
-                <li className="font-mono text-[10px] text-current font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00bfff] group-hover:text-black shrink-0" /> 24/7 AI Voice Receptionist</li>
-                <li className="font-mono text-[10px] text-current font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00bfff] group-hover:text-black shrink-0" /> Hyper-Realistic Voice Engine</li>
-                <li className="font-mono text-[10px] text-current font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00bfff] group-hover:text-black shrink-0" /> Advanced Objection Handling</li>
-                <li className="font-mono text-[10px] text-current font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00bfff] group-hover:text-black shrink-0" /> Smart Live Call Routing</li>
+                <li className="font-mono text-[10px] text-white/90 font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00ff99] shrink-0" /> Missed-Call Auto-Catch</li>
+                <li className="font-mono text-[10px] text-white/90 font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00ff99] shrink-0" /> 2-Way AI Text Conversations</li>
+                <li className="font-mono text-[10px] text-white/90 font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00ff99] shrink-0" /> Scope-of-Work Extraction</li>
+                <li className="font-mono text-[10px] text-white/90 font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00ff99] shrink-0" /> Custom Knowledge Base Sync</li>
+                <li className="font-mono text-[10px] text-white/90 font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00ff99] shrink-0" /> Direct Calendar Integration</li>
+                <li className="font-mono text-[10px] text-white/90 font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00ff99] shrink-0" /> 24/7 AI Voice Receptionist</li>
+                <li className="font-mono text-[10px] text-white/90 font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00ff99] shrink-0" /> Hyper-Realistic Voice Engine</li>
+                <li className="font-mono text-[10px] text-white/90 font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00ff99] shrink-0" /> Advanced Objection Handling</li>
+                <li className="font-mono text-[10px] text-white/90 font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00ff99] shrink-0" /> Smart Live Call Routing</li>
               </ul>
             </div>
-            <Link href="https://calendar.app.google/DW6EyNY2BRDA1h1PA" target="_blank" className="w-full border border-current px-6 py-4 text-[10px] font-mono font-bold uppercase tracking-widest bg-transparent text-current group-hover:bg-black group-hover:text-white transition-colors block text-center">
+            <Link href="https://calendar.app.google/DW6EyNY2BRDA1h1PA" target="_blank" className="w-full border border-[#00ff99] bg-[#00ff99]/10 text-[#00ff99] px-6 py-4 text-[10px] font-mono font-bold uppercase tracking-widest hover:bg-[#00ff99] hover:text-black transition-colors block text-center">
               Talk to the Founders
             </Link>
           </motion.div>
