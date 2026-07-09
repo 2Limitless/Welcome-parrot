@@ -256,10 +256,10 @@ export default function Home() {
           <div className="absolute inset-0 bg-[#00bfff] opacity-0 group-hover:opacity-10 blur-2xl transition-opacity duration-700 rounded-full" />
 
           {/* Mobile Logo */}
-          <img src="/logo-v3.png" alt="Welcome Parrot Logo" className="h-[120px] w-auto -my-8 md:hidden relative z-10 group-hover:scale-105 transition-transform duration-500 drop-shadow-[0_0_15px_rgba(255,255,255,0.05)] object-contain" />
+          <img src="/logo-v3.png" alt="Welcome Parrot Logo" className="h-12 w-auto md:hidden relative z-10 group-hover:scale-105 transition-transform duration-500 drop-shadow-[0_0_15px_rgba(255,255,255,0.05)] object-contain" />
 
           {/* Desktop Logo */}
-          <img src="/logo-v3.png" alt="Welcome Parrot" className="h-[180px] w-auto -my-16 hidden md:block relative z-10 group-hover:scale-105 transition-transform duration-500 drop-shadow-[0_0_15px_rgba(255,255,255,0.05)] object-contain" />
+          <img src="/logo-v3.png" alt="Welcome Parrot" className="h-20 w-auto hidden md:block relative z-10 group-hover:scale-105 transition-transform duration-500 drop-shadow-[0_0_15px_rgba(255,255,255,0.05)] object-contain" />
         </div>
         <div className="flex items-center gap-6">
           <Link href="/login" className="text-[10px] font-mono font-bold uppercase tracking-widest text-white/70 hover:text-[#00bfff] transition-colors hidden md:block">
