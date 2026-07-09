@@ -90,7 +90,7 @@ const RevenueCalculator = () => {
           className="p-6 md:p-12 lg:p-24 border-b lg:border-b-0 lg:border-r border-white/20 flex flex-col justify-center"
         >
           <span className="text-[10px] text-white/50 font-mono tracking-[0.2em] uppercase mb-4 block">[ Cost of Inaction ]</span>
-          <h2 className="text-4xl md:text-5xl font-black font-[family-name:var(--font-audiowide)] uppercase tracking-tighter mb-4 text-white">
+          <h2 className="text-4xl md:text-5xl font-black font-[family-name:var(--font-orbitron)] uppercase tracking-tighter mb-4 text-white">
             Lost Revenue<br />Calculator
           </h2>
           <p className="font-mono text-xs text-white/60 mb-12 max-w-md leading-relaxed">
@@ -144,7 +144,7 @@ const RevenueCalculator = () => {
           initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }} viewport={{ once: true, margin: "-100px" }}
           className="p-6 md:p-12 lg:p-24 flex flex-col justify-center bg-[#0a0a0a]"
         >
-          <h3 className="text-3xl md:text-5xl font-black font-[family-name:var(--font-audiowide)] uppercase tracking-tighter mb-12">
+          <h3 className="text-3xl md:text-5xl font-black font-[family-name:var(--font-orbitron)] uppercase tracking-tighter mb-12">
             You are losing:
           </h3>
 
@@ -159,7 +159,7 @@ const RevenueCalculator = () => {
             </div>
             <div className="flex flex-col pt-4">
               <span className="font-mono text-[10px] tracking-widest uppercase text-[#00ff99]/70 mb-4">Per Year (Projected)</span>
-              <span className="text-4xl sm:text-5xl md:text-6xl xl:text-8xl font-black font-[family-name:var(--font-audiowide)] leading-none text-[#00ff99] drop-shadow-[0_0_30px_rgba(0,255,153,0.3)] whitespace-nowrap overflow-hidden text-ellipsis">
+              <span className="text-4xl sm:text-5xl md:text-6xl xl:text-8xl font-black font-[family-name:var(--font-orbitron)] leading-none text-[#00ff99] drop-shadow-[0_0_30px_rgba(0,255,153,0.3)] whitespace-nowrap overflow-hidden text-ellipsis">
                 {formatMoney(yearlyLost)}
               </span>
             </div>
