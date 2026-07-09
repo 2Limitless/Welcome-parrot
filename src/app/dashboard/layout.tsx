@@ -46,7 +46,7 @@ export default function DashboardLayout({
   ];
 
   return (
-    <div className="min-h-screen bg-[#050505] text-[#f0f0f0] font-sans selection:bg-[#00bfff] selection:text-[#050505] flex overflow-hidden">
+    <div className="min-h-screen bg-[#111111] text-[#f0f0f0] font-sans selection:bg-[#00bfff] selection:text-[#111111] flex overflow-hidden">
       {/* Background Noise */}
       <div className="pointer-events-none fixed inset-0 z-0 opacity-[0.04] mix-blend-screen">
         <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
@@ -58,7 +58,7 @@ export default function DashboardLayout({
       </div>
 
       {/* Sidebar Navigation */}
-      <aside className="w-64 border-r border-white/10 bg-[#0a0a0a] flex flex-col relative z-20 hidden md:flex">
+      <aside className="w-64 border-r border-white/10 bg-[#1a1a1a] flex flex-col relative z-20 hidden md:flex">
         <div className="p-8 border-b border-white/10">
           <Link href="/" className="flex items-center gap-2 group">
             <TerminalSquare className="w-5 h-5 text-[#00bfff] group-hover:scale-110 transition-transform" />
@@ -102,7 +102,7 @@ export default function DashboardLayout({
       {/* Main Content Area */}
       <main className="flex-1 flex flex-col relative z-10 h-screen overflow-y-auto">
         {/* Top Header */}
-        <header className="h-20 border-b border-white/10 bg-[#050505]/80 backdrop-blur-md sticky top-0 z-30 flex items-center justify-between px-8">
+        <header className="h-20 border-b border-white/10 bg-[#111111]/80 backdrop-blur-md sticky top-0 z-30 flex items-center justify-between px-8">
           <div className="flex items-center gap-4">
             <div className="w-2 h-2 rounded-full bg-[#00bfff] animate-pulse shadow-[0_0_10px_#00bfff]" />
             <span className="font-mono text-[10px] uppercase tracking-widest text-[#00bfff]">System Online</span>

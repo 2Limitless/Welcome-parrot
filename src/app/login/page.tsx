@@ -39,10 +39,10 @@ function LoginForm() {
   };
 
   return (
-    <div className="min-h-screen bg-[#050505] text-[#f0f0f0] font-sans selection:bg-[#00bfff] selection:text-[#050505] flex flex-col md:flex-row overflow-x-hidden relative z-10">
+    <div className="min-h-screen bg-[#111111] text-[#f0f0f0] font-sans selection:bg-[#00bfff] selection:text-[#111111] flex flex-col md:flex-row overflow-x-hidden relative z-10">
 
       {/* Left Column - Aesthetic Visuals */}
-      <div className="w-full md:w-5/12 bg-[#0a0a0a] border-b md:border-b-0 md:border-r border-white/10 p-8 md:p-16 flex flex-col justify-between relative overflow-hidden">
+      <div className="w-full md:w-5/12 bg-[#1a1a1a] border-b md:border-b-0 md:border-r border-white/10 p-8 md:p-16 flex flex-col justify-between relative overflow-hidden">
         {/* Decorative Grid */}
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay pointer-events-none" />
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none" />
@@ -147,7 +147,7 @@ export default function LoginPage() {
       </div>
       <div className="pointer-events-none fixed inset-4 border border-white/10 z-[90] mix-blend-difference hidden md:block" />
 
-      <Suspense fallback={<div className="min-h-screen bg-[#050505] flex items-center justify-center font-mono text-[#00bfff] text-xs tracking-widest uppercase">Initializing Portal...</div>}>
+      <Suspense fallback={<div className="min-h-screen bg-[#111111] flex items-center justify-center font-mono text-[#00bfff] text-xs tracking-widest uppercase">Initializing Portal...</div>}>
         <LoginForm />
       </Suspense>
     </>

@@ -33,7 +33,7 @@ export default function BillingPage() {
         {/* Left Column - Current Plan */}
         <div className="lg:col-span-2 space-y-8">
           
-          <section className="bg-[#0a0a0a] border border-white/10 p-8 relative overflow-hidden">
+          <section className="bg-[#1a1a1a] border border-white/10 p-8 relative overflow-hidden">
             {/* Subtle accent line */}
             <div className="absolute top-0 left-0 w-full h-1 bg-[#00bfff]" />
             
@@ -74,7 +74,7 @@ export default function BillingPage() {
           </section>
 
           {/* Billing History */}
-          <section className="bg-[#0a0a0a] border border-white/10 overflow-hidden">
+          <section className="bg-[#1a1a1a] border border-white/10 overflow-hidden">
             <div className="p-6 border-b border-white/10">
               <h3 className="font-mono font-bold uppercase tracking-widest text-sm">Invoice History</h3>
             </div>
@@ -108,15 +108,15 @@ export default function BillingPage() {
 
         {/* Right Column - Upgrade */}
         <div className="space-y-6">
-          <section className="bg-[#00bfff] text-[#050505] border border-[#00bfff] p-6 group hover:bg-white hover:border-white transition-colors duration-300">
+          <section className="bg-[#00bfff] text-[#111111] border border-[#00bfff] p-6 group hover:bg-white hover:border-white transition-colors duration-300">
             <div className="flex items-center gap-3 mb-4">
               <Zap className="w-5 h-5" />
               <h3 className="font-black font-[family-name:var(--font-audiowide)] uppercase tracking-tighter text-2xl">Upgrade</h3>
             </div>
-            <p className="font-mono text-xs text-[#050505]/80 leading-relaxed font-bold mb-6">
+            <p className="font-mono text-xs text-[#111111]/80 leading-relaxed font-bold mb-6">
               Switch to the Autonomous protocol to unlock the 24/7 Voice Receptionist and advanced human routing.
             </p>
-            <Link href="/" className="w-full border border-[#050505] bg-[#050505] text-[#00bfff] py-3 px-4 font-mono text-[10px] font-bold uppercase tracking-widest hover:bg-transparent hover:text-[#050505] transition-colors block text-center">
+            <Link href="/" className="w-full border border-[#111111] bg-[#111111] text-[#00bfff] py-3 px-4 font-mono text-[10px] font-bold uppercase tracking-widest hover:bg-transparent hover:text-[#111111] transition-colors block text-center">
               View Upgrade Options
             </Link>
           </section>

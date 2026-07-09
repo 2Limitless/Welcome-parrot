@@ -82,7 +82,7 @@ const RevenueCalculator = () => {
   };
 
   return (
-    <section className="relative z-20 w-full bg-[#050505] border-b border-white/20 overflow-hidden">
+    <section className="relative z-20 w-full bg-[#111111] border-b border-white/20 overflow-hidden">
       <div className="grid grid-cols-1 lg:grid-cols-2">
         {/* Left Column: Inputs */}
         <motion.div
@@ -142,7 +142,7 @@ const RevenueCalculator = () => {
         {/* Right Column: Output */}
         <motion.div
           initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }} viewport={{ once: true, margin: "-100px" }}
-          className="p-6 md:p-12 lg:p-24 flex flex-col justify-center bg-[#0a0a0a]"
+          className="p-6 md:p-12 lg:p-24 flex flex-col justify-center bg-[#1a1a1a]"
         >
           <h3 className="text-3xl md:text-5xl font-black font-[family-name:var(--font-orbitron)] uppercase tracking-tighter mb-12">
             You are losing:
@@ -183,7 +183,7 @@ const NoiseOverlay = () => (
 
 const Manifesto = () => {
   return (
-    <section className="relative z-20 w-full bg-[#050505] py-24 md:py-32 flex flex-col items-center justify-center border-t border-white/20 group cursor-crosshair">
+    <section className="relative z-20 w-full bg-[#111111] py-24 md:py-32 flex flex-col items-center justify-center border-t border-white/20 group cursor-crosshair">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 text-center flex flex-col items-center">
         <span className="text-[10px] text-[#00ff99] font-mono tracking-[0.2em] uppercase mb-12 block">[ THE REALITY ]</span>
         <motion.h2
@@ -210,7 +210,7 @@ const IntegrationMarquee = () => {
   const marqueeItems = [...integrations, ...integrations, ...integrations];
 
   return (
-    <section className="relative z-20 w-full bg-[#050505] border-y border-white/10 py-3 md:py-4 overflow-hidden flex flex-col">
+    <section className="relative z-20 w-full bg-[#111111] border-y border-white/10 py-3 md:py-4 overflow-hidden flex flex-col">
       <div className="relative flex whitespace-nowrap">
         <motion.div
           animate={{ x: ["0%", "-33.333333%"] }}
@@ -223,7 +223,7 @@ const IntegrationMarquee = () => {
               key={index}
               className="flex items-center group/item"
             >
-              <div className="px-6 md:px-10 py-1 text-white/30 hover:bg-white hover:text-[#050505] transition-colors duration-200 cursor-crosshair">
+              <div className="px-6 md:px-10 py-1 text-white/30 hover:bg-white hover:text-[#111111] transition-colors duration-200 cursor-crosshair">
                 <span className="text-xl md:text-2xl font-bold font-mono uppercase tracking-widest leading-none block">
                   {item}
                 </span>
@@ -243,7 +243,7 @@ const IntegrationMarquee = () => {
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#050505] text-[#f0f0f0] selection:bg-[#00bfff] selection:text-[#050505] font-sans overflow-x-hidden relative">
+    <main className="min-h-screen bg-[#111111] text-[#f0f0f0] selection:bg-[#00bfff] selection:text-[#111111] font-sans overflow-x-hidden relative">
       <NoiseOverlay />
 
       {/* Persistent Framing Borders */}
@@ -289,7 +289,7 @@ export default function Home() {
         </div>
 
         {/* Harsh Gradient for text contrast only */}
-        <div className="absolute bottom-0 left-0 w-full h-[60%] bg-gradient-to-t from-[#050505] via-[#050505]/95 to-transparent z-10 pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-full h-[60%] bg-gradient-to-t from-[#111111] via-[#111111]/95 to-transparent z-10 pointer-events-none" />
 
         {/* Foreground Content - Slammed bottom left */}
         <div className="relative z-20 w-full pointer-events-none flex flex-col items-start justify-end">
@@ -323,7 +323,7 @@ export default function Home() {
               </motion.p>
 
               <motion.div variants={slideUp} className="pointer-events-auto shrink-0 w-full md:w-auto">
-                <Link href="#pricing" className="w-full md:w-auto group relative px-12 py-6 bg-white text-[#050505] font-black uppercase tracking-widest text-xs transition-transform duration-500 hover:-translate-y-2 hover:shadow-[0_10px_0_#00bfff] border border-white block text-center">
+                <Link href="#pricing" className="w-full md:w-auto group relative px-12 py-6 bg-white text-[#111111] font-black uppercase tracking-widest text-xs transition-transform duration-500 hover:-translate-y-2 hover:shadow-[0_10px_0_#00bfff] border border-white block text-center">
                   <span className="relative z-10 flex items-center justify-center gap-4">
                     Get Started <ArrowDownRight className="w-4 h-4" />
                   </span>
@@ -341,7 +341,7 @@ export default function Home() {
       <Manifesto />
 
       {/* 2. Core Capabilities - Ultra Concise Brutalist Index */}
-      <section className="relative z-20 w-full bg-[#050505] pt-24 lg:pt-32 pb-12 lg:pb-16 flex flex-col overflow-hidden">
+      <section className="relative z-20 w-full bg-[#111111] pt-24 lg:pt-32 pb-12 lg:pb-16 flex flex-col overflow-hidden">
         <motion.div
           initial={{ opacity: 0, x: -100 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, ease: "easeOut" }} viewport={{ once: true, margin: "-100px" }}
           className="px-6 lg:px-12 mb-12 flex justify-between items-end"
@@ -357,7 +357,7 @@ export default function Home() {
           {/* Row 1 */}
           <motion.div
             initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: "easeOut" }} viewport={{ once: true, margin: "-50px" }}
-            className="w-full border-b border-white/20 p-6 lg:px-12 py-8 group hover:bg-white hover:text-[#050505] transition-colors duration-300 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 cursor-crosshair"
+            className="w-full border-b border-white/20 p-6 lg:px-12 py-8 group hover:bg-white hover:text-[#111111] transition-colors duration-300 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 cursor-crosshair"
           >
             <div className="flex items-center gap-4 md:gap-8 lg:gap-16 w-full lg:w-1/2">
               <span className="font-mono text-[10px] tracking-widest uppercase opacity-50 shrink-0">[001]</span>
@@ -371,7 +371,7 @@ export default function Home() {
           {/* Row 2 */}
           <motion.div
             initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }} viewport={{ once: true, margin: "-50px" }}
-            className="w-full border-b border-white/20 p-6 lg:px-12 py-8 group hover:bg-white hover:text-[#050505] transition-colors duration-300 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 cursor-crosshair"
+            className="w-full border-b border-white/20 p-6 lg:px-12 py-8 group hover:bg-white hover:text-[#111111] transition-colors duration-300 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 cursor-crosshair"
           >
             <div className="flex items-center gap-4 md:gap-8 lg:gap-16 w-full lg:w-1/2">
               <span className="font-mono text-[10px] tracking-widest uppercase opacity-50 shrink-0">[002]</span>
@@ -385,7 +385,7 @@ export default function Home() {
           {/* Row 3 */}
           <motion.div
             initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }} viewport={{ once: true, margin: "-50px" }}
-            className="w-full border-b border-white/20 p-6 lg:px-12 py-8 group hover:bg-white hover:text-[#050505] transition-colors duration-300 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 cursor-crosshair"
+            className="w-full border-b border-white/20 p-6 lg:px-12 py-8 group hover:bg-white hover:text-[#111111] transition-colors duration-300 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 cursor-crosshair"
           >
             <div className="flex items-center gap-4 md:gap-8 lg:gap-16 w-full lg:w-1/2">
               <span className="font-mono text-[10px] tracking-widest uppercase opacity-50 shrink-0">[003]</span>
@@ -399,7 +399,7 @@ export default function Home() {
           {/* Row 4 */}
           <motion.div
             initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }} viewport={{ once: true, margin: "-50px" }}
-            className="w-full border-b border-white/20 p-6 lg:px-12 py-8 group hover:bg-white hover:text-[#050505] transition-colors duration-300 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 cursor-crosshair"
+            className="w-full border-b border-white/20 p-6 lg:px-12 py-8 group hover:bg-white hover:text-[#111111] transition-colors duration-300 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 cursor-crosshair"
           >
             <div className="flex items-center gap-4 md:gap-8 lg:gap-16 w-full lg:w-1/2">
               <span className="font-mono text-[10px] tracking-widest uppercase opacity-50 shrink-0">[004]</span>
@@ -419,7 +419,7 @@ export default function Home() {
       <IntegrationMarquee />
 
       {/* 3. Pricing Options - Monolithic & Stark */}
-      <section id="pricing" className="relative z-20 py-16 px-6 lg:px-12 w-full bg-[#050505] overflow-hidden" style={{ perspective: "1000px" }}>
+      <section id="pricing" className="relative z-20 py-16 px-6 lg:px-12 w-full bg-[#111111] overflow-hidden" style={{ perspective: "1000px" }}>
         <motion.div
           initial={{ opacity: 0, rotateX: 90 }} whileInView={{ opacity: 1, rotateX: 0 }} transition={{ duration: 0.8, ease: "easeOut" }} viewport={{ once: true, margin: "-100px" }}
           style={{ transformOrigin: "bottom" }}
@@ -468,24 +468,24 @@ export default function Home() {
           {/* Teen Parrot - High Contrast */}
           <motion.div
             initial={{ opacity: 0, scale: 1.1, y: 50 }} whileInView={{ opacity: 1, scale: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }} viewport={{ once: true, margin: "-100px" }}
-            className="w-full border-b lg:border-b-0 lg:border-r border-[#0ea5e9] bg-[#0ea5e9] text-[#050505] p-8 lg:p-12 flex flex-col justify-between group hover:shadow-[0_0_50px_rgba(14,165,233,0.6)] transition-all duration-300 z-10 relative"
+            className="w-full border-b lg:border-b-0 lg:border-r border-[#0ea5e9] bg-[#0ea5e9] text-[#111111] p-8 lg:p-12 flex flex-col justify-between group hover:shadow-[0_0_50px_rgba(14,165,233,0.6)] transition-all duration-300 z-10 relative"
           >
             <div>
               <span className="text-[10px] text-current/70 font-mono tracking-widest uppercase block mb-4">[ Tier 02 - AI Lead Qualifier ]</span>
               <h3 className="text-3xl lg:text-4xl font-black uppercase tracking-tighter mb-4 font-[family-name:var(--font-audiowide)]">Standard</h3>
-              <div className="text-4xl font-mono font-bold text-[#050505] mb-6">$297<span className="text-sm opacity-70">/mo</span></div>
-              <p className="font-mono text-xs text-[#050505]/80 leading-relaxed mb-8 font-bold">
+              <div className="text-4xl font-mono font-bold text-[#111111] mb-6">$297<span className="text-sm opacity-70">/mo</span></div>
+              <p className="font-mono text-xs text-[#111111]/80 leading-relaxed mb-8 font-bold">
                 By the time you finish your current job, you have a fully qualified lead sitting on your phone. The AI acts as a digital SDR, answering initial questions and extracting the full scope of work using strict guardrails based on your actual company data.
               </p>
               <ul className="space-y-3 mb-12">
-                <li className="font-mono text-[10px] text-[#050505] font-black uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#050505] shrink-0" /> Missed-Call Auto-Catch</li>
-                <li className="font-mono text-[10px] text-[#050505] font-black uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#050505] shrink-0" /> 2-Way AI Text Conversations</li>
-                <li className="font-mono text-[10px] text-[#050505] font-black uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#050505] shrink-0" /> Scope-of-Work Extraction</li>
-                <li className="font-mono text-[10px] text-[#050505] font-black uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#050505] shrink-0" /> Custom Knowledge Base Sync</li>
-                <li className="font-mono text-[10px] text-[#050505] font-black uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#050505] shrink-0" /> Direct Calendar Integration</li>
+                <li className="font-mono text-[10px] text-[#111111] font-black uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#111111] shrink-0" /> Missed-Call Auto-Catch</li>
+                <li className="font-mono text-[10px] text-[#111111] font-black uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#111111] shrink-0" /> 2-Way AI Text Conversations</li>
+                <li className="font-mono text-[10px] text-[#111111] font-black uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#111111] shrink-0" /> Scope-of-Work Extraction</li>
+                <li className="font-mono text-[10px] text-[#111111] font-black uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#111111] shrink-0" /> Custom Knowledge Base Sync</li>
+                <li className="font-mono text-[10px] text-[#111111] font-black uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#111111] shrink-0" /> Direct Calendar Integration</li>
               </ul>
             </div>
-            <Link href="https://calendar.app.google/DW6EyNY2BRDA1h1PA" target="_blank" className="w-full border border-[#050505] bg-[#050505] text-[#0ea5e9] px-6 py-4 text-[10px] font-mono font-bold uppercase tracking-widest hover:bg-[#050505] hover:text-white transition-colors block text-center">
+            <Link href="https://calendar.app.google/DW6EyNY2BRDA1h1PA" target="_blank" className="w-full border border-[#111111] bg-[#111111] text-[#0ea5e9] px-6 py-4 text-[10px] font-mono font-bold uppercase tracking-widest hover:bg-[#111111] hover:text-white transition-colors block text-center">
               Book My Custom Setup
             </Link>
           </motion.div>
@@ -493,7 +493,7 @@ export default function Home() {
           {/* Adult Parrot */}
           <motion.div
             initial={{ opacity: 0, scale: 1.1, y: 50 }} whileInView={{ opacity: 1, scale: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }} viewport={{ once: true, margin: "-100px" }}
-            className="w-full bg-[#0a0a0a] text-white p-8 lg:p-12 flex flex-col justify-between border-t lg:border-t-0 border-[#00ff99]/20 hover:border-[#00ff99] transition-all duration-300 group shadow-[inset_0_0_50px_rgba(0,255,153,0.02)] hover:shadow-[0_0_60px_rgba(0,255,153,0.3),inset_0_0_50px_rgba(0,255,153,0.05)]"
+            className="w-full bg-[#1a1a1a] text-white p-8 lg:p-12 flex flex-col justify-between border-t lg:border-t-0 border-[#00ff99]/20 hover:border-[#00ff99] transition-all duration-300 group shadow-[inset_0_0_50px_rgba(0,255,153,0.02)] hover:shadow-[0_0_60px_rgba(0,255,153,0.3),inset_0_0_50px_rgba(0,255,153,0.05)]"
           >
             <div>
               <span className="text-[10px] text-[#00ff99] font-mono tracking-widest uppercase block mb-4">[ VIP Protocol - 24/7 Voice ]</span>

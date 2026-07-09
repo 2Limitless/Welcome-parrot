@@ -23,7 +23,7 @@ export default function SettingsPage() {
         <div className="lg:col-span-2 space-y-8">
           
           {/* Knowledge Base */}
-          <section className="bg-[#0a0a0a] border border-white/10 p-6 space-y-6">
+          <section className="bg-[#1a1a1a] border border-white/10 p-6 space-y-6">
             <div className="flex items-center gap-3 border-b border-white/10 pb-4">
               <Server className="w-5 h-5 text-[#00bfff]" />
               <h2 className="text-xl font-bold uppercase tracking-widest font-mono">Knowledge Base</h2>
@@ -41,7 +41,7 @@ export default function SettingsPage() {
           </section>
 
           {/* Interaction Protocols */}
-          <section className="bg-[#0a0a0a] border border-white/10 p-6 space-y-6">
+          <section className="bg-[#1a1a1a] border border-white/10 p-6 space-y-6">
             <div className="flex items-center gap-3 border-b border-white/10 pb-4">
               <MessageSquare className="w-5 h-5 text-[#00bfff]" />
               <h2 className="text-xl font-bold uppercase tracking-widest font-mono">Interaction Protocols</h2>
@@ -79,7 +79,7 @@ export default function SettingsPage() {
         <div className="space-y-8">
           
           {/* Security & Routing */}
-          <section className="bg-[#0a0a0a] border border-white/10 p-6 space-y-6">
+          <section className="bg-[#1a1a1a] border border-white/10 p-6 space-y-6">
             <div className="flex items-center gap-3 border-b border-white/10 pb-4">
               <Shield className="w-5 h-5 text-[#00bfff]" />
               <h2 className="text-xl font-bold uppercase tracking-widest font-mono">Escalation</h2>
@@ -107,7 +107,7 @@ export default function SettingsPage() {
           </section>
 
           {/* Save Action */}
-          <button className="w-full bg-[#00bfff] text-[#050505] font-black font-mono uppercase tracking-widest py-4 px-6 flex items-center justify-center gap-3 hover:bg-white hover:text-black transition-colors group">
+          <button className="w-full bg-[#00bfff] text-[#111111] font-black font-mono uppercase tracking-widest py-4 px-6 flex items-center justify-center gap-3 hover:bg-white hover:text-black transition-colors group">
             <Save className="w-5 h-5" />
             Save Configuration
           </button>

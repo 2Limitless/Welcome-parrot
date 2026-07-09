@@ -39,11 +39,11 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${orbitronFont.variable} ${audiowideFont.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#050505] text-[#f0f0f0]">
+      <body className="min-h-full flex flex-col bg-[#111111] text-[#f0f0f0]">
         {children}
         
         {/* Global Footer */}
-        <footer className="w-full border-t border-white/20 py-8 px-6 lg:px-12 bg-[#050505] flex flex-col md:flex-row items-center justify-between z-[100] relative mt-auto">
+        <footer className="w-full border-t border-white/20 py-8 px-6 lg:px-12 bg-[#111111] flex flex-col md:flex-row items-center justify-between z-[100] relative mt-auto">
           <div className="flex items-center gap-4 mb-4 md:mb-0">
             <span className="font-mono text-[10px] text-white/50 uppercase tracking-widest">© 2026 Welcome Parrot. All rights reserved.</span>
           </div>

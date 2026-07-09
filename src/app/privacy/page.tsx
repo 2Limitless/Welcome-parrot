@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function PrivacyPolicy() {
   return (
-    <main className="min-h-screen bg-[#050505] text-[#f0f0f0] font-sans selection:bg-[#00bfff] selection:text-[#050505] pt-32 pb-24 px-6 lg:px-12 relative overflow-hidden">
+    <main className="min-h-screen bg-[#111111] text-[#f0f0f0] font-sans selection:bg-[#00bfff] selection:text-[#111111] pt-32 pb-24 px-6 lg:px-12 relative overflow-hidden">
       {/* Noise Overlay */}
       <div className="pointer-events-none fixed inset-0 z-50 opacity-[0.04] mix-blend-screen">
         <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">

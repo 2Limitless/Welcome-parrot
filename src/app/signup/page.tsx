@@ -79,10 +79,10 @@ function SignupForm() {
   };
 
   return (
-    <div className="min-h-screen bg-[#050505] text-[#f0f0f0] font-sans selection:bg-[#00bfff] selection:text-[#050505] flex flex-col md:flex-row overflow-x-hidden relative z-10">
+    <div className="min-h-screen bg-[#111111] text-[#f0f0f0] font-sans selection:bg-[#00bfff] selection:text-[#111111] flex flex-col md:flex-row overflow-x-hidden relative z-10">
 
       {/* Left Column - Plan Summary */}
-      <div className="w-full md:w-5/12 bg-[#0a0a0a] border-b md:border-b-0 md:border-r border-white/10 p-8 md:p-16 flex flex-col justify-between">
+      <div className="w-full md:w-5/12 bg-[#1a1a1a] border-b md:border-b-0 md:border-r border-white/10 p-8 md:p-16 flex flex-col justify-between">
         <div>
           <Link href="/" className="inline-flex items-center gap-2 text-white/50 hover:text-white transition-colors font-mono text-[10px] uppercase tracking-widest mb-16">
             <ArrowLeft className="w-4 h-4" /> Return Home
@@ -186,7 +186,7 @@ export default function SignupPage() {
       </div>
       <div className="pointer-events-none fixed inset-4 border border-white/10 z-[90] mix-blend-difference hidden md:block" />
 
-      <Suspense fallback={<div className="min-h-screen bg-[#050505] flex items-center justify-center font-mono text-[#00bfff] text-xs tracking-widest uppercase">Initializing...</div>}>
+      <Suspense fallback={<div className="min-h-screen bg-[#111111] flex items-center justify-center font-mono text-[#00bfff] text-xs tracking-widest uppercase">Initializing...</div>}>
         <SignupForm />
       </Suspense>
     </>

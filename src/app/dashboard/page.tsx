@@ -47,7 +47,7 @@ export default function DashboardOverview() {
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {stats.map((stat, i) => (
-          <div key={i} className="bg-[#0a0a0a] border border-white/10 p-6 relative overflow-hidden group hover:border-white/30 transition-colors">
+          <div key={i} className="bg-[#1a1a1a] border border-white/10 p-6 relative overflow-hidden group hover:border-white/30 transition-colors">
             {/* Subtle glow on hover */}
             <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
             
@@ -71,7 +71,7 @@ export default function DashboardOverview() {
       <div>
         <h2 className="text-xl font-black uppercase tracking-widest mb-6 border-b border-white/10 pb-4">Recent Interceptions</h2>
         
-        <div className="bg-[#0a0a0a] border border-white/10">
+        <div className="bg-[#1a1a1a] border border-white/10">
           <div className="grid grid-cols-4 p-4 border-b border-white/5 font-mono text-[10px] uppercase tracking-widest text-white/40">
             <div className="col-span-1">Timestamp</div>
             <div className="col-span-2">Origin</div>

@@ -25,7 +25,7 @@ export default function CallLogsPage() {
       </div>
 
       {/* Control Bar */}
-      <div className="flex flex-col md:flex-row justify-between items-center gap-4 bg-[#0a0a0a] border border-white/10 p-4">
+      <div className="flex flex-col md:flex-row justify-between items-center gap-4 bg-[#1a1a1a] border border-white/10 p-4">
         <div className="flex items-center gap-4 w-full md:w-auto">
           <div className="relative w-full md:w-64 text-white/50 focus-within:text-[#00bfff]">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4" />
@@ -58,7 +58,7 @@ export default function CallLogsPage() {
       </div>
 
       {/* Data Table */}
-      <div className="bg-[#0a0a0a] border border-white/10 overflow-hidden">
+      <div className="bg-[#1a1a1a] border border-white/10 overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse min-w-[800px]">
             <thead>
