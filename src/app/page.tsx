@@ -82,7 +82,7 @@ const RevenueCalculator = () => {
   };
 
   return (
-    <section className="relative z-20 w-screen bg-[#050505] border-b border-white/20 overflow-hidden">
+    <section className="relative z-20 w-full bg-[#050505] border-b border-white/20 overflow-hidden">
       <div className="grid grid-cols-1 lg:grid-cols-2">
         {/* Left Column: Inputs */}
         <motion.div
@@ -183,7 +183,7 @@ const NoiseOverlay = () => (
 
 const Manifesto = () => {
   return (
-    <section className="relative z-20 w-screen bg-[#050505] py-24 md:py-32 flex flex-col items-center justify-center border-t border-white/20 group cursor-crosshair">
+    <section className="relative z-20 w-full bg-[#050505] py-24 md:py-32 flex flex-col items-center justify-center border-t border-white/20 group cursor-crosshair">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 text-center flex flex-col items-center">
         <span className="text-[10px] text-[#00ff99] font-mono tracking-[0.2em] uppercase mb-12 block">[ THE REALITY ]</span>
         <motion.h2
@@ -210,7 +210,7 @@ const IntegrationMarquee = () => {
   const marqueeItems = [...integrations, ...integrations, ...integrations];
 
   return (
-    <section className="relative z-20 w-screen bg-[#050505] border-y border-white/10 py-3 md:py-4 overflow-hidden flex flex-col">
+    <section className="relative z-20 w-full bg-[#050505] border-y border-white/10 py-3 md:py-4 overflow-hidden flex flex-col">
       <div className="relative flex whitespace-nowrap">
         <motion.div
           animate={{ x: ["0%", "-33.333333%"] }}
@@ -272,7 +272,7 @@ export default function Home() {
       </nav>
 
       {/* 1. Hero Section - Brutalist & Asymmetric */}
-      <section className="relative w-screen h-screen flex flex-col items-start justify-end pb-12 px-6 lg:px-12 overflow-hidden border-b border-white/20">
+      <section className="relative w-full h-screen flex flex-col items-start justify-end pb-12 px-6 lg:px-12 overflow-hidden border-b border-white/20">
 
         {/* Full-bleed Spline Background */}
         <div className="absolute inset-0 w-full h-full z-0 pointer-events-auto">
@@ -341,7 +341,7 @@ export default function Home() {
       <Manifesto />
 
       {/* 2. Core Capabilities - Ultra Concise Brutalist Index */}
-      <section className="relative z-20 w-screen bg-[#050505] pt-24 lg:pt-32 pb-12 lg:pb-16 flex flex-col overflow-hidden">
+      <section className="relative z-20 w-full bg-[#050505] pt-24 lg:pt-32 pb-12 lg:pb-16 flex flex-col overflow-hidden">
         <motion.div
           initial={{ opacity: 0, x: -100 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, ease: "easeOut" }} viewport={{ once: true, margin: "-100px" }}
           className="px-6 lg:px-12 mb-12 flex justify-between items-end"
@@ -357,11 +357,11 @@ export default function Home() {
           {/* Row 1 */}
           <motion.div
             initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: "easeOut" }} viewport={{ once: true, margin: "-50px" }}
-            className="w-full border-b border-white/20 p-6 lg:px-12 py-8 group hover:bg-white hover:text-[#050505] transition-colors duration-300 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 cursor-crosshair"
+            className="w-full border-b border-white/20 p-6 lg:px-12 py-8 group hover:bg-white hover:text-[#050505] transition-colors duration-300 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 cursor-crosshair"
           >
-            <div className="flex items-center gap-8 lg:gap-16 w-full lg:w-1/2">
-              <span className="font-mono text-[10px] tracking-widest uppercase opacity-50">[001]</span>
-              <h3 className="text-4xl md:text-5xl font-black font-[family-name:var(--font-orbitron)] uppercase leading-none group-hover:-translate-y-1 transition-transform">AI Qualification</h3>
+            <div className="flex items-center gap-4 md:gap-8 lg:gap-16 w-full lg:w-1/2">
+              <span className="font-mono text-[10px] tracking-widest uppercase opacity-50 shrink-0">[001]</span>
+              <h3 className="text-3xl sm:text-4xl md:text-5xl font-black font-[family-name:var(--font-orbitron)] uppercase leading-none group-hover:-translate-y-1 transition-transform break-words">AI Qualification</h3>
             </div>
             <p className="font-mono text-sm leading-relaxed max-w-xl lg:text-right opacity-60 group-hover:opacity-100 group-hover:font-medium">
               Powered by advanced natural language processing, Welcome Parrot understands context and intent, instantly identifying your most valuable leads 24/7.
@@ -371,11 +371,11 @@ export default function Home() {
           {/* Row 2 */}
           <motion.div
             initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }} viewport={{ once: true, margin: "-50px" }}
-            className="w-full border-b border-white/20 p-6 lg:px-12 py-8 group hover:bg-white hover:text-[#050505] transition-colors duration-300 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 cursor-crosshair"
+            className="w-full border-b border-white/20 p-6 lg:px-12 py-8 group hover:bg-white hover:text-[#050505] transition-colors duration-300 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 cursor-crosshair"
           >
-            <div className="flex items-center gap-8 lg:gap-16 w-full lg:w-1/2">
-              <span className="font-mono text-[10px] tracking-widest uppercase opacity-50">[002]</span>
-              <h3 className="text-4xl md:text-5xl font-black font-[family-name:var(--font-orbitron)] uppercase leading-none group-hover:-translate-y-1 transition-transform">Seamless API</h3>
+            <div className="flex items-center gap-4 md:gap-8 lg:gap-16 w-full lg:w-1/2">
+              <span className="font-mono text-[10px] tracking-widest uppercase opacity-50 shrink-0">[002]</span>
+              <h3 className="text-3xl sm:text-4xl md:text-5xl font-black font-[family-name:var(--font-orbitron)] uppercase leading-none group-hover:-translate-y-1 transition-transform break-words">Seamless API</h3>
             </div>
             <p className="font-mono text-sm leading-relaxed max-w-xl lg:text-right opacity-60 group-hover:opacity-100 group-hover:font-medium">
               Connects natively to your CRM, Slack, and email infrastructure in seconds. No complex middleware, just direct data pipelines.
@@ -385,11 +385,11 @@ export default function Home() {
           {/* Row 3 */}
           <motion.div
             initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }} viewport={{ once: true, margin: "-50px" }}
-            className="w-full border-b border-white/20 p-6 lg:px-12 py-8 group hover:bg-white hover:text-[#050505] transition-colors duration-300 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 cursor-crosshair"
+            className="w-full border-b border-white/20 p-6 lg:px-12 py-8 group hover:bg-white hover:text-[#050505] transition-colors duration-300 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 cursor-crosshair"
           >
-            <div className="flex items-center gap-8 lg:gap-16 w-full lg:w-1/2">
-              <span className="font-mono text-[10px] tracking-widest uppercase opacity-50">[003]</span>
-              <h3 className="text-4xl md:text-5xl font-black font-[family-name:var(--font-orbitron)] uppercase leading-none group-hover:-translate-y-1 transition-transform">Enterprise Security</h3>
+            <div className="flex items-center gap-4 md:gap-8 lg:gap-16 w-full lg:w-1/2">
+              <span className="font-mono text-[10px] tracking-widest uppercase opacity-50 shrink-0">[003]</span>
+              <h3 className="text-3xl sm:text-4xl md:text-5xl font-black font-[family-name:var(--font-orbitron)] uppercase leading-none group-hover:-translate-y-1 transition-transform break-words">Enterprise Security</h3>
             </div>
             <p className="font-mono text-sm leading-relaxed max-w-xl lg:text-right opacity-60 group-hover:opacity-100 group-hover:font-medium">
               SOC2 compliant infrastructure. Every conversation is end-to-end encrypted, ensuring your business data and lead information remains strictly confidential.
@@ -399,11 +399,11 @@ export default function Home() {
           {/* Row 4 */}
           <motion.div
             initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }} viewport={{ once: true, margin: "-50px" }}
-            className="w-full border-b border-white/20 p-6 lg:px-12 py-8 group hover:bg-white hover:text-[#050505] transition-colors duration-300 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 cursor-crosshair"
+            className="w-full border-b border-white/20 p-6 lg:px-12 py-8 group hover:bg-white hover:text-[#050505] transition-colors duration-300 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 cursor-crosshair"
           >
-            <div className="flex items-center gap-8 lg:gap-16 w-full lg:w-1/2">
-              <span className="font-mono text-[10px] tracking-widest uppercase opacity-50">[004]</span>
-              <h3 className="text-4xl md:text-5xl font-black font-[family-name:var(--font-orbitron)] uppercase leading-none group-hover:-translate-y-1 transition-transform">Rapid Deployment</h3>
+            <div className="flex items-center gap-4 md:gap-8 lg:gap-16 w-full lg:w-1/2">
+              <span className="font-mono text-[10px] tracking-widest uppercase opacity-50 shrink-0">[004]</span>
+              <h3 className="text-3xl sm:text-4xl md:text-5xl font-black font-[family-name:var(--font-orbitron)] uppercase leading-none group-hover:-translate-y-1 transition-transform break-words">Rapid Deployment</h3>
             </div>
             <p className="font-mono text-sm leading-relaxed max-w-xl lg:text-right opacity-60 group-hover:opacity-100 group-hover:font-medium">
               Launch your AI receptionist in minutes. We've simplified the setup process so you can focus on closing deals rather than managing complex software integrations.
@@ -419,7 +419,7 @@ export default function Home() {
       <IntegrationMarquee />
 
       {/* 3. Pricing Options - Monolithic & Stark */}
-      <section id="pricing" className="relative z-20 py-16 px-6 lg:px-12 w-screen bg-[#050505] overflow-hidden" style={{ perspective: "1000px" }}>
+      <section id="pricing" className="relative z-20 py-16 px-6 lg:px-12 w-full bg-[#050505] overflow-hidden" style={{ perspective: "1000px" }}>
         <motion.div
           initial={{ opacity: 0, rotateX: 90 }} whileInView={{ opacity: 1, rotateX: 0 }} transition={{ duration: 0.8, ease: "easeOut" }} viewport={{ once: true, margin: "-100px" }}
           style={{ transformOrigin: "bottom" }}
