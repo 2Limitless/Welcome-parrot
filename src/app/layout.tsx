@@ -1,10 +1,16 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Orbitron } from "next/font/google";
+import { Geist, Geist_Mono, Orbitron, Audiowide } from "next/font/google";
 import Link from "next/link";
 import "./globals.css";
 
 const orbitronFont = Orbitron({
   variable: "--font-orbitron",
+  subsets: ["latin"],
+});
+
+const audiowideFont = Audiowide({
+  weight: "400",
+  variable: "--font-audiowide",
   subsets: ["latin"],
 });
 
@@ -31,7 +37,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${orbitronFont.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${orbitronFont.variable} ${audiowideFont.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-[#050505] text-[#f0f0f0]">
         {children}

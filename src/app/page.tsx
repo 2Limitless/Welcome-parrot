@@ -90,7 +90,7 @@ const RevenueCalculator = () => {
           className="p-6 md:p-12 lg:p-24 border-b lg:border-b-0 lg:border-r border-white/20 flex flex-col justify-center"
         >
           <span className="text-[10px] text-white/50 font-mono tracking-[0.2em] uppercase mb-4 block">[ Cost of Inaction ]</span>
-          <h2 className="text-4xl md:text-5xl font-black font-[family-name:var(--font-orbitron)] uppercase tracking-tighter mb-4 text-white">
+          <h2 className="text-4xl md:text-5xl font-black font-[family-name:var(--font-audiowide)] uppercase tracking-tighter mb-4 text-white">
             Lost Revenue<br />Calculator
           </h2>
           <p className="font-mono text-xs text-white/60 mb-12 max-w-md leading-relaxed">
@@ -144,7 +144,7 @@ const RevenueCalculator = () => {
           initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }} viewport={{ once: true, margin: "-100px" }}
           className="p-6 md:p-12 lg:p-24 flex flex-col justify-center bg-[#0a0a0a]"
         >
-          <h3 className="text-3xl md:text-5xl font-black font-[family-name:var(--font-orbitron)] uppercase tracking-tighter mb-12">
+          <h3 className="text-3xl md:text-5xl font-black font-[family-name:var(--font-audiowide)] uppercase tracking-tighter mb-12">
             You are losing:
           </h3>
 
@@ -159,7 +159,7 @@ const RevenueCalculator = () => {
             </div>
             <div className="flex flex-col pt-4">
               <span className="font-mono text-[10px] tracking-widest uppercase text-[#00ff99]/70 mb-4">Per Year (Projected)</span>
-              <span className="text-4xl sm:text-5xl md:text-6xl xl:text-8xl font-black font-[family-name:var(--font-orbitron)] leading-none text-[#00ff99] drop-shadow-[0_0_30px_rgba(0,255,153,0.3)] whitespace-nowrap overflow-hidden text-ellipsis">
+              <span className="text-4xl sm:text-5xl md:text-6xl xl:text-8xl font-black font-[family-name:var(--font-audiowide)] leading-none text-[#00ff99] drop-shadow-[0_0_30px_rgba(0,255,153,0.3)] whitespace-nowrap overflow-hidden text-ellipsis">
                 {formatMoney(yearlyLost)}
               </span>
             </div>
@@ -188,7 +188,7 @@ const Manifesto = () => {
         <span className="text-[10px] text-[#00ff99] font-mono tracking-[0.2em] uppercase mb-12 block">[ THE REALITY ]</span>
         <motion.h2
           initial={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }} whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }} transition={{ duration: 1, ease: "easeOut" }} viewport={{ once: true, margin: "-100px" }}
-          className="text-4xl sm:text-5xl md:text-7xl lg:text-[6vw] font-black font-[family-name:var(--font-orbitron)] uppercase tracking-tighter leading-[0.9] text-white md:text-white/10 transition-colors duration-500 md:group-hover:text-white"
+          className="text-4xl sm:text-5xl md:text-7xl lg:text-[6vw] font-black font-[family-name:var(--font-audiowide)] uppercase tracking-tighter leading-[0.9] text-white md:text-white/10 transition-colors duration-500 md:group-hover:text-white"
         >
           EVERY MISSED CALL <br className="hidden md:block" /> IS <span className="text-[#ff0055] md:text-white/10 md:group-hover:text-[#ff0055] transition-colors duration-700">BLEEDING</span> REVENUE.
         </motion.h2>
@@ -306,13 +306,13 @@ export default function Home() {
 
             <HeroTitle
               text="AUTOMATED"
-              className="text-[11vw] font-black font-[family-name:var(--font-orbitron)] uppercase leading-[0.8] tracking-normal pointer-events-auto"
+              className="text-[11vw] font-black font-[family-name:var(--font-audiowide)] uppercase leading-[0.8] tracking-normal pointer-events-auto"
               strokeColor="#00bfff"
               defaultColor="#ffffff"
             />
             <HeroTitle
               text="LEAD GEN"
-              className="text-[11vw] font-black font-[family-name:var(--font-orbitron)] uppercase leading-[0.8] tracking-normal pointer-events-auto"
+              className="text-[11vw] font-black font-[family-name:var(--font-audiowide)] uppercase leading-[0.8] tracking-normal pointer-events-auto"
               strokeColor="#ffffff"
               defaultColor="#00bfff"
             />
@@ -346,7 +346,7 @@ export default function Home() {
           initial={{ opacity: 0, x: -100 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, ease: "easeOut" }} viewport={{ once: true, margin: "-100px" }}
           className="px-6 lg:px-12 mb-12 flex justify-between items-end"
         >
-          <h2 className="text-5xl md:text-7xl font-black font-[family-name:var(--font-orbitron)] uppercase tracking-tighter leading-none text-white">
+          <h2 className="text-5xl md:text-7xl font-black font-[family-name:var(--font-audiowide)] uppercase tracking-tighter leading-none text-white">
             Architecture.
           </h2>
           <span className="text-[10px] text-[#00ff99] font-mono tracking-[0.2em] uppercase hidden md:block">[ Core Features ]</span>
@@ -361,7 +361,7 @@ export default function Home() {
           >
             <div className="flex items-center gap-4 md:gap-8 lg:gap-16 w-full lg:w-1/2">
               <span className="font-mono text-[10px] tracking-widest uppercase opacity-50 shrink-0">[001]</span>
-              <h3 className="text-3xl sm:text-4xl md:text-5xl font-black font-[family-name:var(--font-orbitron)] uppercase leading-none group-hover:-translate-y-1 transition-transform break-words">AI Qualification</h3>
+              <h3 className="text-3xl sm:text-4xl md:text-5xl font-black font-[family-name:var(--font-audiowide)] uppercase leading-none group-hover:-translate-y-1 transition-transform break-words">AI Qualification</h3>
             </div>
             <p className="font-mono text-sm leading-relaxed max-w-xl lg:text-right opacity-60 group-hover:opacity-100 group-hover:font-medium">
               Powered by advanced natural language processing, Welcome Parrot understands context and intent, instantly identifying your most valuable leads 24/7.
@@ -375,7 +375,7 @@ export default function Home() {
           >
             <div className="flex items-center gap-4 md:gap-8 lg:gap-16 w-full lg:w-1/2">
               <span className="font-mono text-[10px] tracking-widest uppercase opacity-50 shrink-0">[002]</span>
-              <h3 className="text-3xl sm:text-4xl md:text-5xl font-black font-[family-name:var(--font-orbitron)] uppercase leading-none group-hover:-translate-y-1 transition-transform break-words">Seamless API</h3>
+              <h3 className="text-3xl sm:text-4xl md:text-5xl font-black font-[family-name:var(--font-audiowide)] uppercase leading-none group-hover:-translate-y-1 transition-transform break-words">Seamless API</h3>
             </div>
             <p className="font-mono text-sm leading-relaxed max-w-xl lg:text-right opacity-60 group-hover:opacity-100 group-hover:font-medium">
               Connects natively to your CRM, Slack, and email infrastructure in seconds. No complex middleware, just direct data pipelines.
@@ -389,7 +389,7 @@ export default function Home() {
           >
             <div className="flex items-center gap-4 md:gap-8 lg:gap-16 w-full lg:w-1/2">
               <span className="font-mono text-[10px] tracking-widest uppercase opacity-50 shrink-0">[003]</span>
-              <h3 className="text-3xl sm:text-4xl md:text-5xl font-black font-[family-name:var(--font-orbitron)] uppercase leading-none group-hover:-translate-y-1 transition-transform break-words">Enterprise Security</h3>
+              <h3 className="text-3xl sm:text-4xl md:text-5xl font-black font-[family-name:var(--font-audiowide)] uppercase leading-none group-hover:-translate-y-1 transition-transform break-words">Enterprise Security</h3>
             </div>
             <p className="font-mono text-sm leading-relaxed max-w-xl lg:text-right opacity-60 group-hover:opacity-100 group-hover:font-medium">
               SOC2 compliant infrastructure. Every conversation is end-to-end encrypted, ensuring your business data and lead information remains strictly confidential.
@@ -403,7 +403,7 @@ export default function Home() {
           >
             <div className="flex items-center gap-4 md:gap-8 lg:gap-16 w-full lg:w-1/2">
               <span className="font-mono text-[10px] tracking-widest uppercase opacity-50 shrink-0">[004]</span>
-              <h3 className="text-3xl sm:text-4xl md:text-5xl font-black font-[family-name:var(--font-orbitron)] uppercase leading-none group-hover:-translate-y-1 transition-transform break-words">Rapid Deployment</h3>
+              <h3 className="text-3xl sm:text-4xl md:text-5xl font-black font-[family-name:var(--font-audiowide)] uppercase leading-none group-hover:-translate-y-1 transition-transform break-words">Rapid Deployment</h3>
             </div>
             <p className="font-mono text-sm leading-relaxed max-w-xl lg:text-right opacity-60 group-hover:opacity-100 group-hover:font-medium">
               Launch your AI receptionist in minutes. We've simplified the setup process so you can focus on closing deals rather than managing complex software integrations.
@@ -427,7 +427,7 @@ export default function Home() {
         >
           <div>
             <span className="text-[10px] text-white/50 font-mono tracking-[0.2em] uppercase mb-4 block">[ Pricing Plans ]</span>
-            <h2 className="text-5xl md:text-7xl font-black tracking-tighter uppercase leading-none font-[family-name:var(--font-orbitron)] text-white mb-6">
+            <h2 className="text-5xl md:text-7xl font-black tracking-tighter uppercase leading-none font-[family-name:var(--font-audiowide)] text-white mb-6">
               Pricing.
             </h2>
             <div className="max-w-2xl border-l-2 border-[#00bfff] pl-6 py-2">
@@ -448,7 +448,7 @@ export default function Home() {
           >
             <div>
               <span className="text-[10px] text-current/50 font-mono tracking-widest uppercase block mb-4">[ Tier 01 - Missed-Call Auto-Catch ]</span>
-              <h3 className="text-3xl lg:text-4xl font-black uppercase tracking-tighter mb-4 font-[family-name:var(--font-orbitron)]">Basic</h3>
+              <h3 className="text-3xl lg:text-4xl font-black uppercase tracking-tighter mb-4 font-[family-name:var(--font-audiowide)]">Basic</h3>
               <div className="text-4xl font-mono font-bold mb-6">$149<span className="text-sm opacity-50">/mo</span></div>
               <p className="font-mono text-xs text-current/70 leading-relaxed mb-8">
                 For less than $5 a day, you stop losing high-ticket jobs to voicemail. The instant a call drops, the system texts them back—delivering pre-approved, high-converting responses to lock in the lead before they dial a competitor.
@@ -472,7 +472,7 @@ export default function Home() {
           >
             <div>
               <span className="text-[10px] text-current/70 font-mono tracking-widest uppercase block mb-4">[ Tier 02 - AI Lead Qualifier ]</span>
-              <h3 className="text-3xl lg:text-4xl font-black uppercase tracking-tighter mb-4 font-[family-name:var(--font-orbitron)]">Standard</h3>
+              <h3 className="text-3xl lg:text-4xl font-black uppercase tracking-tighter mb-4 font-[family-name:var(--font-audiowide)]">Standard</h3>
               <div className="text-4xl font-mono font-bold text-[#050505] mb-6">$297<span className="text-sm opacity-70">/mo</span></div>
               <p className="font-mono text-xs text-[#050505]/80 leading-relaxed mb-8 font-bold">
                 By the time you finish your current job, you have a fully qualified lead sitting on your phone. The AI acts as a digital SDR, answering initial questions and extracting the full scope of work using strict guardrails based on your actual company data.
@@ -497,7 +497,7 @@ export default function Home() {
           >
             <div>
               <span className="text-[10px] text-[#00ff99] font-mono tracking-widest uppercase block mb-4">[ VIP Protocol - 24/7 Voice ]</span>
-              <h3 className="text-3xl lg:text-4xl font-black uppercase tracking-tighter mb-4 font-[family-name:var(--font-orbitron)] text-white">Premium</h3>
+              <h3 className="text-3xl lg:text-4xl font-black uppercase tracking-tighter mb-4 font-[family-name:var(--font-audiowide)] text-white">Premium</h3>
               <div className="text-4xl font-mono font-bold mb-6 text-white">$897<span className="text-sm text-white/50">/mo</span></div>
               <p className="font-mono text-xs text-white/70 leading-relaxed mb-8">
                 A hyper-realistic voice agent answers every call instantly. It executes your exact sales frameworks to handle typical conversations and book appointments. If a call requires a human touch, it seamlessly transfers them directly to your phone.

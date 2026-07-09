@@ -40,7 +40,7 @@ export default function DashboardOverview() {
   return (
     <div className="space-y-12">
       <div>
-        <h1 className="text-3xl font-black uppercase tracking-tighter font-[family-name:var(--font-orbitron)] mb-2">Overview</h1>
+        <h1 className="text-3xl font-black uppercase tracking-tighter font-[family-name:var(--font-audiowide)] mb-2">Overview</h1>
         <p className="font-mono text-[10px] uppercase tracking-widest text-white/50">Your AI Receptionist metrics for the last 7 days.</p>
       </div>
 

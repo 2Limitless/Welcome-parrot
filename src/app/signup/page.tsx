@@ -89,7 +89,7 @@ function SignupForm() {
           </Link>
 
           <span className="text-[10px] text-[#00bfff] font-mono tracking-[0.2em] uppercase mb-4 block">[ Selected Protocol ]</span>
-          <h1 className="text-4xl md:text-5xl font-black tracking-tighter uppercase leading-none font-[family-name:var(--font-orbitron)] text-white mb-6">
+          <h1 className="text-4xl md:text-5xl font-black tracking-tighter uppercase leading-none font-[family-name:var(--font-audiowide)] text-white mb-6">
             {selectedTier.name}
           </h1>
           <div className="text-5xl font-mono font-bold mb-8">{selectedTier.price}</div>

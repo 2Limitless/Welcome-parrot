@@ -13,7 +13,7 @@ export default function SettingsPage() {
   return (
     <div className="space-y-8 max-w-5xl">
       <div>
-        <h1 className="text-3xl font-black uppercase tracking-tighter font-[family-name:var(--font-orbitron)] mb-2">AI Protocol Settings</h1>
+        <h1 className="text-3xl font-black uppercase tracking-tighter font-[family-name:var(--font-audiowide)] mb-2">AI Protocol Settings</h1>
         <p className="font-mono text-[10px] uppercase tracking-widest text-white/50">Configure your autonomous agent's parameters and knowledge base.</p>
       </div>
 

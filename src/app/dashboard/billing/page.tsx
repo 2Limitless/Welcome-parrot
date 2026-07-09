@@ -24,7 +24,7 @@ export default function BillingPage() {
   return (
     <div className="space-y-8 max-w-5xl">
       <div>
-        <h1 className="text-3xl font-black uppercase tracking-tighter font-[family-name:var(--font-orbitron)] mb-2">Billing & Subscription</h1>
+        <h1 className="text-3xl font-black uppercase tracking-tighter font-[family-name:var(--font-audiowide)] mb-2">Billing & Subscription</h1>
         <p className="font-mono text-[10px] uppercase tracking-widest text-white/50">Manage your payment methods and view past invoices.</p>
       </div>
 
@@ -40,7 +40,7 @@ export default function BillingPage() {
             <div className="flex justify-between items-start mb-8">
               <div>
                 <span className="font-mono text-[10px] uppercase tracking-widest text-white/50 block mb-2">Current Active Protocol</span>
-                <h2 className="text-4xl font-black font-[family-name:var(--font-orbitron)] uppercase tracking-tighter">{currentPlan.name}</h2>
+                <h2 className="text-4xl font-black font-[family-name:var(--font-audiowide)] uppercase tracking-tighter">{currentPlan.name}</h2>
               </div>
               <span className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest px-3 py-1 bg-[#00ff99]/10 border border-[#00ff99]/30 text-[#00ff99]">
                 <CheckCircle className="w-3 h-3" />
@@ -111,7 +111,7 @@ export default function BillingPage() {
           <section className="bg-[#00bfff] text-[#050505] border border-[#00bfff] p-6 group hover:bg-white hover:border-white transition-colors duration-300">
             <div className="flex items-center gap-3 mb-4">
               <Zap className="w-5 h-5" />
-              <h3 className="font-black font-[family-name:var(--font-orbitron)] uppercase tracking-tighter text-2xl">Upgrade</h3>
+              <h3 className="font-black font-[family-name:var(--font-audiowide)] uppercase tracking-tighter text-2xl">Upgrade</h3>
             </div>
             <p className="font-mono text-xs text-[#050505]/80 leading-relaxed font-bold mb-6">
               Switch to the Autonomous protocol to unlock the 24/7 Voice Receptionist and advanced human routing.

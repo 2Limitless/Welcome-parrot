@@ -16,7 +16,7 @@ export default function PrivacyPolicy() {
 
       <div className="max-w-4xl mx-auto relative z-20">
         <div className="mb-12 border-b border-white/20 pb-8">
-          <h1 className="text-5xl md:text-7xl font-black tracking-tighter uppercase leading-none font-[family-name:var(--font-orbitron)] text-white">
+          <h1 className="text-5xl md:text-7xl font-black tracking-tighter uppercase leading-none font-[family-name:var(--font-audiowide)] text-white">
             Privacy Policy
           </h1>
           <p className="mt-4 font-mono text-sm text-white/50 uppercase tracking-widest">Last Updated: July 2026</p>
