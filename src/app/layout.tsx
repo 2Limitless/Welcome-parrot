@@ -43,13 +43,21 @@ export default function RootLayout({
         {children}
         
         {/* Global Footer */}
-        <footer className="w-full border-t border-white/20 py-8 px-6 lg:px-12 bg-[#111111] flex flex-col md:flex-row items-center justify-between z-[100] relative mt-auto">
-          <div className="flex items-center gap-4 mb-4 md:mb-0">
-            <span className="font-mono text-[10px] text-white/50 uppercase tracking-widest">© 2026 Welcome Parrot. All rights reserved.</span>
+        <footer className="w-full border-t border-white/20 py-8 px-6 lg:px-12 bg-[#111111] flex flex-col z-[100] relative mt-auto">
+          <div className="w-full max-w-4xl mx-auto text-center mb-8">
+            <p className="font-mono text-[10px] text-white/50 uppercase tracking-widest leading-relaxed">
+              Welcome Parrot Sales & Support: (502) 401-1305<br/>
+              By calling or texting this number, you agree to receive text messages from Welcome Parrot. Reply STOP to opt out. Message & data rates may apply.
+            </p>
           </div>
-          <div className="flex items-center gap-8">
-            <Link href="/privacy" className="font-mono text-[10px] text-white/50 uppercase tracking-widest hover:text-[#00bfff] transition-colors">Privacy Policy</Link>
-            <Link href="/terms" className="font-mono text-[10px] text-white/50 uppercase tracking-widest hover:text-[#00bfff] transition-colors">Terms of Service</Link>
+          <div className="flex flex-col md:flex-row items-center justify-between w-full">
+            <div className="flex items-center gap-4 mb-4 md:mb-0">
+              <span className="font-mono text-[10px] text-white/50 uppercase tracking-widest">© 2026 Welcome Parrot. All rights reserved.</span>
+            </div>
+            <div className="flex items-center gap-8">
+              <Link href="/privacy" className="font-mono text-[10px] text-white/50 uppercase tracking-widest hover:text-[#00bfff] transition-colors">Privacy Policy</Link>
+              <Link href="/terms" className="font-mono text-[10px] text-white/50 uppercase tracking-widest hover:text-[#00bfff] transition-colors">Terms of Service</Link>
+            </div>
           </div>
         </footer>
       </body>

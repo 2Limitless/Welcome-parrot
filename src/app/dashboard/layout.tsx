@@ -63,7 +63,7 @@ export default function DashboardLayout({
           <Link href="/" className="flex items-center gap-2 group">
             <TerminalSquare className="w-5 h-5 text-[#00bfff] group-hover:scale-110 transition-transform" />
             <span className="font-[family-name:var(--font-audiowide)] font-black tracking-widest uppercase text-sm">
-              Parrot.OS
+              Welcome Parrot.OS
             </span>
           </Link>
         </div>
