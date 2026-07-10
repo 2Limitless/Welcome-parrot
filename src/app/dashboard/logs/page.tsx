@@ -35,7 +35,16 @@ export default function CallLogsPage() {
     fetchLogs();
   }, []);
 
-  const filteredLogs = filter === "ALL" ? logs : logs.filter(log => log.direction === filter.toLowerCase());
+  const formatPhone = (phone: string) => {
+    if (!phone) return 'Unknown';
+    const cleaned = ('' + phone).replace(/\D/g, '');
+    const match = cleaned.match(/^1?(\d{3})(\d{3})(\d{4})$/);
+    return match ? `(${match[1]}) ${match[2]}-${match[3]}` : phone;
+  };
+
+  const filteredLogs = filter === "ALL" 
+    ? logs 
+    : logs.filter(log => log.direction === filter.toLowerCase());
 
   return (
     <div className="space-y-8">
@@ -100,37 +109,30 @@ export default function CallLogsPage() {
           </div>
         ) : (
           <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse min-w-[800px]">
-              <thead>
-                <tr className="border-b border-white/10 bg-white/[0.02]">
-                  <th className="p-4 font-mono text-[10px] uppercase tracking-widest text-white/40">Timestamp</th>
-                  <th className="p-4 font-mono text-[10px] uppercase tracking-widest text-white/40">Origin</th>
-                  <th className="p-4 font-mono text-[10px] uppercase tracking-widest text-white/40">Message</th>
-                  <th className="p-4 font-mono text-[10px] uppercase tracking-widest text-white/40">Direction</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-white/5">
+            {filteredLogs.length === 0 ? (
+              <div className="p-12 text-center text-white/50">
+                <p className="font-mono text-sm uppercase tracking-widest">No logs found.</p>
+              </div>
+            ) : (
+              <div className="flex flex-col">
                 {filteredLogs.map((log) => (
-                  <tr key={log.id} className="hover:bg-white/[0.02] transition-colors group">
-                    <td className="p-4 font-mono text-[10px] text-white/60 whitespace-nowrap">
-                      {new Date(log.created_at).toLocaleString()}
-                    </td>
-                    <td className="p-4 font-mono text-sm text-white whitespace-nowrap">{log.customer_phone}</td>
-                    <td className="p-4 font-mono text-xs text-white/70 max-w-sm truncate" title={log.body}>
-                      {log.body}
-                    </td>
-                    <td className="p-4">
-                      <span className={`inline-block font-mono text-[10px] uppercase tracking-widest px-3 py-1 border ${
-                        log.direction === "outbound" ? "bg-[#00bfff]/10 border-[#00bfff]/30 text-[#00bfff]" :
-                        "bg-[#00ff99]/10 border-[#00ff99]/30 text-[#00ff99]"
-                      }`}>
-                        {log.direction || 'unknown'}
-                      </span>
-                    </td>
-                  </tr>
+                  <div key={log.id} className="flex justify-between items-start p-5 border-b border-white/10 last:border-0 hover:bg-white/5 transition-colors group">
+                    <div className="max-w-[75%]">
+                      <div className="flex items-center gap-3 mb-2">
+                        <p className="font-black font-[family-name:var(--font-orbitron)] tracking-wider text-white text-sm group-hover:text-[#00bfff] transition-colors">{formatPhone(log.customer_phone)}</p>
+                        <span className={`text-[9px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-sm ${log.direction === 'outbound' ? 'bg-[#00bfff]/20 text-[#00bfff] border border-[#00bfff]/30' : 'bg-[#00ff99]/20 text-[#00ff99] border border-[#00ff99]/30'}`}>
+                          {log.direction === 'outbound' ? 'AI Agent' : 'Customer'}
+                        </span>
+                      </div>
+                      <p className="text-sm text-white/70 leading-relaxed font-mono whitespace-pre-wrap break-words">{log.body}</p>
+                    </div>
+                    <div className="text-right shrink-0">
+                      <p className="text-[10px] font-mono text-white/40 uppercase tracking-widest">{new Date(log.created_at).toLocaleString(undefined, { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' })}</p>
+                    </div>
+                  </div>
                 ))}
-              </tbody>
-            </table>
+              </div>
+            )}
           </div>
         )}
       </div>

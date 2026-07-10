@@ -29,9 +29,35 @@ export default function DashboardOverview() {
         setTotalMessages(count);
       }
     };
-    
+
+    // Realtime subscription
+    const channel = supabase
+      .channel('messages_changes')
+      .on(
+        'postgres_changes',
+        { event: 'INSERT', schema: 'public', table: 'messages' },
+        (payload) => {
+          if (payload.new.client_id === session.user.id) {
+            setRecentActivity(prev => [payload.new, ...prev].slice(0, 5));
+            setTotalMessages(prev => prev + 1);
+          }
+        }
+      )
+      .subscribe();
+
     fetchDashboardData();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
   }, []);
+
+  const formatPhone = (phone: string) => {
+    if (!phone) return 'Unknown';
+    const cleaned = ('' + phone).replace(/\D/g, '');
+    const match = cleaned.match(/^1?(\d{3})(\d{3})(\d{4})$/);
+    return match ? `(${match[1]}) ${match[2]}-${match[3]}` : phone;
+  };
 
   const stats = [
     {
@@ -98,24 +124,26 @@ export default function DashboardOverview() {
             <div className="col-span-1 text-right">Direction</div>
           </div>
           
-          <div className="divide-y divide-white/5">
+          <div className="flex flex-col">
             {recentActivity.length === 0 ? (
-              <div className="p-8 text-center text-white/50 font-mono text-xs uppercase tracking-widest">
-                No recent activity found.
+              <div className="p-8 text-center text-white/40">
+                <p className="font-mono text-xs uppercase tracking-widest">No recent activity found.</p>
+                <p className="text-[10px] mt-2">Missed calls will appear here automatically.</p>
               </div>
             ) : (
-              recentActivity.map((log) => (
-                <div key={log.id} className="grid grid-cols-4 p-4 items-center hover:bg-white/[0.02] transition-colors cursor-crosshair">
-                  <div className="col-span-1 font-mono text-xs text-white/50">
-                    {new Date(log.created_at).toLocaleDateString()}
+              recentActivity.map((activity) => (
+                <div key={activity.id} className="flex justify-between items-start p-5 border-b border-white/10 last:border-0 hover:bg-white/5 transition-colors group">
+                  <div className="max-w-[70%]">
+                    <div className="flex items-center gap-3 mb-2">
+                      <p className="font-black font-[family-name:var(--font-orbitron)] tracking-wider text-white text-sm group-hover:text-[#00bfff] transition-colors">{formatPhone(activity.customer_phone)}</p>
+                      <span className={`text-[9px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-sm ${activity.direction === 'outbound' ? 'bg-[#00bfff]/20 text-[#00bfff] border border-[#00bfff]/30' : 'bg-[#00ff99]/20 text-[#00ff99] border border-[#00ff99]/30'}`}>
+                        {activity.direction === 'outbound' ? 'AI Agent' : 'Customer'}
+                      </span>
+                    </div>
+                    <p className="text-sm text-white/70 leading-relaxed font-mono break-words">{activity.body}</p>
                   </div>
-                  <div className="col-span-2 font-mono text-xs text-white">{log.customer_phone}</div>
-                  <div className="col-span-1 flex justify-end">
-                    <span className={`font-mono text-[10px] uppercase tracking-widest px-3 py-1 border ${
-                      log.direction === 'outbound' ? 'bg-[#00bfff]/10 border-[#00bfff]/30 text-[#00bfff]' : 'bg-[#00ff99]/10 border-[#00ff99]/30 text-[#00ff99]'
-                    }`}>
-                      {log.direction}
-                    </span>
+                  <div className="text-right shrink-0">
+                    <p className="text-[10px] font-mono text-white/40 uppercase tracking-widest">{new Date(activity.created_at).toLocaleString(undefined, { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' })}</p>
                   </div>
                 </div>
               ))
