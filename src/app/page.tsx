@@ -244,37 +244,74 @@ const IntegrationMarquee = () => {
 
 const SystemInfo = () => {
   return (
-    <section className="relative z-20 w-full bg-[#111111] py-24 px-6 lg:px-12 flex flex-col items-center justify-center border-t border-white/10">
+    <section className="relative z-20 w-full bg-[#111111] py-32 px-6 lg:px-12 flex flex-col items-center justify-center overflow-hidden border-t border-white/5">
+      {/* Background Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#00bfff]/5 rounded-full blur-[120px] pointer-events-none" />
+
       <motion.div 
         initial={{ opacity: 0, y: 30 }} 
         whileInView={{ opacity: 1, y: 0 }} 
         transition={{ duration: 0.8, ease: "easeOut" }} 
         viewport={{ once: true, margin: "-100px" }}
-        className="max-w-5xl mx-auto text-center"
+        className="max-w-6xl mx-auto w-full relative z-10"
       >
-        <span className="text-[10px] text-[#00bfff] font-mono tracking-[0.2em] uppercase mb-8 block">[ Speed is Revenue ]</span>
-        <h2 className="text-4xl md:text-5xl font-black font-[family-name:var(--font-orbitron)] uppercase tracking-tighter mb-8 text-white">
-          Capture Every <br className="hidden md:block" /> Opportunity.
-        </h2>
-        <p className="font-mono text-sm md:text-base text-white/60 leading-relaxed mb-16 max-w-3xl mx-auto">
-          The business that responds first wins the job. Stop losing hot leads to competitors because you were busy on a job site. Welcome Parrot instantly engages, answers questions, and secures the deal the second a prospect reaches out.
-        </p>
+        <div className="text-center mb-24">
+          <span className="text-[10px] text-[#00bfff] font-mono tracking-[0.2em] uppercase mb-8 block">[ Speed is Revenue ]</span>
+          <h2 className="text-4xl md:text-6xl font-black font-[family-name:var(--font-orbitron)] uppercase tracking-tighter mb-8 text-white">
+            Capture Every <br className="hidden md:block" /> Opportunity.
+          </h2>
+          <p className="font-mono text-sm md:text-base text-white/60 leading-relaxed max-w-2xl mx-auto">
+            The business that responds first wins the job. Stop losing hot leads to competitors because you were busy on a job site. Welcome Parrot instantly engages, answers questions, and secures the deal the second a prospect reaches out.
+          </p>
+        </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
-          <div className="border border-white/10 p-8 bg-[#161618] hover:border-[#00bfff]/50 transition-colors group cursor-crosshair">
-            <Network className="w-8 h-8 text-[#00bfff] mb-6 group-hover:scale-110 transition-transform duration-300" />
-            <h3 className="text-xl font-bold font-[family-name:var(--font-orbitron)] uppercase mb-3 tracking-wide">Connect</h3>
-            <p className="text-xs font-mono text-white/50 leading-relaxed">Syncs directly with your existing phone number, website forms, and CRM. The moment a lead reaches out, the AI takes over.</p>
-          </div>
-          <div className="border border-white/10 p-8 bg-[#161618] hover:border-[#00bfff]/50 transition-colors group cursor-crosshair">
-            <Cpu className="w-8 h-8 text-[#00bfff] mb-6 group-hover:scale-110 transition-transform duration-300" />
-            <h3 className="text-xl font-bold font-[family-name:var(--font-orbitron)] uppercase mb-3 tracking-wide">Qualify</h3>
-            <p className="text-xs font-mono text-white/50 leading-relaxed">The AI acts as a digital SDR, asking the right questions to extract the full scope of work and ensure they are a good fit before booking.</p>
-          </div>
-          <div className="border border-white/10 p-8 bg-[#161618] hover:border-[#00bfff]/50 transition-colors group cursor-crosshair">
-            <TerminalSquare className="w-8 h-8 text-[#00bfff] mb-6 group-hover:scale-110 transition-transform duration-300" />
-            <h3 className="text-xl font-bold font-[family-name:var(--font-orbitron)] uppercase mb-3 tracking-wide">Close</h3>
-            <p className="text-xs font-mono text-white/50 leading-relaxed">Seamlessly schedules estimates or jobs directly on your calendar, locking in the revenue without you lifting a single finger.</p>
+        {/* The Pipeline */}
+        <div className="relative">
+          {/* Connecting Line */}
+          <div className="absolute top-1/2 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#00bfff]/30 to-transparent hidden md:block -translate-y-1/2" />
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 text-left relative z-10">
+            {/* Card 1 */}
+            <div className="relative p-8 md:p-10 rounded-3xl bg-[#161618]/80 backdrop-blur-xl border border-white/10 hover:border-[#00bfff]/50 transition-all duration-500 group overflow-hidden">
+              <div className="absolute -top-4 -right-4 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+                <span className="text-9xl font-black font-[family-name:var(--font-orbitron)] italic">01</span>
+              </div>
+              <div className="relative z-10">
+                <div className="w-16 h-16 rounded-full bg-[#00bfff]/10 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:bg-[#00bfff]/20 transition-all duration-300 shadow-[0_0_30px_rgba(0,191,255,0.1)] group-hover:shadow-[0_0_40px_rgba(0,191,255,0.3)]">
+                  <Network className="w-7 h-7 text-[#00bfff]" />
+                </div>
+                <h3 className="text-2xl font-bold font-[family-name:var(--font-orbitron)] uppercase mb-4 tracking-wide text-white group-hover:text-[#00bfff] transition-colors">Connect</h3>
+                <p className="text-sm font-mono text-white/60 leading-relaxed group-hover:text-white/80 transition-colors">Syncs directly with your existing phone number, website forms, and CRM. The moment a lead reaches out, the AI takes over.</p>
+              </div>
+            </div>
+
+            {/* Card 2 */}
+            <div className="relative p-8 md:p-10 rounded-3xl bg-[#161618]/80 backdrop-blur-xl border border-white/10 hover:border-[#00bfff]/50 transition-all duration-500 group overflow-hidden md:translate-y-12">
+              <div className="absolute -top-4 -right-4 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+                <span className="text-9xl font-black font-[family-name:var(--font-orbitron)] italic">02</span>
+              </div>
+              <div className="relative z-10">
+                <div className="w-16 h-16 rounded-full bg-[#00bfff]/10 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:bg-[#00bfff]/20 transition-all duration-300 shadow-[0_0_30px_rgba(0,191,255,0.1)] group-hover:shadow-[0_0_40px_rgba(0,191,255,0.3)]">
+                  <Cpu className="w-7 h-7 text-[#00bfff]" />
+                </div>
+                <h3 className="text-2xl font-bold font-[family-name:var(--font-orbitron)] uppercase mb-4 tracking-wide text-white group-hover:text-[#00bfff] transition-colors">Qualify</h3>
+                <p className="text-sm font-mono text-white/60 leading-relaxed group-hover:text-white/80 transition-colors">The AI acts as a digital SDR, asking the right questions to extract the full scope of work and ensure they are a good fit before booking.</p>
+              </div>
+            </div>
+
+            {/* Card 3 */}
+            <div className="relative p-8 md:p-10 rounded-3xl bg-[#161618]/80 backdrop-blur-xl border border-white/10 hover:border-[#00bfff]/50 transition-all duration-500 group overflow-hidden">
+              <div className="absolute -top-4 -right-4 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+                <span className="text-9xl font-black font-[family-name:var(--font-orbitron)] italic">03</span>
+              </div>
+              <div className="relative z-10">
+                <div className="w-16 h-16 rounded-full bg-[#00bfff]/10 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:bg-[#00bfff]/20 transition-all duration-300 shadow-[0_0_30px_rgba(0,191,255,0.1)] group-hover:shadow-[0_0_40px_rgba(0,191,255,0.3)]">
+                  <TerminalSquare className="w-7 h-7 text-[#00bfff]" />
+                </div>
+                <h3 className="text-2xl font-bold font-[family-name:var(--font-orbitron)] uppercase mb-4 tracking-wide text-white group-hover:text-[#00bfff] transition-colors">Close</h3>
+                <p className="text-sm font-mono text-white/60 leading-relaxed group-hover:text-white/80 transition-colors">Seamlessly schedules estimates or jobs directly on your calendar, locking in the revenue without you lifting a single finger.</p>
+              </div>
+            </div>
           </div>
         </div>
       </motion.div>
