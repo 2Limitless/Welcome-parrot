@@ -1,12 +1,14 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { ArrowUpRight, PhoneMissed, DollarSign, CalendarCheck } from "lucide-react";
+import { ArrowUpRight, PhoneMissed, DollarSign, CalendarCheck, MessageSquare, ChevronRight } from "lucide-react";
 import { createClient } from "@/utils/supabase/client";
+import ChatModal from "@/components/ChatModal";
 
 export default function DashboardOverview() {
-  const [recentActivity, setRecentActivity] = useState<any[]>([]);
+  const [prospects, setProspects] = useState<any[]>([]);
   const [totalMessages, setTotalMessages] = useState(0);
+  const [selectedProspect, setSelectedProspect] = useState<any | null>(null);
 
   const supabase = createClient();
 
@@ -21,7 +23,7 @@ export default function DashboardOverview() {
       const { data, count } = await res.json();
 
       if (data) {
-        setRecentActivity(data);
+        processMessagesIntoProspects(data);
       }
       if (count !== null) {
         setTotalMessages(count);
@@ -35,8 +37,13 @@ export default function DashboardOverview() {
           { event: 'INSERT', schema: 'public', table: 'messages' },
           (payload) => {
             if (payload.new.client_id === session.user.id) {
-              setRecentActivity(prev => [payload.new, ...prev].slice(0, 5));
               setTotalMessages(prev => prev + 1);
+              // Trigger a full re-fetch to safely group prospects on new message
+              fetch(`/api/messages?clientId=${session.user.id}`)
+                .then(r => r.json())
+                .then(d => {
+                  if (d.data) processMessagesIntoProspects(d.data);
+                });
             }
           }
         )
@@ -51,6 +58,47 @@ export default function DashboardOverview() {
       }
     };
   }, []);
+
+  const processMessagesIntoProspects = (messages: any[]) => {
+    const prospectMap = new Map();
+    
+    // Sort ascending by time so when we push to array, it's chronological
+    const sortedMessages = [...messages].sort((a, b) => 
+      new Date(a.created_at).getTime() - new Date(b.created_at).getTime()
+    );
+
+    sortedMessages.forEach(msg => {
+      const phone = msg.customer_phone;
+      if (!prospectMap.has(phone)) {
+        prospectMap.set(phone, {
+          phone: phone,
+          messages: [],
+          lastInteraction: msg.created_at,
+          latestMessage: msg.body
+        });
+      }
+      const prospect = prospectMap.get(phone);
+      prospect.messages.push(msg);
+      prospect.lastInteraction = msg.created_at;
+      prospect.latestMessage = msg.body;
+    });
+
+    // Convert map to array and sort by last interaction descending
+    const prospectsArray = Array.from(prospectMap.values()).sort((a, b) => 
+      new Date(b.lastInteraction).getTime() - new Date(a.lastInteraction).getTime()
+    );
+
+    setProspects(prospectsArray);
+    
+    // Update selected prospect if modal is open
+    setProspects(currentProspects => {
+      setSelectedProspect((prevSelected: any) => {
+        if (!prevSelected) return null;
+        return currentProspects.find(p => p.phone === prevSelected.phone) || null;
+      });
+      return prospectsArray;
+    });
+  };
 
   const formatPhone = (phone: string) => {
     if (!phone) return 'Unknown';
@@ -68,11 +116,11 @@ export default function DashboardOverview() {
       color: "text-[#00bfff]"
     },
     {
-      title: "Revenue Saved",
-      value: "TBD",
-      trend: "Pending CRM Sync",
+      title: "Total Prospects",
+      value: prospects.length.toString(),
+      trend: "Unique phone numbers",
       icon: DollarSign,
-      color: "text-white/30"
+      color: "text-[#00ff99]"
     },
     {
       title: "Appointments Booked",
@@ -86,22 +134,19 @@ export default function DashboardOverview() {
   return (
     <div className="space-y-12">
       <div>
-        <h1 className="text-3xl font-black uppercase tracking-tighter font-[family-name:var(--font-audiowide)] mb-2">Overview</h1>
-        <p className="font-mono text-[10px] uppercase tracking-widest text-white/50">Your AI Receptionist metrics.</p>
+        <h1 className="text-3xl font-black uppercase tracking-tighter font-[family-name:var(--font-audiowide)] mb-2">CRM Dashboard</h1>
+        <p className="font-mono text-[10px] uppercase tracking-widest text-white/50">Your active leads and conversations.</p>
       </div>
 
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {stats.map((stat, i) => (
-          <div key={i} className="bg-[#1a1a1a] border border-white/10 p-6 relative overflow-hidden group hover:border-white/30 transition-colors">
-            {/* Subtle glow on hover */}
+          <div key={i} className="bg-[#1a1a1a] border border-white/10 p-6 relative overflow-hidden group hover:border-white/30 transition-colors cursor-default">
             <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
-            
             <div className="flex justify-between items-start mb-8">
               <span className="font-mono text-[10px] uppercase tracking-widest text-white/50">{stat.title}</span>
               <stat.icon className={`w-4 h-4 ${stat.color} opacity-70`} />
             </div>
-            
             <div>
               <div className={`text-4xl font-mono font-bold ${stat.color} mb-2`}>{stat.value}</div>
               <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-white/40">
@@ -113,37 +158,62 @@ export default function DashboardOverview() {
         ))}
       </div>
 
-      {/* Recent Activity Log */}
+      {/* Prospects Sheet */}
       <div>
-        <h2 className="text-xl font-black uppercase tracking-widest mb-6 border-b border-white/10 pb-4">Recent Interceptions</h2>
+        <h2 className="text-xl font-black uppercase tracking-widest mb-6 border-b border-white/10 pb-4 flex justify-between items-end">
+          <span>Active Prospects</span>
+          <span className="font-mono text-[10px] text-white/40 font-normal">Click a prospect to view chat history</span>
+        </h2>
         
-        <div className="bg-[#1a1a1a] border border-white/10">
-          <div className="grid grid-cols-4 p-4 border-b border-white/5 font-mono text-[10px] uppercase tracking-widest text-white/40">
-            <div className="col-span-1">Timestamp</div>
-            <div className="col-span-2">Origin</div>
-            <div className="col-span-1 text-right">Direction</div>
+        <div className="bg-[#1a1a1a] border border-white/10 rounded-sm overflow-hidden">
+          {/* Table Header */}
+          <div className="grid grid-cols-12 p-4 border-b border-white/5 font-mono text-[10px] uppercase tracking-widest text-white/40 bg-[#111]">
+            <div className="col-span-3">Prospect ID / Phone</div>
+            <div className="col-span-6">Latest Interaction Summary</div>
+            <div className="col-span-2 text-center">Last Active</div>
+            <div className="col-span-1 text-right">Action</div>
           </div>
           
           <div className="flex flex-col">
-            {recentActivity.length === 0 ? (
-              <div className="p-8 text-center text-white/40">
-                <p className="font-mono text-xs uppercase tracking-widest">No recent activity found.</p>
-                <p className="text-[10px] mt-2">Missed calls will appear here automatically.</p>
+            {prospects.length === 0 ? (
+              <div className="p-12 text-center text-white/40 flex flex-col items-center">
+                <MessageSquare className="w-8 h-8 mb-4 opacity-20" />
+                <p className="font-mono text-xs uppercase tracking-widest">No prospects captured yet.</p>
+                <p className="text-[10px] mt-2">Incoming texts will automatically generate leads here.</p>
               </div>
             ) : (
-              recentActivity.map((activity) => (
-                <div key={activity.id} className="flex justify-between items-start p-5 border-b border-white/10 last:border-0 hover:bg-white/5 transition-colors group">
-                  <div className="max-w-[70%]">
-                    <div className="flex items-center gap-3 mb-2">
-                      <p className="font-black font-[family-name:var(--font-orbitron)] tracking-wider text-white text-sm group-hover:text-[#00bfff] transition-colors">{formatPhone(activity.customer_phone)}</p>
-                      <span className={`text-[9px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-sm ${activity.direction === 'outbound' ? 'bg-[#00bfff]/20 text-[#00bfff] border border-[#00bfff]/30' : 'bg-[#00ff99]/20 text-[#00ff99] border border-[#00ff99]/30'}`}>
-                        {activity.direction === 'outbound' ? 'AI Agent' : 'Customer'}
-                      </span>
+              prospects.map((prospect) => (
+                <div 
+                  key={prospect.phone} 
+                  onClick={() => setSelectedProspect(prospect)}
+                  className="grid grid-cols-12 items-center p-4 border-b border-white/5 last:border-0 hover:bg-white/5 transition-all cursor-pointer group"
+                >
+                  <div className="col-span-3 flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#00bfff]/20 to-[#00ff99]/20 flex items-center justify-center border border-white/10 group-hover:border-[#00bfff]/50 transition-colors">
+                      <span className="font-mono text-[10px] text-white/70">ID</span>
                     </div>
-                    <p className="text-sm text-white/70 leading-relaxed font-mono break-words">{activity.body}</p>
+                    <p className="font-black font-[family-name:var(--font-orbitron)] tracking-wider text-white text-sm group-hover:text-[#00bfff] transition-colors">
+                      {formatPhone(prospect.phone)}
+                    </p>
                   </div>
-                  <div className="text-right shrink-0">
-                    <p className="text-[10px] font-mono text-white/40 uppercase tracking-widest">{new Date(activity.created_at).toLocaleString(undefined, { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' })}</p>
+                  
+                  <div className="col-span-6 pr-6">
+                    <p className="text-sm text-white/60 truncate font-mono">
+                      <span className="text-[#00ff99] opacity-70 mr-2">»</span>
+                      {prospect.latestMessage}
+                    </p>
+                  </div>
+                  
+                  <div className="col-span-2 text-center">
+                    <p className="text-[10px] font-mono text-white/40 uppercase tracking-widest">
+                      {new Date(prospect.lastInteraction).toLocaleString(undefined, { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' })}
+                    </p>
+                  </div>
+                  
+                  <div className="col-span-1 flex justify-end">
+                    <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[#00bfff] transition-colors">
+                      <ChevronRight className="w-4 h-4 text-white/50 group-hover:text-white transition-colors" />
+                    </div>
                   </div>
                 </div>
               ))
@@ -152,6 +222,11 @@ export default function DashboardOverview() {
         </div>
       </div>
       
+      <ChatModal 
+        isOpen={!!selectedProspect} 
+        onClose={() => setSelectedProspect(null)} 
+        prospect={selectedProspect} 
+      />
     </div>
   );
 }
