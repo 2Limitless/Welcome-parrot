@@ -155,11 +155,11 @@ const RevenueCalculator = () => {
             <div className="space-y-8">
               <div className="flex flex-col border-b border-white/10 pb-8">
                 <span className="font-mono text-[10px] md:text-xs tracking-widest uppercase text-white/50 mb-2">Per Week</span>
-                <span className="text-4xl md:text-5xl font-mono tracking-[-0.1em] text-white/80">{formatMoney(weeklyLost)}</span>
+                <span className="text-4xl md:text-5xl font-mono tracking-[-0.075em] text-white/80">{formatMoney(weeklyLost)}</span>
               </div>
               <div className="flex flex-col border-b border-white/10 pb-8">
                 <span className="font-mono text-[10px] md:text-xs tracking-widest uppercase text-white/50 mb-2">Per Month</span>
-                <span className="text-5xl md:text-6xl font-mono tracking-[-0.1em] text-white/90">{formatMoney(monthlyLost)}</span>
+                <span className="text-5xl md:text-6xl font-mono tracking-[-0.075em] text-white/90">{formatMoney(monthlyLost)}</span>
               </div>
               <div className="flex flex-col pt-4">
                 <span className="font-mono text-[10px] md:text-xs tracking-widest uppercase text-[#00ff99]/70 mb-4">Per Year (Projected)</span>
