@@ -86,90 +86,90 @@ const RevenueCalculator = () => {
       {/* Background Ambient Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-[#00ff99] opacity-5 blur-[120px] rounded-full pointer-events-none" />
       
-      <div className="max-w-7xl mx-auto rounded-3xl border border-[#00ff99]/30 shadow-[0_0_60px_rgba(0,255,153,0.15)] bg-[#161618] relative z-10 overflow-hidden">
+      <div className="w-full max-w-[1400px] mx-auto rounded-3xl border border-[#00ff99]/30 shadow-[0_0_60px_rgba(0,255,153,0.15)] bg-[#161618] relative z-10 overflow-hidden">
         <div className="grid grid-cols-1 lg:grid-cols-2">
           {/* Left Column: Inputs */}
           <motion.div
             initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, ease: "easeOut" }} viewport={{ once: true, margin: "-100px" }}
-            className="p-6 md:p-12 lg:p-20 border-b lg:border-b-0 lg:border-r border-white/10 flex flex-col justify-center"
+            className="p-6 md:p-12 lg:p-16 border-b lg:border-b-0 lg:border-r border-white/10 flex flex-col justify-center"
           >
             <span className="text-[10px] text-[#00ff99] font-mono tracking-[0.2em] uppercase mb-4 block drop-shadow-[0_0_10px_rgba(0,255,153,0.5)]">[ Cost of Inaction ]</span>
-            <h2 className="text-4xl md:text-5xl font-black font-[family-name:var(--font-orbitron)] uppercase tracking-tighter mb-4 text-white">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black font-[family-name:var(--font-orbitron)] uppercase tracking-tighter mb-4 text-white">
               Lost Revenue<br />Calculator
             </h2>
-          <p className="font-mono text-xs text-white/60 mb-12 max-w-md leading-relaxed">
-            Plug in your numbers below to see exactly how much money your business is bleeding by sending leads to voicemail.
-          </p>
+            <p className="font-mono text-xs md:text-sm text-white/60 mb-12 max-w-md leading-relaxed">
+              Plug in your numbers below to see exactly how much money your business is bleeding by sending leads to voicemail.
+            </p>
 
-          <div className="space-y-12 max-w-xl w-full">
-            {/* Input 1 */}
-            <div>
-              <div className="flex justify-between items-end mb-4">
-                <label className="font-mono text-xs uppercase tracking-widest text-white/70">Avg. Job Revenue</label>
-                <span className="font-mono text-xl text-white">{formatMoney(jobRevenue)}</span>
+            <div className="space-y-12 max-w-xl w-full">
+              {/* Input 1 */}
+              <div>
+                <div className="flex justify-between items-end mb-4">
+                  <label className="font-mono text-xs md:text-sm uppercase tracking-widest text-white/70">Avg. Job Revenue</label>
+                  <span className="font-mono text-xl md:text-2xl text-white">{formatMoney(jobRevenue)}</span>
+                </div>
+                <input
+                  type="range" min="100" max="25000" step="100"
+                  value={jobRevenue} onChange={(e) => setJobRevenue(Number(e.target.value))}
+                  className="w-full h-1 bg-white/20 appearance-none outline-none hover:bg-white/40 transition-colors cursor-crosshair"
+                />
               </div>
-              <input
-                type="range" min="100" max="25000" step="100"
-                value={jobRevenue} onChange={(e) => setJobRevenue(Number(e.target.value))}
-                className="w-full h-1 bg-white/20 appearance-none outline-none hover:bg-white/40 transition-colors cursor-crosshair"
-              />
-            </div>
 
-            {/* Input 2 */}
-            <div>
-              <div className="flex justify-between items-end mb-4">
-                <label className="font-mono text-xs uppercase tracking-widest text-white/70">Missed Calls (Weekly)</label>
-                <span className="font-mono text-xl text-white">{missedCalls}</span>
+              {/* Input 2 */}
+              <div>
+                <div className="flex justify-between items-end mb-4">
+                  <label className="font-mono text-xs md:text-sm uppercase tracking-widest text-white/70">Missed Calls (Weekly)</label>
+                  <span className="font-mono text-xl md:text-2xl text-white">{missedCalls}</span>
+                </div>
+                <input
+                  type="range" min="1" max="100" step="1"
+                  value={missedCalls} onChange={(e) => setMissedCalls(Number(e.target.value))}
+                  className="w-full h-1 bg-white/20 appearance-none outline-none hover:bg-white/40 transition-colors cursor-crosshair"
+                />
               </div>
-              <input
-                type="range" min="1" max="100" step="1"
-                value={missedCalls} onChange={(e) => setMissedCalls(Number(e.target.value))}
-                className="w-full h-1 bg-white/20 appearance-none outline-none hover:bg-white/40 transition-colors cursor-crosshair"
-              />
-            </div>
 
-            {/* Input 3 */}
-            <div>
-              <div className="flex justify-between items-end mb-4">
-                <label className="font-mono text-xs uppercase tracking-widest text-white/70">Close Rate</label>
-                <span className="font-mono text-xl text-[#00ff99]">{closeRate}%</span>
+              {/* Input 3 */}
+              <div>
+                <div className="flex justify-between items-end mb-4">
+                  <label className="font-mono text-xs md:text-sm uppercase tracking-widest text-white/70">Close Rate</label>
+                  <span className="font-mono text-xl md:text-2xl text-[#00ff99]">{closeRate}%</span>
+                </div>
+                <input
+                  type="range" min="1" max="100" step="1"
+                  value={closeRate} onChange={(e) => setCloseRate(Number(e.target.value))}
+                  className="w-full h-1 bg-[#00ff99]/30 appearance-none outline-none hover:bg-[#00ff99]/60 transition-colors cursor-crosshair"
+                />
               </div>
-              <input
-                type="range" min="1" max="100" step="1"
-                value={closeRate} onChange={(e) => setCloseRate(Number(e.target.value))}
-                className="w-full h-1 bg-[#00ff99]/30 appearance-none outline-none hover:bg-[#00ff99]/60 transition-colors cursor-crosshair"
-              />
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
 
-        {/* Right Column: Output */}
-        <motion.div
-          initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }} viewport={{ once: true, margin: "-100px" }}
-          className="p-6 md:p-12 lg:p-20 flex flex-col justify-center bg-[#1a1a1a]/50"
-        >
-          <h3 className="text-3xl md:text-5xl font-black font-[family-name:var(--font-orbitron)] uppercase tracking-tighter mb-12">
-            You are losing:
-          </h3>
+          {/* Right Column: Output */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }} viewport={{ once: true, margin: "-100px" }}
+            className="p-6 md:p-12 lg:p-16 flex flex-col justify-center bg-[#1a1a1a]/50 overflow-hidden"
+          >
+            <h3 className="text-3xl md:text-4xl lg:text-5xl font-black font-[family-name:var(--font-orbitron)] uppercase tracking-tighter mb-12">
+              You are losing:
+            </h3>
 
-          <div className="space-y-8">
-            <div className="flex flex-col border-b border-white/10 pb-8">
-              <span className="font-mono text-[10px] tracking-widest uppercase text-white/50 mb-2">Per Week</span>
-              <span className="text-4xl md:text-5xl font-mono text-white/80">{formatMoney(weeklyLost)}</span>
+            <div className="space-y-8">
+              <div className="flex flex-col border-b border-white/10 pb-8">
+                <span className="font-mono text-[10px] md:text-xs tracking-widest uppercase text-white/50 mb-2">Per Week</span>
+                <span className="text-4xl md:text-5xl font-mono text-white/80">{formatMoney(weeklyLost)}</span>
+              </div>
+              <div className="flex flex-col border-b border-white/10 pb-8">
+                <span className="font-mono text-[10px] md:text-xs tracking-widest uppercase text-white/50 mb-2">Per Month</span>
+                <span className="text-5xl md:text-6xl font-mono text-white/90">{formatMoney(monthlyLost)}</span>
+              </div>
+              <div className="flex flex-col pt-4">
+                <span className="font-mono text-[10px] md:text-xs tracking-widest uppercase text-[#00ff99]/70 mb-4">Per Year (Projected)</span>
+                <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black font-[family-name:var(--font-orbitron)] leading-none text-[#00ff99] drop-shadow-[0_0_30px_rgba(0,255,153,0.3)] whitespace-nowrap overflow-hidden text-ellipsis">
+                  {formatMoney(yearlyLost)}
+                </span>
+              </div>
             </div>
-            <div className="flex flex-col border-b border-white/10 pb-8">
-              <span className="font-mono text-[10px] tracking-widest uppercase text-white/50 mb-2">Per Month</span>
-              <span className="text-5xl md:text-6xl font-mono text-white/90">{formatMoney(monthlyLost)}</span>
-            </div>
-            <div className="flex flex-col pt-4">
-              <span className="font-mono text-[10px] tracking-widest uppercase text-[#00ff99]/70 mb-4">Per Year (Projected)</span>
-              <span className="text-4xl sm:text-5xl md:text-6xl xl:text-8xl font-black font-[family-name:var(--font-orbitron)] leading-none text-[#00ff99] drop-shadow-[0_0_30px_rgba(0,255,153,0.3)] whitespace-nowrap overflow-hidden text-ellipsis">
-                {formatMoney(yearlyLost)}
-              </span>
-            </div>
-          </div>
-        </motion.div>
-      </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
