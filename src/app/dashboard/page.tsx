@@ -5,6 +5,61 @@ import { ArrowUpRight, PhoneMissed, DollarSign, CalendarCheck } from "lucide-rea
 import { createClient } from "@/utils/supabase/client";
 
 export default function DashboardOverview() {
+  const [recentActivity, setRecentActivity] = useState<any[]>([]);
+  const [totalMessages, setTotalMessages] = useState(0);
+
+  const supabase = createClient();
+
+  useEffect(() => {
+    let subscriptionChannel: any = null;
+
+    const fetchDashboardData = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session) return;
+
+      const { data, count } = await supabase
+        .from('messages')
+        .select('*', { count: 'exact' })
+        .eq('client_id', session.user.id)
+        .order('created_at', { ascending: false })
+        .limit(5);
+
+      if (data) {
+        setRecentActivity(data);
+      }
+      if (count !== null) {
+        setTotalMessages(count);
+      }
+
+      // Realtime subscription
+      subscriptionChannel = supabase
+        .channel('messages_changes')
+        .on(
+          'postgres_changes',
+          { event: 'INSERT', schema: 'public', table: 'messages' },
+          (payload) => {
+            if (payload.new.client_id === session.user.id) {
+              setRecentActivity(prev => [payload.new, ...prev].slice(0, 5));
+              setTotalMessages(prev => prev + 1);
+            }
+          }
+        )
+        .subscribe();
+    };
+
+    fetchDashboardData();
+
+    return () => {
+      if (subscriptionChannel) {
+        supabase.removeChannel(subscriptionChannel);
+      }
+    };
+  }, []);
+
+  const formatPhone = (phone: string) => {
+    if (!phone) return 'Unknown';
+    const cleaned = ('' + phone).replace(/\D/g, '');
+    const match = cleaned.match(/^1?(\d{3})(\d{3})(\d{4})$/);
     return match ? `(${match[1]}) ${match[2]}-${match[3]}` : phone;
   };
 
