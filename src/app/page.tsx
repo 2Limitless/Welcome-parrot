@@ -254,7 +254,7 @@ const SystemInfo = () => {
       >
         <span className="text-[10px] text-[#00bfff] font-mono tracking-[0.2em] uppercase mb-8 block">[ Speed is Revenue ]</span>
         <h2 className="text-4xl md:text-5xl font-black font-[family-name:var(--font-orbitron)] uppercase tracking-tighter mb-8 text-white">
-          Speed to Lead. <br className="hidden md:block" /> Automated.
+          Capture Every <br className="hidden md:block" /> Opportunity.
         </h2>
         <p className="font-mono text-sm md:text-base text-white/60 leading-relaxed mb-16 max-w-3xl mx-auto">
           The business that responds first wins the job. Stop losing hot leads to competitors because you were busy on a job site. Welcome Parrot instantly engages, answers questions, and secures the deal the second a prospect reaches out.
