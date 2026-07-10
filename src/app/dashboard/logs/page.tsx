@@ -19,11 +19,8 @@ export default function CallLogsPage() {
       return;
     }
 
-    const { data, error } = await supabase
-      .from('messages')
-      .select('*')
-      .eq('client_id', session.user.id)
-      .order('created_at', { ascending: false });
+    const res = await fetch(`/api/messages?clientId=${session.user.id}`);
+    const { data } = await res.json();
 
     if (data) {
       setLogs(data);

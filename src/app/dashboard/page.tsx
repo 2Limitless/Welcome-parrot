@@ -17,12 +17,8 @@ export default function DashboardOverview() {
       const { data: { session } } = await supabase.auth.getSession();
       if (!session) return;
 
-      const { data, count } = await supabase
-        .from('messages')
-        .select('*', { count: 'exact' })
-        .eq('client_id', session.user.id)
-        .order('created_at', { ascending: false })
-        .limit(5);
+      const res = await fetch(`/api/messages?clientId=${session.user.id}`);
+      const { data, count } = await res.json();
 
       if (data) {
         setRecentActivity(data);
