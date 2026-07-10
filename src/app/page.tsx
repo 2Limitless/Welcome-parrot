@@ -82,17 +82,21 @@ const RevenueCalculator = () => {
   };
 
   return (
-    <section className="relative z-20 w-full bg-[#111111] border-b border-white/20 overflow-hidden">
-      <div className="grid grid-cols-1 lg:grid-cols-2">
-        {/* Left Column: Inputs */}
-        <motion.div
-          initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, ease: "easeOut" }} viewport={{ once: true, margin: "-100px" }}
-          className="p-6 md:p-12 lg:p-24 border-b lg:border-b-0 lg:border-r border-white/20 flex flex-col justify-center"
-        >
-          <span className="text-[10px] text-white/50 font-mono tracking-[0.2em] uppercase mb-4 block">[ Cost of Inaction ]</span>
-          <h2 className="text-4xl md:text-5xl font-black font-[family-name:var(--font-orbitron)] uppercase tracking-tighter mb-4 text-white">
-            Lost Revenue<br />Calculator
-          </h2>
+    <section className="relative z-20 w-full py-24 px-6 lg:px-12 bg-[#111111] overflow-hidden">
+      {/* Background Ambient Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-[#00ff99] opacity-5 blur-[120px] rounded-full pointer-events-none" />
+      
+      <div className="max-w-7xl mx-auto rounded-3xl border border-[#00ff99]/30 shadow-[0_0_60px_rgba(0,255,153,0.15)] bg-[#161618] relative z-10 overflow-hidden">
+        <div className="grid grid-cols-1 lg:grid-cols-2">
+          {/* Left Column: Inputs */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, ease: "easeOut" }} viewport={{ once: true, margin: "-100px" }}
+            className="p-6 md:p-12 lg:p-20 border-b lg:border-b-0 lg:border-r border-white/10 flex flex-col justify-center"
+          >
+            <span className="text-[10px] text-[#00ff99] font-mono tracking-[0.2em] uppercase mb-4 block drop-shadow-[0_0_10px_rgba(0,255,153,0.5)]">[ Cost of Inaction ]</span>
+            <h2 className="text-4xl md:text-5xl font-black font-[family-name:var(--font-orbitron)] uppercase tracking-tighter mb-4 text-white">
+              Lost Revenue<br />Calculator
+            </h2>
           <p className="font-mono text-xs text-white/60 mb-12 max-w-md leading-relaxed">
             Plug in your numbers below to see exactly how much money your business is bleeding by sending leads to voicemail.
           </p>
@@ -142,7 +146,7 @@ const RevenueCalculator = () => {
         {/* Right Column: Output */}
         <motion.div
           initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }} viewport={{ once: true, margin: "-100px" }}
-          className="p-6 md:p-12 lg:p-24 flex flex-col justify-center bg-[#1a1a1a]"
+          className="p-6 md:p-12 lg:p-20 flex flex-col justify-center bg-[#1a1a1a]/50"
         >
           <h3 className="text-3xl md:text-5xl font-black font-[family-name:var(--font-orbitron)] uppercase tracking-tighter mb-12">
             You are losing:
@@ -165,6 +169,7 @@ const RevenueCalculator = () => {
             </div>
           </div>
         </motion.div>
+      </div>
       </div>
     </section>
   );
