@@ -242,9 +242,45 @@ const IntegrationMarquee = () => {
   );
 };
 
-
-
-
+const SystemInfo = () => {
+  return (
+    <section className="relative z-20 w-full bg-[#111111] py-24 px-6 lg:px-12 flex flex-col items-center justify-center border-t border-white/10">
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }} 
+        whileInView={{ opacity: 1, y: 0 }} 
+        transition={{ duration: 0.8, ease: "easeOut" }} 
+        viewport={{ once: true, margin: "-100px" }}
+        className="max-w-5xl mx-auto text-center"
+      >
+        <span className="text-[10px] text-[#00bfff] font-mono tracking-[0.2em] uppercase mb-8 block">[ How it works ]</span>
+        <h2 className="text-4xl md:text-5xl font-black font-[family-name:var(--font-orbitron)] uppercase tracking-tighter mb-8 text-white">
+          An Intelligent System <br className="hidden md:block" /> Built for Scale.
+        </h2>
+        <p className="font-mono text-sm md:text-base text-white/60 leading-relaxed mb-16 max-w-3xl mx-auto">
+          Welcome Parrot isn't just a chatbot. It's a complete infrastructure upgrade for your sales team. We ingest your company's data, connect to your calendar, and seamlessly integrate into your CRM. The result is a 24/7 AI agent that speaks your language and books real revenue while you sleep.
+        </p>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+          <div className="border border-white/10 p-8 bg-[#161618] hover:border-[#00bfff]/50 transition-colors group cursor-crosshair">
+            <Cpu className="w-8 h-8 text-[#00bfff] mb-6 group-hover:scale-110 transition-transform duration-300" />
+            <h3 className="text-xl font-bold font-[family-name:var(--font-orbitron)] uppercase mb-3 tracking-wide">Ingest</h3>
+            <p className="text-xs font-mono text-white/50 leading-relaxed">We feed your website, PDFs, and past sales calls into the AI so it perfectly mimics your best salesperson and understands your business inside and out.</p>
+          </div>
+          <div className="border border-white/10 p-8 bg-[#161618] hover:border-[#00bfff]/50 transition-colors group cursor-crosshair">
+            <Shield className="w-8 h-8 text-[#00bfff] mb-6 group-hover:scale-110 transition-transform duration-300" />
+            <h3 className="text-xl font-bold font-[family-name:var(--font-orbitron)] uppercase mb-3 tracking-wide">Guardrails</h3>
+            <p className="text-xs font-mono text-white/50 leading-relaxed">Strict conversational boundaries ensure the AI never hallucinates pricing, goes off-topic, or promises services you don't actually offer.</p>
+          </div>
+          <div className="border border-white/10 p-8 bg-[#161618] hover:border-[#00bfff]/50 transition-colors group cursor-crosshair">
+            <Network className="w-8 h-8 text-[#00bfff] mb-6 group-hover:scale-110 transition-transform duration-300" />
+            <h3 className="text-xl font-bold font-[family-name:var(--font-orbitron)] uppercase mb-3 tracking-wide">Deploy</h3>
+            <p className="text-xs font-mono text-white/50 leading-relaxed">Go live in minutes across SMS, WhatsApp, or Voice, with direct bi-directional integration to your calendar and existing CRM infrastructure.</p>
+          </div>
+        </div>
+      </motion.div>
+    </section>
+  );
+};
 
 export default function Home() {
   return (
@@ -339,11 +375,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Hero 2: Cost of Inaction Calculator */}
-      <RevenueCalculator />
-
       {/* Manifesto */}
       <Manifesto />
+
+      {/* System Information */}
+      <SystemInfo />
+
+      {/* Calculator */}
+      <RevenueCalculator />
 
       {/* 2. Core Capabilities - Ultra Concise Brutalist Index */}
       <section className="relative z-20 w-full bg-[#111111] pt-24 lg:pt-32 pb-12 lg:pb-16 flex flex-col overflow-hidden">
