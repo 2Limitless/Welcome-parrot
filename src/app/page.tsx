@@ -252,29 +252,29 @@ const SystemInfo = () => {
         viewport={{ once: true, margin: "-100px" }}
         className="max-w-5xl mx-auto text-center"
       >
-        <span className="text-[10px] text-[#00bfff] font-mono tracking-[0.2em] uppercase mb-8 block">[ How it works ]</span>
+        <span className="text-[10px] text-[#00bfff] font-mono tracking-[0.2em] uppercase mb-8 block">[ Speed is Revenue ]</span>
         <h2 className="text-4xl md:text-5xl font-black font-[family-name:var(--font-orbitron)] uppercase tracking-tighter mb-8 text-white">
-          An Intelligent System <br className="hidden md:block" /> Built for Scale.
+          Speed to Lead. <br className="hidden md:block" /> Automated.
         </h2>
         <p className="font-mono text-sm md:text-base text-white/60 leading-relaxed mb-16 max-w-3xl mx-auto">
-          Welcome Parrot isn't just a chatbot. It's a complete infrastructure upgrade for your sales team. We ingest your company's data, connect to your calendar, and seamlessly integrate into your CRM. The result is a 24/7 AI agent that speaks your language and books real revenue while you sleep.
+          The business that responds first wins the job. Stop losing hot leads to competitors because you were busy on a job site. Welcome Parrot instantly engages, answers questions, and secures the deal the second a prospect reaches out.
         </p>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
           <div className="border border-white/10 p-8 bg-[#161618] hover:border-[#00bfff]/50 transition-colors group cursor-crosshair">
-            <Cpu className="w-8 h-8 text-[#00bfff] mb-6 group-hover:scale-110 transition-transform duration-300" />
-            <h3 className="text-xl font-bold font-[family-name:var(--font-orbitron)] uppercase mb-3 tracking-wide">Ingest</h3>
-            <p className="text-xs font-mono text-white/50 leading-relaxed">We feed your website, PDFs, and past sales calls into the AI so it perfectly mimics your best salesperson and understands your business inside and out.</p>
-          </div>
-          <div className="border border-white/10 p-8 bg-[#161618] hover:border-[#00bfff]/50 transition-colors group cursor-crosshair">
-            <Shield className="w-8 h-8 text-[#00bfff] mb-6 group-hover:scale-110 transition-transform duration-300" />
-            <h3 className="text-xl font-bold font-[family-name:var(--font-orbitron)] uppercase mb-3 tracking-wide">Guardrails</h3>
-            <p className="text-xs font-mono text-white/50 leading-relaxed">Strict conversational boundaries ensure the AI never hallucinates pricing, goes off-topic, or promises services you don't actually offer.</p>
-          </div>
-          <div className="border border-white/10 p-8 bg-[#161618] hover:border-[#00bfff]/50 transition-colors group cursor-crosshair">
             <Network className="w-8 h-8 text-[#00bfff] mb-6 group-hover:scale-110 transition-transform duration-300" />
-            <h3 className="text-xl font-bold font-[family-name:var(--font-orbitron)] uppercase mb-3 tracking-wide">Deploy</h3>
-            <p className="text-xs font-mono text-white/50 leading-relaxed">Go live in minutes across SMS, WhatsApp, or Voice, with direct bi-directional integration to your calendar and existing CRM infrastructure.</p>
+            <h3 className="text-xl font-bold font-[family-name:var(--font-orbitron)] uppercase mb-3 tracking-wide">Connect</h3>
+            <p className="text-xs font-mono text-white/50 leading-relaxed">Syncs directly with your existing phone number, website forms, and CRM. The moment a lead reaches out, the AI takes over.</p>
+          </div>
+          <div className="border border-white/10 p-8 bg-[#161618] hover:border-[#00bfff]/50 transition-colors group cursor-crosshair">
+            <Cpu className="w-8 h-8 text-[#00bfff] mb-6 group-hover:scale-110 transition-transform duration-300" />
+            <h3 className="text-xl font-bold font-[family-name:var(--font-orbitron)] uppercase mb-3 tracking-wide">Qualify</h3>
+            <p className="text-xs font-mono text-white/50 leading-relaxed">The AI acts as a digital SDR, asking the right questions to extract the full scope of work and ensure they are a good fit before booking.</p>
+          </div>
+          <div className="border border-white/10 p-8 bg-[#161618] hover:border-[#00bfff]/50 transition-colors group cursor-crosshair">
+            <TerminalSquare className="w-8 h-8 text-[#00bfff] mb-6 group-hover:scale-110 transition-transform duration-300" />
+            <h3 className="text-xl font-bold font-[family-name:var(--font-orbitron)] uppercase mb-3 tracking-wide">Close</h3>
+            <p className="text-xs font-mono text-white/50 leading-relaxed">Seamlessly schedules estimates or jobs directly on your calendar, locking in the revenue without you lifting a single finger.</p>
           </div>
         </div>
       </motion.div>
