@@ -250,44 +250,56 @@ const SystemInfo = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 text-left relative z-10">
             {/* Card 1 */}
-            <div className="relative p-8 md:p-10 rounded-3xl bg-[#161618]/80 backdrop-blur-xl border border-white/10 hover:border-[#00bfff]/50 transition-all duration-500 group overflow-hidden">
-              <div className="absolute -top-4 -right-4 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
-                <span className="text-9xl font-black font-[family-name:var(--font-orbitron)] italic">01</span>
+            <div className="relative rounded-3xl bg-[#161618]/80 backdrop-blur-xl border border-white/10 hover:border-[#00bfff]/50 transition-all duration-500 group overflow-hidden flex flex-col">
+              <div className="relative h-48 w-full overflow-hidden border-b border-white/5">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#161618]/90 via-transparent to-transparent z-10" />
+                <img src="/connect_step.png" alt="Connect" className="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700 mix-blend-screen" />
               </div>
-              <div className="relative z-10">
-                <div className="w-16 h-16 rounded-full bg-[#00bfff]/10 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:bg-[#00bfff]/20 transition-all duration-300 shadow-[0_0_30px_rgba(0,191,255,0.1)] group-hover:shadow-[0_0_40px_rgba(0,191,255,0.3)]">
+              <div className="p-8 md:p-10 pt-6 relative z-10 flex-1">
+                <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity pointer-events-none">
+                  <span className="text-9xl font-black font-[family-name:var(--font-orbitron)] italic">01</span>
+                </div>
+                <div className="w-16 h-16 rounded-full bg-[#00bfff]/10 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:bg-[#00bfff]/20 transition-all duration-300 shadow-[0_0_30px_rgba(0,191,255,0.1)] group-hover:shadow-[0_0_40px_rgba(0,191,255,0.3)] relative z-20">
                   <Network className="w-7 h-7 text-[#00bfff]" />
                 </div>
-                <h3 className="text-2xl font-bold font-[family-name:var(--font-orbitron)] uppercase mb-4 tracking-wide text-white group-hover:text-[#00bfff] transition-colors">Connect</h3>
-                <p className="text-sm font-mono text-white/60 leading-relaxed group-hover:text-white/80 transition-colors">Syncs directly with your existing phone number, website forms, and CRM. The moment a lead reaches out, the AI takes over.</p>
+                <h3 className="text-2xl font-bold font-[family-name:var(--font-orbitron)] uppercase mb-4 tracking-wide text-white group-hover:text-[#00bfff] transition-colors relative z-20">Connect</h3>
+                <p className="text-sm font-mono text-white/60 leading-relaxed group-hover:text-white/80 transition-colors relative z-20">Syncs directly with your existing phone number, website forms, and CRM. The moment a lead reaches out, the AI takes over.</p>
               </div>
             </div>
 
             {/* Card 2 */}
-            <div className="relative p-8 md:p-10 rounded-3xl bg-[#161618]/80 backdrop-blur-xl border border-white/10 hover:border-[#00bfff]/50 transition-all duration-500 group overflow-hidden md:translate-y-12">
-              <div className="absolute -top-4 -right-4 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
-                <span className="text-9xl font-black font-[family-name:var(--font-orbitron)] italic">02</span>
+            <div className="relative rounded-3xl bg-[#161618]/80 backdrop-blur-xl border border-white/10 hover:border-[#00bfff]/50 transition-all duration-500 group overflow-hidden md:translate-y-12 flex flex-col">
+              <div className="relative h-48 w-full overflow-hidden border-b border-white/5">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#161618]/90 via-transparent to-transparent z-10" />
+                <img src="/qualify_step.png" alt="Qualify" className="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700 mix-blend-screen" />
               </div>
-              <div className="relative z-10">
-                <div className="w-16 h-16 rounded-full bg-[#00bfff]/10 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:bg-[#00bfff]/20 transition-all duration-300 shadow-[0_0_30px_rgba(0,191,255,0.1)] group-hover:shadow-[0_0_40px_rgba(0,191,255,0.3)]">
+              <div className="p-8 md:p-10 pt-6 relative z-10 flex-1">
+                <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity pointer-events-none">
+                  <span className="text-9xl font-black font-[family-name:var(--font-orbitron)] italic">02</span>
+                </div>
+                <div className="w-16 h-16 rounded-full bg-[#00bfff]/10 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:bg-[#00bfff]/20 transition-all duration-300 shadow-[0_0_30px_rgba(0,191,255,0.1)] group-hover:shadow-[0_0_40px_rgba(0,191,255,0.3)] relative z-20">
                   <Cpu className="w-7 h-7 text-[#00bfff]" />
                 </div>
-                <h3 className="text-2xl font-bold font-[family-name:var(--font-orbitron)] uppercase mb-4 tracking-wide text-white group-hover:text-[#00bfff] transition-colors">Qualify</h3>
-                <p className="text-sm font-mono text-white/60 leading-relaxed group-hover:text-white/80 transition-colors">The AI acts as a digital SDR, asking the right questions to extract the full scope of work and ensure they are a good fit before booking.</p>
+                <h3 className="text-2xl font-bold font-[family-name:var(--font-orbitron)] uppercase mb-4 tracking-wide text-white group-hover:text-[#00bfff] transition-colors relative z-20">Qualify</h3>
+                <p className="text-sm font-mono text-white/60 leading-relaxed group-hover:text-white/80 transition-colors relative z-20">The AI acts as a digital SDR, asking the right questions to extract the full scope of work and ensure they are a good fit before booking.</p>
               </div>
             </div>
 
             {/* Card 3 */}
-            <div className="relative p-8 md:p-10 rounded-3xl bg-[#161618]/80 backdrop-blur-xl border border-white/10 hover:border-[#00bfff]/50 transition-all duration-500 group overflow-hidden">
-              <div className="absolute -top-4 -right-4 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
-                <span className="text-9xl font-black font-[family-name:var(--font-orbitron)] italic">03</span>
+            <div className="relative rounded-3xl bg-[#161618]/80 backdrop-blur-xl border border-white/10 hover:border-[#00bfff]/50 transition-all duration-500 group overflow-hidden flex flex-col">
+              <div className="relative h-48 w-full overflow-hidden border-b border-white/5">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#161618]/90 via-transparent to-transparent z-10" />
+                <img src="/close_step.png" alt="Close" className="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700 mix-blend-screen" />
               </div>
-              <div className="relative z-10">
-                <div className="w-16 h-16 rounded-full bg-[#00bfff]/10 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:bg-[#00bfff]/20 transition-all duration-300 shadow-[0_0_30px_rgba(0,191,255,0.1)] group-hover:shadow-[0_0_40px_rgba(0,191,255,0.3)]">
+              <div className="p-8 md:p-10 pt-6 relative z-10 flex-1">
+                <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity pointer-events-none">
+                  <span className="text-9xl font-black font-[family-name:var(--font-orbitron)] italic">03</span>
+                </div>
+                <div className="w-16 h-16 rounded-full bg-[#00bfff]/10 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:bg-[#00bfff]/20 transition-all duration-300 shadow-[0_0_30px_rgba(0,191,255,0.1)] group-hover:shadow-[0_0_40px_rgba(0,191,255,0.3)] relative z-20">
                   <TerminalSquare className="w-7 h-7 text-[#00bfff]" />
                 </div>
-                <h3 className="text-2xl font-bold font-[family-name:var(--font-orbitron)] uppercase mb-4 tracking-wide text-white group-hover:text-[#00bfff] transition-colors">Close</h3>
-                <p className="text-sm font-mono text-white/60 leading-relaxed group-hover:text-white/80 transition-colors">Seamlessly schedules estimates or jobs directly on your calendar, locking in the revenue without you lifting a single finger.</p>
+                <h3 className="text-2xl font-bold font-[family-name:var(--font-orbitron)] uppercase mb-4 tracking-wide text-white group-hover:text-[#00bfff] transition-colors relative z-20">Close</h3>
+                <p className="text-sm font-mono text-white/60 leading-relaxed group-hover:text-white/80 transition-colors relative z-20">Seamlessly schedules estimates or jobs directly on your calendar, locking in the revenue without you lifting a single finger.</p>
               </div>
             </div>
           </div>
