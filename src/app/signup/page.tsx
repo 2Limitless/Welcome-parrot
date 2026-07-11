@@ -120,7 +120,7 @@ function SignupForm() {
 
         <div className="max-w-md mx-auto w-full relative z-10">
           <div className="mb-12">
-            <span className="text-[10px] text-white/50 font-mono tracking-[0.2em] uppercase mb-4 block">[ System Init ]</span>
+            <span className="text-[10px] text-white/50 font-mono tracking-[0.2em] uppercase mb-4 block">[ Get Started ]</span>
             <h2 className="text-3xl font-black uppercase tracking-widest text-white">Create Account</h2>
           </div>
 
@@ -158,13 +158,13 @@ function SignupForm() {
             </div>
 
             <button type="submit" disabled={isLoading} className="w-full mt-8 border border-[#00bfff] bg-[#00bfff]/10 text-[#00bfff] px-6 py-4 text-[10px] font-mono font-bold uppercase tracking-widest hover:bg-[#00bfff] hover:text-black transition-colors shadow-[0_0_15px_rgba(0,255,153,0.1)] hover:shadow-[0_0_25px_rgba(0,255,153,0.3)] disabled:opacity-50 disabled:cursor-not-allowed">
-              {isLoading ? "Initializing..." : "Continue to Payment"}
+              {isLoading ? "Creating Account..." : "Continue to Payment"}
             </button>
           </form>
 
           <div className="mt-8 text-center">
             <p className="text-[10px] font-mono text-white/50 uppercase tracking-widest">
-              Already initialized? <Link href="/login" className="text-[#00bfff] hover:underline">Client Login</Link>
+              Already have an account? <Link href="/login" className="text-[#00bfff] hover:underline">Client Login</Link>
             </p>
           </div>
         </div>

@@ -65,7 +65,7 @@ function LoginForm() {
           <div className="flex items-center gap-4 text-white/40">
             <KeySquare className="w-8 h-8" />
             <p className="text-[10px] font-mono uppercase tracking-widest leading-relaxed">
-              End-to-End Encrypted.<br /> SOC2 Compliant Infrastructure.
+              End-to-End Encrypted.<br /> Bank-Level Security.
             </p>
           </div>
         </div>
@@ -78,8 +78,8 @@ function LoginForm() {
 
         <div className="max-w-md mx-auto w-full relative z-10">
           <div className="mb-12">
-            <span className="text-[10px] text-white/50 font-mono tracking-[0.2em] uppercase mb-4 block">[ System Login ]</span>
-            <h2 className="text-3xl font-black uppercase tracking-widest text-white">Initialize</h2>
+            <span className="text-[10px] text-white/50 font-mono tracking-[0.2em] uppercase mb-4 block">[ Client Login ]</span>
+            <h2 className="text-3xl font-black uppercase tracking-widest text-white">Welcome Back</h2>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
@@ -105,7 +105,7 @@ function LoginForm() {
               <div className="flex items-center justify-between">
                 <label className="text-[10px] font-mono uppercase tracking-widest text-white/60">Password</label>
                 <Link href="/forgot-password" className="text-[10px] font-mono text-[#00bfff] hover:underline uppercase tracking-widest">
-                  Reset Protocol?
+                  Forgot Password?
                 </Link>
               </div>
               <input 
@@ -119,13 +119,13 @@ function LoginForm() {
             </div>
 
             <button type="submit" disabled={isLoading} className="w-full mt-8 border border-[#00bfff] bg-[#00bfff]/10 text-[#00bfff] px-6 py-4 text-[10px] font-mono font-bold uppercase tracking-widest hover:bg-[#00bfff] hover:text-black transition-colors shadow-[0_0_15px_rgba(0,255,153,0.1)] hover:shadow-[0_0_25px_rgba(0,255,153,0.3)] disabled:opacity-50 disabled:cursor-not-allowed">
-              {isLoading ? "Authenticating..." : "Access System"}
+              {isLoading ? "Authenticating..." : "Log In"}
             </button>
           </form>
 
           <div className="mt-8 text-center">
             <p className="text-[10px] font-mono text-white/50 uppercase tracking-widest">
-              Need authorization? <Link href="/#pricing" className="text-[#00bfff] hover:underline">Deploy Now</Link>
+              Don't have an account? <Link href="/#pricing" className="text-[#00bfff] hover:underline">Get Started</Link>
             </p>
           </div>
         </div>

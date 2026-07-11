@@ -415,7 +415,7 @@ export default function Home() {
           className="px-6 lg:px-12 mb-12 flex justify-between items-end"
         >
           <h2 className="text-5xl md:text-7xl font-black font-[family-name:var(--font-audiowide)] uppercase tracking-tighter leading-none text-white">
-            Architecture.
+            How it Works.
           </h2>
           <span className="text-[10px] text-[#00ff99] font-mono tracking-[0.2em] uppercase hidden md:block">[ Core Features ]</span>
         </motion.div>
@@ -443,10 +443,10 @@ export default function Home() {
           >
             <div className="flex items-center gap-4 md:gap-8 lg:gap-16 w-full lg:w-1/2">
               <span className="font-mono text-[10px] tracking-widest uppercase opacity-50 shrink-0">[002]</span>
-              <h3 className="text-3xl sm:text-4xl md:text-5xl font-black font-[family-name:var(--font-audiowide)] uppercase leading-none group-hover:-translate-y-1 transition-transform break-words">Seamless API</h3>
+              <h3 className="text-3xl sm:text-4xl md:text-5xl font-black font-[family-name:var(--font-audiowide)] uppercase leading-none group-hover:-translate-y-1 transition-transform break-words">Works With Your Tools</h3>
             </div>
             <p className="font-mono text-sm leading-relaxed max-w-xl lg:text-right opacity-60 group-hover:opacity-100 group-hover:font-medium">
-              Connects natively to your CRM, Slack, and email infrastructure in seconds. No complex middleware, just direct data pipelines.
+              Connects directly to your CRM, Slack, and email in seconds. No complex setup, it just works.
             </p>
           </motion.div>
 
@@ -457,10 +457,10 @@ export default function Home() {
           >
             <div className="flex items-center gap-4 md:gap-8 lg:gap-16 w-full lg:w-1/2">
               <span className="font-mono text-[10px] tracking-widest uppercase opacity-50 shrink-0">[003]</span>
-              <h3 className="text-3xl sm:text-4xl md:text-5xl font-black font-[family-name:var(--font-audiowide)] uppercase leading-none group-hover:-translate-y-1 transition-transform break-words">Enterprise Security</h3>
+              <h3 className="text-3xl sm:text-4xl md:text-5xl font-black font-[family-name:var(--font-audiowide)] uppercase leading-none group-hover:-translate-y-1 transition-transform break-words">Bank-Level Security</h3>
             </div>
             <p className="font-mono text-sm leading-relaxed max-w-xl lg:text-right opacity-60 group-hover:opacity-100 group-hover:font-medium">
-              SOC2 compliant infrastructure. Every conversation is end-to-end encrypted, ensuring your business data and lead information remains strictly confidential.
+              Every conversation is securely encrypted, ensuring your business data and lead information remains strictly confidential.
             </p>
           </motion.div>
 
@@ -471,10 +471,10 @@ export default function Home() {
           >
             <div className="flex items-center gap-4 md:gap-8 lg:gap-16 w-full lg:w-1/2">
               <span className="font-mono text-[10px] tracking-widest uppercase opacity-50 shrink-0">[004]</span>
-              <h3 className="text-3xl sm:text-4xl md:text-5xl font-black font-[family-name:var(--font-audiowide)] uppercase leading-none group-hover:-translate-y-1 transition-transform break-words">Rapid Deployment</h3>
+              <h3 className="text-3xl sm:text-4xl md:text-5xl font-black font-[family-name:var(--font-audiowide)] uppercase leading-none group-hover:-translate-y-1 transition-transform break-words">Easy Setup</h3>
             </div>
             <p className="font-mono text-sm leading-relaxed max-w-xl lg:text-right opacity-60 group-hover:opacity-100 group-hover:font-medium">
-              Launch your AI receptionist in minutes. We've simplified the setup process so you can focus on closing deals rather than managing complex software integrations.
+              Launch your AI receptionist in minutes. We've simplified the setup process so you can focus on closing deals rather than managing complex software.
             </p>
           </motion.div>
 
@@ -519,7 +519,7 @@ export default function Home() {
               <h3 className="text-3xl lg:text-4xl font-black uppercase tracking-tighter mb-4 font-[family-name:var(--font-audiowide)]">Basic</h3>
               <div className="text-4xl font-mono font-bold mb-6">$149<span className="text-sm opacity-50">/mo</span></div>
               <p className="font-mono text-xs text-current/70 leading-relaxed mb-8">
-                For less than $5 a day, you stop losing high-ticket jobs to voicemail. The instant a call drops, the system texts them back—delivering pre-approved, high-converting responses to lock in the lead before they dial a competitor.
+                For less than $5 a day, you stop losing high-ticket jobs to voicemail. The instant a call drops, Welcome Parrot texts them back—delivering pre-approved, high-converting responses to lock in the lead before they dial a competitor.
               </p>
               <ul className="space-y-3 mb-12">
                 <li className="font-mono text-[10px] text-current font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00bfff] group-hover:text-white shrink-0 transition-colors" /> Instant Missed-Call SMS</li>
