@@ -44,10 +44,9 @@ export default function RootLayout({
         
         {/* Global Footer */}
         <footer className="w-full border-t border-white/20 py-8 px-6 lg:px-12 bg-[#111111] flex flex-col z-[100] relative mt-auto">
-          <div className="w-full max-w-4xl mx-auto text-center mb-8">
-            <p className="font-mono text-[10px] text-white/50 uppercase tracking-widest leading-relaxed">
-              Welcome Parrot Sales & Support: (502) 401-1305<br/>
-              By calling or texting this number, you agree to receive text messages from Welcome Parrot. Reply STOP to opt out. Message & data rates may apply.
+          <div className="w-full max-w-4xl mx-auto text-center mb-6">
+            <p className="font-mono text-[8px] text-white/20 uppercase tracking-widest leading-relaxed">
+              Support: (502) 401-1305 • By calling/texting you agree to receive messages. Reply STOP to opt out. Msg rates apply.
             </p>
           </div>
           <div className="flex flex-col md:flex-row items-center justify-between w-full">

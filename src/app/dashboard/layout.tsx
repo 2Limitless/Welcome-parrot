@@ -115,10 +115,31 @@ export default function DashboardLayout({
         </header>
 
         {/* Dynamic Page Content */}
-        <div className="p-8 md:p-12">
+        <div className="p-8 md:p-12 pb-24 md:pb-12">
           {children}
         </div>
       </main>
+
+      {/* Mobile Bottom Navigation */}
+      <nav className="md:hidden fixed bottom-0 left-0 w-full bg-[#1a1a1a] border-t border-white/10 z-50 flex justify-around items-center p-2 pb-safe shadow-[0_-10px_40px_rgba(0,0,0,0.5)]">
+        {navItems.map((item) => {
+          const isActive = pathname === item.href;
+          return (
+            <Link
+              key={item.name}
+              href={item.href}
+              className={`flex flex-col items-center p-2 rounded-lg transition-colors ${
+                isActive 
+                  ? "text-[#00bfff]" 
+                  : "text-white/40 hover:text-white"
+              }`}
+            >
+              <item.icon className="w-5 h-5 mb-1" />
+              <span className="text-[8px] font-mono uppercase tracking-widest">{item.name}</span>
+            </Link>
+          );
+        })}
+      </nav>
     </div>
   );
 }
