@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Orbitron, Audiowide } from "next/font/google";
 import Link from "next/link";
+import ConsentBanner from "@/components/ConsentBanner";
 import "./globals.css";
 
 const orbitronFont = Orbitron({
@@ -41,14 +42,10 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-[#111111] text-[#f0f0f0]">
         {children}
+        <ConsentBanner />
         
         {/* Global Footer */}
         <footer className="w-full border-t border-white/20 py-8 px-6 lg:px-12 bg-[#111111] flex flex-col z-[100] relative mt-auto">
-          <div className="w-full max-w-4xl mx-auto text-center mb-6">
-            <p className="font-mono text-[8px] text-white/20 uppercase tracking-widest leading-relaxed">
-              Support: (502) 401-1305 • By calling/texting you agree to receive messages. Reply STOP to opt out. Msg rates apply.
-            </p>
-          </div>
           <div className="flex flex-col md:flex-row items-center justify-between w-full">
             <div className="flex items-center gap-4 mb-4 md:mb-0">
               <span className="font-mono text-[10px] text-white/50 uppercase tracking-widest">© 2026 Welcome Parrot. All rights reserved.</span>
