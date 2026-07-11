@@ -330,7 +330,7 @@ export default function Home() {
           <img src="/logo-v3.png" alt="Welcome Parrot" className="h-[180px] w-auto -my-8 hidden md:block relative z-10 group-hover:scale-105 transition-transform duration-500 drop-shadow-[0_0_15px_rgba(255,255,255,0.05)] object-contain" />
         </div>
         <div className="flex items-center gap-6">
-          <Link href="/login" className="text-[10px] font-mono font-bold uppercase tracking-widest text-white/70 hover:text-[#00bfff] transition-colors hidden md:block">
+          <Link href="/login" className="text-[10px] font-mono font-bold uppercase tracking-widest text-white/70 hover:text-[#00bfff] transition-colors block">
             Client Login
           </Link>
           <Link href="#pricing" className="text-[10px] font-mono font-bold uppercase tracking-widest border border-[#00bfff] text-[#00bfff] px-6 py-3 hover:bg-[#00bfff] hover:text-black transition-colors shadow-[0_0_15px_rgba(0,255,153,0.2)] hover:shadow-[0_0_25px_rgba(0,255,153,0.4)] block text-center">

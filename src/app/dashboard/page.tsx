@@ -107,17 +107,44 @@ export default function DashboardOverview() {
     return match ? `(${match[1]}) ${match[2]}-${match[3]}` : phone;
   };
 
+  const sampleProspects = [
+    {
+      phone: "555-019-8273",
+      lastInteraction: new Date().toISOString(),
+      latestMessage: "Yes, I'd like to get an estimate for my roof.",
+      messages: [
+        { role: "user", body: "Hi, do you do residential roofing?", created_at: new Date(Date.now() - 100000).toISOString() },
+        { role: "assistant", body: "Hello! Yes, we specialize in residential roofing. Are you looking for a repair or a full replacement?", created_at: new Date(Date.now() - 80000).toISOString() },
+        { role: "user", body: "Yes, I'd like to get an estimate for my roof.", created_at: new Date().toISOString() }
+      ]
+    },
+    {
+      phone: "555-012-3948",
+      lastInteraction: new Date(Date.now() - 3600000).toISOString(),
+      latestMessage: "Thanks, I'll check my calendar.",
+      messages: [
+        { role: "user", body: "How much for a standard driveway pressure wash?", created_at: new Date(Date.now() - 3800000).toISOString() },
+        { role: "assistant", body: "Our standard driveway pressure washing starts at $150. Would you like to schedule an appointment?", created_at: new Date(Date.now() - 3700000).toISOString() },
+        { role: "user", body: "Thanks, I'll check my calendar.", created_at: new Date(Date.now() - 3600000).toISOString() }
+      ]
+    }
+  ];
+
+  const displayProspects = prospects.length > 0 ? prospects : sampleProspects;
+  const displayTotalMessages = totalMessages > 0 ? totalMessages : 6;
+  const isDemoMode = prospects.length === 0;
+
   const stats = [
     {
       title: "Interactions Handled",
-      value: totalMessages.toString(),
+      value: displayTotalMessages.toString(),
       trend: "All time records",
       icon: PhoneMissed,
       color: "text-[#00bfff]"
     },
     {
       title: "Total Prospects",
-      value: prospects.length.toString(),
+      value: displayProspects.length.toString(),
       trend: "Unique phone numbers",
       icon: DollarSign,
       color: "text-[#00ff99]"
@@ -161,7 +188,10 @@ export default function DashboardOverview() {
       {/* Prospects Sheet */}
       <div>
         <h2 className="text-xl font-black uppercase tracking-widest mb-6 border-b border-white/10 pb-4 flex justify-between items-end">
-          <span>Active Prospects</span>
+          <span className="flex items-center gap-4">
+            Active Prospects
+            {isDemoMode && <span className="px-3 py-1 bg-[#00bfff]/20 text-[#00bfff] text-[10px] font-mono rounded-full border border-[#00bfff]/50 uppercase tracking-widest">Sample Data</span>}
+          </span>
           <span className="font-mono text-[10px] text-white/40 font-normal">Click a prospect to view chat history</span>
         </h2>
         
@@ -175,49 +205,41 @@ export default function DashboardOverview() {
           </div>
           
           <div className="flex flex-col">
-            {prospects.length === 0 ? (
-              <div className="p-12 text-center text-white/40 flex flex-col items-center">
-                <MessageSquare className="w-8 h-8 mb-4 opacity-20" />
-                <p className="font-mono text-xs uppercase tracking-widest">No prospects captured yet.</p>
-                <p className="text-[10px] mt-2">Incoming texts will automatically generate leads here.</p>
-              </div>
-            ) : (
-              prospects.map((prospect) => (
-                <div 
-                  key={prospect.phone} 
-                  onClick={() => setSelectedProspect(prospect)}
-                  className="grid grid-cols-12 items-center p-4 border-b border-white/5 last:border-0 hover:bg-white/5 transition-all cursor-pointer group"
-                >
-                  <div className="col-span-3 flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#00bfff]/20 to-[#00ff99]/20 flex items-center justify-center border border-white/10 group-hover:border-[#00bfff]/50 transition-colors">
-                      <span className="font-mono text-[10px] text-white/70">ID</span>
-                    </div>
-                    <p className="font-black font-[family-name:var(--font-orbitron)] tracking-wider text-white text-sm group-hover:text-[#00bfff] transition-colors">
-                      {formatPhone(prospect.phone)}
-                    </p>
+            {displayProspects.map((prospect) => (
+              <div 
+                key={prospect.phone} 
+                onClick={() => setSelectedProspect(prospect)}
+                className="grid grid-cols-12 items-center p-4 border-b border-white/5 last:border-0 hover:bg-white/5 transition-all cursor-pointer group"
+              >
+                <div className="col-span-3 flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#00bfff]/20 to-[#00ff99]/20 flex items-center justify-center border border-white/10 group-hover:border-[#00bfff]/50 transition-colors">
+                    <span className="font-mono text-[10px] text-white/70">ID</span>
                   </div>
-                  
-                  <div className="col-span-6 pr-6">
-                    <p className="text-sm text-white/60 truncate font-mono">
-                      <span className="text-[#00ff99] opacity-70 mr-2">»</span>
-                      {prospect.latestMessage}
-                    </p>
-                  </div>
-                  
-                  <div className="col-span-2 text-center">
-                    <p className="text-[10px] font-mono text-white/40 uppercase tracking-widest">
-                      {new Date(prospect.lastInteraction).toLocaleString(undefined, { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' })}
-                    </p>
-                  </div>
-                  
-                  <div className="col-span-1 flex justify-end">
-                    <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[#00bfff] transition-colors">
-                      <ChevronRight className="w-4 h-4 text-white/50 group-hover:text-white transition-colors" />
-                    </div>
+                  <p className="font-black font-[family-name:var(--font-orbitron)] tracking-wider text-white text-sm group-hover:text-[#00bfff] transition-colors">
+                    {formatPhone(prospect.phone)}
+                  </p>
+                </div>
+                
+                <div className="col-span-6 pr-6">
+                  <p className="text-sm text-white/60 truncate font-mono">
+                    <span className="text-[#00ff99] opacity-70 mr-2">»</span>
+                    {prospect.latestMessage}
+                  </p>
+                </div>
+                
+                <div className="col-span-2 text-center">
+                  <p className="text-[10px] font-mono text-white/40 uppercase tracking-widest">
+                    {new Date(prospect.lastInteraction).toLocaleString(undefined, { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' })}
+                  </p>
+                </div>
+                
+                <div className="col-span-1 flex justify-end">
+                  <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[#00bfff] transition-colors">
+                    <ChevronRight className="w-4 h-4 text-white/50 group-hover:text-white transition-colors" />
                   </div>
                 </div>
-              ))
-            )}
+              </div>
+            ))}
           </div>
         </div>
       </div>
