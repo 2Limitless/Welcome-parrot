@@ -9,6 +9,8 @@ export default function SettingsPage() {
   const [isInstantSms, setIsInstantSms] = useState(true);
   const [notifyEmail, setNotifyEmail] = useState(true);
   const [notifySms, setNotifySms] = useState(false);
+  const [emergencyPhone, setEmergencyPhone] = useState("");
+  const [emergencyKeywords, setEmergencyKeywords] = useState("burst pipe, no ac, leak, flood");
 
   return (
     <div className="space-y-8 max-w-5xl">
@@ -85,8 +87,36 @@ export default function SettingsPage() {
               <h2 className="text-xl font-bold uppercase tracking-widest font-mono">Escalation</h2>
             </div>
             
-            <div className="space-y-4">
-              <p className="font-mono text-[10px] uppercase tracking-widest text-white/40">Where should the system route leads that require human intervention?</p>
+            <div className="space-y-4 pb-6 border-b border-white/10">
+              <h4 className="font-mono text-sm font-bold text-white uppercase tracking-widest">Emergency Call Routing</h4>
+              <p className="font-mono text-[10px] uppercase tracking-widest text-[#00bfff]/80">Instantly transfer high-intent emergencies to an on-call technician.</p>
+              
+              <div className="space-y-4 mt-4">
+                <div className="space-y-2">
+                  <label className="font-mono text-[10px] uppercase tracking-widest text-white/50 block">On-Call Technician Phone</label>
+                  <input 
+                    type="tel"
+                    value={emergencyPhone}
+                    onChange={(e) => setEmergencyPhone(e.target.value)}
+                    placeholder="+1 (555) 000-0000"
+                    className="w-full bg-black border border-white/10 focus:border-[#00bfff] outline-none p-3 font-mono text-xs text-white/80 transition-colors"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="font-mono text-[10px] uppercase tracking-widest text-white/50 block">Emergency Keywords / Intent</label>
+                  <input 
+                    type="text"
+                    value={emergencyKeywords}
+                    onChange={(e) => setEmergencyKeywords(e.target.value)}
+                    className="w-full bg-black border border-white/10 focus:border-[#00bfff] outline-none p-3 font-mono text-xs text-white/80 transition-colors"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-4 pt-2">
+              <h4 className="font-mono text-sm font-bold text-white uppercase tracking-widest">Standard Fallback</h4>
+              <p className="font-mono text-[10px] uppercase tracking-widest text-white/40">Where should the system route standard leads that require human intervention?</p>
               
               <label className="flex items-center gap-3 cursor-pointer group">
                 <div className={`w-5 h-5 border flex items-center justify-center transition-colors ${notifyEmail ? 'border-[#00bfff] bg-[#00bfff]/20' : 'border-white/20 group-hover:border-[#00bfff]/50'}`}>

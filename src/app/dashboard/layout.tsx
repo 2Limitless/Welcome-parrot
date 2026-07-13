@@ -9,7 +9,8 @@ import {
   Settings, 
   CreditCard, 
   LogOut,
-  TerminalSquare
+  TerminalSquare,
+  Home
 } from "lucide-react";
 import { createClient } from "@/utils/supabase/client";
 
@@ -122,6 +123,11 @@ export default function DashboardLayout({
 
       {/* Mobile Bottom Navigation */}
       <nav className="md:hidden fixed bottom-0 left-0 w-full bg-[#1a1a1a] border-t border-white/10 z-50 flex justify-around items-center p-2 pb-safe shadow-[0_-10px_40px_rgba(0,0,0,0.5)]">
+        <Link href="/"
+          className="flex flex-col items-center p-2 rounded-lg transition-colors text-white/40 hover:text-white">
+          <Home className="w-5 h-5 mb-1" />
+          <span className="text-[8px] font-mono uppercase tracking-widest">Home</span>
+        </Link>
         {navItems.map((item) => {
           const isActive = pathname === item.href;
           return (
