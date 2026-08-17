@@ -82,7 +82,7 @@ export default function Home() {
                   
                   {/* Glowing Feature Pills */}
                   <div className="flex flex-wrap justify-center gap-3 mb-8">
-                    {["Own Your Data", "Line-Busting KDS", "Automated Loyalty"].map((feature) => (
+                    {["Zero Commissions", "Line-Busting KDS", "Automated Loyalty"].map((feature) => (
                       <span key={feature} className="px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-white/70 text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase shadow-[0_0_15px_rgba(255,255,255,0.05)]">
                         {feature}
                       </span>
