@@ -36,7 +36,7 @@ export default function Home() {
   };
 
   return (
-    <main className="relative w-full min-h-screen overflow-x-hidden overflow-y-auto bg-black flex flex-col">
+    <main className={`relative w-full h-[100dvh] overflow-x-hidden bg-black flex flex-col ${currentView === 'hub' ? 'overflow-y-auto' : 'overflow-hidden'}`}>
       {/* Pure Apple Pro Black Background */}
       <div className="absolute inset-0 z-0 bg-black pointer-events-none" />
       <img src="/hub_background.jpg" className="absolute inset-0 z-0 w-full h-full object-cover opacity-20 pointer-events-none mix-blend-overlay" alt="Background" />
