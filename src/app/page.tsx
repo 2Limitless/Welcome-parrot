@@ -16,7 +16,7 @@ const OverlayWrapper = ({ children, onClose }: { children: React.ReactNode, onCl
     animate={{ opacity: 1, y: 0 }}
     exit={{ opacity: 0, y: "100%" }}
     transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-    className="fixed inset-0 z-[200] bg-black overflow-y-auto pointer-events-auto"
+    className="fixed inset-0 z-[200] bg-black overflow-hidden pointer-events-auto"
   >
     <button 
       onClick={onClose}
@@ -36,7 +36,7 @@ export default function Home() {
   };
 
   return (
-    <main className="relative w-full min-h-screen overflow-x-hidden overflow-y-scroll bg-black flex flex-col">
+    <main className="relative w-full min-h-screen overflow-x-hidden overflow-y-auto bg-black flex flex-col">
       {/* Pure Apple Pro Black Background */}
       <div className="absolute inset-0 z-0 bg-black pointer-events-none" />
       <img src="/hub_background.jpg" className="absolute inset-0 z-0 w-full h-full object-cover opacity-20 pointer-events-none mix-blend-overlay" alt="Background" />
@@ -110,7 +110,7 @@ export default function Home() {
                       >
                         <div className="flex items-center gap-2 mb-1">
                           <span className="text-4xl md:text-5xl font-bold font-sans tracking-tighter text-white">25<span className="text-white/40 text-3xl">%</span></span>
-                          <motion.div animate={{ y: [0, -5, 0] }} transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}>
+                          <motion.div animate={{ y: [0, -3, 0] }} transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}>
                             <ArrowUp className="text-[#00ff66] w-6 h-6 md:w-8 md:h-8 drop-shadow-[0_0_15px_rgba(0,255,102,0.6)]" strokeWidth={3} />
                           </motion.div>
                         </div>
@@ -129,7 +129,7 @@ export default function Home() {
                       >
                         <div className="flex items-center gap-2 mb-1">
                           <span className="text-4xl md:text-5xl font-bold font-sans tracking-tighter text-white">35<span className="text-white/40 text-3xl">%</span></span>
-                          <motion.div animate={{ y: [0, -5, 0] }} transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}>
+                          <motion.div animate={{ y: [0, -3, 0] }} transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}>
                             <ArrowUp className="text-[#00ff66] w-6 h-6 md:w-8 md:h-8 drop-shadow-[0_0_15px_rgba(0,255,102,0.6)]" strokeWidth={3} />
                           </motion.div>
                         </div>
@@ -148,7 +148,7 @@ export default function Home() {
                       >
                         <div className="flex items-center gap-2 mb-1">
                           <span className="text-4xl md:text-5xl font-bold font-sans tracking-tighter text-white">80<span className="text-white/40 text-3xl">%</span></span>
-                          <motion.div animate={{ y: [0, -5, 0] }} transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}>
+                          <motion.div animate={{ y: [0, -3, 0] }} transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}>
                             <ArrowUp className="text-[#00ff66] w-6 h-6 md:w-8 md:h-8 drop-shadow-[0_0_15px_rgba(0,255,102,0.6)]" strokeWidth={3} />
                           </motion.div>
                         </div>
@@ -177,8 +177,8 @@ export default function Home() {
                     >
                       Why It's a No-Brainer 
                       <motion.span 
-                        animate={{ x: [0, 5, 0] }} 
-                        transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                        animate={{ x: [0, 3, 0] }} 
+                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                         className="text-[#00ff66] text-lg leading-none inline-block ml-2"
                       >
                         &rarr;
