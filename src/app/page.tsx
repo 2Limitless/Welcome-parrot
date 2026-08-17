@@ -163,7 +163,7 @@ export default function Home() {
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                       onClick={() => handleNavClick("about")}
-                      className="text-[var(--color-void)] bg-[var(--color-acid)] shadow-[0_0_40px_rgba(204,255,0,0.2)] hover:shadow-[0_0_60px_rgba(204,255,0,0.4)] px-10 py-4 rounded-full font-bold transition-all duration-500 w-max text-xs md:text-sm tracking-[0.1em]"
+                      className="text-black bg-white shadow-[0_0_40px_rgba(255,255,255,0.1)] hover:shadow-[0_0_60px_rgba(255,255,255,0.2)] px-10 py-4 rounded-full font-bold transition-all duration-500 w-max text-xs md:text-sm tracking-[0.1em]"
                     >
                       {t.hub.cta1}
                     </motion.button>
@@ -243,12 +243,14 @@ export default function Home() {
                       key={item.id}
                       onClick={() => handleNavClick(item.id as ViewState)}
                       className={`relative px-3 md:px-8 py-3 rounded-full text-center transition-colors duration-500 ${
-                        isActive
-                          ? isLightMode ? "text-white" : "text-black"
-                          : isLightMode ? "text-black/60 hover:text-black" : "text-white/60 hover:text-white"
+                        item.id === "about"
+                          ? "bg-[var(--color-acid)] text-[var(--color-void)] font-bold shadow-[0_0_15px_rgba(204,255,0,0.2)]"
+                          : isActive
+                            ? isLightMode ? "text-white" : "text-black"
+                            : isLightMode ? "text-black/60 hover:text-black" : "text-white/60 hover:text-white"
                       }`}
                     >
-                      {isActive && (
+                      {isActive && item.id !== "about" && (
                         <motion.div
                           layoutId="liquid-nav-blob"
                           className={`absolute inset-0 rounded-full -z-10 shadow-lg ${isLightMode ? "bg-black" : "bg-white"}`}
