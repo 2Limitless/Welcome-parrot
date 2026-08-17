@@ -1,603 +1,284 @@
 "use client";
 
-import { motion, Variants, useMotionValue, useMotionTemplate, useSpring, useTransform } from "framer-motion";
-import { ArrowDownRight, Cpu, Network, Shield, TerminalSquare } from "lucide-react";
-import React from "react";
-import Link from "next/link";
+import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { X, ArrowUp } from "lucide-react";
+import PortfolioExperience from "../components/PortfolioExperience";
+import ServicesExperience from "../components/ServicesExperience";
+import AboutExperience from "../components/AboutExperience";
 
-// Awwwards-style cinematic bezier curve
-const cinematicEase = [0.76, 0, 0.24, 1] as const;
+export type ViewState = "hub" | "portfolio" | "services" | "about";
 
-const slideUp: Variants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: cinematicEase } }
-};
-
-const staggerContainer: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1, delayChildren: 0.2 }
-  }
-};
-
-const HeroWord = ({ word, strokeColor, defaultColor }: { word: string, strokeColor: string, defaultColor: string }) => {
-  return (
-    <span className="relative inline-flex overflow-visible px-[2vw] -mx-[2vw] py-[2vw] -my-[2vw] cursor-crosshair group">
-      <motion.span
-        variants={{
-          hidden: { y: "110%", opacity: 0 },
-          visible: { y: 0, opacity: 1, transition: { duration: 1.2, ease: cinematicEase } }
-        }}
-        className="inline-block relative transition-all duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-[1vw] group-hover:scale-[1.05] pointer-events-none"
-      >
-        {/* Default Text */}
-        <span className="inline-block transition-opacity duration-300 group-hover:opacity-0" style={{ color: defaultColor }}>
-          {word}
-        </span>
-
-        {/* Stroke Text (Fades in) */}
-        <span
-          className="absolute left-0 top-0 inline-block opacity-0 transition-all duration-300 group-hover:opacity-100"
-          style={{
-            color: 'transparent',
-            WebkitTextStroke: `2px ${strokeColor}`,
-            textShadow: `0px 15px 30px ${strokeColor}40`
-          }}
-        >
-          {word}
-        </span>
-      </motion.span>
-    </span>
-  );
-};
-
-const HeroTitle = ({ text, className, strokeColor, defaultColor }: { text: string, className?: string, strokeColor: string, defaultColor: string }) => {
-  const words = text.split(" ");
-  return (
-    <motion.h1
-      variants={staggerContainer}
-      initial="hidden"
-      animate="visible"
-      className={`flex flex-wrap gap-x-[1.5vw] ${className || ""}`}
+// Re-implementing the missing OverlayWrapper that was accidentally deleted
+const OverlayWrapper = ({ children, onClose }: { children: React.ReactNode, onClose: () => void }) => (
+  <motion.div
+    initial={{ opacity: 0, y: "100%" }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: "100%" }}
+    transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+    className="fixed inset-0 z-[200] bg-black overflow-y-auto pointer-events-auto"
+  >
+    <button 
+      onClick={onClose}
+      className="absolute top-8 right-8 md:top-12 md:right-12 z-50 p-4 rounded-full bg-white/5 border border-white/10 text-white hover:bg-white hover:text-black transition-colors"
     >
-      {words.map((word, index) => (
-        <HeroWord key={index} word={word} strokeColor={strokeColor} defaultColor={defaultColor} />
-      ))}
-    </motion.h1>
-  );
-};
+      <X size={24} />
+    </button>
+    {children}
+  </motion.div>
+);
 
-const RevenueCalculator = () => {
-  const [jobRevenue, setJobRevenue] = React.useState<number>(5000);
-  const [missedCalls, setMissedCalls] = React.useState<number>(10);
-  const [closeRate, setCloseRate] = React.useState<number>(50);
+export default function Home() {
+  const [currentView, setCurrentView] = useState<ViewState>("hub");
 
-  const weeklyLost = jobRevenue * missedCalls * (closeRate / 100);
-  const monthlyLost = weeklyLost * 4.33;
-  const yearlyLost = weeklyLost * 52;
-
-  const formatMoney = (val: number) => {
-    return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(val);
+  const handleNavClick = (view: ViewState) => {
+    setCurrentView(view);
   };
 
   return (
-    <section className="relative z-20 w-full py-24 px-6 lg:px-12 bg-[#111111] overflow-hidden">
-      {/* Background Ambient Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-[#00ff99] opacity-5 blur-[120px] rounded-full pointer-events-none" />
+    <main className="relative w-full min-h-screen overflow-x-hidden overflow-y-scroll bg-black flex flex-col">
+      {/* Pure Apple Pro Black Background */}
+      <div className="absolute inset-0 z-0 bg-black pointer-events-none" />
       
-      <div className="w-full max-w-[1400px] mx-auto rounded-3xl border border-[#00ff99]/30 shadow-[0_0_60px_rgba(0,255,153,0.15)] bg-[#161618] relative z-10 overflow-hidden">
-        <div className="grid grid-cols-1 lg:grid-cols-2">
-          {/* Left Column: Inputs */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, ease: "easeOut" }} viewport={{ once: true, margin: "-100px" }}
-            className="p-6 md:p-12 lg:p-16 border-b lg:border-b-0 lg:border-r border-white/10 flex flex-col justify-center"
-          >
-            <span className="text-[10px] text-[#00ff99] font-mono tracking-[0.2em] uppercase mb-4 block drop-shadow-[0_0_10px_rgba(0,255,153,0.5)]">[ Cost of Inaction ]</span>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black font-[family-name:var(--font-orbitron)] uppercase tracking-tighter mb-4 text-white">
-              Lost Revenue<br />Calculator
-            </h2>
-            <p className="font-mono text-xs md:text-sm text-white/60 mb-12 max-w-md leading-relaxed">
-              Plug in your numbers below to see exactly how much money your business is bleeding by sending leads to voicemail.
-            </p>
+      {/* Subtle top light for an expensive studio feel */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-[50vh] bg-white opacity-[0.03] blur-[120px] rounded-full pointer-events-none z-0" />
 
-            <div className="space-y-12 max-w-xl w-full">
-              {/* Input 1 */}
-              <div>
-                <div className="flex justify-between items-end mb-4">
-                  <label className="font-mono text-xs md:text-sm uppercase tracking-widest text-white/70">Avg. Job Revenue</label>
-                  <span className="font-mono text-xl md:text-2xl text-white">{formatMoney(jobRevenue)}</span>
-                </div>
-                <input
-                  type="range" min="100" max="25000" step="100"
-                  value={jobRevenue} onChange={(e) => setJobRevenue(Number(e.target.value))}
-                  className="w-full h-1 bg-white/20 appearance-none outline-none hover:bg-white/40 transition-colors cursor-crosshair"
-                />
-              </div>
-
-              {/* Input 2 */}
-              <div>
-                <div className="flex justify-between items-end mb-4">
-                  <label className="font-mono text-xs md:text-sm uppercase tracking-widest text-white/70">Missed Calls (Weekly)</label>
-                  <span className="font-mono text-xl md:text-2xl text-white">{missedCalls}</span>
-                </div>
-                <input
-                  type="range" min="1" max="100" step="1"
-                  value={missedCalls} onChange={(e) => setMissedCalls(Number(e.target.value))}
-                  className="w-full h-1 bg-white/20 appearance-none outline-none hover:bg-white/40 transition-colors cursor-crosshair"
-                />
-              </div>
-
-              {/* Input 3 */}
-              <div>
-                <div className="flex justify-between items-end mb-4">
-                  <label className="font-mono text-xs md:text-sm uppercase tracking-widest text-white/70">Close Rate</label>
-                  <span className="font-mono text-xl md:text-2xl text-[#00ff99]">{closeRate}%</span>
-                </div>
-                <input
-                  type="range" min="1" max="100" step="1"
-                  value={closeRate} onChange={(e) => setCloseRate(Number(e.target.value))}
-                  className="w-full h-1 bg-[#00ff99]/30 appearance-none outline-none hover:bg-[#00ff99]/60 transition-colors cursor-crosshair"
-                />
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Right Column: Output */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }} viewport={{ once: true, margin: "-100px" }}
-            className="p-6 md:p-12 lg:p-16 flex flex-col justify-center bg-[#1a1a1a]/50 overflow-hidden"
-          >
-            <h3 className="text-3xl md:text-4xl lg:text-5xl font-black font-[family-name:var(--font-orbitron)] uppercase tracking-tighter mb-12">
-              You are losing:
-            </h3>
-
-            <div className="space-y-8">
-              <div className="flex flex-col border-b border-white/10 pb-8">
-                <span className="font-mono text-[10px] md:text-xs tracking-widest uppercase text-white/50 mb-2">Per Week</span>
-                <span className="text-4xl md:text-5xl font-mono tracking-[-0.075em] text-white/80">{formatMoney(weeklyLost)}</span>
-              </div>
-              <div className="flex flex-col border-b border-white/10 pb-8">
-                <span className="font-mono text-[10px] md:text-xs tracking-widest uppercase text-white/50 mb-2">Per Month</span>
-                <span className="text-5xl md:text-6xl font-mono tracking-[-0.075em] text-white/90">{formatMoney(monthlyLost)}</span>
-              </div>
-              <div className="flex flex-col pt-4">
-                <span className="font-mono text-[10px] md:text-xs tracking-widest uppercase text-[#00ff99]/70 mb-4">Per Year (Projected)</span>
-                <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black font-[family-name:var(--font-orbitron)] leading-none text-[#00ff99] drop-shadow-[0_0_30px_rgba(0,255,153,0.3)] whitespace-nowrap overflow-hidden text-ellipsis">
-                  {formatMoney(yearlyLost)}
-                </span>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </div>
-    </section>
-  );
-};
-
-const NoiseOverlay = () => (
-  <div className="pointer-events-none fixed inset-0 z-50 opacity-[0.04] mix-blend-screen">
-    <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
-      <filter id="noiseFilter">
-        <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch" />
-      </filter>
-      <rect width="100%" height="100%" filter="url(#noiseFilter)" />
-    </svg>
-  </div>
-);
-
-const IntegrationMarquee = () => {
-  const integrations = [
-    "SALESFORCE", "SERVICETITAN", "JOBBER", "ZAPIER", "G-CALENDAR", "STRIPE", "HUBSPOT", "TWILIO"
-  ];
-  const marqueeItems = [...integrations, ...integrations, ...integrations];
-
-  return (
-    <section className="relative z-20 w-full bg-[#111111] border-y border-white/10 py-3 md:py-4 overflow-hidden flex flex-col">
-      <div className="relative flex whitespace-nowrap">
-        <motion.div
-          animate={{ x: ["0%", "-33.333333%"] }}
-          transition={{ repeat: Infinity, ease: "linear", duration: 35 }}
-          className="flex items-center"
-          style={{ willChange: "transform" }}
-        >
-          {marqueeItems.map((item, index) => (
-            <div
-              key={index}
-              className="flex items-center group/item"
-            >
-              <div className="px-6 md:px-10 py-1 text-white/30 hover:bg-white hover:text-[#111111] transition-colors duration-200 cursor-crosshair">
-                <span className="text-xl md:text-2xl font-bold font-mono uppercase tracking-widest leading-none block">
-                  {item}
-                </span>
-              </div>
-              <span className="text-white/10 px-6 md:px-10 block">—</span>
-            </div>
-          ))}
-        </motion.div>
-      </div>
-    </section>
-  );
-};
-
-const SystemInfo = () => {
-  return (
-    <section className="relative z-20 w-full bg-[#111111] py-32 px-6 lg:px-12 flex flex-col items-center justify-center overflow-hidden border-t border-white/5">
-      {/* Background Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#00bfff]/5 rounded-full blur-[120px] pointer-events-none" />
-
-      <motion.div 
-        initial={{ opacity: 0, y: 30 }} 
-        whileInView={{ opacity: 1, y: 0 }} 
-        transition={{ duration: 0.8, ease: "easeOut" }} 
-        viewport={{ once: true, margin: "-100px" }}
-        className="max-w-6xl mx-auto w-full relative z-10"
-      >
-        <div className="text-center mb-24">
-          <span className="text-[10px] text-[#00bfff] font-mono tracking-[0.2em] uppercase mb-8 block">[ Speed is Revenue ]</span>
-          <h2 className="text-4xl md:text-6xl font-black font-[family-name:var(--font-orbitron)] uppercase tracking-tighter mb-8 text-white">
-            Capture <span className="text-[#00bfff]">Every</span> <br className="hidden md:block" /> Opportunity.
-          </h2>
-          <p className="font-mono text-sm md:text-base text-white/60 leading-relaxed max-w-2xl mx-auto">
-            The business that responds first wins the job. Stop losing hot leads to competitors because you were busy on a job site. Welcome Parrot instantly engages, answers questions, and secures the deal the second a prospect reaches out.
-          </p>
-        </div>
+      {/* Main Container */}
+      <div className="relative z-10 w-full h-full flex flex-col pointer-events-none">
         
-        {/* The Pipeline */}
-        <div className="relative">
-          {/* Connecting Line */}
-          <div className="absolute top-1/2 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#00bfff]/30 to-transparent hidden md:block -translate-y-1/2" />
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 text-left relative z-10">
-            {/* Card 1 */}
-            <div className="relative rounded-3xl bg-[#161618]/80 backdrop-blur-xl border border-white/10 hover:border-[#00bfff]/50 transition-all duration-500 group overflow-hidden flex flex-col">
-              <div className="relative h-48 w-full overflow-hidden border-b border-white/5">
-                <div className="absolute inset-0 bg-gradient-to-t from-[#161618]/90 via-transparent to-transparent z-10" />
-                <img src="/connect_step.png" alt="Connect" className="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700 mix-blend-screen" />
-              </div>
-              <div className="p-8 md:p-10 pt-6 relative z-10 flex-1">
-                <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity pointer-events-none">
-                  <span className="text-9xl font-black font-[family-name:var(--font-orbitron)] italic">01</span>
+        {/* Minimalist Apple-Style Header */}
+        <header className="flex-none flex items-center justify-between px-8 py-8 md:px-16 md:py-10 pointer-events-auto">
+          <div className="text-white font-sans text-xl font-bold tracking-tight">Welcome Parrot<span className="text-[#00ff66]">.</span></div>
+          <nav className="hidden md:flex space-x-12">
+            <button onClick={() => handleNavClick("portfolio")} className="text-white/60 hover:text-white text-xs tracking-widest uppercase transition-colors">The No-Brainer</button>
+            <button onClick={() => handleNavClick("services")} className="text-white/60 hover:text-white text-xs tracking-widest uppercase transition-colors">The Platform</button>
+            <button onClick={() => handleNavClick("about")} className="text-white/60 hover:text-white text-xs tracking-widest uppercase transition-colors">Book Demo</button>
+          </nav>
+          <button className="md:hidden text-white">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
+        </header>
+
+        {/* View State Machine */}
+        <div className="flex-1 flex flex-col relative pointer-events-auto">
+          <AnimatePresence>
+            
+            {/* 1. THE HUB (Hero Section) */}
+            {currentView === "hub" && (
+                <motion.div 
+                key="hub"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                className="flex flex-col w-full min-h-screen relative"
+              >
+                
+                {/* Top: Massive Pro Typography */}
+                <div className="flex-none w-full flex flex-col items-center justify-start pt-6 md:pt-12 px-4 z-20">
+                  
+                  {/* Glowing Feature Pills */}
+                  <div className="flex flex-wrap justify-center gap-3 mb-8">
+                    {["Own Your Data", "Line-Busting KDS", "Automated Loyalty"].map((feature) => (
+                      <span key={feature} className="px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-white/70 text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase shadow-[0_0_15px_rgba(255,255,255,0.05)]">
+                        {feature}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Apple Metallic Gradient Typography */}
+                  <h1 className="font-sans text-[12vw] md:text-[110px] leading-[0.9] text-center font-bold tracking-tighter bg-gradient-to-b from-white via-white/90 to-white/30 bg-clip-text text-transparent pb-4">
+                    Own Your Customers.
+                  </h1>
+                  
+                  <p className="text-white/60 font-sans text-sm md:text-base font-light max-w-xl text-center leading-relaxed mb-12">
+                    The all-in-one direct mobile ordering, automated loyalty, and kitchen operations platform for food trucks and fast-casuals.
+                  </p>
+
+                  {/* Educational Statistics Bento - MOVED INTO INITIAL VIEWPORT */}
+                  <div className="w-full max-w-5xl mx-auto mb-16">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+                      {/* Stat 1 */}
+                      <motion.div 
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+                        className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-md shadow-2xl flex flex-col items-start text-left hover:bg-white/10 transition-colors"
+                      >
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className="text-4xl md:text-5xl font-bold font-sans tracking-tighter text-white">25<span className="text-white/40 text-3xl">%</span></span>
+                          <ArrowUp className="text-[#00ff66] w-6 h-6 md:w-8 md:h-8 drop-shadow-[0_0_15px_rgba(0,255,102,0.6)]" strokeWidth={3} />
+                        </div>
+                        <h4 className="text-white text-sm font-bold mb-2 tracking-wide uppercase">Native App Upselling</h4>
+                        <p className="text-white/50 text-xs leading-relaxed font-medium">
+                          Native mobile apps drive 25% higher tickets through automated upselling and frictionless checkout.
+                        </p>
+                      </motion.div>
+
+                      {/* Stat 2 */}
+                      <motion.div 
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
+                        className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-md shadow-2xl flex flex-col items-start text-left hover:bg-white/10 transition-colors"
+                      >
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className="text-4xl md:text-5xl font-bold font-sans tracking-tighter text-white">35<span className="text-white/40 text-3xl">%</span></span>
+                          <ArrowUp className="text-[#00ff66] w-6 h-6 md:w-8 md:h-8 drop-shadow-[0_0_15px_rgba(0,255,102,0.6)]" strokeWidth={3} />
+                        </div>
+                        <h4 className="text-white text-sm font-bold mb-2 tracking-wide uppercase">Frictionless Loyalty</h4>
+                        <p className="text-white/50 text-xs leading-relaxed font-medium">
+                          Automated digital loyalty programs turn occasional diners into weekly regulars, driving 35% repeat visit rates.
+                        </p>
+                      </motion.div>
+
+                      {/* Stat 3 */}
+                      <motion.div 
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.6 }}
+                        className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-md shadow-2xl flex flex-col items-start text-left hover:bg-white/10 transition-colors"
+                      >
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className="text-4xl md:text-5xl font-bold font-sans tracking-tighter text-white">80<span className="text-white/40 text-3xl">%</span></span>
+                          <ArrowUp className="text-[#00ff66] w-6 h-6 md:w-8 md:h-8 drop-shadow-[0_0_15px_rgba(0,255,102,0.6)]" strokeWidth={3} />
+                        </div>
+                        <h4 className="text-white text-sm font-bold mb-2 tracking-wide uppercase">Push Notifications</h4>
+                        <p className="text-white/50 text-xs leading-relaxed font-medium">
+                          Bypass the spam folder entirely. Direct push notifications command 80% open rates compared to 20% for email.
+                        </p>
+                      </motion.div>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col md:flex-row items-center gap-4 pointer-events-auto">
+                    <motion.button 
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={() => handleNavClick("about")}
+                      className="text-black bg-white shadow-[0_0_40px_rgba(255,255,255,0.1)] hover:shadow-[0_0_60px_rgba(255,255,255,0.2)] px-10 py-4 rounded-full font-bold transition-all duration-500 w-max text-xs md:text-sm tracking-[0.1em]"
+                    >
+                      Book a 10-Min Demo
+                    </motion.button>
+                    <motion.button 
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={() => handleNavClick("portfolio")}
+                      className="text-white border border-white/20 hover:bg-white/10 px-8 py-4 rounded-full font-bold transition-all duration-500 w-max text-xs md:text-sm tracking-[0.1em] flex items-center gap-2"
+                    >
+                      Why It's a No-Brainer <span className="text-[#00ff66] text-lg leading-none">&rarr;</span>
+                    </motion.button>
+                  </div>
                 </div>
-                <div className="w-16 h-16 rounded-full bg-[#00bfff]/10 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:bg-[#00bfff]/20 transition-all duration-300 shadow-[0_0_30px_rgba(0,191,255,0.1)] group-hover:shadow-[0_0_40px_rgba(0,191,255,0.3)] relative z-20">
-                  <Network className="w-7 h-7 text-[#00bfff]" />
+
+                {/* Bottom: The "Pro Display" Showcase Grid */}
+                <div className="flex-none w-full flex items-center justify-center gap-6 md:gap-10 px-8 mt-12 z-10 pointer-events-none perspective-[1200px]">
+                  
+                  {/* Left Glass Panel */}
+                  <motion.div 
+                    animate={{ y: [-5, 5, -5] }}
+                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0 }}
+                    className="w-[160px] md:w-[220px] lg:w-[260px] aspect-[9/16] rounded-[2rem] overflow-hidden border border-white/10 shadow-[0_40px_80px_rgba(0,0,0,0.5)] bg-black/50"
+                  >
+                    <img src="/mobile_app_mockup.jpg" alt="Mobile App UI" className="w-full h-full object-cover opacity-90" />
+                  </motion.div>
+
+                  {/* Center Glass Panel (Slightly larger, offset animation) */}
+                  <motion.div 
+                    animate={{ y: [-5, 5, -5] }}
+                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+                    className="w-[180px] md:w-[260px] lg:w-[300px] aspect-[9/16] rounded-[2rem] overflow-hidden border border-white/20 shadow-[0_60px_100px_rgba(0,0,0,0.8)] bg-black/50 z-20"
+                  >
+                    <img src="/kds_tablet_mockup.jpg" alt="KDS Tablet UI" className="w-full h-full object-cover" />
+                  </motion.div>
+
+                  {/* Right Glass Panel */}
+                  <motion.div 
+                    animate={{ y: [-5, 5, -5] }}
+                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 4 }}
+                    className="w-[160px] md:w-[220px] lg:w-[260px] aspect-[9/16] rounded-[2rem] overflow-hidden border border-white/10 shadow-[0_40px_80px_rgba(0,0,0,0.5)] bg-black/50 hidden md:block"
+                  >
+                    <img src="/analytics_dashboard_panel.jpg" alt="Kitchen operations" className="w-full h-full object-cover opacity-90" />
+                  </motion.div>
+
                 </div>
-                <h3 className="text-2xl font-bold font-[family-name:var(--font-orbitron)] uppercase mb-4 tracking-wide text-white group-hover:text-[#00bfff] transition-colors relative z-20">Connect</h3>
-                <p className="text-sm font-mono text-white/60 leading-relaxed group-hover:text-white/80 transition-colors relative z-20">Syncs directly with your existing phone number, website forms, and CRM. The moment a lead reaches out, the AI takes over.</p>
-              </div>
-            </div>
 
-            {/* Card 2 */}
-            <div className="relative rounded-3xl bg-[#161618]/80 backdrop-blur-xl border border-white/10 hover:border-[#00bfff]/50 transition-all duration-500 group overflow-hidden md:translate-y-12 flex flex-col">
-              <div className="relative h-48 w-full overflow-hidden border-b border-white/5">
-                <div className="absolute inset-0 bg-gradient-to-t from-[#161618]/90 via-transparent to-transparent z-10" />
-                <img src="/qualify_step.png" alt="Qualify" className="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700 mix-blend-screen" />
-              </div>
-              <div className="p-8 md:p-10 pt-6 relative z-10 flex-1">
-                <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity pointer-events-none">
-                  <span className="text-9xl font-black font-[family-name:var(--font-orbitron)] italic">02</span>
-                </div>
-                <div className="w-16 h-16 rounded-full bg-[#00bfff]/10 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:bg-[#00bfff]/20 transition-all duration-300 shadow-[0_0_30px_rgba(0,191,255,0.1)] group-hover:shadow-[0_0_40px_rgba(0,191,255,0.3)] relative z-20">
-                  <Cpu className="w-7 h-7 text-[#00bfff]" />
-                </div>
-                <h3 className="text-2xl font-bold font-[family-name:var(--font-orbitron)] uppercase mb-4 tracking-wide text-white group-hover:text-[#00bfff] transition-colors relative z-20">Qualify</h3>
-                <p className="text-sm font-mono text-white/60 leading-relaxed group-hover:text-white/80 transition-colors relative z-20">The AI acts as a digital SDR, asking the right questions to extract the full scope of work and ensure they are a good fit before booking.</p>
-              </div>
-            </div>
 
-            {/* Card 3 */}
-            <div className="relative rounded-3xl bg-[#161618]/80 backdrop-blur-xl border border-white/10 hover:border-[#00bfff]/50 transition-all duration-500 group overflow-hidden flex flex-col">
-              <div className="relative h-48 w-full overflow-hidden border-b border-white/5">
-                <div className="absolute inset-0 bg-gradient-to-t from-[#161618]/90 via-transparent to-transparent z-10" />
-                <img src="/close_step.png" alt="Close" className="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700 mix-blend-screen" />
-              </div>
-              <div className="p-8 md:p-10 pt-6 relative z-10 flex-1">
-                <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity pointer-events-none">
-                  <span className="text-9xl font-black font-[family-name:var(--font-orbitron)] italic">03</span>
-                </div>
-                <div className="w-16 h-16 rounded-full bg-[#00bfff]/10 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:bg-[#00bfff]/20 transition-all duration-300 shadow-[0_0_30px_rgba(0,191,255,0.1)] group-hover:shadow-[0_0_40px_rgba(0,191,255,0.3)] relative z-20">
-                  <TerminalSquare className="w-7 h-7 text-[#00bfff]" />
-                </div>
-                <h3 className="text-2xl font-bold font-[family-name:var(--font-orbitron)] uppercase mb-4 tracking-wide text-white group-hover:text-[#00bfff] transition-colors relative z-20">Close</h3>
-                <p className="text-sm font-mono text-white/60 leading-relaxed group-hover:text-white/80 transition-colors relative z-20">Seamlessly schedules estimates or jobs directly on your calendar, locking in the revenue without you lifting a single finger.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </motion.div>
-    </section>
-  );
-};
 
-export default function Home() {
-  return (
-    <main className="min-h-screen bg-[#111111] text-[#f0f0f0] selection:bg-[#00bfff] selection:text-[#111111] font-sans overflow-x-hidden relative">
-      <NoiseOverlay />
-
-      {/* Persistent Framing Borders */}
-      <div className="pointer-events-none fixed inset-4 border border-white/10 z-[90] mix-blend-difference hidden md:block" />
-
-      {/* Navigation */}
-      <nav className="absolute top-0 left-0 w-full z-[100] px-6 lg:px-16 py-4 flex items-center justify-between pointer-events-auto">
-        <div className="flex items-center gap-4 cursor-pointer group relative">
-          {/* Logo Glow Effect */}
-          <div className="absolute inset-0 bg-[#00bfff] opacity-0 group-hover:opacity-10 blur-2xl transition-opacity duration-700 rounded-full" />
-
-          {/* Mobile Logo */}
-          <img src="/logo-v3.png" alt="Welcome Parrot Logo" className="h-[120px] w-auto -my-4 md:hidden relative z-10 group-hover:scale-105 transition-transform duration-500 drop-shadow-[0_0_15px_rgba(255,255,255,0.05)] object-contain" />
-
-          {/* Desktop Logo */}
-          <img src="/logo-v3.png" alt="Welcome Parrot" className="h-[180px] w-auto -my-8 hidden md:block relative z-10 group-hover:scale-105 transition-transform duration-500 drop-shadow-[0_0_15px_rgba(255,255,255,0.05)] object-contain" />
-        </div>
-        <div className="flex items-center gap-6">
-          <Link href="/login" className="text-[10px] font-mono font-bold uppercase tracking-widest text-white/70 hover:text-[#00bfff] transition-colors block">
-            Client Login
-          </Link>
-          <Link href="#pricing" className="text-[10px] font-mono font-bold uppercase tracking-widest border border-[#00bfff] text-[#00bfff] px-6 py-3 hover:bg-[#00bfff] hover:text-black transition-colors shadow-[0_0_15px_rgba(0,255,153,0.2)] hover:shadow-[0_0_25px_rgba(0,255,153,0.4)] block text-center">
-            Get Started
-          </Link>
-        </div>
-      </nav>
-
-      {/* 1. Hero Section - Brutalist & Asymmetric */}
-      <section className="relative w-full h-screen flex flex-col items-start justify-end pb-12 px-6 lg:px-12 overflow-hidden border-b border-white/20">
-
-        {/* Full-bleed Spline Background */}
-        <div className="absolute inset-0 w-full h-full z-0 pointer-events-auto">
-          <iframe
-            src="https://my.spline.design/nexbotrobotcharacterconcept-0MYylckC1BHF4Fs7FAxjT2ki/"
-            frameBorder="0"
-            width="100%"
-            height="100%"
-            style={{ background: 'transparent' }}
-            title="Nexbot 3D Character"
-            className="w-full h-full object-cover grayscale mix-blend-screen opacity-60"
-            allow="pointer-lock"
-          />
-        </div>
-
-        {/* Harsh Gradient for text contrast only */}
-        <div className="absolute bottom-0 left-0 w-full h-[60%] bg-gradient-to-t from-[#111111] via-[#111111]/95 to-transparent z-10 pointer-events-none" />
-
-        {/* Foreground Content - Slammed bottom left */}
-        <div className="relative z-20 w-full pointer-events-none flex flex-col items-start justify-end">
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            animate="visible"
-            className="flex flex-col items-start w-full"
-          >
-            <motion.div variants={slideUp} className="flex items-center gap-4 mb-2">
-              <span className="text-[10px] md:text-xs font-mono tracking-[0.3em] uppercase text-[#00bfff] border border-[#00bfff] px-4 py-2 bg-[#00bfff]/10">Intelligent</span>
-              <span className="text-[10px] md:text-xs font-mono tracking-[0.2em] uppercase text-white/50">[ Welcome Parrot ]</span>
-            </motion.div>
-
-            <HeroTitle
-              text="AUTOMATED"
-              className="text-[11vw] font-black font-[family-name:var(--font-audiowide)] uppercase leading-[0.8] tracking-normal pointer-events-auto"
-              strokeColor="#00bfff"
-              defaultColor="#ffffff"
-            />
-            <HeroTitle
-              text="LEAD GEN"
-              className="text-[11vw] font-black font-[family-name:var(--font-audiowide)] uppercase leading-[0.8] tracking-normal pointer-events-auto"
-              strokeColor="#ffffff"
-              defaultColor="#00bfff"
-            />
-
-            <div className="flex flex-col md:flex-row items-start md:items-end justify-between w-full mt-12 gap-8 border-t border-white/20 pt-8">
-              <motion.p variants={slideUp} className="text-sm md:text-lg text-white/60 max-w-xl font-medium leading-relaxed md:pr-12">
-                Integrate our advanced conversational AI directly into your sales funnel. Let Welcome Parrot instantly qualify, engage, and convert your leads. Professional, reliable, and built for conversion.
-              </motion.p>
-
-              <motion.div variants={slideUp} className="pointer-events-auto shrink-0 w-full md:w-auto">
-                <Link href="#pricing" className="w-full md:w-auto group relative px-12 py-6 bg-white text-[#111111] font-black uppercase tracking-widest text-xs transition-transform duration-500 hover:-translate-y-2 hover:shadow-[0_10px_0_#00bfff] border border-white block text-center">
-                  <span className="relative z-10 flex items-center justify-center gap-4">
-                    Get Started <ArrowDownRight className="w-4 h-4" />
-                  </span>
-                </Link>
               </motion.div>
-            </div>
-          </motion.div>
+            )}
+
+            {/* 2. OVERLAYS */}
+            {currentView === "portfolio" && (
+              <OverlayWrapper key="portfolio" onClose={() => setCurrentView("hub")}>
+                <PortfolioExperience onBack={() => setCurrentView("hub")} />
+              </OverlayWrapper>
+            )}
+            
+            {currentView === "services" && (
+              <OverlayWrapper key="services" onClose={() => setCurrentView("hub")}>
+                <ServicesExperience onBack={() => setCurrentView("hub")} />
+              </OverlayWrapper>
+            )}
+
+            {currentView === "about" && (
+              <OverlayWrapper key="about" onClose={() => setCurrentView("hub")}>
+                <AboutExperience onBack={() => setCurrentView("hub")} />
+              </OverlayWrapper>
+            )}
+
+          </AnimatePresence>
         </div>
-      </section>
 
-      {/* System Information */}
-      <SystemInfo />
-
-      {/* Calculator */}
-      <RevenueCalculator />
-
-      {/* 2. Core Capabilities - Ultra Concise Brutalist Index */}
-      <section className="relative z-20 w-full bg-[#111111] pt-24 lg:pt-32 pb-12 lg:pb-16 flex flex-col overflow-hidden">
-        <motion.div
-          initial={{ opacity: 0, x: -100 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, ease: "easeOut" }} viewport={{ once: true, margin: "-100px" }}
-          className="px-6 lg:px-12 mb-12 flex justify-between items-end"
-        >
-          <h2 className="text-5xl md:text-7xl font-black font-[family-name:var(--font-audiowide)] uppercase tracking-tighter leading-none text-white">
-            How it Works.
-          </h2>
-          <span className="text-[10px] text-[#00ff99] font-mono tracking-[0.2em] uppercase hidden md:block">[ Core Features ]</span>
-        </motion.div>
-
-        <div className="w-full flex flex-col border-t border-white/20">
-
-          {/* Row 1 */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: "easeOut" }} viewport={{ once: true, margin: "-50px" }}
-            className="w-full border-b border-white/20 p-6 lg:px-12 py-8 group hover:bg-white hover:text-[#111111] transition-colors duration-300 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 cursor-crosshair"
-          >
-            <div className="flex items-center gap-4 md:gap-8 lg:gap-16 w-full lg:w-1/2">
-              <span className="font-mono text-[10px] tracking-widest uppercase opacity-50 shrink-0">[001]</span>
-              <h3 className="text-3xl sm:text-4xl md:text-5xl font-black font-[family-name:var(--font-audiowide)] uppercase leading-none group-hover:-translate-y-1 transition-transform break-words">AI Qualification</h3>
-            </div>
-            <p className="font-mono text-sm leading-relaxed max-w-xl lg:text-right opacity-60 group-hover:opacity-100 group-hover:font-medium">
-              Powered by advanced natural language processing, Welcome Parrot understands context and intent, instantly identifying your most valuable leads 24/7.
-            </p>
-          </motion.div>
-
-          {/* Row 2 */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }} viewport={{ once: true, margin: "-50px" }}
-            className="w-full border-b border-white/20 p-6 lg:px-12 py-8 group hover:bg-white hover:text-[#111111] transition-colors duration-300 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 cursor-crosshair"
-          >
-            <div className="flex items-center gap-4 md:gap-8 lg:gap-16 w-full lg:w-1/2">
-              <span className="font-mono text-[10px] tracking-widest uppercase opacity-50 shrink-0">[002]</span>
-              <h3 className="text-3xl sm:text-4xl md:text-5xl font-black font-[family-name:var(--font-audiowide)] uppercase leading-none group-hover:-translate-y-1 transition-transform break-words">Works With Your Tools</h3>
-            </div>
-            <p className="font-mono text-sm leading-relaxed max-w-xl lg:text-right opacity-60 group-hover:opacity-100 group-hover:font-medium">
-              Connects directly to your CRM, Slack, and email in seconds. No complex setup, it just works.
-            </p>
-          </motion.div>
-
-          {/* Row 3 */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }} viewport={{ once: true, margin: "-50px" }}
-            className="w-full border-b border-white/20 p-6 lg:px-12 py-8 group hover:bg-white hover:text-[#111111] transition-colors duration-300 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 cursor-crosshair"
-          >
-            <div className="flex items-center gap-4 md:gap-8 lg:gap-16 w-full lg:w-1/2">
-              <span className="font-mono text-[10px] tracking-widest uppercase opacity-50 shrink-0">[003]</span>
-              <h3 className="text-3xl sm:text-4xl md:text-5xl font-black font-[family-name:var(--font-audiowide)] uppercase leading-none group-hover:-translate-y-1 transition-transform break-words">Bank-Level Security</h3>
-            </div>
-            <p className="font-mono text-sm leading-relaxed max-w-xl lg:text-right opacity-60 group-hover:opacity-100 group-hover:font-medium">
-              Every conversation is securely encrypted, ensuring your business data and lead information remains strictly confidential.
-            </p>
-          </motion.div>
-
-          {/* Row 4 */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }} viewport={{ once: true, margin: "-50px" }}
-            className="w-full border-b border-white/20 p-6 lg:px-12 py-8 group hover:bg-white hover:text-[#111111] transition-colors duration-300 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 cursor-crosshair"
-          >
-            <div className="flex items-center gap-4 md:gap-8 lg:gap-16 w-full lg:w-1/2">
-              <span className="font-mono text-[10px] tracking-widest uppercase opacity-50 shrink-0">[004]</span>
-              <h3 className="text-3xl sm:text-4xl md:text-5xl font-black font-[family-name:var(--font-audiowide)] uppercase leading-none group-hover:-translate-y-1 transition-transform break-words">Easy Setup</h3>
-            </div>
-            <p className="font-mono text-sm leading-relaxed max-w-xl lg:text-right opacity-60 group-hover:opacity-100 group-hover:font-medium">
-              Launch your AI receptionist in minutes. We've simplified the setup process so you can focus on closing deals rather than managing complex software.
-            </p>
-          </motion.div>
-
-        </div>
-      </section>
-
-
-
-      {/* Integration Marquee */}
-      <IntegrationMarquee />
-
-      {/* 3. Pricing Options - Monolithic & Stark */}
-      <section id="pricing" className="relative z-20 py-16 px-6 lg:px-12 w-full bg-[#111111] overflow-hidden" style={{ perspective: "1000px" }}>
-        <motion.div
-          initial={{ opacity: 0, rotateX: 90 }} whileInView={{ opacity: 1, rotateX: 0 }} transition={{ duration: 0.8, ease: "easeOut" }} viewport={{ once: true, margin: "-100px" }}
-          style={{ transformOrigin: "bottom" }}
-          className="w-full mb-12 border-b border-white/20 pb-8 flex flex-col md:flex-row items-end justify-between gap-8"
-        >
-          <div>
-            <span className="text-[10px] text-white/50 font-mono tracking-[0.2em] uppercase mb-4 block">[ Pricing Plans ]</span>
-            <h2 className="text-5xl md:text-7xl font-black tracking-tighter uppercase leading-none font-[family-name:var(--font-audiowide)] text-white mb-6">
-              Pricing.
-            </h2>
-            <div className="max-w-2xl border-l-2 border-[#00bfff] pl-6 py-2">
-              <h4 className="text-[#00bfff] font-mono font-bold uppercase tracking-widest text-xs mb-2">The 14-Day ROI Guarantee</h4>
-              <p className="font-mono text-xs text-white/70 leading-relaxed">
-                We build it, we connect it, and we let it run. If Welcome Parrot doesn't catch enough missed revenue to pay for itself in the first 14 days, you don't pay a dime. <span className="text-[#00bfff] font-bold block mt-2">For most service businesses, the system pays for itself within just 1 to 2 converted jobs or leads.</span>
-              </p>
-              <div className="mt-4 inline-block border border-[#00ff99]/50 bg-[#00ff99]/10 px-4 py-2">
-                <span className="font-mono text-[10px] text-[#00ff99] font-bold uppercase tracking-widest">FLAT-RATE MONTHLY. ZERO HIDDEN PER-MINUTE AI FEES.</span>
+        {/* Global Apple-Style Bottom Navigation Dock */}
+        {(() => {
+          const isLightMode = currentView === "services";
+          return (
+            <motion.nav
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.8 }}
+              className={`fixed bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 p-2 rounded-full backdrop-blur-xl z-[300] border shadow-[0_20px_40px_rgba(0,0,0,0.5)] transition-colors duration-500 ${
+                isLightMode ? "bg-black/10 border-black/10" : "bg-white/5 border-white/10"
+              }`}
+            >
+              <div className="flex items-center gap-1 md:gap-2 pointer-events-auto">
+                {[
+                  { id: "hub", label: "Hub" },
+                  { id: "portfolio", label: "The No-Brainer" },
+                  { id: "services", label: "The Platform" },
+                  { id: "about", label: "Book Demo" }
+                ].map((item) => {
+                  const isActive = currentView === item.id;
+                  return (
+                    <button
+                      key={item.id}
+                      onClick={() => handleNavClick(item.id as ViewState)}
+                      className={`relative px-5 md:px-8 py-3 rounded-full text-center transition-colors duration-500 ${
+                        isActive
+                          ? isLightMode ? "text-white" : "text-black"
+                          : isLightMode ? "text-black/60 hover:text-black" : "text-white/60 hover:text-white"
+                      }`}
+                    >
+                      {isActive && (
+                        <motion.div
+                          layoutId="liquid-nav-blob"
+                          className={`absolute inset-0 rounded-full -z-10 shadow-lg ${isLightMode ? "bg-black" : "bg-white"}`}
+                          transition={{ type: "spring", stiffness: 120, damping: 14, mass: 1.2 }}
+                        />
+                      )}
+                      <span className="relative z-10 font-sans text-[10px] md:text-xs font-semibold tracking-[0.1em] uppercase">{item.label}</span>
+                    </button>
+                  );
+                })}
               </div>
-            </div>
-          </div>
-        </motion.div>
+            </motion.nav>
+          );
+        })()}
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 w-full border border-white/20">
-
-          {/* Baby Parrot */}
-          <motion.div
-            initial={{ opacity: 0, scale: 1.1, y: 50 }} whileInView={{ opacity: 1, scale: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut" }} viewport={{ once: true, margin: "-100px" }}
-            className="w-full border-b lg:border-b-0 lg:border-r border-white/20 p-8 lg:p-12 flex flex-col justify-between hover:border-white hover:shadow-[0_0_30px_rgba(255,255,255,0.15)] transition-all duration-300 group"
-          >
-            <div>
-              <span className="text-[10px] text-current/50 font-mono tracking-widest uppercase block mb-4">[ Tier 01 - Missed-Call Auto-Catch ]</span>
-              <h3 className="text-3xl lg:text-4xl font-black uppercase tracking-tighter mb-4 font-[family-name:var(--font-audiowide)]">Basic</h3>
-              <div className="text-4xl font-mono font-bold mb-6">$149<span className="text-sm opacity-50">/mo</span></div>
-              <p className="font-mono text-xs text-current/70 leading-relaxed mb-8">
-                For less than $5 a day, you stop losing high-ticket jobs to voicemail. The instant a call drops, Welcome Parrot texts them back—delivering pre-approved, high-converting responses to lock in the lead before they dial a competitor. <span className="font-bold block mt-2 text-current">Pays for itself with just 1 converted job.</span>
-              </p>
-              <ul className="space-y-3 mb-12">
-                <li className="font-mono text-[10px] text-current font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00bfff] group-hover:text-white shrink-0 transition-colors" /> Instant Missed-Call Auto-Catch</li>
-                <li className="font-mono text-[10px] text-current font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00bfff] group-hover:text-white shrink-0 transition-colors" /> Customizable Text Templates</li>
-                <li className="font-mono text-[10px] text-current font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00bfff] group-hover:text-white shrink-0 transition-colors" /> AI Response Protocols</li>
-                <li className="font-mono text-[10px] text-current font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00bfff] group-hover:text-white shrink-0 transition-colors" /> Dashboard Call & Lead Logging</li>
-              </ul>
-            </div>
-            <Link href="https://calendar.app.google/DW6EyNY2BRDA1h1PA" target="_blank" className="w-full border border-current px-6 py-4 text-[10px] font-mono font-bold uppercase tracking-widest bg-transparent text-current group-hover:bg-black group-hover:text-white transition-colors block text-center">
-              Claim This Tier
-            </Link>
-          </motion.div>
-
-          {/* Teen Parrot - High Contrast */}
-          <motion.div
-            initial={{ opacity: 0, scale: 1.1, y: 50 }} whileInView={{ opacity: 1, scale: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }} viewport={{ once: true, margin: "-100px" }}
-            className="w-full border-b lg:border-b-0 lg:border-r border-[#0ea5e9] bg-[#0ea5e9] text-[#111111] p-8 lg:p-12 flex flex-col justify-between group hover:shadow-[0_0_50px_rgba(14,165,233,0.6)] transition-all duration-300 z-10 relative"
-          >
-            <div>
-              <span className="text-[10px] text-current/70 font-mono tracking-widest uppercase block mb-4">[ Tier 02 - AI Lead Qualifier ]</span>
-              <h3 className="text-3xl lg:text-4xl font-black uppercase tracking-tighter mb-4 font-[family-name:var(--font-audiowide)]">Standard</h3>
-              <div className="text-4xl font-mono font-bold text-[#111111] mb-6">$297<span className="text-sm opacity-70">/mo</span></div>
-              <p className="font-mono text-xs text-[#111111]/80 leading-relaxed mb-8 font-bold">
-                By the time you finish your current job, you have a fully qualified lead sitting on your phone. The AI acts as a digital SDR, answering initial questions and extracting the full scope of work using strict guardrails based on your actual company data. <span className="block mt-2 text-[#111111]">Easily pays for itself after 1 to 2 jobs won.</span>
-              </p>
-              <ul className="space-y-3 mb-12">
-                <li className="font-mono text-[10px] text-[#111111] font-black uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#111111] shrink-0" /> Instant Missed-Call Auto-Catch</li>
-                <li className="font-mono text-[10px] text-[#111111] font-black uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#111111] shrink-0" /> Customizable Text Templates</li>
-                <li className="font-mono text-[10px] text-[#111111] font-black uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#111111] shrink-0" /> Dashboard Call & Lead Logging</li>
-                <li className="font-mono text-[10px] text-[#111111] font-black uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#111111] shrink-0" /> 2-Way AI Lead Qualification</li>
-                <li className="font-mono text-[10px] text-[#111111] font-black uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#111111] shrink-0" /> Auto Scope-of-Work Extraction</li>
-                <li className="font-mono text-[10px] text-[#111111] font-black uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#111111] shrink-0" /> Custom Knowledge Base Sync</li>
-                <li className="font-mono text-[10px] text-[#111111] font-black uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#111111] shrink-0" /> Direct Calendar Integration</li>
-              </ul>
-            </div>
-            <Link href="https://calendar.app.google/DW6EyNY2BRDA1h1PA" target="_blank" className="w-full border border-[#111111] bg-[#111111] text-[#0ea5e9] px-6 py-4 text-[10px] font-mono font-bold uppercase tracking-widest hover:bg-[#111111] hover:text-white transition-colors block text-center">
-              Book My Custom Setup
-            </Link>
-          </motion.div>
-
-          {/* Adult Parrot */}
-          <motion.div
-            initial={{ opacity: 0, scale: 1.1, y: 50 }} whileInView={{ opacity: 1, scale: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }} viewport={{ once: true, margin: "-100px" }}
-            className="w-full bg-[#1a1a1a] text-white p-8 lg:p-12 flex flex-col justify-between border-t lg:border-t-0 border-[#00ff99]/20 hover:border-[#00ff99] transition-all duration-300 group shadow-[inset_0_0_50px_rgba(0,255,153,0.02)] hover:shadow-[0_0_60px_rgba(0,255,153,0.3),inset_0_0_50px_rgba(0,255,153,0.05)]"
-          >
-            <div>
-              <span className="text-[10px] text-[#00ff99] font-mono tracking-widest uppercase block mb-4">[ 24/7 Voice ]</span>
-              <h3 className="text-3xl lg:text-4xl font-black uppercase tracking-tighter mb-4 font-[family-name:var(--font-audiowide)] text-white">Premium</h3>
-              <div className="text-4xl font-mono font-bold mb-6 text-white">$897<span className="text-sm text-white/50">/mo</span></div>
-              <p className="font-mono text-xs text-white/70 leading-relaxed mb-8">
-                A hyper-realistic voice agent answers every call instantly. It executes your exact sales frameworks to handle typical conversations and book appointments. If a call requires a human touch, it seamlessly transfers them directly to your phone. <span className="text-[#00ff99] font-bold block mt-2">Maximum conversion. Pays for itself within a few converted leads.</span>
-              </p>
-              <ul className="space-y-3 mb-12">
-                <li className="font-mono text-[10px] text-white/90 font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00ff99] shrink-0" /> Instant Missed-Call Auto-Catch</li>
-                <li className="font-mono text-[10px] text-white/90 font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00ff99] shrink-0" /> Customizable Text Templates</li>
-                <li className="font-mono text-[10px] text-white/90 font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00ff99] shrink-0" /> Dashboard Call & Lead Logging</li>
-                <li className="font-mono text-[10px] text-white/90 font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00ff99] shrink-0" /> 2-Way AI Lead Qualification</li>
-                <li className="font-mono text-[10px] text-white/90 font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00ff99] shrink-0" /> Auto Scope-of-Work Extraction</li>
-                <li className="font-mono text-[10px] text-white/90 font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00ff99] shrink-0" /> Custom Knowledge Base Sync</li>
-                <li className="font-mono text-[10px] text-white/90 font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00ff99] shrink-0" /> Direct Calendar Integration</li>
-                <li className="font-mono text-[10px] text-white/90 font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00ff99] shrink-0" /> 24/7 AI Voice Receptionist</li>
-                <li className="font-mono text-[10px] text-white/90 font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00ff99] shrink-0" /> Hyper-Realistic Voice Engine</li>
-                <li className="font-mono text-[10px] text-white/90 font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00ff99] shrink-0" /> Advanced Objection Handling</li>
-                <li className="font-mono text-[10px] text-white/90 font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00ff99] shrink-0" /> Smart Live Call Routing</li>
-                <li className="font-mono text-[10px] text-white/90 font-bold uppercase tracking-widest flex items-center gap-3"><TerminalSquare className="w-3 h-3 text-[#00ff99] shrink-0" /> Emergency Call Escalation</li>
-              </ul>
-            </div>
-            <Link href="https://calendar.app.google/DW6EyNY2BRDA1h1PA" target="_blank" className="w-full border border-[#00ff99] bg-[#00ff99]/10 text-[#00ff99] px-6 py-4 text-[10px] font-mono font-bold uppercase tracking-widest hover:bg-[#00ff99] hover:text-black transition-colors block text-center">
-              Talk to the Founders
-            </Link>
-          </motion.div>
-
-        </div>
-      </section>
-
+      </div>
     </main>
   );
 }
