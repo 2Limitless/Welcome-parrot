@@ -39,6 +39,7 @@ export default function Home() {
     <main className="relative w-full min-h-screen overflow-x-hidden overflow-y-scroll bg-black flex flex-col">
       {/* Pure Apple Pro Black Background */}
       <div className="absolute inset-0 z-0 bg-black pointer-events-none" />
+      <img src="/hub_background.jpg" className="absolute inset-0 z-0 w-full h-full object-cover opacity-20 pointer-events-none mix-blend-overlay" alt="Background" />
       
       {/* Subtle top light for an expensive studio feel */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-[50vh] bg-white opacity-[0.03] blur-[120px] rounded-full pointer-events-none z-0" />
@@ -174,13 +175,13 @@ export default function Home() {
                 </div>
 
                 {/* Bottom: The "Pro Display" Showcase Grid */}
-                <div className="flex-none w-full flex items-center justify-center gap-6 md:gap-10 px-8 mt-12 z-10 pointer-events-none perspective-[1200px]">
+                <div className="flex-none w-full flex items-center justify-center -space-x-12 md:space-x-0 md:gap-10 px-8 mt-12 z-10 pointer-events-none perspective-[1200px]">
                   
                   {/* Left Glass Panel */}
                   <motion.div 
                     animate={{ y: [-5, 5, -5] }}
                     transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0 }}
-                    className="w-[160px] md:w-[220px] lg:w-[260px] aspect-[9/16] rounded-[2rem] overflow-hidden border border-white/10 shadow-[0_40px_80px_rgba(0,0,0,0.5)] bg-black/50"
+                    className="w-[140px] md:w-[220px] lg:w-[260px] aspect-[9/16] rounded-[2rem] overflow-hidden border border-white/10 shadow-[0_40px_80px_rgba(0,0,0,0.5)] bg-black/50 rotate-[-6deg] md:rotate-0 translate-y-4 md:translate-y-0"
                   >
                     <img src="/mobile_app_mockup.jpg" alt="Mobile App UI" className="w-full h-full object-cover opacity-90" />
                   </motion.div>
@@ -189,7 +190,7 @@ export default function Home() {
                   <motion.div 
                     animate={{ y: [-5, 5, -5] }}
                     transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-                    className="w-[180px] md:w-[260px] lg:w-[300px] aspect-[9/16] rounded-[2rem] overflow-hidden border border-white/20 shadow-[0_60px_100px_rgba(0,0,0,0.8)] bg-black/50 z-20"
+                    className="w-[160px] md:w-[260px] lg:w-[300px] aspect-[9/16] rounded-[2rem] overflow-hidden border border-white/20 shadow-[0_60px_100px_rgba(0,0,0,0.8)] bg-black/50 z-20"
                   >
                     <img src="/kds_tablet_mockup.jpg" alt="KDS Tablet UI" className="w-full h-full object-cover" />
                   </motion.div>
@@ -198,7 +199,7 @@ export default function Home() {
                   <motion.div 
                     animate={{ y: [-5, 5, -5] }}
                     transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 4 }}
-                    className="w-[160px] md:w-[220px] lg:w-[260px] aspect-[9/16] rounded-[2rem] overflow-hidden border border-white/10 shadow-[0_40px_80px_rgba(0,0,0,0.5)] bg-black/50 hidden md:block"
+                    className="w-[140px] md:w-[220px] lg:w-[260px] aspect-[9/16] rounded-[2rem] overflow-hidden border border-white/10 shadow-[0_40px_80px_rgba(0,0,0,0.5)] bg-black/50 rotate-[6deg] md:rotate-0 translate-y-4 md:translate-y-0"
                   >
                     <img src="/analytics_dashboard_panel.jpg" alt="Kitchen operations" className="w-full h-full object-cover opacity-90" />
                   </motion.div>
