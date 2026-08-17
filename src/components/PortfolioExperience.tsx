@@ -123,11 +123,11 @@ export default function PortfolioExperience({ lang, onBack }: { lang: Language, 
             className="flex flex-col gap-2 md:gap-4 p-4 md:p-8 rounded-2xl md:rounded-[1.5rem] border border-red-500/20 bg-red-950/20 relative overflow-hidden"
           >
             <div className="absolute top-0 right-0 w-48 h-48 bg-red-500/10 blur-[80px] rounded-full pointer-events-none" />
-            <h3 className="font-sans text-[8px] md:text-[10px] tracking-widest uppercase text-red-500 font-bold">{t.profit.market}</h3>
+            <h3 className="font-sans text-[10px] md:text-xs tracking-widest uppercase text-red-500 font-bold">{t.profit.market}</h3>
             <div><span className="text-3xl md:text-6xl font-sans font-bold text-white tracking-tighter">$17.50</span></div>
-            <p className="text-white/70 text-[10px] md:text-base font-medium leading-tight">{t.profit.marketDesc1}</p>
+            <p className="text-white/70 text-xs md:text-base font-medium leading-tight">{t.profit.marketDesc1}</p>
             <div className="w-full h-[1px] bg-red-500/20 my-2 md:my-4" />
-            <p className="text-red-400 text-[10px] md:text-sm font-semibold leading-tight">{t.profit.marketDesc2}</p>
+            <p className="text-red-400 text-xs md:text-sm font-semibold leading-tight">{t.profit.marketDesc2}</p>
           </motion.div>
 
           <motion.div 
@@ -135,11 +135,11 @@ export default function PortfolioExperience({ lang, onBack }: { lang: Language, 
             className="flex flex-col gap-2 md:gap-4 p-4 md:p-8 rounded-2xl md:rounded-[1.5rem] border border-[#00ff66]/20 bg-[#00ff66]/5 relative overflow-hidden"
           >
             <div className="absolute top-0 right-0 w-48 h-48 bg-[#00ff66]/10 blur-[80px] rounded-full pointer-events-none" />
-            <h3 className="font-sans text-[8px] md:text-[10px] tracking-widest uppercase text-[#00ff66] font-bold">{t.profit.direct}</h3>
+            <h3 className="font-sans text-[10px] md:text-xs tracking-widest uppercase text-[#00ff66] font-bold">{t.profit.direct}</h3>
             <div><span className="text-3xl md:text-6xl font-sans font-bold text-white tracking-tighter">$23.97</span></div>
-            <p className="text-white/70 text-[10px] md:text-base font-medium leading-tight">{t.profit.directDesc1}</p>
+            <p className="text-white/70 text-xs md:text-base font-medium leading-tight">{t.profit.directDesc1}</p>
             <div className="w-full h-[1px] bg-[#00ff66]/20 my-2 md:my-4" />
-            <p className="text-[#00ff66]/80 text-[10px] md:text-sm font-semibold leading-tight">{t.profit.directDesc2}</p>
+            <p className="text-[#00ff66]/80 text-xs md:text-sm font-semibold leading-tight">{t.profit.directDesc2}</p>
           </motion.div>
         </div>
 
@@ -157,7 +157,7 @@ export default function PortfolioExperience({ lang, onBack }: { lang: Language, 
             <Zap className="w-6 h-6 md:w-8 md:h-8 shrink-0 text-[var(--color-ice)] md:mb-6 group-hover:-translate-y-1 transition-transform" />
             <div>
               <h4 className="text-[var(--color-ice)] font-serif text-base md:text-xl mb-1 md:mb-3 leading-tight">{t.cards[1].title}</h4>
-              <p className="text-[var(--color-ice)]/60 text-[10px] md:text-sm leading-relaxed">{t.cards[1].desc}</p>
+              <p className="text-[var(--color-ice)]/60 text-xs md:text-sm leading-relaxed">{t.cards[1].desc}</p>
             </div>
           </motion.div>
 
@@ -165,7 +165,7 @@ export default function PortfolioExperience({ lang, onBack }: { lang: Language, 
             <Gift className="w-6 h-6 md:w-8 md:h-8 shrink-0 text-[#00ff66] md:mb-6 group-hover:-translate-y-1 transition-transform" />
             <div>
               <h4 className="text-[var(--color-ice)] font-serif text-base md:text-xl mb-1 md:mb-3 leading-tight">{t.cards[2].title}</h4>
-              <p className="text-[var(--color-ice)]/60 text-[10px] md:text-sm leading-relaxed">{t.cards[2].desc}</p>
+              <p className="text-[var(--color-ice)]/60 text-xs md:text-sm leading-relaxed">{t.cards[2].desc}</p>
             </div>
           </motion.div>
 
@@ -173,7 +173,7 @@ export default function PortfolioExperience({ lang, onBack }: { lang: Language, 
             <MonitorSmartphone className="w-6 h-6 md:w-8 md:h-8 shrink-0 text-[#00ff66] md:mb-6 group-hover:-translate-y-1 transition-transform" />
             <div>
               <h4 className="text-[var(--color-ice)] font-serif text-base md:text-xl mb-1 md:mb-3 leading-tight">{t.cards[3].title}</h4>
-              <p className="text-[var(--color-ice)]/60 text-[10px] md:text-sm leading-relaxed">{t.cards[3].desc}</p>
+              <p className="text-[var(--color-ice)]/60 text-xs md:text-sm leading-relaxed">{t.cards[3].desc}</p>
             </div>
           </motion.div>
 
@@ -182,7 +182,7 @@ export default function PortfolioExperience({ lang, onBack }: { lang: Language, 
             <Bell className="w-6 h-6 md:w-8 md:h-8 shrink-0 text-[#00ff66] md:mb-6 group-hover:-translate-y-1 transition-transform" />
             <div>
               <h4 className="text-[var(--color-ice)] font-serif text-base md:text-2xl mb-1 md:mb-3 leading-tight">{t.cards[4].title}</h4>
-              <p className="text-[var(--color-ice)]/60 text-[10px] md:text-sm leading-relaxed">{t.cards[4].desc}</p>
+              <p className="text-[var(--color-ice)]/60 text-xs md:text-sm leading-relaxed">{t.cards[4].desc}</p>
             </div>
           </motion.div>
 
