@@ -143,54 +143,54 @@ export default function PortfolioExperience({ lang, onBack }: { lang: Language, 
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 pb-24">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6, duration: 0.5 }} className="md:col-span-2 bg-[var(--color-ice)]/5 border border-[var(--color-ice)]/10 p-8 rounded-[2rem] hover:bg-[var(--color-ice)]/10 transition-colors group relative overflow-hidden flex flex-col justify-between min-h-[240px]">
-            <div className="absolute -top-24 -right-24 w-64 h-64 bg-[var(--color-acid)]/10 blur-[80px] rounded-full group-hover:bg-[var(--color-acid)]/20 transition-all duration-700" />
-            <Database className="w-8 h-8 text-[var(--color-acid)] mb-6 group-hover:-translate-y-1 transition-transform" />
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 pb-24">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6, duration: 0.5 }} className="col-span-2 md:col-span-2 bg-[var(--color-ice)]/5 border border-[var(--color-ice)]/10 p-5 md:p-8 rounded-2xl md:rounded-[2rem] hover:bg-[var(--color-ice)]/10 transition-colors group relative overflow-hidden flex flex-row md:flex-col justify-start md:justify-between items-center md:items-start min-h-[auto] md:min-h-[240px] gap-4 md:gap-0">
+            <div className="hidden md:block absolute -top-24 -right-24 w-64 h-64 bg-[var(--color-acid)]/10 blur-[80px] rounded-full group-hover:bg-[var(--color-acid)]/20 transition-all duration-700" />
+            <Database className="w-8 h-8 md:w-8 md:h-8 shrink-0 text-[var(--color-acid)] md:mb-6 group-hover:-translate-y-1 transition-transform" />
             <div>
-              <h4 className="text-[var(--color-ice)] font-serif text-2xl mb-3">{t.cards[0].title}</h4>
-              <p className="text-[var(--color-ice)]/60 text-sm leading-relaxed">{t.cards[0].desc}</p>
+              <h4 className="text-[var(--color-ice)] font-serif text-lg md:text-2xl mb-1 md:mb-3">{t.cards[0].title}</h4>
+              <p className="text-[var(--color-ice)]/60 text-xs md:text-sm leading-relaxed">{t.cards[0].desc}</p>
             </div>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7, duration: 0.5 }} className="md:col-span-1 bg-[var(--color-ice)]/5 border border-[var(--color-ice)]/10 p-8 rounded-[2rem] hover:bg-[var(--color-ice)]/10 transition-colors group relative overflow-hidden flex flex-col justify-between min-h-[240px]">
-            <Zap className="w-8 h-8 text-[var(--color-ice)] mb-6 group-hover:-translate-y-1 transition-transform" />
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7, duration: 0.5 }} className="col-span-1 bg-[var(--color-ice)]/5 border border-[var(--color-ice)]/10 p-4 md:p-8 rounded-2xl md:rounded-[2rem] hover:bg-[var(--color-ice)]/10 transition-colors group relative overflow-hidden flex flex-col justify-start md:justify-between min-h-[auto] md:min-h-[240px] gap-2 md:gap-0">
+            <Zap className="w-6 h-6 md:w-8 md:h-8 shrink-0 text-[var(--color-ice)] md:mb-6 group-hover:-translate-y-1 transition-transform" />
             <div>
-              <h4 className="text-[var(--color-ice)] font-serif text-xl mb-3">{t.cards[1].title}</h4>
-              <p className="text-[var(--color-ice)]/60 text-sm leading-relaxed">{t.cards[1].desc}</p>
+              <h4 className="text-[var(--color-ice)] font-serif text-base md:text-xl mb-1 md:mb-3 leading-tight">{t.cards[1].title}</h4>
+              <p className="text-[var(--color-ice)]/60 text-[10px] md:text-sm leading-relaxed">{t.cards[1].desc}</p>
             </div>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8, duration: 0.5 }} className="md:col-span-1 bg-[var(--color-ice)]/5 border border-[var(--color-ice)]/10 p-8 rounded-[2rem] hover:bg-[var(--color-ice)]/10 transition-colors group relative overflow-hidden flex flex-col justify-between min-h-[240px]">
-            <Gift className="w-8 h-8 text-[#00ff66] mb-6 group-hover:-translate-y-1 transition-transform" />
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8, duration: 0.5 }} className="col-span-1 bg-[var(--color-ice)]/5 border border-[var(--color-ice)]/10 p-4 md:p-8 rounded-2xl md:rounded-[2rem] hover:bg-[var(--color-ice)]/10 transition-colors group relative overflow-hidden flex flex-col justify-start md:justify-between min-h-[auto] md:min-h-[240px] gap-2 md:gap-0">
+            <Gift className="w-6 h-6 md:w-8 md:h-8 shrink-0 text-[#00ff66] md:mb-6 group-hover:-translate-y-1 transition-transform" />
             <div>
-              <h4 className="text-[var(--color-ice)] font-serif text-xl mb-3">{t.cards[2].title}</h4>
-              <p className="text-[var(--color-ice)]/60 text-sm leading-relaxed">{t.cards[2].desc}</p>
+              <h4 className="text-[var(--color-ice)] font-serif text-base md:text-xl mb-1 md:mb-3 leading-tight">{t.cards[2].title}</h4>
+              <p className="text-[var(--color-ice)]/60 text-[10px] md:text-sm leading-relaxed">{t.cards[2].desc}</p>
             </div>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9, duration: 0.5 }} className="md:col-span-1 bg-[var(--color-ice)]/5 border border-[var(--color-ice)]/10 p-8 rounded-[2rem] hover:bg-[var(--color-ice)]/10 transition-colors group relative overflow-hidden flex flex-col justify-between min-h-[240px]">
-            <MonitorSmartphone className="w-8 h-8 text-[#00ff66] mb-6 group-hover:-translate-y-1 transition-transform" />
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9, duration: 0.5 }} className="col-span-1 bg-[var(--color-ice)]/5 border border-[var(--color-ice)]/10 p-4 md:p-8 rounded-2xl md:rounded-[2rem] hover:bg-[var(--color-ice)]/10 transition-colors group relative overflow-hidden flex flex-col justify-start md:justify-between min-h-[auto] md:min-h-[240px] gap-2 md:gap-0">
+            <MonitorSmartphone className="w-6 h-6 md:w-8 md:h-8 shrink-0 text-[#00ff66] md:mb-6 group-hover:-translate-y-1 transition-transform" />
             <div>
-              <h4 className="text-[var(--color-ice)] font-serif text-xl mb-3">{t.cards[3].title}</h4>
-              <p className="text-[var(--color-ice)]/60 text-sm leading-relaxed">{t.cards[3].desc}</p>
+              <h4 className="text-[var(--color-ice)] font-serif text-base md:text-xl mb-1 md:mb-3 leading-tight">{t.cards[3].title}</h4>
+              <p className="text-[var(--color-ice)]/60 text-[10px] md:text-sm leading-relaxed">{t.cards[3].desc}</p>
             </div>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.0, duration: 0.5 }} className="md:col-span-2 bg-[var(--color-ice)]/5 border border-[var(--color-ice)]/10 p-8 rounded-[2rem] hover:bg-[var(--color-ice)]/10 transition-colors group relative overflow-hidden flex flex-col justify-between min-h-[240px]">
-            <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-[#00ff66]/10 blur-[80px] rounded-full group-hover:bg-[#00ff66]/20 transition-all duration-700" />
-            <Bell className="w-8 h-8 text-[#00ff66] mb-6 group-hover:-translate-y-1 transition-transform" />
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.0, duration: 0.5 }} className="col-span-1 md:col-span-2 bg-[var(--color-ice)]/5 border border-[var(--color-ice)]/10 p-4 md:p-8 rounded-2xl md:rounded-[2rem] hover:bg-[var(--color-ice)]/10 transition-colors group relative overflow-hidden flex flex-col justify-start md:justify-between min-h-[auto] md:min-h-[240px] gap-2 md:gap-0">
+            <div className="hidden md:block absolute -bottom-24 -left-24 w-64 h-64 bg-[#00ff66]/10 blur-[80px] rounded-full group-hover:bg-[#00ff66]/20 transition-all duration-700" />
+            <Bell className="w-6 h-6 md:w-8 md:h-8 shrink-0 text-[#00ff66] md:mb-6 group-hover:-translate-y-1 transition-transform" />
             <div>
-              <h4 className="text-[var(--color-ice)] font-serif text-2xl mb-3">{t.cards[4].title}</h4>
-              <p className="text-[var(--color-ice)]/60 text-sm leading-relaxed">{t.cards[4].desc}</p>
+              <h4 className="text-[var(--color-ice)] font-serif text-base md:text-2xl mb-1 md:mb-3 leading-tight">{t.cards[4].title}</h4>
+              <p className="text-[var(--color-ice)]/60 text-[10px] md:text-sm leading-relaxed">{t.cards[4].desc}</p>
             </div>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1, duration: 0.5 }} className="md:col-span-1 bg-[var(--color-ice)]/5 border border-[var(--color-ice)]/10 p-8 rounded-[2rem] hover:bg-[var(--color-ice)]/10 transition-colors group relative overflow-hidden flex flex-col justify-between min-h-[240px]">
-            <TrendingUp className="w-8 h-8 text-[var(--color-ice)] mb-6 group-hover:-translate-y-1 transition-transform" />
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1, duration: 0.5 }} className="col-span-2 md:col-span-1 bg-[var(--color-ice)]/5 border border-[var(--color-ice)]/10 p-5 md:p-8 rounded-2xl md:rounded-[2rem] hover:bg-[var(--color-ice)]/10 transition-colors group relative overflow-hidden flex flex-row md:flex-col justify-start md:justify-between items-center md:items-start min-h-[auto] md:min-h-[240px] gap-4 md:gap-0">
+            <TrendingUp className="w-8 h-8 md:w-8 md:h-8 shrink-0 text-[var(--color-ice)] md:mb-6 group-hover:-translate-y-1 transition-transform" />
             <div>
-              <h4 className="text-[var(--color-ice)] font-serif text-xl mb-3">{t.cards[5].title}</h4>
-              <p className="text-[var(--color-ice)]/60 text-sm leading-relaxed">{t.cards[5].desc}</p>
+              <h4 className="text-[var(--color-ice)] font-serif text-lg md:text-xl mb-1 md:mb-3 leading-tight">{t.cards[5].title}</h4>
+              <p className="text-[var(--color-ice)]/60 text-xs md:text-sm leading-relaxed">{t.cards[5].desc}</p>
             </div>
           </motion.div>
 

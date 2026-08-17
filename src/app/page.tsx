@@ -12,7 +12,7 @@ export type Language = "en" | "es";
 
 const dict = {
   en: {
-    nav: { portfolio: "The No-Brainer", services: "The Platform", about: "Upgrade" },
+    nav: { portfolio: "The No-Brainer", services: "The Platform", about: "Transform" },
     hub: {
       pills: ["Zero Commissions", "Line-Busting KDS", "Automated Loyalty"],
       headline: "Own Your Customers.",
@@ -22,13 +22,13 @@ const dict = {
         { num: "35", title: "Frictionless Loyalty", desc: "Automated digital loyalty programs turn occasional diners into weekly regulars, driving 35% repeat visit rates." },
         { num: "80", title: "Push Notifications", desc: "Bypass the spam folder entirely. Direct push notifications command 80% open rates compared to 20% for email." }
       ],
-      cta1: "Upgrade Your Business",
+      cta1: "Transform Your Business",
       cta2: "Why It's a No-Brainer"
     },
     dock: { hub: "Hub" }
   },
   es: {
-    nav: { portfolio: "La Decisión Obvia", services: "La Plataforma", about: "Mejorar" },
+    nav: { portfolio: "La Decisión Obvia", services: "La Plataforma", about: "Transformar" },
     hub: {
       pills: ["Cero Comisiones", "KDS Ultra Rápido", "Lealtad Automática"],
       headline: "Sé Dueño de tus Clientes.",
@@ -38,7 +38,7 @@ const dict = {
         { num: "35", title: "Lealtad Sin Fricción", desc: "Los programas de lealtad digital automatizados convierten a comensales ocasionales en clientes habituales, impulsando tasas de visita repetida del 35%." },
         { num: "80", title: "Notificaciones Push", desc: "Evita la carpeta de spam. Las notificaciones push directas alcanzan tasas de apertura del 80% frente al 20% del correo electrónico." }
       ],
-      cta1: "Mejora Tu Negocio",
+      cta1: "Transforma Tu Negocio",
       cta2: "La Mejor Decisión"
     },
     dock: { hub: "Inicio" }
@@ -163,7 +163,7 @@ export default function Home() {
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                       onClick={() => handleNavClick("about")}
-                      className="text-black bg-white shadow-[0_0_40px_rgba(255,255,255,0.1)] hover:shadow-[0_0_60px_rgba(255,255,255,0.2)] px-10 py-4 rounded-full font-bold transition-all duration-500 w-max text-xs md:text-sm tracking-[0.1em]"
+                      className="text-[var(--color-void)] bg-[var(--color-acid)] shadow-[0_0_40px_rgba(204,255,0,0.2)] hover:shadow-[0_0_60px_rgba(204,255,0,0.4)] px-10 py-4 rounded-full font-bold transition-all duration-500 w-max text-xs md:text-sm tracking-[0.1em]"
                     >
                       {t.hub.cta1}
                     </motion.button>

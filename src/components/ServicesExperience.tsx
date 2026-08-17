@@ -14,15 +14,13 @@ const dict = {
       title1: "The Command Center",
       title2: "Restaurant Operations",
       desc: "Take complete control of your business. Our merchant dashboard and Kitchen Display Screen (KDS) eliminate paper tickets and chaos, giving you real-time analytics and 100% ownership of your customer data.",
-      items: ['Real-time Kitchen Display Screen (KDS)', 'First-Party Data & Analytics', 'Menu & Inventory Management', 'Direct POS Integration'],
-      btn: "View Business Tools"
+      items: ['Real-time Kitchen Display Screen (KDS)', 'First-Party Data & Analytics', 'Menu & Inventory Management', 'Direct POS Integration']
     },
     b2c: {
       title1: "The Native App",
       title2: "Customer Experience",
       desc: "Turn casual diners into weekly regulars. We build you a custom, white-labeled mobile app that makes ordering completely frictionless, complete with automated rewards and direct push notifications.",
-      items: ['White-Labeled iOS & Android App', 'Frictionless Mobile Ordering', 'Automated Loyalty & Rewards', 'Direct Push Notifications'],
-      btn: "Explore The App"
+      items: ['White-Labeled iOS & Android App', 'Frictionless Mobile Ordering', 'Automated Loyalty & Rewards', 'Direct Push Notifications']
     }
   },
   es: {
@@ -34,15 +32,13 @@ const dict = {
       title1: "El Centro de Mando",
       title2: "Operaciones del Restaurante",
       desc: "Toma el control total de tu negocio. Nuestro panel y Pantalla de Cocina (KDS) eliminan los tickets de papel y el caos, ofreciéndote análisis en tiempo real y propiedad del 100% de los datos de tus clientes.",
-      items: ['Pantalla de Cocina en Tiempo Real (KDS)', 'Datos y Análisis Propios', 'Gestión de Menú e Inventario', 'Integración Directa con POS'],
-      btn: "Ver Herramientas"
+      items: ['Pantalla de Cocina en Tiempo Real (KDS)', 'Datos y Análisis Propios', 'Gestión de Menú e Inventario', 'Integración Directa con POS']
     },
     b2c: {
       title1: "La App Nativa",
       title2: "Experiencia del Cliente",
       desc: "Convierte a comensales en clientes habituales. Construimos una app móvil personalizada que hace los pedidos sin fricción, con recompensas automatizadas y notificaciones directas.",
-      items: ['App iOS y Android Personalizada', 'Pedidos Móviles Rápidos', 'Lealtad y Recompensas', 'Notificaciones Push Directas'],
-      btn: "Explorar la Aplicación"
+      items: ['App iOS y Android Personalizada', 'Pedidos Móviles Rápidos', 'Lealtad y Recompensas', 'Notificaciones Push Directas']
     }
   }
 };
@@ -120,10 +116,7 @@ export default function ServicesExperience({ lang, onBack }: { lang: Language, o
               ))}
             </div>
 
-            <button className="relative z-10 bg-[var(--color-void)] text-[var(--color-ice)] hover:bg-[var(--color-cobalt)] px-8 py-5 rounded-full font-bold font-sans text-xs tracking-widest uppercase transition-all duration-500 w-full md:w-max shadow-[0_10px_30px_rgba(0,0,0,0.1)] hover:shadow-[0_20px_40px_rgba(0,71,255,0.2)] flex items-center justify-between gap-4 group/btn overflow-hidden">
-              <span className="relative z-10">{t.b2b.btn}</span>
-              <ArrowRight className="w-4 h-4 relative z-10 group-hover/btn:translate-x-1 transition-transform" />
-            </button>
+
           </motion.div>
 
           {/* Capability 2: B2C */}
@@ -151,10 +144,7 @@ export default function ServicesExperience({ lang, onBack }: { lang: Language, o
               ))}
             </div>
 
-            <button className="relative z-10 bg-transparent border-2 border-[var(--color-void)] text-[var(--color-void)] hover:bg-[var(--color-void)] hover:text-[var(--color-ice)] px-8 py-5 rounded-full font-bold font-sans text-xs tracking-widest uppercase transition-all duration-500 w-full md:w-max flex items-center justify-between gap-4 group/btn">
-              <span>{t.b2c.btn}</span>
-              <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-            </button>
+
           </motion.div>
 
         </motion.div>

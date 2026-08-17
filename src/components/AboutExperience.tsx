@@ -8,7 +8,7 @@ const dict = {
   en: {
     back: "Back to Hub",
     title1: "Book a meeting to",
-    title2: "Upgrade your business.",
+    title2: "Transform your business.",
     desc1: "Stop renting your customers. It's time to own your digital real estate.",
     desc2: "We build the exact enterprise-grade platform you need to automate loyalty, bypass third-party fees, and turn casual diners into lifelong regulars.",
     form: {
@@ -23,7 +23,7 @@ const dict = {
   es: {
     back: "Volver al Inicio",
     title1: "Agenda una reunión para",
-    title2: "Mejorar tu negocio.",
+    title2: "Transformar tu negocio.",
     desc1: "Deja de alquilar a tus clientes. Es hora de ser dueño de tu espacio digital.",
     desc2: "Construimos la plataforma empresarial exacta que necesitas para automatizar la lealtad, evitar tarifas de terceros y convertir a comensales ocasionales en clientes habituales de por vida.",
     form: {
