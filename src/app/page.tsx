@@ -110,7 +110,9 @@ export default function Home() {
                       >
                         <div className="flex items-center gap-2 mb-1">
                           <span className="text-4xl md:text-5xl font-bold font-sans tracking-tighter text-white">25<span className="text-white/40 text-3xl">%</span></span>
-                          <ArrowUp className="text-[#00ff66] w-6 h-6 md:w-8 md:h-8 drop-shadow-[0_0_15px_rgba(0,255,102,0.6)]" strokeWidth={3} />
+                          <motion.div animate={{ y: [0, -5, 0] }} transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}>
+                            <ArrowUp className="text-[#00ff66] w-6 h-6 md:w-8 md:h-8 drop-shadow-[0_0_15px_rgba(0,255,102,0.6)]" strokeWidth={3} />
+                          </motion.div>
                         </div>
                         <h4 className="text-white text-sm font-bold mb-2 tracking-wide uppercase">Native App Upselling</h4>
                         <p className="text-white/50 text-xs leading-relaxed font-medium">
@@ -127,7 +129,9 @@ export default function Home() {
                       >
                         <div className="flex items-center gap-2 mb-1">
                           <span className="text-4xl md:text-5xl font-bold font-sans tracking-tighter text-white">35<span className="text-white/40 text-3xl">%</span></span>
-                          <ArrowUp className="text-[#00ff66] w-6 h-6 md:w-8 md:h-8 drop-shadow-[0_0_15px_rgba(0,255,102,0.6)]" strokeWidth={3} />
+                          <motion.div animate={{ y: [0, -5, 0] }} transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}>
+                            <ArrowUp className="text-[#00ff66] w-6 h-6 md:w-8 md:h-8 drop-shadow-[0_0_15px_rgba(0,255,102,0.6)]" strokeWidth={3} />
+                          </motion.div>
                         </div>
                         <h4 className="text-white text-sm font-bold mb-2 tracking-wide uppercase">Frictionless Loyalty</h4>
                         <p className="text-white/50 text-xs leading-relaxed font-medium">
@@ -144,7 +148,9 @@ export default function Home() {
                       >
                         <div className="flex items-center gap-2 mb-1">
                           <span className="text-4xl md:text-5xl font-bold font-sans tracking-tighter text-white">80<span className="text-white/40 text-3xl">%</span></span>
-                          <ArrowUp className="text-[#00ff66] w-6 h-6 md:w-8 md:h-8 drop-shadow-[0_0_15px_rgba(0,255,102,0.6)]" strokeWidth={3} />
+                          <motion.div animate={{ y: [0, -5, 0] }} transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}>
+                            <ArrowUp className="text-[#00ff66] w-6 h-6 md:w-8 md:h-8 drop-shadow-[0_0_15px_rgba(0,255,102,0.6)]" strokeWidth={3} />
+                          </motion.div>
                         </div>
                         <h4 className="text-white text-sm font-bold mb-2 tracking-wide uppercase">Push Notifications</h4>
                         <p className="text-white/50 text-xs leading-relaxed font-medium">
@@ -169,7 +175,14 @@ export default function Home() {
                       onClick={() => handleNavClick("portfolio")}
                       className="text-white border border-white/20 hover:bg-white/10 px-8 py-4 rounded-full font-bold transition-all duration-500 w-max text-xs md:text-sm tracking-[0.1em] flex items-center gap-2"
                     >
-                      Why It's a No-Brainer <span className="text-[#00ff66] text-lg leading-none">&rarr;</span>
+                      Why It's a No-Brainer 
+                      <motion.span 
+                        animate={{ x: [0, 5, 0] }} 
+                        transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                        className="text-[#00ff66] text-lg leading-none inline-block ml-2"
+                      >
+                        &rarr;
+                      </motion.span>
                     </motion.button>
                   </div>
                 </div>
