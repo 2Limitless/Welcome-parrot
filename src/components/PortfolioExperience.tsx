@@ -117,29 +117,29 @@ export default function PortfolioExperience({ lang, onBack }: { lang: Language, 
           </p>
         </header>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-8 items-center">
+        <div className="grid grid-cols-2 md:grid-cols-2 gap-3 md:gap-6 mb-8 items-stretch">
           <motion.div 
             initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2, duration: 0.8 }}
-            className="flex flex-col gap-4 p-6 md:p-8 rounded-[1.5rem] border border-red-500/20 bg-red-950/20 relative overflow-hidden"
+            className="flex flex-col gap-2 md:gap-4 p-4 md:p-8 rounded-2xl md:rounded-[1.5rem] border border-red-500/20 bg-red-950/20 relative overflow-hidden"
           >
             <div className="absolute top-0 right-0 w-48 h-48 bg-red-500/10 blur-[80px] rounded-full pointer-events-none" />
-            <h3 className="font-sans text-[10px] tracking-widest uppercase text-red-500 font-bold">{t.profit.market}</h3>
-            <div><span className="text-5xl md:text-6xl font-sans font-bold text-white tracking-tighter">$17.50</span></div>
-            <p className="text-white/70 text-sm md:text-base font-medium">{t.profit.marketDesc1}</p>
-            <div className="w-full h-[1px] bg-red-500/20 my-4" />
-            <p className="text-red-400 text-sm font-semibold">{t.profit.marketDesc2}</p>
+            <h3 className="font-sans text-[8px] md:text-[10px] tracking-widest uppercase text-red-500 font-bold">{t.profit.market}</h3>
+            <div><span className="text-3xl md:text-6xl font-sans font-bold text-white tracking-tighter">$17.50</span></div>
+            <p className="text-white/70 text-[10px] md:text-base font-medium leading-tight">{t.profit.marketDesc1}</p>
+            <div className="w-full h-[1px] bg-red-500/20 my-2 md:my-4" />
+            <p className="text-red-400 text-[10px] md:text-sm font-semibold leading-tight">{t.profit.marketDesc2}</p>
           </motion.div>
 
           <motion.div 
             initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.4, duration: 0.8 }}
-            className="flex flex-col gap-4 p-6 md:p-8 rounded-[1.5rem] border border-[#00ff66]/20 bg-[#00ff66]/5 relative overflow-hidden"
+            className="flex flex-col gap-2 md:gap-4 p-4 md:p-8 rounded-2xl md:rounded-[1.5rem] border border-[#00ff66]/20 bg-[#00ff66]/5 relative overflow-hidden"
           >
             <div className="absolute top-0 right-0 w-48 h-48 bg-[#00ff66]/10 blur-[80px] rounded-full pointer-events-none" />
-            <h3 className="font-sans text-[10px] tracking-widest uppercase text-[#00ff66] font-bold">{t.profit.direct}</h3>
-            <div><span className="text-5xl md:text-6xl font-sans font-bold text-white tracking-tighter">$23.97</span></div>
-            <p className="text-white/70 text-sm md:text-base font-medium">{t.profit.directDesc1}</p>
-            <div className="w-full h-[1px] bg-[#00ff66]/20 my-4" />
-            <p className="text-[#00ff66]/80 text-sm font-semibold">{t.profit.directDesc2}</p>
+            <h3 className="font-sans text-[8px] md:text-[10px] tracking-widest uppercase text-[#00ff66] font-bold">{t.profit.direct}</h3>
+            <div><span className="text-3xl md:text-6xl font-sans font-bold text-white tracking-tighter">$23.97</span></div>
+            <p className="text-white/70 text-[10px] md:text-base font-medium leading-tight">{t.profit.directDesc1}</p>
+            <div className="w-full h-[1px] bg-[#00ff66]/20 my-2 md:my-4" />
+            <p className="text-[#00ff66]/80 text-[10px] md:text-sm font-semibold leading-tight">{t.profit.directDesc2}</p>
           </motion.div>
         </div>
 
