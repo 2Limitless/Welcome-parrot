@@ -12,7 +12,7 @@ export type Language = "en" | "es";
 
 const dict = {
   en: {
-    nav: { portfolio: "The No-Brainer", services: "The Platform", about: "Book Demo" },
+    nav: { portfolio: "The No-Brainer", services: "The Platform", about: "Upgrade" },
     hub: {
       pills: ["Zero Commissions", "Line-Busting KDS", "Automated Loyalty"],
       headline: "Own Your Customers.",
@@ -22,13 +22,13 @@ const dict = {
         { num: "35", title: "Frictionless Loyalty", desc: "Automated digital loyalty programs turn occasional diners into weekly regulars, driving 35% repeat visit rates." },
         { num: "80", title: "Push Notifications", desc: "Bypass the spam folder entirely. Direct push notifications command 80% open rates compared to 20% for email." }
       ],
-      cta1: "Book a 10-Min Demo",
+      cta1: "Upgrade Your Business",
       cta2: "Why It's a No-Brainer"
     },
     dock: { hub: "Hub" }
   },
   es: {
-    nav: { portfolio: "La Decisión Obvia", services: "La Plataforma", about: "Agendar Demo" },
+    nav: { portfolio: "La Decisión Obvia", services: "La Plataforma", about: "Mejorar" },
     hub: {
       pills: ["Cero Comisiones", "KDS Ultra Rápido", "Lealtad Automática"],
       headline: "Sé Dueño de tus Clientes.",
@@ -38,7 +38,7 @@ const dict = {
         { num: "35", title: "Lealtad Sin Fricción", desc: "Los programas de lealtad digital automatizados convierten a comensales ocasionales en clientes habituales, impulsando tasas de visita repetida del 35%." },
         { num: "80", title: "Notificaciones Push", desc: "Evita la carpeta de spam. Las notificaciones push directas alcanzan tasas de apertura del 80% frente al 20% del correo electrónico." }
       ],
-      cta1: "Agendar Demo de 10 Min",
+      cta1: "Mejora Tu Negocio",
       cta2: "La Mejor Decisión"
     },
     dock: { hub: "Inicio" }
@@ -97,15 +97,10 @@ export default function Home() {
           <div className="md:hidden flex items-center gap-4">
             <button 
               onClick={() => setLang(lang === "en" ? "es" : "en")}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/20 text-white/80 hover:bg-white/10 transition-all text-[10px] font-bold uppercase"
+              className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 text-white/80 hover:bg-white/10 transition-all text-xs font-bold uppercase"
             >
-              <Globe size={12} />
+              <Globe size={16} />
               {lang}
-            </button>
-            <button className="text-white">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
             </button>
           </div>
         </header>
@@ -247,7 +242,7 @@ export default function Home() {
                     <button
                       key={item.id}
                       onClick={() => handleNavClick(item.id as ViewState)}
-                      className={`relative px-5 md:px-8 py-3 rounded-full text-center transition-colors duration-500 ${
+                      className={`relative px-3 md:px-8 py-3 rounded-full text-center transition-colors duration-500 ${
                         isActive
                           ? isLightMode ? "text-white" : "text-black"
                           : isLightMode ? "text-black/60 hover:text-black" : "text-white/60 hover:text-white"
@@ -260,7 +255,7 @@ export default function Home() {
                           transition={{ type: "spring", stiffness: 120, damping: 14, mass: 1.2 }}
                         />
                       )}
-                      <span className="relative z-10 font-sans text-[10px] md:text-xs font-semibold tracking-[0.1em] uppercase">{item.label}</span>
+                      <span className="relative z-10 font-sans text-[10px] md:text-xs font-semibold tracking-[0.1em] uppercase whitespace-nowrap">{item.label}</span>
                     </button>
                   );
                 })}
