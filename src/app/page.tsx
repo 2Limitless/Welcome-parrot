@@ -2,14 +2,49 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { X, ArrowUp } from "lucide-react";
+import { X, ArrowUp, Globe } from "lucide-react";
 import PortfolioExperience from "../components/PortfolioExperience";
 import ServicesExperience from "../components/ServicesExperience";
 import AboutExperience from "../components/AboutExperience";
 
 export type ViewState = "hub" | "portfolio" | "services" | "about";
+export type Language = "en" | "es";
 
-// Re-implementing the missing OverlayWrapper that was accidentally deleted
+const dict = {
+  en: {
+    nav: { portfolio: "The No-Brainer", services: "The Platform", about: "Book Demo" },
+    hub: {
+      pills: ["Zero Commissions", "Line-Busting KDS", "Automated Loyalty"],
+      headline: "Own Your Customers.",
+      subhead: "The all-in-one direct mobile ordering, automated loyalty, and kitchen operations platform for food trucks and fast-casuals.",
+      stats: [
+        { num: "25", title: "Native App Upselling", desc: "Native mobile apps drive 25% higher tickets through automated upselling and frictionless checkout." },
+        { num: "35", title: "Frictionless Loyalty", desc: "Automated digital loyalty programs turn occasional diners into weekly regulars, driving 35% repeat visit rates." },
+        { num: "80", title: "Push Notifications", desc: "Bypass the spam folder entirely. Direct push notifications command 80% open rates compared to 20% for email." }
+      ],
+      cta1: "Book a 10-Min Demo",
+      cta2: "Why It's a No-Brainer"
+    },
+    dock: { hub: "Hub" }
+  },
+  es: {
+    nav: { portfolio: "La Decisión Obvia", services: "La Plataforma", about: "Agendar Demo" },
+    hub: {
+      pills: ["Cero Comisiones", "KDS Ultra Rápido", "Lealtad Automática"],
+      headline: "Sé Dueño de tus Clientes.",
+      subhead: "La plataforma todo en uno de pedidos móviles directos, lealtad automatizada y operaciones de cocina para food trucks y restaurantes rápidos.",
+      stats: [
+        { num: "25", title: "Ventas en App Nativa", desc: "Las apps móviles nativas impulsan tickets un 25% más altos mediante ventas adicionales automáticas y pagos sin fricción." },
+        { num: "35", title: "Lealtad Sin Fricción", desc: "Los programas de lealtad digital automatizados convierten a comensales ocasionales en clientes habituales, impulsando tasas de visita repetida del 35%." },
+        { num: "80", title: "Notificaciones Push", desc: "Evita la carpeta de spam. Las notificaciones push directas alcanzan tasas de apertura del 80% frente al 20% del correo electrónico." }
+      ],
+      cta1: "Agendar Demo de 10 Min",
+      cta2: "La Mejor Decisión"
+    },
+    dock: { hub: "Inicio" }
+  }
+};
+
 const OverlayWrapper = ({ children, onClose }: { children: React.ReactNode, onClose: () => void }) => (
   <motion.div
     initial={{ opacity: 0, y: "100%" }}
@@ -30,43 +65,53 @@ const OverlayWrapper = ({ children, onClose }: { children: React.ReactNode, onCl
 
 export default function Home() {
   const [currentView, setCurrentView] = useState<ViewState>("hub");
+  const [lang, setLang] = useState<Language>("en");
+  const t = dict[lang];
 
-  const handleNavClick = (view: ViewState) => {
-    setCurrentView(view);
-  };
+  const handleNavClick = (view: ViewState) => setCurrentView(view);
 
   return (
     <main className={`relative w-full h-[100dvh] overflow-x-hidden bg-black flex flex-col ${currentView === 'hub' ? 'overflow-y-auto' : 'overflow-hidden'}`}>
-      {/* Pure Apple Pro Black Background */}
       <div className="absolute inset-0 z-0 bg-black pointer-events-none" />
       <img src="/hub_background.jpg" className="absolute inset-0 z-0 w-full h-full object-cover opacity-20 pointer-events-none mix-blend-overlay" alt="Background" />
-      
-      {/* Subtle top light for an expensive studio feel */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-[50vh] bg-white opacity-[0.03] blur-[120px] rounded-full pointer-events-none z-0" />
 
-      {/* Main Container */}
       <div className="relative z-10 w-full h-full flex flex-col pointer-events-none">
-        
-        {/* Minimalist Apple-Style Header */}
         <header className="flex-none flex items-center justify-between px-8 py-8 md:px-16 md:py-10 pointer-events-auto">
           <div className="text-white font-sans text-xl font-bold tracking-tight">Welcome Parrot<span className="text-[#00ff66]">.</span></div>
-          <nav className="hidden md:flex space-x-12">
-            <button onClick={() => handleNavClick("portfolio")} className="text-white/60 hover:text-white text-xs tracking-widest uppercase transition-colors">The No-Brainer</button>
-            <button onClick={() => handleNavClick("services")} className="text-white/60 hover:text-white text-xs tracking-widest uppercase transition-colors">The Platform</button>
-            <button onClick={() => handleNavClick("about")} className="text-white/60 hover:text-white text-xs tracking-widest uppercase transition-colors">Book Demo</button>
+          <nav className="hidden md:flex space-x-12 items-center">
+            <button onClick={() => handleNavClick("portfolio")} className="text-white/60 hover:text-white text-xs tracking-widest uppercase transition-colors">{t.nav.portfolio}</button>
+            <button onClick={() => handleNavClick("services")} className="text-white/60 hover:text-white text-xs tracking-widest uppercase transition-colors">{t.nav.services}</button>
+            <button onClick={() => handleNavClick("about")} className="text-white/60 hover:text-white text-xs tracking-widest uppercase transition-colors">{t.nav.about}</button>
+            
+            {/* Language Toggle */}
+            <button 
+              onClick={() => setLang(lang === "en" ? "es" : "en")}
+              className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/20 text-white/80 hover:bg-white/10 hover:text-white transition-all text-xs font-bold uppercase tracking-widest"
+            >
+              <Globe size={14} />
+              {lang}
+            </button>
           </nav>
-          <button className="md:hidden text-white">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </button>
+          
+          <div className="md:hidden flex items-center gap-4">
+            <button 
+              onClick={() => setLang(lang === "en" ? "es" : "en")}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/20 text-white/80 hover:bg-white/10 transition-all text-[10px] font-bold uppercase"
+            >
+              <Globe size={12} />
+              {lang}
+            </button>
+            <button className="text-white">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
+          </div>
         </header>
 
-        {/* View State Machine */}
         <div className="flex-1 flex flex-col relative pointer-events-auto">
           <AnimatePresence>
-            
-            {/* 1. THE HUB (Hero Section) */}
             {currentView === "hub" && (
                 <motion.div 
                 key="hub"
@@ -76,87 +121,45 @@ export default function Home() {
                 transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                 className="flex flex-col w-full min-h-screen relative"
               >
-                
-                {/* Top: Massive Pro Typography */}
                 <div className="flex-none w-full flex flex-col items-center justify-start pt-6 md:pt-12 px-4 z-20">
-                  
-                  {/* Glowing Feature Pills */}
                   <div className="flex flex-wrap justify-center gap-3 mb-8">
-                    {["Zero Commissions", "Line-Busting KDS", "Automated Loyalty"].map((feature) => (
+                    {t.hub.pills.map((feature) => (
                       <span key={feature} className="px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-white/70 text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase shadow-[0_0_15px_rgba(255,255,255,0.05)]">
                         {feature}
                       </span>
                     ))}
                   </div>
 
-                  {/* Apple Metallic Gradient Typography */}
                   <h1 className="font-sans text-[12vw] md:text-[110px] leading-[0.9] text-center font-bold tracking-tighter bg-gradient-to-b from-white via-white/90 to-white/30 bg-clip-text text-transparent pb-4">
-                    Own Your Customers.
+                    {t.hub.headline}
                   </h1>
                   
                   <p className="text-white/60 font-sans text-sm md:text-base font-light max-w-xl text-center leading-relaxed mb-12">
-                    The all-in-one direct mobile ordering, automated loyalty, and kitchen operations platform for food trucks and fast-casuals.
+                    {t.hub.subhead}
                   </p>
 
-                  {/* Educational Statistics Bento - MOVED INTO INITIAL VIEWPORT */}
                   <div className="w-full max-w-5xl mx-auto mb-16">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-                      {/* Stat 1 */}
-                      <motion.div 
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-                        className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-md shadow-2xl flex flex-col items-start text-left hover:bg-white/10 transition-colors"
-                      >
-                        <div className="flex items-center gap-2 mb-1">
-                          <span className="text-4xl md:text-5xl font-bold font-sans tracking-tighter text-white">25<span className="text-white/40 text-3xl">%</span></span>
-                          <motion.div animate={{ y: [0, -3, 0] }} transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}>
-                            <ArrowUp className="text-[#00ff66] w-6 h-6 md:w-8 md:h-8 drop-shadow-[0_0_15px_rgba(0,255,102,0.6)]" strokeWidth={3} />
-                          </motion.div>
-                        </div>
-                        <h4 className="text-white text-sm font-bold mb-2 tracking-wide uppercase">Native App Upselling</h4>
-                        <p className="text-white/50 text-xs leading-relaxed font-medium">
-                          Native mobile apps drive 25% higher tickets through automated upselling and frictionless checkout.
-                        </p>
-                      </motion.div>
-
-                      {/* Stat 2 */}
-                      <motion.div 
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
-                        className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-md shadow-2xl flex flex-col items-start text-left hover:bg-white/10 transition-colors"
-                      >
-                        <div className="flex items-center gap-2 mb-1">
-                          <span className="text-4xl md:text-5xl font-bold font-sans tracking-tighter text-white">35<span className="text-white/40 text-3xl">%</span></span>
-                          <motion.div animate={{ y: [0, -3, 0] }} transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}>
-                            <ArrowUp className="text-[#00ff66] w-6 h-6 md:w-8 md:h-8 drop-shadow-[0_0_15px_rgba(0,255,102,0.6)]" strokeWidth={3} />
-                          </motion.div>
-                        </div>
-                        <h4 className="text-white text-sm font-bold mb-2 tracking-wide uppercase">Frictionless Loyalty</h4>
-                        <p className="text-white/50 text-xs leading-relaxed font-medium">
-                          Automated digital loyalty programs turn occasional diners into weekly regulars, driving 35% repeat visit rates.
-                        </p>
-                      </motion.div>
-
-                      {/* Stat 3 */}
-                      <motion.div 
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.6 }}
-                        className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-md shadow-2xl flex flex-col items-start text-left hover:bg-white/10 transition-colors"
-                      >
-                        <div className="flex items-center gap-2 mb-1">
-                          <span className="text-4xl md:text-5xl font-bold font-sans tracking-tighter text-white">80<span className="text-white/40 text-3xl">%</span></span>
-                          <motion.div animate={{ y: [0, -3, 0] }} transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}>
-                            <ArrowUp className="text-[#00ff66] w-6 h-6 md:w-8 md:h-8 drop-shadow-[0_0_15px_rgba(0,255,102,0.6)]" strokeWidth={3} />
-                          </motion.div>
-                        </div>
-                        <h4 className="text-white text-sm font-bold mb-2 tracking-wide uppercase">Push Notifications</h4>
-                        <p className="text-white/50 text-xs leading-relaxed font-medium">
-                          Bypass the spam folder entirely. Direct push notifications command 80% open rates compared to 20% for email.
-                        </p>
-                      </motion.div>
+                      {t.hub.stats.map((stat, i) => (
+                        <motion.div 
+                          key={i}
+                          initial={{ opacity: 0, y: 30 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 + (i * 0.2) }}
+                          className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-md shadow-2xl flex flex-col items-start text-left hover:bg-white/10 transition-colors"
+                        >
+                          <div className="flex items-center gap-2 mb-1">
+                            <span className="text-4xl md:text-5xl font-bold font-sans tracking-tighter text-white">{stat.num}<span className="text-white/40 text-3xl">%</span></span>
+                            <motion.div animate={{ y: [0, -3, 0] }} transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}>
+                              <ArrowUp className="text-[#00ff66] w-6 h-6 md:w-8 md:h-8 drop-shadow-[0_0_15px_rgba(0,255,102,0.6)]" strokeWidth={3} />
+                            </motion.div>
+                          </div>
+                          <h4 className="text-white text-sm font-bold mb-2 tracking-wide uppercase">{stat.title}</h4>
+                          <p className="text-white/50 text-xs leading-relaxed font-medium">
+                            {stat.desc}
+                          </p>
+                        </motion.div>
+                      ))}
                     </div>
                   </div>
 
@@ -167,7 +170,7 @@ export default function Home() {
                       onClick={() => handleNavClick("about")}
                       className="text-black bg-white shadow-[0_0_40px_rgba(255,255,255,0.1)] hover:shadow-[0_0_60px_rgba(255,255,255,0.2)] px-10 py-4 rounded-full font-bold transition-all duration-500 w-max text-xs md:text-sm tracking-[0.1em]"
                     >
-                      Book a 10-Min Demo
+                      {t.hub.cta1}
                     </motion.button>
                     <motion.button 
                       whileHover={{ scale: 1.02 }}
@@ -175,7 +178,7 @@ export default function Home() {
                       onClick={() => handleNavClick("portfolio")}
                       className="text-white border border-white/20 hover:bg-white/10 px-8 py-4 rounded-full font-bold transition-all duration-500 w-max text-xs md:text-sm tracking-[0.1em] flex items-center gap-2"
                     >
-                      Why It's a No-Brainer 
+                      {t.hub.cta2}
                       <motion.span 
                         animate={{ x: [0, 3, 0] }} 
                         transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
@@ -187,66 +190,40 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Bottom: The "Pro Display" Showcase Grid */}
                 <div className="flex-none w-full flex items-center justify-center -space-x-12 md:space-x-0 md:gap-10 px-8 mt-12 z-10 pointer-events-none perspective-[1200px]">
-                  
-                  {/* Left Glass Panel */}
-                  <motion.div 
-                    animate={{ y: [-5, 5, -5] }}
-                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0 }}
-                    className="w-[140px] md:w-[220px] lg:w-[260px] aspect-[9/16] rounded-[2rem] overflow-hidden border border-white/10 shadow-[0_40px_80px_rgba(0,0,0,0.5)] bg-black/50 rotate-[-6deg] md:rotate-0 translate-y-4 md:translate-y-0"
-                  >
+                  <motion.div animate={{ y: [-5, 5, -5] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0 }} className="w-[140px] md:w-[220px] lg:w-[260px] aspect-[9/16] rounded-[2rem] overflow-hidden border border-white/10 shadow-[0_40px_80px_rgba(0,0,0,0.5)] bg-black/50 rotate-[-6deg] md:rotate-0 translate-y-4 md:translate-y-0">
                     <img src="/mobile_app_mockup.jpg" alt="Mobile App UI" className="w-full h-full object-cover opacity-90" />
                   </motion.div>
-
-                  {/* Center Glass Panel (Slightly larger, offset animation) */}
-                  <motion.div 
-                    animate={{ y: [-5, 5, -5] }}
-                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-                    className="w-[160px] md:w-[260px] lg:w-[300px] aspect-[9/16] rounded-[2rem] overflow-hidden border border-white/20 shadow-[0_60px_100px_rgba(0,0,0,0.8)] bg-black/50 z-20"
-                  >
+                  <motion.div animate={{ y: [-5, 5, -5] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2 }} className="w-[160px] md:w-[260px] lg:w-[300px] aspect-[9/16] rounded-[2rem] overflow-hidden border border-white/20 shadow-[0_60px_100px_rgba(0,0,0,0.8)] bg-black/50 z-20">
                     <img src="/kds_tablet_mockup.jpg" alt="KDS Tablet UI" className="w-full h-full object-cover" />
                   </motion.div>
-
-                  {/* Right Glass Panel */}
-                  <motion.div 
-                    animate={{ y: [-5, 5, -5] }}
-                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 4 }}
-                    className="w-[140px] md:w-[220px] lg:w-[260px] aspect-[9/16] rounded-[2rem] overflow-hidden border border-white/10 shadow-[0_40px_80px_rgba(0,0,0,0.5)] bg-black/50 rotate-[6deg] md:rotate-0 translate-y-4 md:translate-y-0"
-                  >
+                  <motion.div animate={{ y: [-5, 5, -5] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 4 }} className="w-[140px] md:w-[220px] lg:w-[260px] aspect-[9/16] rounded-[2rem] overflow-hidden border border-white/10 shadow-[0_40px_80px_rgba(0,0,0,0.5)] bg-black/50 rotate-[6deg] md:rotate-0 translate-y-4 md:translate-y-0">
                     <img src="/analytics_dashboard_panel.jpg" alt="Kitchen operations" className="w-full h-full object-cover opacity-90" />
                   </motion.div>
-
                 </div>
-
-
-
               </motion.div>
             )}
 
-            {/* 2. OVERLAYS */}
             {currentView === "portfolio" && (
               <OverlayWrapper key="portfolio" onClose={() => setCurrentView("hub")}>
-                <PortfolioExperience onBack={() => setCurrentView("hub")} />
+                <PortfolioExperience lang={lang} onBack={() => setCurrentView("hub")} />
               </OverlayWrapper>
             )}
             
             {currentView === "services" && (
               <OverlayWrapper key="services" onClose={() => setCurrentView("hub")}>
-                <ServicesExperience onBack={() => setCurrentView("hub")} />
+                <ServicesExperience lang={lang} onBack={() => setCurrentView("hub")} />
               </OverlayWrapper>
             )}
 
             {currentView === "about" && (
               <OverlayWrapper key="about" onClose={() => setCurrentView("hub")}>
-                <AboutExperience onBack={() => setCurrentView("hub")} />
+                <AboutExperience lang={lang} onBack={() => setCurrentView("hub")} />
               </OverlayWrapper>
             )}
-
           </AnimatePresence>
         </div>
 
-        {/* Global Apple-Style Bottom Navigation Dock */}
         {(() => {
           const isLightMode = currentView === "services";
           return (
@@ -260,10 +237,10 @@ export default function Home() {
             >
               <div className="flex items-center gap-1 md:gap-2 pointer-events-auto">
                 {[
-                  { id: "hub", label: "Hub" },
-                  { id: "portfolio", label: "The No-Brainer" },
-                  { id: "services", label: "The Platform" },
-                  { id: "about", label: "Book Demo" }
+                  { id: "hub", label: t.dock.hub },
+                  { id: "portfolio", label: t.nav.portfolio },
+                  { id: "services", label: t.nav.services },
+                  { id: "about", label: t.nav.about }
                 ].map((item) => {
                   const isActive = currentView === item.id;
                   return (

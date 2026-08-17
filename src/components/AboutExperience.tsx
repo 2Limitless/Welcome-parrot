@@ -1,26 +1,74 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useState } from "react";
+import type { Language } from "../app/page";
 
-export default function AboutExperience({ onBack }: { onBack: () => void }) {
+const dict = {
+  en: {
+    back: "Back to Hub",
+    title1: "Book a meeting to",
+    title2: "Upgrade your business.",
+    desc1: "Stop renting your customers. It's time to own your digital real estate.",
+    desc2: "We build the exact enterprise-grade platform you need to automate loyalty, bypass third-party fees, and turn casual diners into lifelong regulars.",
+    form: {
+      name: "Full Name",
+      email: "Email Address",
+      phone: "Phone Number",
+      business: "Food Truck / Restaurant Name",
+      submit: "Claim Your Custom App Build",
+      success: "Received! We will contact you shortly."
+    }
+  },
+  es: {
+    back: "Volver al Inicio",
+    title1: "Agenda una reunión para",
+    title2: "Mejorar tu negocio.",
+    desc1: "Deja de alquilar a tus clientes. Es hora de ser dueño de tu espacio digital.",
+    desc2: "Construimos la plataforma empresarial exacta que necesitas para automatizar la lealtad, evitar tarifas de terceros y convertir a comensales ocasionales en clientes habituales de por vida.",
+    form: {
+      name: "Nombre Completo",
+      email: "Correo Electrónico",
+      phone: "Número de Teléfono",
+      business: "Nombre del Food Truck / Restaurante",
+      submit: "Reclamar Tu App Personalizada",
+      success: "¡Recibido! Nos pondremos en contacto contigo pronto."
+    }
+  }
+};
+
+export default function AboutExperience({ lang, onBack }: { lang: Language, onBack: () => void }) {
+  const t = dict[lang];
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "", business: "" });
+  const [status, setStatus] = useState<"idle" | "loading" | "success">("idle");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("loading");
+    try {
+      await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData)
+      });
+      // Always show success to user even if DB fails
+      setStatus("success");
+    } catch {
+      setStatus("success");
+    }
+  };
+
   const containerVariants: any = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2,
-      }
+      transition: { staggerChildren: 0.15, delayChildren: 0.2 }
     }
   };
 
   const itemVariants: any = {
     hidden: { opacity: 0, y: 30 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
-    }
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
   };
 
   return (
@@ -47,7 +95,7 @@ export default function AboutExperience({ onBack }: { onBack: () => void }) {
           />
         </motion.div>
 
-        {/* Text Section */}
+        {/* Text & Form Section */}
         <div className="flex-1 flex flex-col justify-center">
           <motion.button 
             variants={itemVariants}
@@ -55,31 +103,75 @@ export default function AboutExperience({ onBack }: { onBack: () => void }) {
             className="text-[var(--color-ice)]/50 text-xs tracking-[0.3em] uppercase mb-12 hover:text-[var(--color-acid)] transition-colors flex items-center gap-4 group w-max"
           >
             <span className="w-8 h-[1px] bg-[var(--color-ice)]/50 group-hover:w-12 group-hover:bg-[var(--color-acid)] transition-all" /> 
-            Back to Hub
+            {t.back}
           </motion.button>
 
-          <motion.h2 variants={itemVariants} className="text-4xl md:text-5xl lg:text-6xl font-serif font-light text-[var(--color-ice)] mb-8 leading-tight">
-            Book a meeting to <br/>
-            <span className="italic text-[var(--color-acid)] drop-shadow-[0_0_20px_rgba(204,255,0,0.2)]">Upgrade your business.</span>
+          <motion.h2 variants={itemVariants} className="text-4xl md:text-5xl lg:text-6xl font-serif font-light text-[var(--color-ice)] mb-4 leading-tight">
+            {t.title1} <br/>
+            <span className="italic text-[var(--color-acid)] drop-shadow-[0_0_20px_rgba(204,255,0,0.2)]">{t.title2}</span>
           </motion.h2>
 
-          <motion.p variants={itemVariants} className="text-[var(--color-ice)]/70 font-sans text-sm md:text-base font-light leading-relaxed mb-6">
-            Stop renting your customers. It's time to own your digital real estate.
+          <motion.p variants={itemVariants} className="text-[var(--color-ice)]/70 font-sans text-sm md:text-base font-light leading-relaxed mb-4">
+            {t.desc1}
           </motion.p>
-          <motion.p variants={itemVariants} className="text-[var(--color-ice)]/70 font-sans text-sm md:text-base font-light leading-relaxed mb-12">
-            We build the exact enterprise-grade platform you need to automate loyalty, bypass third-party fees, and turn casual diners into lifelong regulars.
+          <motion.p variants={itemVariants} className="text-[var(--color-ice)]/70 font-sans text-sm md:text-base font-light leading-relaxed mb-8">
+            {t.desc2}
           </motion.p>
 
-          <motion.button 
-            variants={itemVariants}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            onClick={() => alert("Contact form opened")}
-            className="bg-transparent border border-[var(--color-acid)]/30 text-[var(--color-acid)] hover:bg-[var(--color-acid)] hover:text-[var(--color-void)] px-8 py-4 rounded-full font-bold font-sans text-xs tracking-widest uppercase transition-all duration-500 w-max flex items-center gap-3 group shadow-[0_0_20px_rgba(204,255,0,0.1)]"
-          >
-            Claim Your Custom App Build
-            <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
-          </motion.button>
+          {/* Contact Form */}
+          <motion.div variants={itemVariants} className="w-full max-w-md">
+            {status === "success" ? (
+              <div className="p-6 rounded-2xl border border-[#00ff66]/30 bg-[#00ff66]/5 backdrop-blur-md flex flex-col items-center justify-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-[#00ff66]/20 flex items-center justify-center">
+                  <span className="text-[#00ff66] text-xl">✓</span>
+                </div>
+                <p className="text-[#00ff66] font-bold tracking-wide text-center">{t.form.success}</p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                <input 
+                  type="text" 
+                  required
+                  placeholder={t.form.name}
+                  value={formData.name}
+                  onChange={e => setFormData({...formData, name: e.target.value})}
+                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[var(--color-acid)]/50 focus:bg-white/10 transition-all font-sans text-sm"
+                />
+                <input 
+                  type="email" 
+                  required
+                  placeholder={t.form.email}
+                  value={formData.email}
+                  onChange={e => setFormData({...formData, email: e.target.value})}
+                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[var(--color-acid)]/50 focus:bg-white/10 transition-all font-sans text-sm"
+                />
+                <input 
+                  type="tel" 
+                  required
+                  placeholder={t.form.phone}
+                  value={formData.phone}
+                  onChange={e => setFormData({...formData, phone: e.target.value})}
+                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[var(--color-acid)]/50 focus:bg-white/10 transition-all font-sans text-sm"
+                />
+                <input 
+                  type="text" 
+                  required
+                  placeholder={t.form.business}
+                  value={formData.business}
+                  onChange={e => setFormData({...formData, business: e.target.value})}
+                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[var(--color-acid)]/50 focus:bg-white/10 transition-all font-sans text-sm"
+                />
+                <button 
+                  type="submit"
+                  disabled={status === "loading"}
+                  className="mt-2 bg-transparent border border-[var(--color-acid)]/30 text-[var(--color-acid)] hover:bg-[var(--color-acid)] hover:text-[var(--color-void)] disabled:opacity-50 px-8 py-4 rounded-xl font-bold font-sans text-xs tracking-widest uppercase transition-all duration-500 flex items-center justify-center gap-3 group shadow-[0_0_20px_rgba(204,255,0,0.1)]"
+                >
+                  {status === "loading" ? "..." : t.form.submit}
+                  {status !== "loading" && <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>}
+                </button>
+              </form>
+            )}
+          </motion.div>
         </div>
       </motion.div>
     </motion.div>
