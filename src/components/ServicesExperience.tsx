@@ -92,7 +92,7 @@ export default function ServicesExperience({ lang, onBack }: { lang: Language, o
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
       className="absolute inset-0 z-40 w-full h-full bg-[var(--color-ice)] flex flex-col p-6 md:p-12 overflow-y-auto overflow-x-hidden pointer-events-auto"
     >
-      <div className="w-full max-w-7xl mx-auto flex flex-col h-full pt-12 md:pt-0">
+      <div className="w-full max-w-7xl mx-auto flex flex-col min-h-full pt-12 md:pt-0">
         <header className="flex flex-col md:flex-row md:justify-between md:items-end mb-16 border-b border-[var(--color-void)]/10 pb-8 gap-8">
           <div>
             <button 
@@ -124,7 +124,7 @@ export default function ServicesExperience({ lang, onBack }: { lang: Language, o
           variants={containerVariants}
           initial="hidden"
           animate="show"
-          className="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 pb-24"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 pb-12 md:pb-24"
         >
           {/* Capability 1: B2B */}
           <motion.div 
