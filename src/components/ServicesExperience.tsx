@@ -119,8 +119,8 @@ export default function ServicesExperience({ lang, onBack }: { lang: Language, o
         </header>
 
         {/* Tier 1 */}
-        <div className="mb-12 md:mb-24">
-          <div className="max-w-3xl mb-12">
+        <div className="mb-8 md:mb-24">
+          <div className="max-w-3xl mb-8 md:mb-12">
             <h4 className="text-[var(--color-void)]/50 text-xs tracking-[0.3em] uppercase mb-4 font-bold">{t.tier1.headerSubtitle}</h4>
             <h2 className="text-4xl md:text-5xl font-serif font-light text-[var(--color-void)] tracking-tight mb-4">
               {t.tier1.headerTitle}
@@ -134,13 +134,13 @@ export default function ServicesExperience({ lang, onBack }: { lang: Language, o
             variants={containerVariants}
             initial="hidden"
             animate="show"
-            className="grid grid-cols-1 md:grid-cols-2 gap-6"
+            className="flex md:grid md:grid-cols-2 gap-4 md:gap-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-4 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] -mx-6 px-6 md:mx-0 md:px-0"
           >
             {[MonitorSmartphone, LayoutDashboard, Gift, BarChart3].map((Icon, idx) => (
               <motion.div 
                 key={idx}
                 variants={itemVariants}
-                className="bg-white p-6 md:p-8 rounded-[1.5rem] shadow-[0_10px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)] transition-all duration-500 border border-[var(--color-void)]/5 flex flex-col gap-4 group"
+                className="w-[85vw] shrink-0 md:w-auto md:shrink snap-center bg-white p-6 md:p-8 rounded-[1.5rem] shadow-[0_10px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)] transition-all duration-500 border border-[var(--color-void)]/5 flex flex-col gap-4 group"
               >
                 <div className="w-12 h-12 rounded-xl bg-[var(--color-ice)] flex items-center justify-center text-[var(--color-cobalt)] group-hover:bg-[var(--color-cobalt)] group-hover:text-white transition-colors duration-500">
                   <Icon className="w-6 h-6" />
@@ -153,11 +153,11 @@ export default function ServicesExperience({ lang, onBack }: { lang: Language, o
         </div>
 
         {/* The Complete Package Tier */}
-        <div className="mt-8 md:mt-24 mb-32 bg-[var(--color-void)] rounded-[2rem] md:rounded-[4rem] p-8 md:p-16 relative overflow-hidden shadow-2xl">
+        <div className="mt-4 md:mt-24 mb-32 bg-[var(--color-void)] rounded-[2rem] md:rounded-[4rem] p-6 md:p-16 relative overflow-hidden shadow-2xl">
           <div className="absolute top-0 right-0 w-96 h-96 bg-[var(--color-acid)]/5 blur-[120px] rounded-full pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#00ff66]/5 blur-[120px] rounded-full pointer-events-none" />
           
-          <div className="max-w-3xl mb-12 relative z-10">
+          <div className="max-w-3xl mb-8 md:mb-16 relative z-10">
             <h4 className="text-[var(--color-acid)] text-xs tracking-[0.3em] uppercase mb-4 font-bold">{t.complete.headerSubtitle}</h4>
             <h2 className="text-4xl md:text-5xl font-serif font-light text-white tracking-tight mb-4">
               {t.complete.headerTitle}
