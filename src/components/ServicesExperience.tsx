@@ -171,19 +171,19 @@ export default function ServicesExperience({ lang, onBack }: { lang: Language, o
                   variants={containerVariants}
                   initial="hidden"
                   animate="show"
-                  className="flex md:grid md:grid-cols-2 gap-4 md:gap-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-4 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] -mx-6 px-6 md:mx-0 md:px-0"
+                  className="grid grid-cols-2 gap-3 md:gap-6"
                 >
                   {[MonitorSmartphone, LayoutDashboard, Gift, BarChart3].map((Icon, idx) => (
                     <motion.div 
                       key={idx}
                       variants={itemVariants}
-                      className="w-[85vw] shrink-0 md:w-auto md:shrink snap-center bg-white p-6 md:p-8 rounded-[1.5rem] shadow-[0_10px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)] transition-all duration-500 border border-[var(--color-void)]/5 flex flex-col gap-4 group"
+                      className="bg-white p-4 md:p-8 rounded-[1rem] md:rounded-[1.5rem] shadow-[0_10px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)] transition-all duration-500 border border-[var(--color-void)]/5 flex flex-col gap-2 md:gap-4 group"
                     >
-                      <div className="w-12 h-12 rounded-xl bg-[var(--color-ice)] flex items-center justify-center text-[var(--color-cobalt)] group-hover:bg-[var(--color-cobalt)] group-hover:text-white transition-colors duration-500">
-                        <Icon className="w-6 h-6" />
+                      <div className="w-8 h-8 md:w-12 md:h-12 rounded-lg md:rounded-xl bg-[var(--color-ice)] flex items-center justify-center text-[var(--color-cobalt)] group-hover:bg-[var(--color-cobalt)] group-hover:text-white transition-colors duration-500">
+                        <Icon className="w-4 h-4 md:w-6 md:h-6" />
                       </div>
-                      <h4 className="font-serif text-xl text-[var(--color-void)] mt-2 leading-tight">{t.tier1.cards[idx].title}</h4>
-                      <p className="text-[var(--color-void)]/60 text-sm leading-relaxed">{t.tier1.cards[idx].desc}</p>
+                      <h4 className="font-serif text-sm md:text-xl text-[var(--color-void)] mt-1 md:mt-2 leading-tight">{t.tier1.cards[idx].title}</h4>
+                      <p className="text-[var(--color-void)]/60 text-[10px] md:text-sm leading-relaxed">{t.tier1.cards[idx].desc}</p>
                     </motion.div>
                   ))}
                 </motion.div>
@@ -210,19 +210,19 @@ export default function ServicesExperience({ lang, onBack }: { lang: Language, o
                   variants={containerVariants}
                   initial="hidden"
                   animate="show"
-                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                  className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6"
                 >
                   {[Smartphone, BookOpen, Tablet, Megaphone, MessageSquare, HeartHandshake].map((Icon, idx) => (
                     <motion.div 
                       key={idx}
                       variants={itemVariants}
-                      className="bg-white/5 border border-white/10 hover:bg-white/10 p-6 md:p-8 rounded-[1.5rem] transition-all duration-500 flex flex-col gap-4 group"
+                      className="bg-white/5 border border-white/10 hover:bg-white/10 p-4 md:p-8 rounded-[1rem] md:rounded-[1.5rem] transition-all duration-500 flex flex-col gap-2 md:gap-4 group"
                     >
-                      <div className="w-12 h-12 rounded-xl bg-[var(--color-acid)]/10 flex items-center justify-center text-[var(--color-acid)] group-hover:bg-[var(--color-acid)] group-hover:text-black transition-colors duration-500">
-                        <Icon className="w-6 h-6" />
+                      <div className="w-8 h-8 md:w-12 md:h-12 rounded-lg md:rounded-xl bg-[var(--color-acid)]/10 flex items-center justify-center text-[var(--color-acid)] group-hover:bg-[var(--color-acid)] group-hover:text-black transition-colors duration-500">
+                        <Icon className="w-4 h-4 md:w-6 md:h-6" />
                       </div>
-                      <h4 className="font-serif text-xl text-white mt-2 leading-tight">{t.complete.cards[idx].title}</h4>
-                      <p className="text-white/50 text-sm leading-relaxed">{t.complete.cards[idx].desc}</p>
+                      <h4 className="font-serif text-sm md:text-xl text-white mt-1 md:mt-2 leading-tight">{t.complete.cards[idx].title}</h4>
+                      <p className="text-white/50 text-[10px] md:text-sm leading-relaxed">{t.complete.cards[idx].desc}</p>
                     </motion.div>
                   ))}
                 </motion.div>
