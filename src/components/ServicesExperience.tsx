@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight, CheckCircle2, Smartphone, BookOpen, MonitorSmartphone, Megaphone, MessageSquare, HeartHandshake } from "lucide-react";
 import type { Language } from "../app/page";
 
 const dict = {
@@ -21,6 +21,19 @@ const dict = {
       title2: "Customer Experience",
       desc: "Turn casual diners into weekly regulars. We build you a custom, white-labeled mobile app that makes ordering completely frictionless, complete with automated rewards and direct push notifications.",
       items: ['White-Labeled iOS & Android App', 'Frictionless Mobile Ordering', 'Automated Loyalty & Rewards', 'Direct Push Notifications']
+    },
+    complete: {
+      headerSubtitle: "Tier 2",
+      headerTitle: "The Complete Package.",
+      headerDesc: "We do absolutely everything. You just cook the food.",
+      cards: [
+        { title: "App Store Publishing", desc: "Dedicated iOS & Android listings, custom branding, and direct Stripe payouts every 24 hours." },
+        { title: "Digital Merchandising", desc: "Zero data entry. We manually build your menu, program smart upsell workflows, and optimize all food photography." },
+        { title: "Kitchen Hardware", desc: "Plug & play 10\" Android tablet in kiosk mode, heavy-duty commercial counter mount, and failover Wi-Fi." },
+        { title: "Launch & Marketing Kit", desc: "Acrylic QR table stands, weatherproof storefront vinyls, and 500 premium bag-stuffer loyalty cards." },
+        { title: "Retention Engine", desc: "Instant SMS pickup alerts, automated win-back messaging for lapsed customers, and built-in loyalty points." },
+        { title: "White-Glove Support", desc: "15-minute staff training and live, in-person shift coverage during your first major lunch or dinner rush." }
+      ]
     }
   },
   es: {
@@ -39,6 +52,19 @@ const dict = {
       title2: "Experiencia del Cliente",
       desc: "Convierte a comensales en clientes habituales. Construimos una app móvil personalizada que hace los pedidos sin fricción, con recompensas automatizadas y notificaciones directas.",
       items: ['App iOS y Android Personalizada', 'Pedidos Móviles Rápidos', 'Lealtad y Recompensas', 'Notificaciones Push Directas']
+    },
+    complete: {
+      headerSubtitle: "Nivel 2",
+      headerTitle: "El Paquete Completo.",
+      headerDesc: "Hacemos absolutamente todo. Tú solo te encargas de cocinar.",
+      cards: [
+        { title: "Publicación en App Store", desc: "Listados dedicados en iOS y Android, diseño personalizado y pagos directos por Stripe cada 24 horas." },
+        { title: "Optimización de Menú", desc: "Cero entrada de datos. Construimos tu menú, programamos ventas sugeridas y optimizamos fotos de comida." },
+        { title: "Hardware de Cocina", desc: "Tableta Android de 10\" lista para usar, soporte comercial resistente y red Wi-Fi de respaldo." },
+        { title: "Kit de Lanzamiento", desc: "Soportes acrílicos con QR, vinilos para la tienda y 500 tarjetas premium de lealtad para bolsas de entrega." },
+        { title: "Motor de Retención", desc: "Alertas SMS de recolección, mensajes automáticos para recuperar clientes inactivos y puntos de lealtad integrados." },
+        { title: "Soporte VIP", desc: "Entrenamiento de 15 minutos para el personal y cobertura en persona durante tu primer gran turno de servicio." }
+      ]
     }
   }
 };
@@ -148,6 +174,42 @@ export default function ServicesExperience({ lang, onBack }: { lang: Language, o
           </motion.div>
 
         </motion.div>
+
+        {/* The Complete Package Tier */}
+        <div className="mt-8 md:mt-16 mb-32 border-t border-[var(--color-void)]/10 pt-16">
+          <div className="max-w-3xl mb-12">
+            <h4 className="text-[var(--color-void)]/50 text-xs tracking-[0.3em] uppercase mb-4 font-bold">{t.complete.headerSubtitle}</h4>
+            <h2 className="text-4xl md:text-5xl font-serif font-light text-[var(--color-void)] tracking-tight mb-4">
+              {t.complete.headerTitle}
+            </h2>
+            <p className="text-[var(--color-void)]/60 text-base md:text-lg leading-relaxed">
+              {t.complete.headerDesc}
+            </p>
+          </div>
+
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-100px" }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          >
+            {[Smartphone, BookOpen, MonitorSmartphone, Megaphone, MessageSquare, HeartHandshake].map((Icon, idx) => (
+              <motion.div 
+                key={idx}
+                variants={itemVariants}
+                className="bg-white p-6 md:p-8 rounded-[1.5rem] shadow-[0_10px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)] transition-all duration-500 border border-[var(--color-void)]/5 flex flex-col gap-4 group"
+              >
+                <div className="w-12 h-12 rounded-xl bg-[var(--color-ice)] flex items-center justify-center text-[var(--color-cobalt)] group-hover:bg-[var(--color-cobalt)] group-hover:text-white transition-colors duration-500">
+                  <Icon className="w-6 h-6" />
+                </div>
+                <h4 className="font-serif text-xl text-[var(--color-void)] mt-2 leading-tight">{t.complete.cards[idx].title}</h4>
+                <p className="text-[var(--color-void)]/60 text-sm leading-relaxed">{t.complete.cards[idx].desc}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+
       </div>
     </motion.div>
   );
