@@ -77,13 +77,13 @@ export default function AboutExperience({ lang, onBack }: { lang: Language, onBa
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: 50 }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className="absolute inset-0 z-40 w-full h-full bg-[var(--color-void)] flex flex-col md:flex-row items-center justify-center p-6 md:p-24 overflow-y-auto overflow-x-hidden pointer-events-auto"
+      className="absolute inset-0 z-40 w-full h-full bg-[var(--color-void)] p-6 md:p-12 overflow-y-auto overflow-x-hidden pointer-events-auto"
     >
       <motion.div 
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="relative z-20 max-w-7xl w-full my-auto flex flex-col-reverse md:flex-row items-center gap-12 pb-24 md:pb-0 pt-12 md:pt-0"
+        className="w-full max-w-7xl mx-auto pt-12 md:pt-0 pb-32 flex flex-col-reverse md:flex-row items-center gap-12"
       >
         
         {/* Decorative Element */}

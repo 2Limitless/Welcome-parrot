@@ -96,9 +96,9 @@ export default function PortfolioExperience({ lang, onBack }: { lang: Language, 
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 50 }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className="absolute inset-0 z-40 w-full h-full bg-[var(--color-void)] flex flex-col p-6 md:p-12 overflow-y-auto overflow-x-hidden pointer-events-auto"
+      className="absolute inset-0 z-40 w-full h-full bg-[var(--color-void)] p-6 md:p-12 overflow-y-auto overflow-x-hidden pointer-events-auto"
     >
-      <div className="w-full max-w-7xl mx-auto flex flex-col h-full pt-12 md:pt-0">
+      <div className="w-full max-w-7xl mx-auto pt-12 md:pt-0 pb-32">
         <header className="flex justify-between items-end mb-16 border-b border-[var(--color-glass-border)] pb-8">
           <div>
             <button 
