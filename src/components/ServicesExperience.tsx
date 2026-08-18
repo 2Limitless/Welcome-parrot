@@ -70,9 +70,16 @@ const dict = {
   }
 };
 
-export default function ServicesExperience({ lang, onBack }: { lang: Language, onBack: () => void }) {
+export default function ServicesExperience({ lang, onBack, onThemeChange }: { lang: Language, onBack: () => void, onThemeChange?: (theme: "dark" | "light") => void }) {
   const t = dict[lang];
   const [activeTier, setActiveTier] = useState<"tier1" | "complete">("complete");
+
+  const handleTierChange = (tier: "tier1" | "complete") => {
+    setActiveTier(tier);
+    if (onThemeChange) {
+      onThemeChange(tier === "tier1" ? "light" : "dark");
+    }
+  };
 
   const containerVariants: any = {
     hidden: { opacity: 0 },
@@ -126,7 +133,7 @@ export default function ServicesExperience({ lang, onBack }: { lang: Language, o
         <div className="flex justify-center mb-12 md:mb-16">
           <div className={`p-1.5 rounded-full flex gap-1 relative transition-colors duration-700 ${activeTier === "tier1" ? "bg-[var(--color-void)]/5 border border-[var(--color-void)]/10" : "bg-white/5 border border-white/10"}`}>
             <button
-              onClick={() => setActiveTier("tier1")}
+              onClick={() => handleTierChange("tier1")}
               className={`relative px-6 md:px-10 py-3 rounded-full text-xs md:text-sm font-bold tracking-widest uppercase transition-colors duration-500 z-10 ${activeTier === "tier1" ? "text-white" : "text-white/50 hover:text-white"}`}
             >
               {activeTier === "tier1" && (
@@ -135,7 +142,7 @@ export default function ServicesExperience({ lang, onBack }: { lang: Language, o
               {t.tier1.headerSubtitle}
             </button>
             <button
-              onClick={() => setActiveTier("complete")}
+              onClick={() => handleTierChange("complete")}
               className={`relative px-6 md:px-10 py-3 rounded-full text-xs md:text-sm font-bold tracking-widest uppercase transition-colors duration-500 z-10 ${activeTier === "complete" ? "text-black" : "text-[var(--color-void)]/50 hover:text-[var(--color-void)]"}`}
             >
               {activeTier === "complete" && (

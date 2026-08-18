@@ -66,6 +66,7 @@ const OverlayWrapper = ({ children, onClose }: { children: React.ReactNode, onCl
 export default function Home() {
   const [currentView, setCurrentView] = useState<ViewState>("hub");
   const [lang, setLang] = useState<Language>("en");
+  const [servicesTheme, setServicesTheme] = useState<"dark" | "light">("dark");
   const t = dict[lang];
 
   const handleNavClick = (view: ViewState) => setCurrentView(view);
@@ -207,7 +208,7 @@ export default function Home() {
             
             {currentView === "services" && (
               <OverlayWrapper key="services" onClose={() => setCurrentView("hub")}>
-                <ServicesExperience lang={lang} onBack={() => setCurrentView("hub")} />
+                <ServicesExperience lang={lang} onBack={() => setCurrentView("hub")} onThemeChange={setServicesTheme} />
               </OverlayWrapper>
             )}
 
@@ -220,7 +221,7 @@ export default function Home() {
         </div>
 
         {(() => {
-          const isLightMode = currentView === "services";
+          const isLightMode = currentView === "services" && servicesTheme === "light";
           return (
             <motion.nav
               initial={{ opacity: 0, y: 50 }}
