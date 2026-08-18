@@ -244,16 +244,22 @@ export default function Home() {
                       onClick={() => handleNavClick(item.id as ViewState)}
                       className={`relative px-3 md:px-8 py-3 rounded-full text-center transition-colors duration-500 ${
                         item.id === "about"
-                          ? "bg-[#00ff66] text-[var(--color-void)] font-bold shadow-[0_0_15px_rgba(0,255,102,0.2)]"
+                          ? isActive 
+                            ? "text-[var(--color-void)] font-bold"
+                            : "text-[#00ff66] font-bold bg-[#00ff66]/10 hover:bg-[#00ff66]/20 shadow-[0_0_15px_rgba(0,255,102,0.1)]"
                           : isActive
                             ? isLightMode ? "text-white" : "text-black"
                             : isLightMode ? "text-black/60 hover:text-black" : "text-white/60 hover:text-white"
                       }`}
                     >
-                      {isActive && item.id !== "about" && (
+                      {isActive && (
                         <motion.div
                           layoutId="liquid-nav-blob"
-                          className={`absolute inset-0 rounded-full -z-10 shadow-lg ${isLightMode ? "bg-black" : "bg-white"}`}
+                          className={`absolute inset-0 rounded-full -z-10 shadow-lg ${
+                            item.id === "about" 
+                              ? "bg-[#00ff66] shadow-[0_0_20px_rgba(0,255,102,0.4)]" 
+                              : isLightMode ? "bg-black" : "bg-white"
+                          }`}
                           transition={{ type: "spring", stiffness: 120, damping: 14, mass: 1.2 }}
                         />
                       )}
