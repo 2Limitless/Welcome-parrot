@@ -246,7 +246,9 @@ export default function Home() {
                         item.id === "about"
                           ? isActive 
                             ? "text-[var(--color-void)] font-bold"
-                            : "text-[#00ff66] font-bold bg-[#00ff66]/10 hover:bg-[#00ff66]/20 shadow-[0_0_15px_rgba(0,255,102,0.1)]"
+                            : isLightMode
+                              ? "text-black font-bold bg-[#00ff66]/40 border border-[#00ff66] hover:bg-[#00ff66]/60 shadow-[0_0_15px_rgba(0,255,102,0.3)]"
+                              : "text-[#00ff66] font-bold bg-[#00ff66]/10 hover:bg-[#00ff66]/20 shadow-[0_0_15px_rgba(0,255,102,0.1)]"
                           : isActive
                             ? isLightMode ? "text-white" : "text-black"
                             : isLightMode ? "text-black/60 hover:text-black" : "text-white/60 hover:text-white"
