@@ -17,10 +17,10 @@ const dict = {
       headerTitle: "The Core Technology.",
       headerDesc: "The ultimate software stack to run your restaurant.",
       cards: [
-        { title: "White-Label App", desc: "A flawless, frictionless mobile ordering app matching your exact branding." },
-        { title: "Command Center KDS", desc: "Digital kitchen display screen to completely eliminate messy paper tickets." },
-        { title: "Automated Loyalty", desc: "Built-in points and rewards system to automatically drive repeat visits." },
-        { title: "First-Party Analytics", desc: "Full ownership of your customer data, order history, and sales trends." }
+        { title: "Custom App", desc: "Frictionless mobile ordering matching your exact branding." },
+        { title: "Digital KDS", desc: "Eliminate paper tickets with a smart kitchen display." },
+        { title: "Loyalty Engine", desc: "Automated points and rewards to drive repeat visits." },
+        { title: "Live Analytics", desc: "100% ownership of your customer data and sales trends." }
       ]
     },
     complete: {
@@ -28,12 +28,12 @@ const dict = {
       headerTitle: "The Complete Package.",
       headerDesc: "Everything in Tier 1, PLUS our 'Done-For-You' white-glove launch.",
       cards: [
-        { title: "App Store Publishing", desc: "We build your developer accounts, pass Apple/Google review, and configure Stripe routing." },
-        { title: "Menu Merchandising", desc: "Zero data entry. We manually ingest your menu, crop photos, and program smart upsells." },
-        { title: "Physical Hardware", desc: "We ship a plug & play 10\" Android tablet in kiosk mode with a heavy-duty counter mount." },
-        { title: "Launch Marketing Kit", desc: "We print and ship acrylic QR table stands, storefront vinyls, and bag-stuffer loyalty cards." },
-        { title: "Advanced SMS Campaigns", desc: "We configure instant SMS pickup alerts and automated win-back texts for lapsed customers." },
-        { title: "Live In-Person Support", desc: "We provide 15-minute staff training and stand in your kitchen during your first major rush." }
+        { title: "Store Publishing", desc: "We handle developer accounts, Apple/Google approval, and Stripe." },
+        { title: "Menu Merchandising", desc: "We manually build your menu and program smart upsells." },
+        { title: "Physical Hardware", desc: "Pre-configured 10\" Android tablet with a heavy-duty mount." },
+        { title: "Marketing Kit", desc: "Printed QR table stands, vinyls, and physical loyalty cards." },
+        { title: "SMS Campaigns", desc: "Automated pickup alerts and win-back texts for lapsed diners." },
+        { title: "In-Person Support", desc: "On-site staff training and live coverage during your first rush." }
       ]
     }
   },
@@ -48,10 +48,10 @@ const dict = {
       headerTitle: "Tecnología Principal.",
       headerDesc: "El software definitivo para operar tu restaurante.",
       cards: [
-        { title: "App Personalizada", desc: "Una app móvil de pedidos impecable y sin fricción con tu marca." },
-        { title: "KDS Centro de Mando", desc: "Pantalla digital de cocina para eliminar los desordenados tickets de papel." },
-        { title: "Lealtad Automatizada", desc: "Sistema de puntos y recompensas para impulsar visitas recurrentes." },
-        { title: "Análisis de Datos Propios", desc: "Propiedad total de los datos de tus clientes e historial de pedidos." }
+        { title: "App Personalizada", desc: "Pedidos móviles rápidos y sin fricción, con tu propia marca." },
+        { title: "KDS Digital", desc: "Elimina los tickets de papel con una pantalla de cocina inteligente." },
+        { title: "Motor de Lealtad", desc: "Puntos y recompensas automáticas para visitas recurrentes." },
+        { title: "Análisis en Vivo", desc: "Propiedad del 100% de los datos de tus clientes y tendencias." }
       ]
     },
     complete: {
@@ -59,12 +59,12 @@ const dict = {
       headerTitle: "El Paquete Completo.",
       headerDesc: "Todo en el Nivel 1, MÁS nuestro lanzamiento VIP 'Hecho por Ti'.",
       cards: [
-        { title: "Publicación en App Store", desc: "Creamos tus cuentas de desarrollador, pasamos la revisión de Apple/Google y configuramos Stripe." },
-        { title: "Optimización de Menú", desc: "Cero captura de datos. Ingresamos tu menú, recortamos fotos y programamos ventas sugeridas." },
-        { title: "Hardware Físico", desc: "Enviamos una tableta Android de 10\" lista para usar con soporte comercial resistente." },
-        { title: "Kit de Marketing", desc: "Imprimimos soportes acrílicos QR, vinilos para tiendas y tarjetas de lealtad para entregas." },
-        { title: "Campañas SMS Avanzadas", desc: "Configuramos alertas SMS de recolección y mensajes para recuperar clientes inactivos." },
-        { title: "Soporte VIP en Persona", desc: "Entrenamos a tu personal y estamos en tu cocina durante tu primer gran turno." }
+        { title: "Publicación en Tiendas", desc: "Manejamos cuentas, aprobación de Apple/Google y pagos." },
+        { title: "Menú y Ventas", desc: "Construimos tu menú y programamos sugerencias de ventas." },
+        { title: "Hardware Físico", desc: "Tableta de 10\" configurada con soporte de uso rudo." },
+        { title: "Kit de Marketing", desc: "Soportes acrílicos QR, vinilos y tarjetas físicas impresas." },
+        { title: "Campañas por SMS", desc: "Alertas automáticas y textos para recuperar clientes perdidos." },
+        { title: "Soporte en Persona", desc: "Entrenamiento local y apoyo durante tu primer gran turno." }
       ]
     }
   }
@@ -182,8 +182,8 @@ export default function ServicesExperience({ lang, onBack }: { lang: Language, o
                       <div className="w-8 h-8 md:w-12 md:h-12 rounded-lg md:rounded-xl bg-[var(--color-ice)] flex items-center justify-center text-[var(--color-cobalt)] group-hover:bg-[var(--color-cobalt)] group-hover:text-white transition-colors duration-500">
                         <Icon className="w-4 h-4 md:w-6 md:h-6" />
                       </div>
-                      <h4 className="font-serif text-sm md:text-xl text-[var(--color-void)] mt-1 md:mt-2 leading-tight">{t.tier1.cards[idx].title}</h4>
-                      <p className="text-[var(--color-void)]/60 text-[10px] md:text-sm leading-relaxed">{t.tier1.cards[idx].desc}</p>
+                      <h4 className="font-serif text-base md:text-xl text-[var(--color-void)] mt-1 md:mt-2 leading-tight">{t.tier1.cards[idx].title}</h4>
+                      <p className="text-[var(--color-void)]/60 text-xs md:text-sm leading-relaxed">{t.tier1.cards[idx].desc}</p>
                     </motion.div>
                   ))}
                 </motion.div>
@@ -221,8 +221,8 @@ export default function ServicesExperience({ lang, onBack }: { lang: Language, o
                       <div className="w-8 h-8 md:w-12 md:h-12 rounded-lg md:rounded-xl bg-[var(--color-acid)]/10 flex items-center justify-center text-[var(--color-acid)] group-hover:bg-[var(--color-acid)] group-hover:text-black transition-colors duration-500">
                         <Icon className="w-4 h-4 md:w-6 md:h-6" />
                       </div>
-                      <h4 className="font-serif text-sm md:text-xl text-white mt-1 md:mt-2 leading-tight">{t.complete.cards[idx].title}</h4>
-                      <p className="text-white/50 text-[10px] md:text-sm leading-relaxed">{t.complete.cards[idx].desc}</p>
+                      <h4 className="font-serif text-base md:text-xl text-white mt-1 md:mt-2 leading-tight">{t.complete.cards[idx].title}</h4>
+                      <p className="text-white/50 text-xs md:text-sm leading-relaxed">{t.complete.cards[idx].desc}</p>
                     </motion.div>
                   ))}
                 </motion.div>
