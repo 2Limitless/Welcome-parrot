@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, CheckCircle2, Smartphone, BookOpen, MonitorSmartphone, Megaphone, MessageSquare, HeartHandshake, ChevronDown, LayoutDashboard, Gift, BarChart3, Tablet } from "lucide-react";
 import type { Language } from "../app/page";
 
@@ -71,6 +72,7 @@ const dict = {
 
 export default function ServicesExperience({ lang, onBack }: { lang: Language, onBack: () => void }) {
   const t = dict[lang];
+  const [activeTier, setActiveTier] = useState<"tier1" | "complete">("complete");
 
   const containerVariants: any = {
     hidden: { opacity: 0 },
@@ -88,106 +90,145 @@ export default function ServicesExperience({ lang, onBack }: { lang: Language, o
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: "10%" }}
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-      className="absolute inset-0 z-40 w-full h-full bg-[var(--color-ice)] p-6 md:p-12 overflow-y-auto overflow-x-hidden pointer-events-auto"
+      className={`absolute inset-0 z-40 w-full h-full transition-colors duration-700 p-6 md:p-12 overflow-y-auto overflow-x-hidden pointer-events-auto ${activeTier === "tier1" ? "bg-[var(--color-ice)]" : "bg-[var(--color-void)]"}`}
     >
-      <div className="w-full max-w-7xl mx-auto pt-12 md:pt-0 pb-32">
-        <header className="flex flex-col md:flex-row md:justify-between md:items-end mb-16 border-b border-[var(--color-void)]/10 pb-8 gap-8">
+      <div className="w-full max-w-7xl mx-auto pt-12 md:pt-0 pb-32 relative z-10">
+        
+        {/* Decorative Glows for Complete Package */}
+        <AnimatePresence>
+          {activeTier === "complete" && (
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 1 }} className="absolute inset-0 pointer-events-none -z-10">
+              <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[var(--color-acid)]/5 blur-[120px] rounded-full" />
+              <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#00ff66]/5 blur-[120px] rounded-full" />
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        <header className={`flex flex-col md:flex-row md:justify-between md:items-end mb-12 border-b pb-8 gap-8 transition-colors duration-700 ${activeTier === "tier1" ? "border-[var(--color-void)]/10" : "border-white/10"}`}>
           <div>
             <button 
               onClick={onBack}
-              className="text-[var(--color-void)]/50 text-xs tracking-[0.3em] uppercase mb-8 hover:text-[var(--color-cobalt)] transition-colors flex items-center gap-4 group w-max font-bold"
+              className={`text-xs tracking-[0.3em] uppercase mb-6 transition-colors flex items-center gap-4 group w-max ${activeTier === "tier1" ? "text-[var(--color-void)]/60 hover:text-[var(--color-cobalt)]" : "text-white/60 hover:text-[var(--color-acid)]"}`}
             >
-              <span className="w-8 h-[2px] bg-[var(--color-void)]/30 group-hover:w-16 group-hover:bg-[var(--color-cobalt)] transition-all duration-500" /> 
+              <span className={`w-8 h-[2px] transition-all duration-500 group-hover:w-16 ${activeTier === "tier1" ? "bg-[var(--color-void)]/30 group-hover:bg-[var(--color-cobalt)]" : "bg-white/30 group-hover:bg-[var(--color-acid)]"}`} /> 
               {t.back}
             </button>
-            <h2 className="text-5xl md:text-7xl font-serif font-light text-[var(--color-void)] tracking-tight">
-              {t.title} <span className="italic text-[var(--color-cobalt)] font-medium">{t.titleHighlight}</span>
+            <h2 className={`text-4xl md:text-6xl font-serif font-light transition-colors duration-700 ${activeTier === "tier1" ? "text-[var(--color-void)]" : "text-white"}`}>
+              {t.title} <span className={`italic transition-colors duration-700 ${activeTier === "tier1" ? "text-[var(--color-cobalt)]" : "text-[var(--color-acid)]"}`}>{t.titleHighlight}</span>
             </h2>
           </div>
-          <div className="max-w-xs flex flex-col items-start gap-8">
-            <p className="text-[var(--color-void)]/60 text-sm leading-relaxed">
-              {t.desc}
-            </p>
-            <motion.div 
-              animate={{ y: [0, 8, 0] }} 
-              transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-              className="flex items-center gap-2 text-[var(--color-cobalt)] font-medium text-xs tracking-widest uppercase"
-            >
-              <ChevronDown className="w-4 h-4" /> {t.scrollCompare}
-            </motion.div>
-          </div>
+          <p className={`font-sans text-sm max-w-sm md:text-right leading-relaxed transition-colors duration-700 ${activeTier === "tier1" ? "text-[var(--color-void)]/50" : "text-white/50"}`}>
+            {t.desc}
+          </p>
         </header>
 
-        {/* Tier 1 */}
-        <div className="mb-8 md:mb-24">
-          <div className="max-w-3xl mb-8 md:mb-12">
-            <h4 className="text-[var(--color-void)]/50 text-xs tracking-[0.3em] uppercase mb-4 font-bold">{t.tier1.headerSubtitle}</h4>
-            <h2 className="text-4xl md:text-5xl font-serif font-light text-[var(--color-void)] tracking-tight mb-4">
-              {t.tier1.headerTitle}
-            </h2>
-            <p className="text-[var(--color-void)]/60 text-base md:text-lg leading-relaxed">
-              {t.tier1.headerDesc}
-            </p>
+        {/* The Toggle Switch */}
+        <div className="flex justify-center mb-12 md:mb-16">
+          <div className={`p-1.5 rounded-full flex gap-1 relative transition-colors duration-700 ${activeTier === "tier1" ? "bg-[var(--color-void)]/5 border border-[var(--color-void)]/10" : "bg-white/5 border border-white/10"}`}>
+            <button
+              onClick={() => setActiveTier("tier1")}
+              className={`relative px-6 md:px-10 py-3 rounded-full text-xs md:text-sm font-bold tracking-widest uppercase transition-colors duration-500 z-10 ${activeTier === "tier1" ? "text-white" : "text-white/50 hover:text-white"}`}
+            >
+              {activeTier === "tier1" && (
+                <motion.div layoutId="tier-toggle" className="absolute inset-0 bg-[var(--color-void)] rounded-full -z-10 shadow-lg" transition={{ type: "spring", stiffness: 300, damping: 30 }} />
+              )}
+              {t.tier1.headerSubtitle}
+            </button>
+            <button
+              onClick={() => setActiveTier("complete")}
+              className={`relative px-6 md:px-10 py-3 rounded-full text-xs md:text-sm font-bold tracking-widest uppercase transition-colors duration-500 z-10 ${activeTier === "complete" ? "text-black" : "text-[var(--color-void)]/50 hover:text-[var(--color-void)]"}`}
+            >
+              {activeTier === "complete" && (
+                <motion.div layoutId="tier-toggle" className="absolute inset-0 bg-[var(--color-acid)] rounded-full -z-10 shadow-[0_0_20px_rgba(204,255,0,0.4)]" transition={{ type: "spring", stiffness: 300, damping: 30 }} />
+              )}
+              {t.complete.headerSubtitle}
+            </button>
           </div>
-
-          <motion.div 
-            variants={containerVariants}
-            initial="hidden"
-            animate="show"
-            className="flex md:grid md:grid-cols-2 gap-4 md:gap-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-4 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] -mx-6 px-6 md:mx-0 md:px-0"
-          >
-            {[MonitorSmartphone, LayoutDashboard, Gift, BarChart3].map((Icon, idx) => (
-              <motion.div 
-                key={idx}
-                variants={itemVariants}
-                className="w-[85vw] shrink-0 md:w-auto md:shrink snap-center bg-white p-6 md:p-8 rounded-[1.5rem] shadow-[0_10px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)] transition-all duration-500 border border-[var(--color-void)]/5 flex flex-col gap-4 group"
-              >
-                <div className="w-12 h-12 rounded-xl bg-[var(--color-ice)] flex items-center justify-center text-[var(--color-cobalt)] group-hover:bg-[var(--color-cobalt)] group-hover:text-white transition-colors duration-500">
-                  <Icon className="w-6 h-6" />
-                </div>
-                <h4 className="font-serif text-xl text-[var(--color-void)] mt-2 leading-tight">{t.tier1.cards[idx].title}</h4>
-                <p className="text-[var(--color-void)]/60 text-sm leading-relaxed">{t.tier1.cards[idx].desc}</p>
-              </motion.div>
-            ))}
-          </motion.div>
         </div>
 
-        {/* The Complete Package Tier */}
-        <div className="mt-4 md:mt-24 mb-32 bg-[var(--color-void)] rounded-[2rem] md:rounded-[4rem] p-6 md:p-16 relative overflow-hidden shadow-2xl">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-[var(--color-acid)]/5 blur-[120px] rounded-full pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#00ff66]/5 blur-[120px] rounded-full pointer-events-none" />
-          
-          <div className="max-w-3xl mb-8 md:mb-16 relative z-10">
-            <h4 className="text-[var(--color-acid)] text-xs tracking-[0.3em] uppercase mb-4 font-bold">{t.complete.headerSubtitle}</h4>
-            <h2 className="text-4xl md:text-5xl font-serif font-light text-white tracking-tight mb-4">
-              {t.complete.headerTitle}
-            </h2>
-            <p className="text-white/60 text-base md:text-lg leading-relaxed">
-              {t.complete.headerDesc}
-            </p>
-          </div>
-
-          <motion.div 
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-100px" }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10"
-          >
-            {[Smartphone, BookOpen, Tablet, Megaphone, MessageSquare, HeartHandshake].map((Icon, idx) => (
+             {/* Dynamic Content Area */}
+        <div className="relative min-h-[500px]">
+          <AnimatePresence mode="wait">
+            {activeTier === "tier1" ? (
               <motion.div 
-                key={idx}
-                variants={itemVariants}
-                className="bg-white/[0.03] p-6 md:p-8 rounded-[1.5rem] hover:bg-white/[0.08] transition-all duration-500 border border-white/[0.05] flex flex-col gap-4 group"
+                key="tier1"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5 }}
+                className="w-full"
               >
-                <div className="w-12 h-12 rounded-xl bg-[var(--color-acid)]/10 flex items-center justify-center text-[var(--color-acid)] group-hover:bg-[var(--color-acid)] group-hover:text-black transition-colors duration-500">
-                  <Icon className="w-6 h-6" />
+                <div className="max-w-3xl mb-8 md:mb-12 mx-auto text-center">
+                  <h2 className="text-3xl md:text-5xl font-serif font-light text-[var(--color-void)] tracking-tight mb-4">
+                    {t.tier1.headerTitle}
+                  </h2>
+                  <p className="text-[var(--color-void)]/60 text-base md:text-lg leading-relaxed">
+                    {t.tier1.headerDesc}
+                  </p>
                 </div>
-                <h4 className="font-serif text-xl text-white mt-2 leading-tight">{t.complete.cards[idx].title}</h4>
-                <p className="text-white/50 text-sm leading-relaxed">{t.complete.cards[idx].desc}</p>
+
+                <motion.div 
+                  variants={containerVariants}
+                  initial="hidden"
+                  animate="show"
+                  className="flex md:grid md:grid-cols-2 gap-4 md:gap-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-4 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] -mx-6 px-6 md:mx-0 md:px-0"
+                >
+                  {[MonitorSmartphone, LayoutDashboard, Gift, BarChart3].map((Icon, idx) => (
+                    <motion.div 
+                      key={idx}
+                      variants={itemVariants}
+                      className="w-[85vw] shrink-0 md:w-auto md:shrink snap-center bg-white p-6 md:p-8 rounded-[1.5rem] shadow-[0_10px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)] transition-all duration-500 border border-[var(--color-void)]/5 flex flex-col gap-4 group"
+                    >
+                      <div className="w-12 h-12 rounded-xl bg-[var(--color-ice)] flex items-center justify-center text-[var(--color-cobalt)] group-hover:bg-[var(--color-cobalt)] group-hover:text-white transition-colors duration-500">
+                        <Icon className="w-6 h-6" />
+                      </div>
+                      <h4 className="font-serif text-xl text-[var(--color-void)] mt-2 leading-tight">{t.tier1.cards[idx].title}</h4>
+                      <p className="text-[var(--color-void)]/60 text-sm leading-relaxed">{t.tier1.cards[idx].desc}</p>
+                    </motion.div>
+                  ))}
+                </motion.div>
               </motion.div>
-            ))}
-          </motion.div>
+            ) : (
+              <motion.div 
+                key="complete"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5 }}
+                className="w-full"
+              >
+                <div className="max-w-3xl mb-8 md:mb-12 mx-auto text-center">
+                  <h2 className="text-3xl md:text-5xl font-serif font-light text-white tracking-tight mb-4">
+                    {t.complete.headerTitle}
+                  </h2>
+                  <p className="text-white/60 text-base md:text-lg leading-relaxed">
+                    {t.complete.headerDesc}
+                  </p>
+                </div>
+
+                <motion.div 
+                  variants={containerVariants}
+                  initial="hidden"
+                  animate="show"
+                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                >
+                  {[Smartphone, BookOpen, Tablet, Megaphone, MessageSquare, HeartHandshake].map((Icon, idx) => (
+                    <motion.div 
+                      key={idx}
+                      variants={itemVariants}
+                      className="bg-white/5 border border-white/10 hover:bg-white/10 p-6 md:p-8 rounded-[1.5rem] transition-all duration-500 flex flex-col gap-4 group"
+                    >
+                      <div className="w-12 h-12 rounded-xl bg-[var(--color-acid)]/10 flex items-center justify-center text-[var(--color-acid)] group-hover:bg-[var(--color-acid)] group-hover:text-black transition-colors duration-500">
+                        <Icon className="w-6 h-6" />
+                      </div>
+                      <h4 className="font-serif text-xl text-white mt-2 leading-tight">{t.complete.cards[idx].title}</h4>
+                      <p className="text-white/50 text-sm leading-relaxed">{t.complete.cards[idx].desc}</p>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
 
       </div>
