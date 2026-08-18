@@ -244,7 +244,7 @@ export default function Home() {
                       onClick={() => handleNavClick(item.id as ViewState)}
                       className={`relative px-3 md:px-8 py-3 rounded-full text-center transition-colors duration-500 ${
                         item.id === "about"
-                          ? "bg-[var(--color-acid)] text-[var(--color-void)] font-bold shadow-[0_0_15px_rgba(204,255,0,0.2)]"
+                          ? "bg-[#00ff66] text-[var(--color-void)] font-bold shadow-[0_0_15px_rgba(0,255,102,0.2)]"
                           : isActive
                             ? isLightMode ? "text-white" : "text-black"
                             : isLightMode ? "text-black/60 hover:text-black" : "text-white/60 hover:text-white"
