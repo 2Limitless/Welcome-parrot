@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle2, Smartphone, BookOpen, MonitorSmartphone, Megaphone, MessageSquare, HeartHandshake } from "lucide-react";
+import { ArrowRight, CheckCircle2, Smartphone, BookOpen, MonitorSmartphone, Megaphone, MessageSquare, HeartHandshake, ChevronDown } from "lucide-react";
 import type { Language } from "../app/page";
 
 const dict = {
@@ -10,6 +10,7 @@ const dict = {
     title: "The ",
     titleHighlight: "Platform.",
     desc: "A complete ecosystem. We empower your kitchen operations while delivering a world-class experience to your customers.",
+    scrollCompare: "Compare Packages Below",
     b2b: {
       title1: "The Command Center",
       title2: "Restaurant Operations",
@@ -41,6 +42,7 @@ const dict = {
     title: "La ",
     titleHighlight: "Plataforma.",
     desc: "Un ecosistema completo. Potenciamos las operaciones de tu cocina mientras brindamos una experiencia de primer nivel a tus clientes.",
+    scrollCompare: "Compara Paquetes Abajo",
     b2b: {
       title1: "El Centro de Mando",
       title2: "Operaciones del Restaurante",
@@ -104,10 +106,17 @@ export default function ServicesExperience({ lang, onBack }: { lang: Language, o
               {t.title} <span className="italic text-[var(--color-cobalt)] font-medium">{t.titleHighlight}</span>
             </h2>
           </div>
-          <div className="max-w-xs">
+          <div className="max-w-xs flex flex-col items-start gap-8">
             <p className="text-[var(--color-void)]/60 text-sm leading-relaxed">
               {t.desc}
             </p>
+            <motion.div 
+              animate={{ y: [0, 8, 0] }} 
+              transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+              className="flex items-center gap-2 text-[var(--color-cobalt)] font-medium text-xs tracking-widest uppercase"
+            >
+              <ChevronDown className="w-4 h-4" /> {t.scrollCompare}
+            </motion.div>
           </div>
         </header>
 
@@ -176,13 +185,16 @@ export default function ServicesExperience({ lang, onBack }: { lang: Language, o
         </motion.div>
 
         {/* The Complete Package Tier */}
-        <div className="mt-8 md:mt-16 mb-32 border-t border-[var(--color-void)]/10 pt-16">
-          <div className="max-w-3xl mb-12">
-            <h4 className="text-[var(--color-void)]/50 text-xs tracking-[0.3em] uppercase mb-4 font-bold">{t.complete.headerSubtitle}</h4>
-            <h2 className="text-4xl md:text-5xl font-serif font-light text-[var(--color-void)] tracking-tight mb-4">
+        <div className="mt-8 md:mt-24 mb-32 bg-[var(--color-void)] rounded-[2rem] md:rounded-[4rem] p-8 md:p-16 relative overflow-hidden shadow-2xl">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-[var(--color-acid)]/5 blur-[120px] rounded-full pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#00ff66]/5 blur-[120px] rounded-full pointer-events-none" />
+          
+          <div className="max-w-3xl mb-12 relative z-10">
+            <h4 className="text-[var(--color-acid)] text-xs tracking-[0.3em] uppercase mb-4 font-bold">{t.complete.headerSubtitle}</h4>
+            <h2 className="text-4xl md:text-5xl font-serif font-light text-white tracking-tight mb-4">
               {t.complete.headerTitle}
             </h2>
-            <p className="text-[var(--color-void)]/60 text-base md:text-lg leading-relaxed">
+            <p className="text-white/60 text-base md:text-lg leading-relaxed">
               {t.complete.headerDesc}
             </p>
           </div>
@@ -192,19 +204,19 @@ export default function ServicesExperience({ lang, onBack }: { lang: Language, o
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, margin: "-100px" }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10"
           >
             {[Smartphone, BookOpen, MonitorSmartphone, Megaphone, MessageSquare, HeartHandshake].map((Icon, idx) => (
               <motion.div 
                 key={idx}
                 variants={itemVariants}
-                className="bg-white p-6 md:p-8 rounded-[1.5rem] shadow-[0_10px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)] transition-all duration-500 border border-[var(--color-void)]/5 flex flex-col gap-4 group"
+                className="bg-white/[0.03] p-6 md:p-8 rounded-[1.5rem] hover:bg-white/[0.08] transition-all duration-500 border border-white/[0.05] flex flex-col gap-4 group"
               >
-                <div className="w-12 h-12 rounded-xl bg-[var(--color-ice)] flex items-center justify-center text-[var(--color-cobalt)] group-hover:bg-[var(--color-cobalt)] group-hover:text-white transition-colors duration-500">
+                <div className="w-12 h-12 rounded-xl bg-[var(--color-acid)]/10 flex items-center justify-center text-[var(--color-acid)] group-hover:bg-[var(--color-acid)] group-hover:text-black transition-colors duration-500">
                   <Icon className="w-6 h-6" />
                 </div>
-                <h4 className="font-serif text-xl text-[var(--color-void)] mt-2 leading-tight">{t.complete.cards[idx].title}</h4>
-                <p className="text-[var(--color-void)]/60 text-sm leading-relaxed">{t.complete.cards[idx].desc}</p>
+                <h4 className="font-serif text-xl text-white mt-2 leading-tight">{t.complete.cards[idx].title}</h4>
+                <p className="text-white/50 text-sm leading-relaxed">{t.complete.cards[idx].desc}</p>
               </motion.div>
             ))}
           </motion.div>
