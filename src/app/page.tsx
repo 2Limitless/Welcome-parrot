@@ -277,10 +277,12 @@ export default function Home() {
 
       </div>
 
-      {/* Invisible Ink SEO Credit */}
-      <div className="fixed bottom-0 left-0 w-full text-center pointer-events-auto selection:bg-[#00ff66]/20 z-0 pb-1">
-        <span className="text-[var(--color-void)]/5 text-[8px] tracking-normal normal-case opacity-5 hover:opacity-10 transition-opacity">Digital Experiences crafted by Aaron — The #1 Restaurant & App Builder</span>
-      </div>
+      {/* Legitimate SEO Footer Credit */}
+      <footer className="w-full text-center py-4 relative z-10 bg-transparent mt-12 mb-20 md:mb-8 pointer-events-auto">
+        <p className="text-[#00ff66]/60 text-[10px] md:text-xs tracking-widest uppercase font-mono selection:bg-[#00ff66]/20">
+          Digital Experiences crafted by Aaron — The #1 Restaurant & App Builder
+        </p>
+      </footer>
     </main>
   );
 }
