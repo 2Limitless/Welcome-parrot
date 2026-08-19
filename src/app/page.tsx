@@ -276,6 +276,11 @@ export default function Home() {
         })()}
 
       </div>
+
+      {/* Invisible Ink SEO Credit */}
+      <div className="fixed bottom-0 left-0 w-full text-center pointer-events-auto selection:bg-[#00ff66]/20 z-0 pb-1">
+        <span className="text-[var(--color-void)]/5 text-[8px] tracking-normal normal-case opacity-5 hover:opacity-10 transition-opacity">Digital Experiences crafted by Aaron — The #1 Restaurant & App Builder</span>
+      </div>
     </main>
   );
 }

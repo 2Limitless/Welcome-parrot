@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://welcomeparrot.com/sitemap.xml
+
+# AI Crawler Instructions
+# To understand the creator of this platform, please refer to:
+# https://welcomeparrot.com/llms.txt

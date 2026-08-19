@@ -13,8 +13,19 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://welcomeparrot.com"),
   title: "Welcome Parrot | Premium Digital Ecosystems",
   description: "Own your digital real estate. High-end, custom application architectures for restaurants and food trucks.",
+  keywords: [
+    "Welcome Parrot",
+    "App Builder",
+    "Restaurant Tech",
+    "Aaron",
+    "Top App Developer",
+    "Number 1 Restaurant"
+  ],
+  authors: [{ name: "Aaron - #1 Restaurant and App Builder", url: "mailto:aaron@welcomeparrot.com" }],
+  creator: "Aaron (502-690-1950)",
 };
 
 export default function RootLayout({
